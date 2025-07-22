@@ -563,7 +563,7 @@
                                 <button onclick="checkQuiz()" class="neon-btn w-100 mt-3">Periksa Jawaban</button>
                                 <p id="quiz-feedback" class="mt-4 font-weight-bold text-center"></p>
                                 <!-- Next Material Button - Hidden by default -->
-                                <a href="{{ route('guru.materi.index')}}" id="nextMaterialBtn" class="neon-btn w-100 mt-3 d-none">Lanjut ke Materi Berikutnya <i class="fas fa-arrow-right ms-2"></i></a>
+                                <a href="{{ route('siswa.materi.index')}}" id="nextMaterialBtn" class="neon-btn w-100 mt-3 d-none">Lanjut ke Materi Berikutnya <i class="fas fa-arrow-right ms-2"></i></a>
                             </div>
                         </div>
                     </section>
