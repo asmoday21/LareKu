@@ -187,7 +187,7 @@
                                 <li>Selanjutnya, paket tersebut akan dikirimkan oleh jasa pengiriman barang atau kurir. Pada bagian ini, jasa kurir dapat menggunakan metode <strong>CSMA/CD (Carrier Sense Multiple Access with Collision Detection)</strong> yang dimiliki oleh standar ethernet.</li>
                                 <li>Setelah paket diterima oleh teman kalian, header akan dibuang dan bungkus/wadah akan dibuka untuk diambil isinya. Proses ini disebut <strong>Decapsulation</strong>.</li>
                             </ol>
-                            <div class="alert alert-warning" style="background: var(--glass-bg); border-left: 4px solid var(--accent-color) !important; color: var(--text-dark);">
+                            <div class="alert alert-warning" style="background: var(--glass-bg); border-left: 4尔多px solid var(--accent-color) !important; color: var(--text-dark);">
                                 <h5><i class="fas fa-exclamation-triangle me-2"></i>Analogi CSMA/CD</h5>
                                 <p class="mb-0">Bayangkan kalian berkomunikasi dengan teman. Saat teman berbicara, kalian mendengarkan. Begitu pula ketika kalian berbicara, teman kalian mendengarkan. Jika kalian berbicara bersamaan, itu disebut "bertengkar" atau dalam jaringan disebut <strong>collision</strong> (tabrakan data). CSMA/CD memastikan jalur komunikasi kosong sebelum mengirim data.</p>
                             </div>
@@ -1222,42 +1222,67 @@
                 }
                 
                 .data-flow {
-                    height: 300px; /* Reduce height on smaller screens */
+                    height: 450px; /* Increased height to accommodate vertical flow */
                     flex-direction: column; /* Stack elements vertically */
                     padding: 1rem;
+                    justify-content: space-around; /* Distribute space vertically */
                 }
                 .data-flow > div:first-child,
                 .data-flow > div:last-child {
-                    margin-bottom: 1rem; /* Space between stacked elements */
+                    margin-bottom: 0.5rem; /* Reduce margin for tighter stacking */
+                    margin-top: 0.5rem;
                 }
                 .data-flow-animation-container {
-                    height: 150px; /* Adjust height for animation container */
+                    height: 250px; /* Adjust height for animation container to be taller */
+                    width: 100%; /* Take full width */
+                    position: relative; /* Keep relative for absolute children */
+                    display: flex; /* Use flex to center the "Aliran Data" text */
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column; /* Stack text and packets vertically */
                 }
                 .data-packet {
                     width: 70px;
                     height: 35px;
                     font-size: 0.8rem;
+                    /* Reset horizontal positioning */
+                    left: 50%; /* Center horizontally */
+                    transform: translateX(-50%); /* Adjust for width */
+                    /* New animation will use top */
+                    animation: packetFlowVertical 4s infinite ease-in-out;
                 }
-                @keyframes packetFlow {
-                    0% { 
-                        left: -60px; 
+                .data-flow-animation-container h6 {
+                    position: absolute;
+                    bottom: 10px; /* Position "Aliran Data" text at the bottom */
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+                /* New keyframes for vertical packet flow */
+                @keyframes packetFlowVertical {
+                    0% {
+                        top: -50px; /* Start above container */
                         opacity: 0;
-                        transform: scale(0.7);
+                        transform: translateX(-50%) scale(0.7);
                     }
-                    10% { 
+                    10% {
                         opacity: 1;
-                        transform: scale(0.9);
+                        transform: translateX(-50%) scale(0.9);
                     }
-                    90% { 
+                    90% {
                         opacity: 1;
-                        transform: scale(0.9);
+                        transform: translateX(-50%) scale(0.9);
                     }
-                    100% { 
-                        left: calc(100% + 60px); 
+                    100% {
+                        top: calc(100% + 50px); /* End below container */
                         opacity: 0;
-                        transform: scale(0.7);
+                        transform: translateX(-50%) scale(0.7);
                     }
                 }
+                /* Adjust individual packet delays for vertical flow */
+                #data-packet-1 { animation-delay: 0s; }
+                #data-packet-2 { animation-delay: 1s; }
+                #data-packet-3 { animation-delay: 2s; }
+                #data-packet-4 { animation-delay: 3s; }
 
                 .handshake-step {
                     flex-direction: column;
