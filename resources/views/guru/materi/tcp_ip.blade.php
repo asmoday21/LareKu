@@ -187,29 +187,11 @@
                                 <li>Selanjutnya, paket tersebut akan dikirimkan oleh jasa pengiriman barang atau kurir. Pada bagian ini, jasa kurir dapat menggunakan metode <strong>CSMA/CD (Carrier Sense Multiple Access with Collision Detection)</strong> yang dimiliki oleh standar ethernet.</li>
                                 <li>Setelah paket diterima oleh teman kalian, header akan dibuang dan bungkus/wadah akan dibuka untuk diambil isinya. Proses ini disebut <strong>Decapsulation</strong>.</li>
                             </ol>
-                            <div class="alert alert-warning" style="background: var(--glass-bg); border-left: 4尔多px solid var(--accent-color) !important; color: var(--text-dark);">
+                            <div class="alert alert-warning" style="background: var(--glass-bg); border-left: 4px solid var(--accent-color) !important; color: var(--text-dark);">
                                 <h5><i class="fas fa-exclamation-triangle me-2"></i>Analogi CSMA/CD</h5>
                                 <p class="mb-0">Bayangkan kalian berkomunikasi dengan teman. Saat teman berbicara, kalian mendengarkan. Begitu pula ketika kalian berbicara, teman kalian mendengarkan. Jika kalian berbicara bersamaan, itu disebut "bertengkar" atau dalam jaringan disebut <strong>collision</strong> (tabrakan data). CSMA/CD memastikan jalur komunikasi kosong sebelum mengirim data.</p>
                             </div>
-                            <h5 class="text-center mt-4 mb-3" style="color: var(--text-dark);">Simulasi Aliran Data Encapsulation/Decapsulation:</h5>
-                            <div class="data-flow d-flex justify-content-between align-items-center flex-wrap">
-                                <div class="text-center mb-3">
-                                    <img src="https://placehold.co/100x100/1E90FF/FFFFFF?text=PC+Pengirim" alt="PC Pengirim" class="img-fluid rounded-circle mb-2" style="box-shadow: 0 0 10px rgba(30, 144, 255, 0.6);">
-                                    <p class="small" style="color: var(--text-dark);">PC Pengirim</p>
-                                </div>
-                                <div class="flex-grow-1 text-center position-relative data-flow-animation-container">
-                                    <!-- Data packets will be animated here -->
-                                    <div class="data-packet" id="data-packet-1">Data App</div>
-                                    <div class="data-packet" id="data-packet-2">TCP Header</div>
-                                    <div class="data-packet" id="data-packet-3">IP Header</div>
-                                    <div class="data-packet" id="data-packet-4">Ethernet</div>
-                                    <h6 style="color: var(--text-dark);">Aliran Data</h6>
-                                </div>
-                                <div class="text-center mb-3">
-                                    <img src="https://placehold.co/100x100/32CD32/FFFFFF?text=PC+Penerima" alt="PC Penerima" class="img-fluid rounded-circle mb-2" style="box-shadow: 0 0 10px rgba(50, 205, 50, 0.6);">
-                                    <p class="small" style="color: var(--text-dark);">PC Penerima</p>
-                                </div>
-                            </div>
+                            <!-- Removed "Simulasi Aliran Data Encapsulation/Decapsulation" section -->
 
                             <h4 class="mt-5 mb-3" style="color: var(--text-dark);">c. TCP Sequence Number dan Error Recovery</h4>
                             <p class="opacity-75" style="color: var(--text-dark);">Pada pengiriman paket dalam jaringan komputer menggunakan protokol TCP/IP, tidak langsung semua dikirim dan diterima, tetapi ada pemecahan paket menjadi bagian-bagian lebih kecil untuk dikirim, kemudian disusun kembali menjadi paket utuh.</p>
@@ -781,71 +763,7 @@
             }
 
             /* Data Flow Animation */
-            .data-flow {
-                position: relative;
-                height: 400px; /* Adjusted in media query for smaller screens */
-                background: var(--lighter-bg); /* Use lighter background for data flow */
-                border-radius: 20px;
-                margin: 2rem 0;
-                overflow: hidden;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border: 1px solid rgba(59, 130, 246, 0.2);
-                box-shadow: var(--shadow-bright-blue);
-            }
-
-            .data-flow-animation-container {
-                position: relative;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .data-packet {
-                position: absolute;
-                width: 80px;
-                height: 40px;
-                background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-                border-radius: 8px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 0.95rem; /* Slightly smaller for packet labels */
-                font-weight: bold;
-                box-shadow: 0 0 15px var(--primary-color);
-                animation: packetFlow 4s infinite ease-in-out;
-                color: white;
-            }
-
-            /* Individual packet animation delays */
-            #data-packet-1 { animation-delay: 0s; }
-            #data-packet-2 { animation-delay: 1s; }
-            #data-packet-3 { animation-delay: 2s; }
-            #data-packet-4 { animation-delay: 3s; }
-
-            @keyframes packetFlow {
-                0% { 
-                    left: -70px; 
-                    opacity: 0;
-                    transform: scale(0.8);
-                }
-                10% { 
-                    opacity: 1;
-                    transform: scale(1);
-                }
-                90% { 
-                    opacity: 1;
-                    transform: scale(1);
-                }
-                100% { 
-                    left: calc(100% + 70px); 
-                    opacity: 0;
-                    transform: scale(0.8);
-                }
-            }
+            /* Removed .data-flow, .data-flow-animation-container, .data-packet and related keyframes */
 
             /* Interactive Cards */
             .interactive-card {
@@ -1203,7 +1121,7 @@
                 h4 { font-size: 1.3rem; }
                 h5 { font-size: 1.1rem; }
                 p, ol, ul, .quiz-option, .stack-layer p { font-size: 1rem; } /* Slightly smaller body on mobile */
-                .protocol-badge, .data-packet { font-size: 0.85rem; }
+                .protocol-badge { font-size: 0.85rem; }
                 .ip-octet { font-size: 1.1rem; }
                 .neon-btn { font-size: 0.9rem; padding: 10px 20px; }
 
@@ -1221,68 +1139,7 @@
                     transform: none;
                 }
                 
-                .data-flow {
-                    height: 450px; /* Increased height to accommodate vertical flow */
-                    flex-direction: column; /* Stack elements vertically */
-                    padding: 1rem;
-                    justify-content: space-around; /* Distribute space vertically */
-                }
-                .data-flow > div:first-child,
-                .data-flow > div:last-child {
-                    margin-bottom: 0.5rem; /* Reduce margin for tighter stacking */
-                    margin-top: 0.5rem;
-                }
-                .data-flow-animation-container {
-                    height: 250px; /* Adjust height for animation container to be taller */
-                    width: 100%; /* Take full width */
-                    position: relative; /* Keep relative for absolute children */
-                    display: flex; /* Use flex to center the "Aliran Data" text */
-                    align-items: center;
-                    justify-content: center;
-                    flex-direction: column; /* Stack text and packets vertically */
-                }
-                .data-packet {
-                    width: 70px;
-                    height: 35px;
-                    font-size: 0.8rem;
-                    /* Reset horizontal positioning */
-                    left: 50%; /* Center horizontally */
-                    transform: translateX(-50%); /* Adjust for width */
-                    /* New animation will use top */
-                    animation: packetFlowVertical 4s infinite ease-in-out;
-                }
-                .data-flow-animation-container h6 {
-                    position: absolute;
-                    bottom: 10px; /* Position "Aliran Data" text at the bottom */
-                    left: 50%;
-                    transform: translateX(-50%);
-                }
-                /* New keyframes for vertical packet flow */
-                @keyframes packetFlowVertical {
-                    0% {
-                        top: -50px; /* Start above container */
-                        opacity: 0;
-                        transform: translateX(-50%) scale(0.7);
-                    }
-                    10% {
-                        opacity: 1;
-                        transform: translateX(-50%) scale(0.9);
-                    }
-                    90% {
-                        opacity: 1;
-                        transform: translateX(-50%) scale(0.9);
-                    }
-                    100% {
-                        top: calc(100% + 50px); /* End below container */
-                        opacity: 0;
-                        transform: translateX(-50%) scale(0.7);
-                    }
-                }
-                /* Adjust individual packet delays for vertical flow */
-                #data-packet-1 { animation-delay: 0s; }
-                #data-packet-2 { animation-delay: 1s; }
-                #data-packet-3 { animation-delay: 2s; }
-                #data-packet-4 { animation-delay: 3s; }
+                /* Removed .data-flow, .data-flow-animation-container, .data-packet and related keyframes from here */
 
                 .handshake-step {
                     flex-direction: column;
