@@ -194,18 +194,19 @@
                             <h5 class="text-center mt-4 mb-3" style="color: var(--text-dark);">Simulasi Aliran Data Encapsulation/Decapsulation:</h5>
                             <div class="data-flow d-flex justify-content-between align-items-center flex-wrap">
                                 <div class="text-center mb-3">
-                                    <img src="https://placehold.co/100x100/1E90FF/FFFFFF?text=PC+Pengirim" alt="" class="img-fluid rounded-circle mb-2" style="box-shadow: 0 0 10px rgba(30, 144, 255, 0.6);">
+                                    <img src="https://placehold.co/100x100/1E90FF/FFFFFF?text=PC+Pengirim" alt="PC Pengirim" class="img-fluid rounded-circle mb-2" style="box-shadow: 0 0 10px rgba(30, 144, 255, 0.6);">
                                     <p class="small" style="color: var(--text-dark);">PC Pengirim</p>
                                 </div>
-                                <div class="flex-grow-1 text-center position-relative">
-                                    <div class="data-packet" style="left: -70px; top: 50%; transform: translateY(-50%); animation-delay: 0s;">Data App</div>
-                                    <div class="data-packet" style="left: -70px; top: 50%; transform: translateY(-50%); animation-delay: 1s;">+ TCP Header</div>
-                                    <div class="data-packet" style="left: -70px; top: 50%; transform: translateY(-50%); animation-delay: 2s;">+ IP Header</div>
-                                    <div class="data-packet" style="left: -70px; top: 50%; transform: translateY(-50%); animation-delay: 3s;">+ Ethernet</div>
+                                <div class="flex-grow-1 text-center position-relative data-flow-animation-container">
+                                    <!-- Data packets will be animated here -->
+                                    <div class="data-packet" id="data-packet-1">Data App</div>
+                                    <div class="data-packet" id="data-packet-2">TCP Header</div>
+                                    <div class="data-packet" id="data-packet-3">IP Header</div>
+                                    <div class="data-packet" id="data-packet-4">Ethernet</div>
                                     <h6 style="color: var(--text-dark);">Aliran Data</h6>
                                 </div>
                                 <div class="text-center mb-3">
-                                    <img src="https://placehold.co/100x100/32CD32/FFFFFF?text=PC+Penerima" alt="" class="img-fluid rounded-circle mb-2" style="box-shadow: 0 0 10px rgba(50, 205, 50, 0.6);">
+                                    <img src="https://placehold.co/100x100/32CD32/FFFFFF?text=PC+Penerima" alt="PC Penerima" class="img-fluid rounded-circle mb-2" style="box-shadow: 0 0 10px rgba(50, 205, 50, 0.6);">
                                     <p class="small" style="color: var(--text-dark);">PC Penerima</p>
                                 </div>
                             </div>
@@ -233,8 +234,8 @@
                                 <div id="handshake-step-1" class="handshake-step">
                                     <div class="client"><i class="fas fa-desktop"></i> PC A</div>
                                     <div class="flex-grow-1 text-center position-relative">
-                                        <div class="packet-animation" id="packet1" style="left: 0; top: 50%;"></div>
-                                        <span style="color: var(--text-dark);">SYN (Seq=100, ACK=0)</span>
+                                        <div class="packet-animation" id="packet1"></div>
+                                        <span class="packet-label" style="color: var(--text-dark);">SYN (Seq=100, ACK=0)</span>
                                         <div class="arrow-line arrow-head-right"></div>
                                     </div>
                                     <div class="server"><i class="fas fa-server"></i> PC B</div>
@@ -242,8 +243,8 @@
                                 <div id="handshake-step-2" class="handshake-step">
                                     <div class="client"><i class="fas fa-desktop"></i> PC A</div>
                                     <div class="flex-grow-1 text-center position-relative">
-                                        <div class="packet-animation" id="packet2" style="right: 0; top: 50%;"></div>
-                                        <span style="color: var(--text-dark);">SYN-ACK (Seq=200, ACK=110)</span>
+                                        <div class="packet-animation" id="packet2"></div>
+                                        <span class="packet-label" style="color: var(--text-dark);">SYN-ACK (Seq=200, ACK=110)</span>
                                         <div class="arrow-line arrow-head-left"></div>
                                     </div>
                                     <div class="server"><i class="fas fa-server"></i> PC B</div>
@@ -251,13 +252,13 @@
                                 <div id="handshake-step-3" class="handshake-step">
                                     <div class="client"><i class="fas fa-desktop"></i> PC A</div>
                                     <div class="flex-grow-1 text-center position-relative">
-                                        <div class="packet-animation" id="packet3" style="left: 0; top: 50%;"></div>
-                                        <span style="color: var(--text-dark);">ACK (Seq=110, ACK=210)</span>
+                                        <div class="packet-animation" id="packet3"></div>
+                                        <span class="packet-label" style="color: var(--text-dark);">ACK (Seq=110, ACK=210)</span>
                                         <div class="arrow-line arrow-head-right"></div>
                                     </div>
                                     <div class="server"><i class="fas fa-server"></i> PC B</div>
                                 </div>
-                                <div class="d-flex justify-content-center gap-3 mt-4">
+                                <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
                                     <button class="neon-btn" onclick="startHandshakeAnimation()">Mulai Animasi</button>
                                     <button class="neon-btn" onclick="resetHandshakeAnimation()">Reset</button>
                                 </div>
@@ -565,11 +566,11 @@
                                     </div>
                                     <div class="mb-2 quiz-option" data-question="q5" data-answer="b">
                                         <input type="radio" name="q5" value="b" class="d-none">
-                                        <label class="w-100 cursor-pointer" style="color: var(--text-dark);">b. 10 (2 bit)</label>
+                                        <label class="w-100 cursor-pointer" style="color: var(--text-dark);">c. 110 (3 bit)</label>
                                     </div>
                                     <div class="mb-2 quiz-option" data-question="q5" data-answer="c">
                                         <input type="radio" name="q5" value="c" class="d-none">
-                                        <label class="w-100 cursor-pointer" style="color: var(--text-dark);">c. 110 (3 bit)</label>
+                                        <label class="w-100 cursor-pointer" style="color: var(--text-dark);">b. 10 (2 bit)</label>
                                     </div>
                                     <div class="mb-4 quiz-option" data-question="q5" data-answer="d">
                                         <input type="radio" name="q5" value="d" class="d-none">
@@ -664,6 +665,7 @@
                 justify-content: center;
                 flex-direction: column;
                 box-shadow: var(--header-shadow-bright);
+                padding: 20px; /* Add padding for smaller screens */
             }
 
             /* Network Grid Animation */
@@ -781,7 +783,7 @@
             /* Data Flow Animation */
             .data-flow {
                 position: relative;
-                height: 400px;
+                height: 400px; /* Adjusted in media query for smaller screens */
                 background: var(--lighter-bg); /* Use lighter background for data flow */
                 border-radius: 20px;
                 margin: 2rem 0;
@@ -791,6 +793,15 @@
                 justify-content: center;
                 border: 1px solid rgba(59, 130, 246, 0.2);
                 box-shadow: var(--shadow-bright-blue);
+            }
+
+            .data-flow-animation-container {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
             .data-packet {
@@ -808,6 +819,12 @@
                 animation: packetFlow 4s infinite ease-in-out;
                 color: white;
             }
+
+            /* Individual packet animation delays */
+            #data-packet-1 { animation-delay: 0s; }
+            #data-packet-2 { animation-delay: 1s; }
+            #data-packet-3 { animation-delay: 2s; }
+            #data-packet-4 { animation-delay: 3s; }
 
             @keyframes packetFlow {
                 0% { 
@@ -907,6 +924,7 @@
                 font-size: 24px; /* Icon size, not text size */
                 color: white;
                 box-shadow: 0 0 15px var(--primary-color);
+                flex-shrink: 0; /* Prevent shrinking on small screens */
             }
 
             .arrow-line {
@@ -950,10 +968,17 @@
                 opacity: 0;
                 transition: all 0.5s ease-out;
             }
+            .packet-label {
+                position: absolute;
+                font-size: 0.95rem; /* Consistent with data-packet */
+                white-space: nowrap; /* Prevent text wrapping */
+                transform: translateX(-50%); /* Center label */
+            }
+
 
             /* IP Address Visualizer */
             .ip-visualizer {
-                background: var(--lighter-bg); /* Use lighter background */
+                background: var(--lighter-bg); /* Lighter background for ip visualizer */
                 border-radius: 20px;
                 padding: 2rem;
                 margin: 2rem 0;
@@ -1008,7 +1033,7 @@
                 left: -100%;
                 width: 100%;
                 height: 100%;
-                background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
                 transition: left 0.5s;
             }
 
@@ -1169,6 +1194,7 @@
             @media (max-width: 768px) {
                 .hero-section {
                     min-height: 80vh;
+                    padding: 15px; /* Adjust padding for smaller screens */
                 }
                 
                 h1 { font-size: 2.5rem; } /* Smaller h1 on mobile */
@@ -1187,19 +1213,70 @@
                     margin: 1rem auto;
                 }
                 
+                .stack-layer {
+                    padding: 15px; /* Smaller padding for layers */
+                }
+
                 .stack-layer:hover {
                     transform: none;
                 }
                 
+                .data-flow {
+                    height: 300px; /* Reduce height on smaller screens */
+                    flex-direction: column; /* Stack elements vertically */
+                    padding: 1rem;
+                }
+                .data-flow > div:first-child,
+                .data-flow > div:last-child {
+                    margin-bottom: 1rem; /* Space between stacked elements */
+                }
+                .data-flow-animation-container {
+                    height: 150px; /* Adjust height for animation container */
+                }
+                .data-packet {
+                    width: 70px;
+                    height: 35px;
+                    font-size: 0.8rem;
+                }
+                @keyframes packetFlow {
+                    0% { 
+                        left: -60px; 
+                        opacity: 0;
+                        transform: scale(0.7);
+                    }
+                    10% { 
+                        opacity: 1;
+                        transform: scale(0.9);
+                    }
+                    90% { 
+                        opacity: 1;
+                        transform: scale(0.9);
+                    }
+                    100% { 
+                        left: calc(100% + 60px); 
+                        opacity: 0;
+                        transform: scale(0.7);
+                    }
+                }
+
                 .handshake-step {
                     flex-direction: column;
                     text-align: center;
+                    margin: 1rem 0;
+                    padding: 0 10px; /* Add horizontal padding */
+                }
+                
+                .client, .server {
+                    width: 60px; /* Smaller icons */
+                    height: 60px;
+                    font-size: 20px;
+                    margin-bottom: 10px; /* Space between icon and text/arrow */
                 }
                 
                 .arrow-line {
                     width: 4px;
                     height: 50px;
-                    margin: 1rem 0;
+                    margin: 1rem auto; /* Center vertical arrow */
                 }
                 
                 .arrow-head-right::after, .arrow-head-left::after {
@@ -1210,10 +1287,62 @@
                     border-bottom: none;
                     transform: rotate(90deg);
                 }
+                .packet-label {
+                    position: static; /* Allow label to flow naturally */
+                    display: block;
+                    margin-top: 5px;
+                    transform: none; /* Remove previous transform */
+                }
+                .packet-animation {
+                    display: none; /* Hide animated packet on small screens for simplicity */
+                }
+
 
                 .ip-octet {
                     padding: 8px 12px;
                     font-size: 1rem;
+                }
+
+                .interactive-card {
+                    padding: 1.5rem; /* Smaller padding for cards */
+                }
+
+                .model-comparison {
+                    min-height: auto; /* Remove fixed min-height */
+                    padding: 1.5rem; /* Smaller padding */
+                }
+                .model-layer {
+                    padding: 8px 12px; /* Smaller padding for layers */
+                    font-size: 1rem;
+                }
+                .model-layer .layer-info strong {
+                    font-size: 1rem;
+                }
+                .model-layer .protocols {
+                    font-size: 0.8rem;
+                }
+
+                .quiz-card {
+                    padding: 1.5rem; /* Smaller padding for quiz card */
+                }
+                .quiz-option {
+                    padding: 0.8rem; /* Smaller padding for quiz options */
+                    font-size: 1rem;
+                }
+                .quiz-option label {
+                    padding-left: 1.5rem; /* Adjust padding for radio button */
+                    font-size: 1rem;
+                }
+
+                .modal-content-custom, .video-quiz-modal-content {
+                    padding: 1.5rem; /* Smaller padding for modals */
+                    width: 95%; /* Wider on small screens */
+                }
+                .modal-content-custom h3, .video-quiz-modal-content h4 {
+                    font-size: 1.3rem; /* Smaller headings in modals */
+                }
+                .modal-content-custom p, .video-quiz-modal-content p {
+                    font-size: 1rem; /* Smaller text in modals */
                 }
             }
 
@@ -1527,7 +1656,7 @@
                 background: var(--lighter-bg); /* Lighter background */
                 border-radius: 20px;
                 padding: 2rem;
-                min-height: 450px;
+                min-height: 450px; /* Adjusted in media query */
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
@@ -1770,44 +1899,56 @@
                 const step2 = document.getElementById('handshake-step-2');
                 const step3 = document.getElementById('handshake-step-3');
 
-                const packet1 = step1.querySelector('.packet-animation');
-                const packet2 = step2.querySelector('.packet-animation');
-                const packet3 = step3.querySelector('.packet-animation');
+                const packet1 = step1.querySelector('#packet1');
+                const packet2 = step2.querySelector('#packet2');
+                const packet3 = step3.querySelector('#packet3');
 
                 // Step 1: SYN
                 handshakeAnimationTimeout = setTimeout(() => {
                     step1.classList.add('active');
-                    packet1.style.opacity = '1';
-                    packet1.style.transform = 'translateX(calc(100% + 50px))'; /* Move across */
+                    if (packet1) { // Check if packet element exists (might be hidden on mobile)
+                        packet1.style.opacity = '1';
+                        packet1.style.transform = 'translateX(calc(100% + 50px))'; /* Move across */
+                    }
                 }, 500);
 
                 // Step 2: SYN-ACK
                 handshakeAnimationTimeout = setTimeout(() => {
                     step1.classList.remove('active');
-                    packet1.style.opacity = '0'; // Hide first packet
-                    packet1.style.transform = 'translateX(0)'; // Reset position
+                    if (packet1) {
+                        packet1.style.opacity = '0'; // Hide first packet
+                        packet1.style.transform = 'translateX(0)'; // Reset position
+                    }
                     
                     step2.classList.add('active');
-                    packet2.style.opacity = '1';
-                    packet2.style.transform = 'translateX(calc(-100% - 50px))'; /* Move across */
+                    if (packet2) {
+                        packet2.style.opacity = '1';
+                        packet2.style.transform = 'translateX(calc(-100% - 50px))'; /* Move across */
+                    }
                 }, 2500);
 
                 // Step 3: ACK
                 handshakeAnimationTimeout = setTimeout(() => {
                     step2.classList.remove('active');
-                    packet2.style.opacity = '0'; // Hide second packet
-                    packet2.style.transform = 'translateX(0)'; // Reset position
+                    if (packet2) {
+                        packet2.style.opacity = '0'; // Hide second packet
+                        packet2.style.transform = 'translateX(0)'; // Reset position
+                    }
 
                     step3.classList.add('active');
-                    packet3.style.opacity = '1';
-                    packet3.style.transform = 'translateX(calc(100% + 50px))'; /* Move across */
+                    if (packet3) {
+                        packet3.style.opacity = '1';
+                        packet3.style.transform = 'translateX(calc(100% + 50px))'; /* Move across */
+                    }
                 }, 4500);
 
                 // Reset after animation
                 handshakeAnimationTimeout = setTimeout(() => {
                     step3.classList.remove('active');
-                    packet3.style.opacity = '0'; // Hide third packet
-                    packet3.style.transform = 'translateX(0)'; // Reset position
+                    if (packet3) {
+                        packet3.style.opacity = '0'; // Hide third packet
+                        packet3.style.transform = 'translateX(0)'; // Reset position
+                    }
                 }, 6500);
             }
 
@@ -1965,14 +2106,16 @@
                 messageElement.textContent = message;
                 
                 const icon = alertElement.querySelector('i');
-                if (type === 'success') {
-                    icon.className = 'bi bi-check-circle-fill me-2';
-                } else if (type === 'warning') {
-                    icon.className = 'bi bi-exclamation-triangle-fill me-2';
-                } else if (type === 'danger') {
-                    icon.className = 'bi bi-x-circle-fill me-2';
-                } else if (type === 'info') {
-                    icon.className = 'bi bi-info-circle-fill me-2';
+                if (icon) { // Ensure icon element exists
+                    if (type === 'success') {
+                        icon.className = 'bi bi-check-circle-fill me-2';
+                    } else if (type === 'warning') {
+                        icon.className = 'bi bi-exclamation-triangle-fill me-2';
+                    } else if (type === 'danger') {
+                        icon.className = 'bi bi-x-circle-fill me-2';
+                    } else if (type === 'info') {
+                        icon.className = 'bi bi-info-circle-fill me-2';
+                    }
                 }
                 
                 alertElement.style.display = 'block'; // Show the alert
