@@ -725,13 +725,15 @@
             }
 
             .tech-icons {
-                flex-direction: column;
+                flex-direction: row; /* Keep as row for better spacing on small phones */
                 gap: 0.8rem;
+                flex-wrap: wrap; /* Allow wrapping if needed */
+                justify-content: center; /* Center icons */
             }
             .tech-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
+                width: 50px; /* Adjusted to be slightly smaller */
+                height: 50px;
+                font-size: 1.3rem; /* Adjusted icon size */
             }
 
             .section-card {
@@ -846,6 +848,127 @@
                 font-size: 1rem;
             }
         }
+
+        /* New: Extra Small Devices (e.g., iPhone SE, older small phones) */
+        @media (max-width: 575.98px) {
+            .main-container {
+                margin: 0.5rem auto; /* Even smaller margin */
+                border-radius: 10px;
+            }
+            .content-section {
+                padding: 1rem; /* Reduced padding */
+            }
+            .hero-section {
+                padding: 1rem; /* Reduced padding */
+            }
+            .hero-title {
+                font-size: 1.5rem; /* Even smaller title */
+            }
+            .hero-subtitle {
+                font-size: 0.9rem; /* Even smaller subtitle */
+            }
+            .tech-icons {
+                gap: 0.5rem;
+            }
+            .tech-icon {
+                width: 45px; /* Further reduced icon size */
+                height: 45px;
+                font-size: 1.1rem; /* Further reduced icon font size */
+            }
+
+            .section-card {
+                padding: 1rem; /* Reduced padding */
+                margin-bottom: 1rem;
+            }
+            .section-title {
+                font-size: 1.2rem; /* Smaller section titles */
+            }
+            .section-icon {
+                width: 35px; /* Smaller section icons */
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            .simple-explanation {
+                padding: 0.8rem; /* Reduced padding */
+                font-size: 0.85rem; /* Smaller text */
+            }
+            .simple-explanation h6 {
+                font-size: 1rem; /* Smaller heading in explanation */
+            }
+
+            .visual-container {
+                padding: 1rem; /* Reduced padding */
+            }
+            .signal-animation {
+                transform: scale(0.7); /* Further scale down if needed, but better to adjust internal elements */
+            }
+            .satellite-container {
+                height: 120px; /* Even smaller height */
+            }
+            .satellite {
+                font-size: 2rem; /* Smaller satellite emoji */
+            }
+            .ground-station {
+                font-size: 1.2rem; /* Smaller ground station emoji */
+            }
+            .satellite-beam {
+                border-left: 30px solid transparent;
+                border-right: 30px solid transparent;
+                border-top: 50px solid rgba(102, 126, 234, 0.3);
+                top: 55px; /* Adjust position */
+            }
+
+            .generation-item {
+                font-size: 0.8rem; /* Smaller text in timeline */
+            }
+            .generation-number {
+                font-size: 1.5rem; /* Smaller number in timeline */
+            }
+
+            .microwave-diagram {
+                padding: 1rem; /* Reduced padding */
+            }
+            .tower-icon {
+                font-size: 2rem; /* Smaller tower icon */
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .feature-card {
+                padding: 0.8rem; /* Reduced padding */
+            }
+            .feature-icon {
+                width: 25px; /* Even smaller feature icons */
+                height: 25px;
+                font-size: 0.8rem;
+            }
+            .feature-card h6 {
+                font-size: 0.9rem; /* Smaller feature card title */
+            }
+            .feature-card p {
+                font-size: 0.75rem; /* Smaller feature card text */
+            }
+
+            .quiz-card {
+                padding: 1rem; /* Reduced padding */
+            }
+            .quiz-card h2 {
+                font-size: 1.1rem; /* Smaller quiz title */
+            }
+            .quiz-option {
+                padding: 0.6rem; /* Reduced padding */
+                font-size: 0.85rem; /* Smaller quiz option text */
+            }
+            #quiz-feedback {
+                font-size: 0.85rem; /* Smaller feedback text */
+            }
+            .btn-primary, .btn-success {
+                padding: 0.6rem;
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -909,7 +1032,7 @@
                         <div class="signal-wave"></div>
                     </div>
                     <p style="color: #718096; margin-top: 1rem; font-size: 0.9rem;">
-                        [Image of Signal Tower] Tower seluler mengirim sinyal seperti gelombang air yang menyebar ke segala arah
+                         Tower seluler mengirim sinyal seperti gelombang air yang menyebar ke segala arah
                     </p>
                 </div>
 
@@ -1223,7 +1346,7 @@
                                 <label class="w-100 cursor-pointer">b. Sistem Microwave</label>
                             </div>
                             <div class="quiz-option" data-question="q5" data-choice="c">
-                                <label class="w-100 cursor-pointer">d. Sistem VSAT IP</label>
+                                <label class="w-100 cursor-pointer">c. Sistem VSAT IP</label>
                             </div>
                             <div class="quiz-option" data-question="q5" data-choice="d">
                                 <label class="w-100 cursor-pointer">d. Semua sama sensitifnya</label>
