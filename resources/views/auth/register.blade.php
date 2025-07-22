@@ -546,7 +546,7 @@
                 <!-- Right Side - Form -->
                 <div class="login-form-section">
                     <div class="brand-section">
-                        <img src="{{ asset('admin2/assets/img/NetPedia.png') }}" alt="NetPedia" class="brand-logo">
+                        <img src="{{ asset('admin2/assets/img/logo.png') }}" alt="NetPedia" class="brand-logo">
                         <h1 class="brand-name">NetPedia</h1>
                     </div>
 
