@@ -16,7 +16,7 @@
         <!-- Progress Bar -->
 
         <!-- Main Form Card -->
-        <div class="form-card glass-effect" data-aos="fade-up" data-aos-delay="200">
+        <div class="form-card glass-effect">
           <!-- Header -->
           <div class="form-header">
             <div class="header-content">
@@ -32,7 +32,7 @@
 
           <!-- Success Alert -->
           @if(session('success'))
-            <div class="alert-custom alert-success" data-aos="fade-in">
+            <div class="alert-custom alert-success">
               <div class="alert-icon">
                 <i class="fas fa-check-circle"></i>
               </div>
@@ -52,7 +52,7 @@
               @csrf
 
               <!-- Profile Image Section -->
-              <div class="profile-image-section" data-aos="fade-up" data-aos-delay="300">
+              <div class="profile-image-section">
                 <div class="section-title">
                   <h6>
                     <i class="fas fa-image me-2"></i>
@@ -129,7 +129,7 @@
               </div>
 
               <!-- Personal Information Section -->
-              <div class="form-section" data-aos="fade-up" data-aos-delay="400">
+              <div class="form-section">
                 <div class="section-title">
                   <h6>
                     <i class="fas fa-user me-2"></i>
@@ -140,7 +140,7 @@
 
                 <div class="form-grid">
                   <!-- Name Field -->
-                  <div class="form-group" data-aos="fade-up" data-aos-delay="500">
+                  <div class="form-group">
                     <label for="name" class="form-label">
                       <i class="fas fa-user-tag me-2"></i>
                       Nama Lengkap
@@ -169,7 +169,7 @@
                   </div>
 
                   <!-- NIS Field -->
-                  <div class="form-group" data-aos="fade-up" data-aos-delay="550">
+                  <div class="form-group">
                     <label for="nis" class="form-label">
                       <i class="fas fa-id-card me-2"></i>
                       NIS
@@ -198,7 +198,7 @@
 
 
                   <!-- Email Field -->
-                  <div class="form-group" data-aos="fade-up" data-aos-delay="600">
+                  <div class="form-group">
                     <label for="email" class="form-label">
                       <i class="fas fa-envelope me-2"></i>
                       Alamat Email
@@ -229,7 +229,7 @@
               </div>
 
               <!-- Form Actions -->
-              <div class="form-actions" data-aos="fade-up" data-aos-delay="700">
+              <div class="form-actions">
                 <div class="actions-wrapper">
                     <a href="{{ route('siswa.siswa_profile') }}" class="btn-secondary" style="color: black;">
                     <i class="fas fa-arrow-left me-2" style="color: black;"></i>
@@ -260,7 +260,7 @@
         </div>
 
         <!-- Tips Card -->
-        <div class="tips-card glass-effect mt-4" data-aos="fade-up" data-aos-delay="800">
+        <div class="tips-card glass-effect mt-4">
           <div class="tips-header">
             <i class="fas fa-lightbulb"></i>
             <h6>Tips Profil yang Baik</h6>
@@ -321,7 +321,7 @@
 
 {{-- External Libraries --}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 
 <style>
   /* Root Variables */
@@ -363,7 +363,6 @@
     position: absolute;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.1);
-    animation: float 20s infinite ease-in-out;
   }
 
   .orb-1 {
@@ -371,7 +370,6 @@
     height: 100px;
     top: 10%;
     left: 10%;
-    animation-delay: 0s;
   }
 
   .orb-2 {
@@ -379,7 +377,6 @@
     height: 150px;
     top: 60%;
     right: 10%;
-    animation-delay: 7s;
   }
 
   .orb-3 {
@@ -387,7 +384,6 @@
     height: 80px;
     bottom: 20%;
     left: 20%;
-    animation-delay: 14s;
   }
 
   .floating-pattern {
@@ -398,12 +394,6 @@
     height: 100%;
     background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
     opacity: 0.5;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    33% { transform: translateY(-30px) rotate(120deg); }
-    66% { transform: translateY(15px) rotate(240deg); }
   }
 
   /* Glass Effect */
@@ -475,18 +465,6 @@
   .form-card {
     border-radius: var(--border-radius);
     overflow: hidden;
-    animation: slideUp 0.8s ease-out;
-  }
-
-  @keyframes slideUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
   }
 
   /* Form Header */
@@ -550,7 +528,6 @@
     margin: 1.5rem;
     border-radius: 12px;
     position: relative;
-    animation: slideDown 0.5s ease-out;
   }
 
   .alert-success {
@@ -589,17 +566,6 @@
 
   .alert-close:hover {
     background: rgba(0, 0, 0, 0.1);
-  }
-
-  @keyframes slideDown {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
   }
 
   /* Form Body */
@@ -861,13 +827,6 @@
     color: #f5576c;
     font-size: 0.85rem;
     margin-top: 0.5rem;
-    animation: shake 0.3s ease-in-out;
-  }
-
-  @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
   }
 
   /* Form Actions */
@@ -1098,16 +1057,8 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 <script>
-  // Initialize AOS animation library
-  AOS.init({
-    duration: 800,
-    easing: 'ease-in-out',
-    once: true
-  });
-
   // Image Preview Functionality
   function previewImage(input) {
     const preview = document.getElementById('imagePreview');

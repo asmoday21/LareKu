@@ -6,24 +6,24 @@ use App\Http\Controllers\Controller;
 
 class MateriTetapController extends Controller
 {
-    public function tcpIp()
+    public function tema1()
     {
-        return view('siswa.materi.tcp_ip');
+        return view('siswa.materi.tema1');
     }
 
-    public function layananJaringan()
+    public function tema2()
     {
-        return view('siswa.materi.layanan_jaringan');
+        return view('siswa.materi.tema2');
     }
 
-    public function keamananJaringan()
+    public function tema3()
     {
-        return view('siswa.materi.keamanan_jaringan');
+        return view('siswa.materi.tema3');
     }
 
-    public function seluler()
+        public function tema4()
     {
-        return view('siswa.materi.seluler');
+        return view('siswa.materi.tema4');
     }
 
     public function optik()

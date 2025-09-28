@@ -1,65 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Materi - Teknik Jaringan Komputer dan Telekomunikasi</title>
-    <!-- Font Inter dan JetBrains Mono -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>Materi Budaya Minangkabau - Warisan Adat dan Tradisi</title>
+    <!-- Font Inter dan Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHg4/JtU43o5/qQ6xJdF6T6O4Q9D5K9/G5J9pL5X3C6W8p1fB0R6Q9a2kL9l0L2O6Q6+G6Q5Q=" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        // Palet warna pendidikan yang harmonis
-                        'edu-primary': '#667eea',
-                        'edu-secondary': '#764ba2',
-                        'edu-accent': '#f093fb',
-                        'edu-success': '#4facfe',
-                        'edu-warning': '#43e697',
-                        'edu-light': '#f8faff',
-                        'edu-dark': '#2d3748',
-                        'edu-gray': '#718096',
-                        'edu-muted': '#e2e8f0',
+                        'minang-primary': '#F2A028',
+                        'minang-secondary': '#E15241',
+                        'minang-accent': '#607274',
+                        'minang-light': '#F8F9FA',
+                        'minang-dark': '#343A40',
+                        'minang-bg': '#FFFBF5',
+                        'minang-green': '#2d5016',
                     },
                     fontFamily: {
                         'inter': ['Inter', 'sans-serif'],
-                        'mono': ['JetBrains Mono', 'monospace'],
+                        'poppins': ['Poppins', 'sans-serif'],
                     },
                     animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'float-delayed': 'float 6s ease-in-out infinite 2s',
-                        'gradient': 'gradient 8s ease infinite',
-                        'slide-up': 'slideUp 0.6s ease-out',
-                        'bounce-gentle': 'bounceGentle 2s infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out',
+                        'slide-in-right': 'slideInRight 0.8s ease-out',
                         'pulse-soft': 'pulseSoft 3s infinite',
+                        'float': 'float 6s ease-in-out infinite',
                     },
                     keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-                            '50%': { transform: 'translateY(-20px) rotate(5deg)' },
-                        },
-                        gradient: {
-                            '0%, 100%': { backgroundPosition: '0% 50%' },
-                            '50%': { backgroundPosition: '100% 50%' },
-                        },
-                        slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(50px)' },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
                         },
-                        bounceGentle: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
+                        slideInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        slideInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
                         },
                         pulseSoft: {
                             '0%, 100%': { opacity: '0.6' },
                             '50%': { opacity: '1' },
+                        },
+                        float: {
+                            '0%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                            '100%': { transform: 'translateY(0px)' },
                         }
-                    },
-                    backgroundSize: {
-                        '400%': '400% 400%',
                     }
                 }
             }
@@ -67,358 +63,342 @@
     </script>
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
         }
-        
-        .bg-gradient-education {
-            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
-            background-size: 400% 400%;
-            animation: gradient 8s ease infinite;
-        }
-        
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-        }
-        
-        .card-hover {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.25);
-        }
-        
-        .text-gradient {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+        .text-minang-gradient {
+            background: linear-gradient(90deg, #F2A028, #E15241, #2d5016);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            background-size: 200% auto;
+            animation: gradientShift 3s ease-in-out infinite alternate;
         }
         
-        .floating-shapes {
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        .minang-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0C40 10, 30 0, 20 10C10 20, 0 30, 10 40C20 50, 10 60, 20 70C30 80, 40 90, 50 80C60 90, 70 80, 80 70C90 60, 100 50, 90 40C80 30, 90 20, 80 10C70 0, 60 10, 50 0Z' fill='%23F2A02822'/%3E%3C/svg%3E");
+            background-size: 200px;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title::after {
+            content: '';
             position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #F2A028, #E15241);
+            border-radius: 2px;
         }
         
-        .shape {
-            position: absolute;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(240, 147, 251, 0.1));
-            animation: float 6s ease-in-out infinite;
+        .card-hover {
+            transition: all 0.3s ease;
         }
         
-        .shape:nth-child(1) { width: 80px; height: 80px; top: 10%; left: 10%; animation-delay: 0s; }
-        .shape:nth-child(2) { width: 120px; height: 120px; top: 20%; right: 10%; animation-delay: 2s; }
-        .shape:nth-child(3) { width: 100px; height: 100px; bottom: 20%; left: 20%; animation-delay: 4s; }
-        .shape:nth-child(4) { width: 60px; height: 60px; top: 60%; right: 30%; animation-delay: 1s; }
-        .shape:nth-child(5) { width: 90px; height: 90px; bottom: 10%; right: 15%; animation-delay: 3s; }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .img-border {
+            border: 3px solid #F2A028;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
         
         .nav-link {
             position: relative;
-            transition: all 0.3s ease;
         }
         
         .nav-link::after {
             content: '';
             position: absolute;
+            bottom: -5px;
+            left: 0;
             width: 0;
             height: 2px;
-            bottom: -5px;
-            left: 50%;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
+            background: linear-gradient(to right, #F2A028, #E15241);
+            transition: width 0.3s ease;
         }
         
         .nav-link:hover::after {
             width: 100%;
         }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
-<body class="bg-edu-light font-inter overflow-x-hidden">
-    
-    <!-- Floating Background Shapes -->
-    <div class="floating-shapes fixed inset-0 z-0">
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div>
+<body class="bg-minang-bg text-minang-dark overflow-x-hidden">
 
-    <!-- Navigation -->
-    <nav class="glass-effect fixed w-full top-0 z-50 backdrop-blur-lg">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <!-- Logo -->
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 bg-gradient-to-r from-edu-primary to-edu-secondary rounded-xl flex items-center justify-center animate-bounce-gentle">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                        </svg>
-                    </div>
-                    <span class="text-2xl font-bold text-gradient">Materi</span>
-                </div>
-
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="{{ url('/') }}" class="nav-link text-edu-dark hover:text-edu-primary font-medium flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-edu-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7m-9 2v8m4-8l2 2m-2-2l-2 2"/>
-                        </svg>
-                        Beranda
-                    </a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg glass-effect">
-                    <svg class="w-6 h-6 text-edu-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+    <!-- Header & Hero Section -->
+    <header class="relative overflow-hidden bg-minang-light py-16 md:py-24 border-b-4 border-minang-primary minang-pattern">
+        <!-- Background decoration -->
+        <div class="absolute top-0 right-0 w-40 h-40 bg-minang-primary/10 rounded-full blur-xl -z-10 animate-pulse-soft"></div>
+        <div class="absolute bottom-0 left-0 w-60 h-60 bg-minang-secondary/10 rounded-full blur-xl -z-10 animate-pulse-soft"></div>
+        
+        <!-- Tombol "Kembali ke Menu Utama" di kanan atas -->
+        <a href="{{url('/')}}" class="absolute top-4 right-4 md:top-8 md:right-8 bg-white p-3 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 hover:bg-minang-primary hover:text-white z-50 group">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-minang-dark group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12a2 2 0 012 2v1a2 2 0 01-2 2H6a2 2 0 01-2-2v-1a2 2 0 012-2z" />
+            </svg>
+            <span class="sr-only">Kembali ke Menu Utama</span>
+        </a>
+        
+        <div class="container mx-auto px-6 text-center animate-fade-in-up">
+            <h1 class="text-4xl md:text-6xl font-bold text-minang-dark mb-4 drop-shadow-lg">
+                Jelajahi Kekayaan <span class="text-minang-gradient">Budaya Minangkabau</span>
+            </h1>
+            <p class="text-lg md:text-xl text-minang-accent max-w-3xl mx-auto mb-8 font-inter">
+                Sebuah perjalanan untuk mengenal lebih dekat adat, sejarah, dan seni dari salah satu suku bangsa terkemuka di Indonesia.
+            </p>
+            <div class="flex justify-center">
+                <button onclick="scrollToContent()" class="bg-minang-primary hover:bg-minang-secondary text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center group">
+                    Mulai Eksplorasi
+                    <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                     </svg>
                 </button>
             </div>
-
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden mt-4 p-4 glass-effect rounded-2xl">
-                <div class="flex flex-col space-y-3">
-                    <a href="{{ url('/') }}" class="text-edu-dark hover:text-edu-primary font-medium py-2">Beranda</a>
-                </div>
-            </div>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="relative pt-28 pb-20 bg-gradient-education overflow-hidden">
-        <div class="container mx-auto px-6 text-center relative z-10">
-            <div class="animate-slide-up">
-                <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-                    Daftar Materi
-                    <span class="block text-3xl md:text-4xl font-medium opacity-90 mt-2">Pembelajaran</span>
-                </h1>
-                <p class="text-xl md:text-2xl text-white/90 mb-4 max-w-3xl mx-auto">
-                    Dasar-Dasar Teknik Jaringan Komputer dan Telekomunikasi
-                </p>
-                <p class="text-lg text-white/80 font-mono">SMK/MAK Kelas X</p>
-            </div>
-
-            <!-- Decorative Elements -->
-            <div class="absolute top-10 left-10 w-20 h-20 border-4 border-white/20 rounded-full animate-pulse-soft"></div>
-            <div class="absolute bottom-10 right-10 w-16 h-16 bg-white/10 rounded-full animate-float"></div>
-            <div class="absolute top-1/2 left-5 w-3 h-3 bg-white/30 rounded-full animate-bounce-gentle"></div>
-            <div class="absolute top-1/4 right-20 w-4 h-4 bg-white/25 rounded-full animate-float-delayed"></div>
-        </div>
-    </section>
+    </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-6 py-16 relative z-10">
-        <!-- Section Title -->
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-bold text-gradient mb-4">Materi Pembelajaran</h2>
-            <p class="text-xl text-edu-gray max-w-2xl mx-auto">
-                Jelajahi konsep fundamental dalam jaringan komputer dan telekomunikasi
-            </p>
-        </div>
-
-        <!-- Cards Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <main class="py-16 md:py-20" id="content">
+        <div class="container mx-auto px-6">
+            <!-- Navigation Menu -->
+            <div class="flex justify-center mb-12">
+                <div class="bg-white rounded-full shadow-lg p-2 flex flex-wrap justify-center">
+                    <a href="#sejarah" class="m-1 px-4 py-2 rounded-full text-minang-dark hover:bg-minang-primary hover:text-white transition-all duration-300 nav-link">Sejarah</a>
+                    <a href="#adat" class="m-1 px-4 py-2 rounded-full text-minang-dark hover:bg-minang-primary hover:text-white transition-all duration-300 nav-link">Adat</a>
+                    <a href="#kesenian" class="m-1 px-4 py-2 rounded-full text-minang-dark hover:bg-minang-primary hover:text-white transition-all duration-300 nav-link">Kesenian</a>
+                    <a href="#kuliner" class="m-1 px-4 py-2 rounded-full text-minang-dark hover:bg-minang-primary hover:text-white transition-all duration-300 nav-link">Kuliner</a>
+                </div>
+            </div>
             
-            <!-- Card 1: TCP/IP -->
-            <div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-edu-muted/30">
-                <div class="flex items-center mb-6">
-                    <div class="w-16 h-16 bg-gradient-to-r from-edu-primary to-edu-success rounded-2xl flex items-center justify-center mr-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9"/>
-                        </svg>
+            <!-- Sejarah Section -->
+            <section class="mb-16 md:mb-20 animate-slide-in-left" id="sejarah">
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <div class="fade-in">
+                        <h2 class="text-3xl md:text-4xl font-bold text-minang-dark mb-4 section-title">Sejarah dan Asal-usul</h2>
+                        <p class="text-minang-accent leading-relaxed mb-4">
+                            Nama "Minangkabau" konon berasal dari legenda kemenangan adu kerbau melawan seekor kerbau milik prajurit Jawa. Kata "manang" (menang) dan "kabau" (kerbau) kemudian disatukan menjadi <strong class="text-minang-primary">Minangkabau</strong>. 
+                        </p>
+                        <p class="text-minang-accent leading-relaxed">
+                            Budaya ini juga dikenal sebagai salah satu budaya yang menyebarkan Islam di nusantara dengan damai, dengan filosofi "Adat basandi syarak, syarak basandi Kitabullah" yang berarti adat bersendikan syariat, dan syariat bersendikan Al-Quran.
+                        </p>
                     </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-edu-dark">TCP/IP & Alamat IP</h3>
-                        <p class="text-edu-gray text-sm">Protokol Jaringan</p>
-                    </div>
-                </div>
-                
-                <p class="text-edu-dark mb-6 leading-relaxed">
-                    Mempelajari fundamental komunikasi data dalam jaringan komputer, struktur dan fungsi protokol TCP/IP serta implementasi alamat IP untuk identifikasi perangkat.
-                </p>
-
-                <div class="space-y-3">
-                    <h4 class="font-semibold text-edu-dark flex items-center">
-                        <span class="w-2 h-2 bg-edu-success rounded-full mr-2"></span>
-                        Poin Pembelajaran:
-                    </h4>
-                    <div class="space-y-2">
-                        <div class="flex items-center p-3 bg-gradient-to-r from-edu-light to-white rounded-xl border border-edu-muted/20">
-                            <span class="text-edu-success font-bold mr-3">✓</span>
-                            <span class="text-sm text-edu-dark">Analisis prinsip dasar TCP/IP</span>
-                        </div>
-                        <div class="flex items-center p-3 bg-gradient-to-r from-edu-light to-white rounded-xl border border-edu-muted/20">
-                            <span class="text-edu-success font-bold mr-3">✓</span>
-                            <span class="text-sm text-edu-dark">Penjelasan alamat IPv4 & IPv6</span>
-                        </div>
-                        <div class="flex items-center p-3 bg-gradient-to-r from-edu-light to-white rounded-xl border border-edu-muted/20">
-                            <span class="text-edu-success font-bold mr-3">✓</span>
-                            <span class="text-sm text-edu-dark">Implementasi praktis networking</span>
+                    <div class="relative w-full h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl transform transition-all duration-500 hover:scale-105 group fade-in">
+                        <img src="{{asset('homepage/img/kerbau.jpg')}}" alt="Ilustrasi Legenda Adu Kerbau" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end justify-center pb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <p class="text-white text-lg font-bold">Kisah di Balik Nama Minangkabau</p>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Card 2: Network Services -->
-            <div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-edu-muted/30">
-                <div class="flex items-center mb-6">
-                    <div class="w-16 h-16 bg-gradient-to-r from-edu-secondary to-edu-accent rounded-2xl flex items-center justify-center mr-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-edu-dark">Layanan Jaringan</h3>
-                        <p class="text-edu-gray text-sm">Network Services</p>
-                    </div>
-                </div>
-                
-                <p class="text-edu-dark mb-6 leading-relaxed">
-                    Memahami berbagai layanan yang berjalan di atas infrastruktur jaringan untuk berbagi sumber daya dan informasi secara efisien antar pengguna.
-                </p>
-
-                <div class="space-y-3">
-                    <h4 class="font-semibold text-edu-dark flex items-center">
-                        <span class="w-2 h-2 bg-edu-accent rounded-full mr-2"></span>
-                        Poin Pembelajaran:
-                    </h4>
-                    <div class="space-y-2">
-                        <div class="flex items-center p-3 bg-gradient-to-r from-purple-50 to-white rounded-xl border border-edu-muted/20">
-                            <span class="text-edu-accent font-bold mr-3">✓</span>
-                            <span class="text-sm text-edu-dark">Prinsip dasar networking service</span>
+            </section>
+            
+            <!-- Adat & Matrilineal Section -->
+            <section class="mb-16 md:mb-20 animate-fade-in-up" id="adat">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-minang-dark mb-8 section-title">Sistem Kekerabatan & Adat</h2>
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <!-- Matrilineal Card -->
+                    <div class="bg-white rounded-3xl p-8 shadow-lg border border-minang-primary/20 card-hover fade-in">
+                        <div class="flex items-center mb-6">
+                            <div class="w-14 h-14 rounded-full bg-minang-primary/10 flex items-center justify-center mr-4">
+                                <i class="fas fa-venus-double text-2xl text-minang-secondary"></i>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-minang-dark">Sistem Matrilineal</h3>
                         </div>
-                        <div class="flex items-center p-3 bg-gradient-to-r from-purple-50 to-white rounded-xl border border-edu-muted/20">
-                            <span class="text-edu-accent font-bold mr-3">✓</span>
-                            <span class="text-sm text-edu-dark">DNS, DHCP & Web Server</span>
+                        <p class="text-minang-accent leading-relaxed">
+                            Inti dari budaya Minangkabau adalah sistem <strong class="text-minang-primary">matrilineal</strong>. Garis keturunan ditarik dari pihak ibu, dan kekayaan serta gelar adat diwariskan dari ibu kepada anak perempuan. Pria yang menikah akan tinggal di rumah istri dan anak-anaknya.
+                        </p>
+                    </div>
+                    <!-- 4 Unsur Adat Card -->
+                    <div class="lg:col-span-2 bg-white rounded-3xl p-8 shadow-lg border border-minang-primary/20 card-hover fade-in">
+                        <div class="flex items-center mb-6">
+                            <div class="w-14 h-14 rounded-full bg-minang-primary/10 flex items-center justify-center mr-4">
+                                <i class="fas fa-landmark text-2xl text-minang-primary"></i>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-minang-dark">Empat Pilar Adat</h3>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 3: Network Security -->
-            <div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-edu-muted/30 md:col-span-2 lg:col-span-1">
-                <div class="flex items-center mb-6">
-                    <div class="w-16 h-16 bg-gradient-to-r from-edu-warning to-edu-primary rounded-2xl flex items-center justify-center mr-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-edu-dark">Keamanan Jaringan</h3>
-                        <p class="text-edu-gray text-sm">Network Security</p>
+                        <ul class="list-none space-y-4 text-minang-accent leading-relaxed">
+                            <li class="flex items-start p-3 rounded-lg hover:bg-minang-primary/5 transition-colors">
+                                <span class="text-minang-primary mr-3 text-xl font-bold">1.</span>
+                                <div><strong class="text-minang-dark">Adat nan Sabana Adat:</strong> Aturan adat yang tidak berubah, bersumber dari alam.</div>
+                            </li>
+                            <li class="flex items-start p-3 rounded-lg hover:bg-minang-primary/5 transition-colors">
+                                <span class="text-minang-primary mr-3 text-xl font-bold">2.</span>
+                                <div><strong class="text-minang-dark">Adat nan Diadatkan:</strong> Aturan adat yang dibuat berdasarkan kesepakatan nenek moyang.</div>
+                            </li>
+                            <li class="flex items-start p-3 rounded-lg hover:bg-minang-primary/5 transition-colors">
+                                <span class="text-minang-primary mr-3 text-xl font-bold">3.</span>
+                                <div><strong class="text-minang-dark">Adat nan Taradat:</strong> Aturan yang dibuat berdasarkan peraturan adat yang berlaku.</div>
+                            </li>
+                            <li class="flex items-start p-3 rounded-lg hover:bg-minang-primary/5 transition-colors">
+                                <span class="text-minang-primary mr-3 text-xl font-bold">4.</span>
+                                <div><strong class="text-minang-dark">Adat nan Diperadatkan:</strong> Aturan yang diubah sesuai kebutuhan zaman dengan tetap berpegang pada prinsip adat.</div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                
-                <p class="text-edu-dark mb-6 leading-relaxed">
-                    Mengenali ancaman dan kerentanan dalam jaringan, mempelajari metode perlindungan data dan sistem dari akses tidak sah atau kerusakan.
-                </p>
+            </section>
 
-                <div class="space-y-3">
-                    <h4 class="font-semibold text-edu-dark flex items-center">
-                        <span class="w-2 h-2 bg-edu-warning rounded-full mr-2"></span>
-                        Poin Pembelajaran:
-                    </h4>
-                    <div class="space-y-2">
-                        <div class="flex items-center p-3 bg-gradient-to-r from-green-50 to-white rounded-xl border border-edu-muted/20">
-                            <span class="text-edu-warning font-bold mr-3">✓</span>
-                            <span class="text-sm text-edu-dark">Keamanan jaringan & WLAN</span>
+            <!-- Kesenian Section -->
+            <section class="mb-16 md:mb-20" id="kesenian">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-minang-dark mb-8 section-title">Kesenian dan Arsitektur</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Rumah Gadang Card -->
+                    <div class="relative bg-white rounded-3xl overflow-hidden shadow-lg card-hover fade-in">
+                        <div class="h-56 overflow-hidden">
+                            <img src="{{asset('homepage/img/rumah gadang.jpg')}}" alt="Rumah Gadang" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
                         </div>
-                        <div class="flex items-center p-3 bg-gradient-to-r from-green-50 to-white rounded-xl border border-edu-muted/20">
-                            <span class="text-edu-warning font-bold mr-3">✓</span>
-                            <span class="text-sm text-edu-dark">Standar WEP, WPA, WPA2</span>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-minang-dark mb-2">Rumah Gadang</h3>
+                            <p class="text-minang-accent text-sm">Rumah tradisional yang khas dengan atap menyerupai tanduk kerbau, melambangkan identitas dan kekerabatan masyarakat Minangkabau.</p>
                         </div>
-                        <div class="flex items-center p-3 bg-gradient-to-r from-green-50 to-white rounded-xl border border-edu-muted/20">
-                            <span class="text-edu-warning font-bold mr-3">✓</span>
-                            <span class="text-sm text-edu-dark">Enkripsi RC4, TKIP, AES</span>
+                    </div>
+                    <!-- Pakaian Adat Card -->
+                    <div class="relative bg-white rounded-3xl overflow-hidden shadow-lg card-hover fade-in">
+                        <div class="h-56 overflow-hidden">
+                            <img src="{{asset('homepage/img/bundo kanduang.png')}}" alt="Pakaian Adat Bundo Kanduang" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
                         </div>
-                        <div class="flex items-center p-3 bg-gradient-to-r from-green-50 to-white rounded-xl border border-edu-muted/20">
-                            <span class="text-edu-warning font-bold mr-3">✓</span>
-                            <span class="text-sm text-edu-dark">WPA2-PSK Implementation</span>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-minang-dark mb-2">Pakaian Adat Bundo Kanduang</h3>
+                            <p class="text-minang-accent text-sm">Pakaian tradisional perempuan yang melambangkan peran perempuan sebagai "Bundo Kanduang" atau ibu sejati yang bijaksana.</p>
+                        </div>
+                    </div>
+                    <!-- Tari Piring Card -->
+                    <div class="relative bg-white rounded-3xl overflow-hidden shadow-lg card-hover fade-in">
+                        <div class="h-56 overflow-hidden">
+                            <img src="{{asset('homepage/img/tari piring.jpg')}}" alt="Tari Piring" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-minang-dark mb-2">Tari Piring</h3>
+                            <p class="text-minang-accent text-sm">Tarian tradisional yang menampilkan gerakan lincah dan atraktif dengan piring di tangan penari, melambangkan syukur atas hasil panen.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </section>
 
-        <!-- Call to Action -->
-        <div class="mt-20 text-center">
-            <div class="glass-effect rounded-3xl p-8 md:p-12 max-w-4xl mx-auto">
-                <h3 class="text-3xl md:text-4xl font-bold text-edu-dark mb-4">
-                    Siap Memulai Perjalanan Belajar?
-                </h3>
-                <p class="text-xl text-edu-gray mb-8 max-w-2xl mx-auto">
-                    Bergabunglah dengan ribuan siswa yang telah menguasai teknologi jaringan komputer
-                </p>
-                <a href="{{ route('login') }}" class="bg-gradient-to-r from-edu-primary to-edu-secondary text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105">
-                    Mulai Belajar Sekarang
-                </a>
-            </div>
+            <!-- Makanan Khas Section -->
+            <section id="kuliner" class="animate-slide-in-right">
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <div class="relative w-full h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl transform transition-all duration-500 hover:scale-105 group fade-in">
+                        <img src="{{asset('homepage/img/rendang.jpg')}}" alt="Rendang" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end justify-center pb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <p class="text-white text-lg font-bold">Rendang, Kelezatan Dunia</p>
+                        </div>
+                    </div>
+                    <div class="fade-in">
+                        <h2 class="text-3xl md:text-4xl font-bold text-minang-dark mb-4 section-title">Kuliner Khas: Rendang</h2>
+                        <p class="text-minang-accent leading-relaxed mb-4">
+                            Kuliner Minangkabau sudah sangat mendunia, dan yang paling terkenal tentu saja <strong class="text-minang-primary">Rendang</strong>. Makanan ini dinobatkan sebagai salah satu makanan terlezat di dunia oleh CNN International pada tahun 2011 dan 2017.
+                        </p>
+                        <p class="text-minang-accent leading-relaxed">
+                            Terbuat dari daging sapi yang dimasak dalam santan dan rempah-rempah khas selama berjam-jam, Rendang memiliki cita rasa yang kaya, otentik, dan tahan lama tanpa pendinginan berkat teknik pengolahannya.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
         </div>
     </main>
-
+    
     <!-- Footer -->
-    <footer class="bg-gradient-to-r from-edu-dark to-gray-900 text-white py-12 mt-20">
-        <div class="container mx-auto px-6 text-center">
-            <div class="mb-8">
-                <div class="flex items-center justify-center space-x-3 mb-4">
-                    <div class="w-12 h-12 bg-gradient-to-r from-edu-primary to-edu-secondary rounded-xl flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                        </svg>
-                    </div>
-                    <span class="text-2xl font-bold">NetPedia</span>
-                </div>
-                <p class="text-gray-300 max-w-2xl mx-auto">
-                    Platform pembelajaran modern untuk Teknik Jaringan Komputer dan Telekomunikasi. 
-                    Membangun masa depan teknologi Indonesia.
-                </p>
-            </div>
-            
-            <div class="border-t border-gray-700 pt-8">
-                <p class="text-gray-400">
-                    &copy; 2025 NetPedia. Dibuat dengan ❤️ untuk pendidikan Indonesia.
-                </p>
-            </div>
+    <footer class="bg-minang-dark text-white py-12 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 minang-pattern"></div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <p class="text-sm">Dibuat dengan ❤️ untuk melestarikan budaya Indonesia. © 2025</p>
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" class="fixed bottom-6 right-6 p-3 bg-minang-primary text-white rounded-full shadow-lg hover:bg-minang-secondary transition-all duration-300 z-50 hidden transform hover:scale-110">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Smooth scroll animation on page load
-        window.addEventListener('load', () => {
-            document.body.style.opacity = '0';
-            setTimeout(() => {
-                document.body.style.transition = 'opacity 0.5s ease-in-out';
-                document.body.style.opacity = '1';
-            }, 100);
-        });
-
-        // Add scroll effect to navbar
+        // Fungsi untuk scroll ke bagian konten utama
+        function scrollToContent() {
+            const content = document.getElementById('content');
+            if (content) {
+                window.scrollTo({
+                    top: content.offsetTop - 50,
+                    behavior: 'smooth'
+                });
+            }
+        }
+        
+        // Scroll-to-top button functionality
+        const scrollToTopBtn = document.getElementById('scroll-to-top');
         window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.remove('hidden');
             } else {
-                nav.style.background = 'rgba(255, 255, 255, 0.25)';
+                scrollToTopBtn.classList.add('hidden');
             }
         });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Fade-in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => {
+            fadeInObserver.observe(element);
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
     </script>
+
 </body>
 </html>

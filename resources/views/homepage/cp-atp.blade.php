@@ -3,500 +3,474 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dokumen CP/ATP | Teknik Jaringan Komputer</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <!-- Tom Select CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+    <title>Materi Pembelajaran Kelas VII</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
     <style>
-        /* Define custom CSS variables for consistent theming */
         :root {
-            --primary-color: #4361ee; /* Blue */
-            --secondary-color: #3f37c9; /* Darker blue */
-            --accent-color: #4cc9f0; /* Light blue/cyan */
-            --light-bg: #f0f2f5; /* Lighter background for body */
-            --card-bg: #ffffff; /* White background for cards */
-            --dark-text: #212529; /* Dark text */
-            --muted-text: #6c757d; /* Muted text */
-            --border-color: #e9ecef; /* Light border color */
-            --shadow-light: rgba(0, 0, 0, 0.05); /* Light shadow */
-            --shadow-medium: rgba(0, 0, 0, 0.1); /* Medium shadow */
-            --shadow-strong: rgba(67, 97, 238, 0.2); /* Strong shadow for hero */
+            --primary-blue: #2563eb;
+            --secondary-blue: #3b82f6;
+            --accent-green: #16a34a;
+            --warm-orange: #ea580c;
+            --soft-purple: #7c3aed;
+            --transition-speed: 0.3s;
         }
-        
-        /* General body styling */
+
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--light-bg);
-            color: var(--dark-text);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased; /* Smoother fonts on WebKit browsers */
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M0 0h30v60H0zM30 0h30v60H30z' fill='%239C92AC' fill-opacity='0.05'/%3E%3C/g%3E%3C/svg%3E"); /* Subtle background pattern */
-        }
-        
-        /* Navbar specific styling */
-        .navbar {
-            box-shadow: 0 4px 12px var(--shadow-light) !important;
-            border-bottom-left-radius: 15px;
-            border-bottom-right-radius: 15px;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            padding-bottom: 2rem;
         }
 
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.6rem; /* Slightly larger font */
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-        }
-
-        .navbar-brand i {
-            color: var(--secondary-color); /* Icon color */
-        }
-        
-        .nav-link {
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link.active {
-            color: var(--primary-color) !important;
-        }
-
-        .nav-link:hover {
-            color: var(--secondary-color);
-        }
-
-        /* Hero Section styling */
         .hero-section {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
             color: white;
-            padding: 4rem 0; /* Increased padding */
-            border-radius: 0 0 30px 30px; /* More pronounced rounded bottom corners */
-            margin-bottom: 2.5rem; /* Increased margin */
-            box-shadow: 0 15px 40px var(--shadow-strong); /* Stronger shadow */
+            padding: 2.5rem 2rem;
+            margin: 1rem 0 2rem 0;
+            border-radius: 1.5rem;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
             position: relative;
-            overflow: hidden; /* Hide overflowing pseudo-elements */
+            overflow: hidden;
         }
 
         .hero-section::before {
-            content: '';
+            content: "";
             position: absolute;
             top: -50%;
-            left: -50%;
-            width: 200%;
+            right: -50%;
+            width: 100%;
             height: 200%;
-            background: radial-gradient(circle at top left, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-            transform: rotate(20deg);
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
             pointer-events: none;
         }
 
         .hero-section h1 {
-            font-size: 3rem; /* Larger heading */
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* Text shadow for depth */
-            margin-bottom: 1rem !important;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            position: relative;
         }
 
         .hero-section .lead {
-            font-size: 1.15rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 2rem !important;
+            margin-bottom: 0.5rem;
+            opacity: 0.95;
+            position: relative;
         }
-        
-        /* Card for documents */
-        .card-document {
-            border: none;
-            border-radius: 20px; /* More rounded corners */
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother transition */
-            box-shadow: 0 8px 25px var(--shadow-light); /* Refined shadow */
-            background-color: var(--card-bg);
+
+        .stats-section {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 0.75rem;
+            border: 1px solid #e2e8f0;
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            background: #f1f5f9;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .search-section {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.25rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .search-container {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .search-container i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+        }
+
+        .search-container input {
+            padding-left: 45px;
+            border-radius: 50px;
+            border: 1px solid #e2e8f0;
+            height: 48px;
+        }
+
+        .search-container input:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.15);
+        }
+
+        .themes-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
             margin-bottom: 2rem;
         }
-        
-        .card-document:hover {
-            transform: translateY(-8px); /* More pronounced lift */
-            box-shadow: 0 20px 40px var(--shadow-medium); /* Stronger hover shadow */
+
+        .theme-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
         }
-        
-        .card-document .card-body {
-            padding: 2rem; /* More padding */
+
+        .theme-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
         }
-        
-        .card-document .card-title {
-            font-weight: 700; /* Bolder title */
-            font-size: 1.75rem;
-            color: var(--primary-color);
+
+        .theme-header {
+            padding: 1.5rem;
+            color: white;
+            cursor: pointer;
+            position: relative;
+            user-select: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .theme-01 { background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)); }
+        .theme-02 { background: linear-gradient(135deg, var(--accent-green), #22c55e); }
+        .theme-03 { background: linear-gradient(135deg, var(--warm-orange), #f97316); }
+        .theme-04 { background: linear-gradient(135deg, var(--soft-purple), #8b5cf6); }
+
+        .theme-number {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2.5rem;
+            font-weight: 800;
+            opacity: 0.2;
+        }
+
+        .theme-icon {
+            font-size: 2.2rem;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .theme-title {
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .theme-subtitle {
+            opacity: 0.9;
+            font-size: 0.9rem;
             margin-bottom: 1rem;
         }
-        
-        .card-document .card-text {
-            color: var(--muted-text);
-            font-size: 1rem; /* Slightly larger text */
-            margin-bottom: 1.5rem;
-        }
 
-        .badge {
-            padding: 0.6em 1em;
-            border-radius: 50px;
-            font-weight: 500;
-        }
-
-        .bg-primary.bg-opacity-10 {
-            background-color: rgba(67, 97, 238, 0.1) !important;
-        }
-        
-        /* Button styling */
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-            padding: 0.8rem 2rem; /* Larger padding */
-            font-weight: 600; /* Bolder text */
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.2);
-        }
-        
-        .btn-primary:hover {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
-            transform: translateY(-2px); /* Slight lift on hover */
-            box-shadow: 0 8px 20px rgba(63, 55, 201, 0.3);
-        }
-        
-        .btn-outline-primary {
-            color: var(--primary-color);
-            border-color: var(--primary-color);
-            padding: 0.8rem 2rem;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-outline-primary:hover {
-            background-color: var(--primary-color);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.2);
-        }
-
-        .btn-light {
-            color: var(--primary-color); /* Text color for light button */
-        }
-        .btn-light:hover {
-            background-color: rgba(255, 255, 255, 0.9);
-            color: var(--secondary-color);
-        }
-
-        /* Iframe container */
-        .iframe-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-            border-radius: 20px; /* More rounded corners */
-            box-shadow: 0 10px 30px var(--shadow-medium);
-            background-color: var(--card-bg); /* Use card background for iframe container */
-            margin-bottom: 2.5rem;
-            border: 1px solid var(--border-color); /* Subtle border */
-        }
-        
-        .iframe-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 20px;
-            border: none;
-            background-color: #f1f3f5; /* Light background for iframe area */
-        }
-        
-        /* Fullscreen button for iframe */
-        .fullscreen-btn {
-            position: absolute;
-            top: 15px; /* Slightly more inner padding */
-            right: 15px;
-            background: rgba(0, 0, 0, 0.6); /* Slightly transparent */
-            color: white;
-            border: none;
-            padding: 0.6rem 1.2rem; /* Larger padding */
-            border-radius: 50px;
-            cursor: pointer;
+        .theme-meta {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-            z-index: 10;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px); /* Blurred background */
-        }
-        
-        .fullscreen-btn:hover {
-            background: rgba(0, 0, 0, 0.8);
-            transform: translateY(-2px);
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-top: auto;
         }
 
-        /* Document action buttons */
-        .document-actions {
-            display: flex;
-            gap: 1.5rem; /* Increased gap */
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 2.5rem;
-        }
-        
-        .document-actions .btn {
-            min-width: 200px; /* Slightly wider buttons */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem; /* Larger gap for icon */
-            font-size: 1rem; /* Slightly larger font */
-            transition: all 0.3s ease;
-        }
-        
-        .document-actions .btn:hover {
-            transform: translateY(-3px); /* More noticeable lift */
-        }
-        
-        /* Tom Select specific styling enhancements */
-        .select-container {
-            max-width: 900px; /* Wider selector */
-            margin: 0 auto 3rem; /* More margin at bottom */
-        }
-        
-        .form-label {
-            font-size: 1.1rem;
-            color: var(--dark-text);
-            margin-bottom: 1rem !important;
-            display: block; /* Ensure it takes full width */
-        }
-
-        .ts-wrapper.form-control {
-            padding: 0 !important; /* Remove default padding to control inner elements */
-            border: none !important; /* Remove outer border */
-            box-shadow: none !important; /* Remove outer shadow */
-            border-radius: 15px !important; /* Ensure consistent rounding */
-        }
-
-        .ts-control {
-            padding: 1rem 1.25rem !important; /* More generous padding */
-            border-radius: 15px !important; /* Consistent rounding */
-            border: 2px solid var(--border-color) !important; /* Defined border */
-            font-size: 1.05rem; /* Slightly larger font */
-            background-color: var(--card-bg);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-            height: auto !important; /* Allow height to adjust */
-            min-height: 55px; /* Minimum height for better click area */
-        }
-        
-        .ts-control:focus {
-            border-color: var(--primary-color) !important; /* Highlight on focus */
-            box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.25) !important; /* Focus glow */
-        }
-
-        .ts-dropdown {
-            border-radius: 15px !important; /* Consistent rounding */
-            border: 1px solid var(--border-color) !important;
-            box-shadow: 0 8px 25px var(--shadow-light) !important; /* Dropdown shadow */
-            background-color: var(--card-bg);
-        }
-
-        .ts-dropdown .ts-dropdown-content {
-            padding: 0.5rem 0;
-        }
-
-        .ts-dropdown .option {
-            padding: 0.75rem 1.5rem;
-            transition: background-color 0.2s ease;
-        }
-
-        .ts-dropdown .option.active {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .ts-dropdown .option.active .text-primary,
-        .ts-dropdown .option.active .text-muted {
-            color: white !important;
-        }
-
-        /* Footer styling */
-        .footer {
-            background-color: var(--card-bg); /* White background */
-            padding: 2.5rem 0; /* More padding */
-            margin-top: 4rem; /* More margin */
-            border-top: 1px solid var(--border-color);
-            box-shadow: 0 -4px 12px var(--shadow-light); /* Shadow above footer */
-        }
-        
-        .footer .text-muted {
-            font-size: 0.95rem;
-        }
-
-        .footer a {
+        .chevron-icon {
+            transition: transform var(--transition-speed) ease;
             font-size: 1.2rem;
-            transition: color 0.3s ease;
         }
 
-        .footer a:hover {
-            color: var(--primary-color) !important; /* Highlight social icons on hover */
+        .theme-header[aria-expanded="true"] .chevron-icon {
+            transform: rotate(180deg);
         }
-        
-        /* Toast Notification styling */
-        #notifToast {
-            position: fixed;
-            top: 1.5rem; /* Slightly lower */
-            right: 1.5rem; /* Slightly more to the right */
-            z-index: 1055;
-            border-radius: 12px; /* More rounded */
+
+        .collapse-content {
+            background: #f8fafc;
+            max-height: 0;
             overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Shadow for toast */
+            transition: max-height var(--transition-speed) ease;
         }
 
-        #notifToast .toast-body {
+        .collapse-content.show {
+            max-height: 2000px; /* Nilai cukup besar untuk menampung konten */
+        }
+
+        .materi-section {
+            padding: 1.5rem;
+        }
+
+        .materi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .materi-item {
+            padding: 0.75rem 1rem;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
             display: flex;
             align-items: center;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .materi-item:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .materi-item i {
+            color: #64748b;
+            margin-right: 0.75rem;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .materi-text {
+            font-size: 0.9rem;
             font-weight: 500;
+            color: #374151;
+            line-height: 1.4;
         }
 
-        #notifToast .btn-close {
-            filter: invert(1); /* White close button */
+        .tujuan-section {
+            border-top: 2px solid #e2e8f0;
+            padding-top: 1.5rem;
         }
-        
-        /* Empty State styling */
-        .empty-state {
-            text-align: center;
-            padding: 4rem; /* More padding */
-            background-color: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: 0 8px 25px var(--shadow-light);
-        }
-        
-        .empty-state i {
-            font-size: 4rem; /* Larger icon */
-            color: var(--accent-color); /* Use accent color for icon */
-            margin-bottom: 1.5rem;
-            display: block; /* Ensure it's block for margin */
-        }
-        
-        .empty-state h4 {
-            color: var(--dark-text);
-            margin-bottom: 0.75rem;
+
+        .tujuan-title {
+            color: #1f2937;
             font-weight: 600;
-            font-size: 1.75rem;
-        }
-        
-        .empty-state p {
-            color: var(--muted-text);
-            max-width: 600px; /* Wider paragraph */
-            margin: 0.5rem auto;
-            font-size: 1.05rem;
-        }
-        
-        /* Fullscreen mode for iframe */
-        .iframe-container.fullscreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            padding-bottom: 0; /* No aspect ratio padding in fullscreen */
-            z-index: 9999;
-            border-radius: 0;
-            background-color: black; /* Dark background in fullscreen */
-            box-shadow: none;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
 
-        .iframe-container.fullscreen iframe {
-            border-radius: 0;
-            background-color: black;
+        .tujuan-title i {
+            color: #10b981;
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
         }
 
-        .iframe-container.fullscreen .fullscreen-btn {
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.2); /* Lighter background in fullscreen */
+        .tujuan-list {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .tujuan-item {
+            padding: 1rem;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-left: 3px solid var(--primary-blue);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .tujuan-item:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+        }
+
+        .tujuan-badge {
+            background: var(--primary-blue);
             color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.8rem;
+            margin-right: 0.75rem;
+            flex-shrink: 0;
         }
 
-        .iframe-container.fullscreen .fullscreen-btn:hover {
-            background: rgba(255, 255, 255, 0.4);
+        .theme-02 .tujuan-item { border-left-color: var(--accent-green); }
+        .theme-02 .tujuan-badge { background: var(--accent-green); }
+
+        .theme-03 .tujuan-item { border-left-color: var(--warm-orange); }
+        .theme-03 .tujuan-badge { background: var(--warm-orange); }
+
+        .theme-04 .tujuan-item { border-left-color: var(--soft-purple); }
+        .theme-04 .tujuan-badge { background: var(--soft-purple); }
+
+        .tujuan-text {
+            color: #374151;
+            line-height: 1.5;
+            font-size: 0.9rem;
         }
 
-        /* Responsive adjustments */
+        .footer-section {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid #e2e8f0;
+            color: #6b7280;
+        }
+
+        /* Animasi untuk konten yang diperluas */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .collapse-content.show .materi-section {
+            animation: fadeIn 0.4s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .themes-container {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+
         @media (max-width: 768px) {
             .hero-section {
-                padding: 3rem 0;
-                border-radius: 0 0 20px 20px;
+                padding: 2rem 1.5rem;
+                margin: 0.5rem 0 1.5rem 0;
             }
-
+            
             .hero-section h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero-section .lead {
-                font-size: 1rem;
+                font-size: 2rem;
             }
             
-            .document-actions {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            .document-actions .btn {
-                width: 90%; /* Adjust width for mobile */
-                min-width: unset; /* Remove min-width constraint */
+            .themes-container {
+                grid-template-columns: 1fr;
             }
+            
+            .materi-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-number {
+                font-size: 1.8rem;
+            }
+        }
 
-            .card-document .card-title {
-                font-size: 1.5rem;
+        @media (max-width: 576px) {
+            .hero-section {
+                padding: 1.5rem 1rem;
+                border-radius: 1rem;
             }
+            
+            .hero-section h1 {
+                font-size: 1.75rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+            
+            .stat-card {
+                padding: 0.75rem;
+            }
+            
+            .theme-header {
+                padding: 1.25rem;
+            }
+            
+            .theme-number {
+                font-size: 2rem;
+                top: 0.75rem;
+                right: 1rem;
+            }
+            
+            .materi-section {
+                padding: 1.25rem;
+            }
+        }
 
-            .empty-state {
-                padding: 2rem;
-            }
+        /* Ensure all content is visible */
+        * {
+            box-sizing: border-box;
+        }
 
-            .empty-state i {
-                font-size: 3rem;
-            }
+        .container-fluid {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
 
-            .empty-state h4 {
-                font-size: 1.4rem;
-            }
+        /* Progress indicator */
+        .progress-container {
+            height: 4px;
+            width: 100%;
+            background-color: #e2e8f0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+        }
 
-            .empty-state p {
-                font-size: 0.9rem;
-            }
-
-            #notifToast {
-                top: 0.5rem;
-                right: 0.5rem;
-                width: calc(100% - 1rem); /* Full width minus margin */
-            }
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
+            width: 0%;
+            transition: width 0.3s ease;
         }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <!-- Progress indicator -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    
+        <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <i class="bi bi-file-earmark-text-fill me-2"></i>CP/ATP Docs
+            {{-- <a class="navbar-brand" href="#">
+                <i class="bi bi-book-half"></i>Referensi
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
-            </button>
+            </button> --}}
+
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto"> <!-- Added ms-auto for right alignment -->
                     <li class="nav-item">
@@ -509,263 +483,459 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container text-center">
-            <h1 class="display-5 fw-bold mb-3">Dokumen CP/ATP</h1>
-            <p class="lead mb-4">
-                Akses lengkap dokumen Capaian Pembelajaran (CP) dan Alur Tujuan Pembelajaran (ATP) untuk Teknik Jaringan Komputer dan Telekomunikasi
+    <div class="container-fluid px-3 px-md-4">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1 class="display-5">
+                <i class="bi bi-book-fill me-2"></i>
+                Materi Pembelajaran Kelas VII
+            </h1>
+            <p class="lead">Semester Ganjil & Genap - Tahun Ajaran 2024/2025</p>
+            <p class="mb-0">
+                <i class="bi bi-diagram-3 me-2"></i>
+                Materi Terpadu: Geografi • Sejarah • Ekonomi • Sosiologi
             </p>
         </div>
-    </section>
 
-    <!-- Main Content -->
-    <div class="container my-4">
-        <!-- Document Selector -->
-        <div class="select-container">
-            <label for="docSelector" class="form-label fw-semibold mb-3">Cari Dokumen:</label>
-            <select id="docSelector" placeholder="Pilih atau ketik nama dokumen...">
-                <option value="">Pilih Dokumen...</option>
-                <option value="ID_DOC_JARINGAN">Sistem Layanan Jaringan</option>
-                <option value="ID_DOC_PROSES_BISNIS">Proses bisnis di bidang teknik jaringan komputer dan telekomunikasi</option>
-                <option value="ID_DOC_PERKEMBANGAN">Perkembangan teknologi di bidang teknik jaringan komputer dan telekomunikasi</option>
-                <option value="ID_DOC_PROFESI">Profesi dan Kewirausahaan</option>
-                <option value="ID_DOC_K3LH">Keselamatan dan Kesehatan Kerja Lingkungan Hidup (K3LH)</option>
-                <option value="1PqftIKRKcFVVVbx2JGskPRr1KsJ-JNcd">Media dan Jaringan Telekomunikasi</option>
-                <option value="ID_DOC_ALAT_UKUR">Penggunaan Alat Ukur</option>
-            </select>
-        </div>
-
-        <!-- Document Content -->
-        <div id="docContent" style="display: none;">
-            <!-- Document Preview -->
-            <div class="iframe-container" id="iframeContainer">
-                <iframe id="cpAtpFrame" allow="autoplay" loading="lazy"></iframe>
-                <button class="fullscreen-btn" onclick="toggleFullscreen()">
-                    <i class="bi bi-fullscreen"></i> Layar Penuh
-                </button>
-            </div>
-
-            <!-- Document Actions -->
-            <div class="document-actions">
-                <a id="downloadLink" href="#" class="btn btn-primary" target="_blank">
-                    <i class="bi bi-download"></i> Unduh Dokumen
-                </a>
-            </div>
-
-            <!-- Document Info -->
-            <div class="card card-document">
-                <div class="card-body">
-                    <h5 class="card-title" id="docTitle">Judul Dokumen</h5>
-                    <p class="card-text">Dokumen Capaian Pembelajaran dan Alur Tujuan Pembelajaran untuk mata pelajaran Teknik Jaringan Komputer dan Telekomunikasi.</p>
-                    <div class="d-flex flex-wrap gap-2">
-                        <span class="badge bg-primary bg-opacity-10 text-primary">PDF</span>
-                        <span class="badge bg-primary bg-opacity-10 text-primary">CP/ATP</span>
-                        <span class="badge bg-primary bg-opacity-10 text-primary">Teknik Jaringan</span>
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">4</span>
+                    <div class="stat-label">
+                        <i class="bi bi-collection me-1"></i>
+                        Tema Utama
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">25</span>
+                    <div class="stat-label">
+                        <i class="bi bi-list-ul me-1"></i>
+                        Sub Materi
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">15</span>
+                    <div class="stat-label">
+                        <i class="bi bi-bullseye me-1"></i>
+                        Tujuan Pembelajaran
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">4</span>
+                    <div class="stat-label">
+                        <i class="bi bi-mortarboard me-1"></i>
+                        Bidang Ilmu
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Empty State -->
-        <div id="emptyState" class="empty-state">
-            <i class="bi bi-file-earmark-text"></i>
-            <h4>Belum ada dokumen dipilih</h4>
-            <p>Silakan pilih dokumen dari dropdown di atas untuk melihat pratinjau, mengunduh, atau mencetak dokumen CP/ATP.</p>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container text-center">
-            <p class="text-muted mb-2">© 2025 Dokumen CP/ATP - Teknik Jaringan Komputer dan Telekomunikasi</p>
-            <div class="d-flex justify-content-center gap-3">
-                <a href="#" class="text-decoration-none text-muted"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="text-decoration-none text-muted"><i class="bi bi-twitter"></i></a>
-                <a href="#" class="text-decoration-none text-muted"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="text-decoration-none text-muted"><i class="bi bi-envelope"></i></a>
+        <!-- Search Section -->
+        <div class="search-section">
+            <div class="search-container">
+                <i class="bi bi-search"></i>
+                <input type="text" class="form-control" id="searchInput" placeholder="Cari materi atau tujuan pembelajaran...">
             </div>
         </div>
-    </footer>
 
-    <!-- Toast Notification -->
-    <div class="toast align-items-center text-white bg-success border-0" id="notifToast" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-            <div class="toast-body">
-                <i class="bi bi-check-circle-fill me-2"></i> Dokumen berhasil dimuat
+        <!-- Theme Cards -->
+        <div class="themes-container">
+            <!-- Tema 01 -->
+            <div class="theme-card theme-01">
+                <div class="theme-header" id="headerTema01" aria-expanded="false">
+                    <div class="theme-number">01</div>
+                    <i class="bi bi-globe-americas theme-icon"></i>
+                    <h3 class="theme-title">Kehidupan Sosial dan Kondisi Lingkungan</h3>
+                    <p class="theme-subtitle">Eksplorasi lingkungan sekitar dan dinamika sosial</p>
+                    <div class="theme-meta">
+                        <small>
+                            <i class="bi bi-list me-1"></i>7 Sub Materi
+                        </small>
+                        <i class="bi bi-chevron-down chevron-icon"></i>
+                    </div>
+                </div>
+                <div class="collapse-content" id="tema01">
+                    <div class="materi-section">
+                        <div class="materi-grid">
+                            <div class="materi-item">
+                                <i class="bi bi-geo-alt-fill"></i>
+                                <span class="materi-text">Mengenal Lokasi Tempat Tinggal</span>
+                            </div>
+                            <div class="materi-item">
+                                <i class="bi bi-arrows-move"></i>
+                                <span class="materi-text">Konektivitas Antarruang</span>
+                            </div>
+                            <div class="materi-item">
+                                <i class="bi bi-thermometer-sun"></i>
+                                <span class="materi-text">Perubahan Iklim</span>
+                            </div>
+                            <div class="materi-item">
+                                <i class="bi bi-exclamation-triangle-fill"></i>
+                                <span class="materi-text">Potensi Bencana Alam di Indonesia</span>
+                            </div>
+                            <div class="materi-item">
+                                <i class="bi bi-graph-up-arrow"></i>
+                                <span class="materi-text">Kegiatan Ekonomi</span>
+                            </div>
+                            <div class="materi-item">
+                                <i class="bi bi-people-fill"></i>
+                                <span class="materi-text">Interaksi Sosial</span>
+                            </div>
+                            <div class="materi-item">
+                                <i class="bi bi-clock-history"></i>
+                                <span class="materi-text">Konsep Dasar Ilmu Sejarah</span>
+                            </div>
+                        </div>
+                        <div class="tujuan-section">
+                            <h4 class="tujuan-title">
+                                <i class="bi bi-target"></i>
+                                Tujuan Pembelajaran
+                            </h4>
+                            <div class="tujuan-list">
+                                <div class="tujuan-item">
+                                    <div class="tujuan-badge">1</div>
+                                    <span class="tujuan-text">Mendeskripsikan kondisi lingkungan sekitar tempat tinggal</span>
+                                </div>
+                                <div class="tujuan-item">
+                                    <div class="tujuan-badge">2</div>
+                                    <span class="tujuan-text">Menjelaskan konektivitas antarruang, menguraikan dampak perubahan iklim, dan potensi bencana alam di Indonesia</span>
+                                </div>
+                                <div class="tujuan-item">
+                                    <div class="tujuan-badge">3</div>
+                                    <span class="tujuan-text">Mengidentifikasi berbagai kegiatan ekonomi dan interaksi sosial</span>
+                                </div>
+                                <div class="tujuan-item">
+                                    <div class="tujuan-badge">4</div>
+                                    <span class="tujuan-text">Menjelaskan konsep dasar ilmu sejarah</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+
+            <!-- Tema 02 -->
+            <div class="theme-card theme-02">
+                <div class="theme-header" id="headerTema02" aria-expanded="false">
+                    <div class="theme-number">02</div>
+                    <i class="bi bi-tree-fill theme-icon"></i>
+                    <h3 class="theme-title">Keberagaman Lingkungan Sekitar</h3>
+                    <p class="theme-subtitle">Memahami diversitas dan pelestarian lingkungan</p>
+                    <div class="theme-meta">
+                        <small>
+                            <i class="bi bi-list me-1"></i>3 Sub Materi
+                        </small>
+                        <i class="bi bi-chevron-down chevron-icon"></i>
+                    </div>
+                </div>
+                <div class="collapse-content" id="tema02">
+                    <div class="materi-section">
+                        <div class="materi-grid">
+                            <div class="materi-item">
+                                <i class="bi bi-eye-fill"></i>
+                                <span class="materi-text">Berkenalan dengan Lingkungan Sekitar</span>
+                            </div>
+                            <div class="materi-item">
+                                <i class="bi bi-shield-fill-check"></i>
+                                <span class="materi-text">Pembiasaan Diri untuk Melestarikan Lingkungan</span>
+                            </div>
+                            <div class="materi-item">
+                                <i class="bi bi-basket-fill"></i>
+                                <span class="materi-text">Pembiasaan Diri dalam Kebutuhan</span>
+                            </div>
+                        </div>
+                        <div class="tujuan-section">
+                            <h4 class="tujuan-title">
+                                <i class="bi bi-target"></i>
+                                Tujuan Pembelajaran
+                            </h4>
+                            <div class="tujuan-list">
+                                <div class="tujuan-item">
+                                    <div class="tujuan-badge">1</div>
+                                    <span class="tujuan-text">Menjelaskan dinamika sosial dan perubahan sosial budaya</span>
+                                </div>
+                                <div class="tujuan-item">
+                                    <div class="tujuan-badge">2</div>
+                                    <span class="tujuan-text">Mengidentifikasi kehidupan dari aspek sosial ekonomi dan geografis</span>
+                                </div>
+                                <div class="tujuan-item">
+                                    <div class="tujuan-badge">3</div>
+                                    <span class="tujuan-text">Membandingkan persamaan dan perbedaan fenomena lingkungan sekitar sebagai proses geografis</span>
+                                </div>
+                                <div class="tujuan-item">
+                                    <div class="tujuan-badge">4</div>
+                                    <span class="tujuan-text">Membandingkan persamaan dan perbedaan suatu lokasi berdasarkan kondisi alam dan komposisi penduduk</span>
+                                </div>
+                                <div class="tujuan-item">
+                                    <div class="tujuan-badge">5</div>
+                                    <span class="tujuan-text">Menganalisis perubahan karakteristik lokasi dari waktu ke waktu berdasarkan aspek fisik dan sosial</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tema 03 -->
+            <div class="theme-card theme-03">
+                <div class="theme-header" id="headerTema03" aria-expanded="false">
+                    <div class="theme-number">03</div>
+                    <i class="bi bi-currency-dollar theme-icon"></i>
+                    <h3 class="theme-title">Potensi Ekonomi Lingkungan</h3>
+                    <p class="theme-subtitle">Mengkaji sumber daya dan peluang ekonomi</p>
+                    <div class="theme-meta">
+                        <small>
+                            <i class="bi bi-list me-1"></i>5 Sub Materi
+                        </small>
+                        <i class="bi bi-chevron-down chevron-icon"></i>
+                    </div>
+                </div>
+                <div class="collapse-content" id="tema03">
+                    <div class="materi-section">
+                        <div class="materi-grid">
+                            <div class="materi-item">
+                                <i class="bi bi-gem"></i>
+                                <span class="materi-text">Pemanfaatan dan Pelestarian Potensi Sumber Daya Alam</span>
+                            </div>
+                            <div class="materi-item">
+                                <i class="bi bi-flag-fill"></i>
+                                <span class="materi-text">Potensi Indonesia Menjadi Negara Maju</span>
+                            </div>
+                            <div class="materi-item">
+                                <i class="bi bi-signpost-fill"></i>
+                                <span class="materi-text">Toponimi</span>
+                            </div>
+                            <div class="materi-item">
+                                <i class="bi bi-shop"></i>
+                                <span class="materi-text">Ekonomi di Lingkungan Sekitar</span>
+                            </div>
+                            <div class="materi-item">
+                                <i class="bi bi-chat-dots-fill"></i>
+                                <span class="materi-text">Interaksi Sosial</span>
+                            </div>
+                        </div>
+                        <div class="tujuan-section">
+                            <h4 class="tujuan-title">
+                                <i class="bi bi-target"></i>
+                                Tujuan Pembelajaran
+                            </h4>
+                            <div class="tujuan-list">
+                                <div class="tujuan-item">
+                                    <div class="tujuan-badge">1</div>
+                                    <span class="tujuan-text">Mengklasifikasikan pemanfaatan dan pelestarian potensi sumber daya alam</span>
+                                </div>
+                                <div class="tujuan-item">
+                                    <div class="tujuan-badge">2</div>
+                                    <span class="tujuan-text">Menjelaskan faktor yang menyebabkan perubahan potensi sumber daya alam dan penentuan harga pasar</span>
+                                </div>
+                                <div class="tujuan-item">
+                                    <div class="tujuan-badge">3</div>
+                                    <span class="tujuan-text">Menganalisis potensi Indonesia menjadi negara maju</span>
+                                </div>
+                                <div class="tujuan-item">
+                                    <div class="tujuan-badge">4</div>
+                                    <span class="tujuan-text">Menganalisis toponimi daerah dan mendemonstrasikan interaksi sosial dalam masyarakat</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tema 04 -->
+            <div class="theme-card theme-04">
+                <div class="theme-header" id="headerTema04" aria-expanded="false">
+                    <div class="theme-number">04</div>
+                    <i class="bi bi-people-fill theme-icon"></i>
+                    <h3 class="theme-title">Pemberdayaan Masyarakat</h3>
+                    <p class="theme-subtitle">Membangun komunitas yang berdaya dan berkarakter</p>
+                    <div class="theme-meta">
+                        <small>
+                            <i class="bi bi-list me-1"></i>4 Sub Materi
+                        </small>
+                        <i class="bi bi-chevron-down chevron-icon"></i>
+                    </div>
+                </div>
+                <div class="collapse-content" id="tema04">
+                    <div class="materi-section">
+                        <div class="materi-grid">
+                            <div class="materi-item">
+                                <i class="bi bi-palette-fill"></i>
+                                <span class="materi-text">Keragaman Sosial Budaya di Masyarakat</span>
+                            </div>
+                            <div class="materi-item">
+                                <i class="bi bi-exclamation-circle-fill"></i>
+                                <span class="materi-text">Permasalahan Kehidupan Sosial Budaya</span>
+                            </div>
+                            <div class="materi-item">
+                                <i class="bi bi-arrow-up-circle-fill"></i>
+                                <span class="materi-text">Pemberdayaan Masyarakat</span>
+                            </div>
+                            <div class="materi-item">
+                                <i class="bi bi-diagram-3-fill"></i>
+                                <span class="materi-text">Peranan Komunitas dalam Kehidupan Masyarakat</span>
+                            </div>
+                        </div>
+                        <div class="tujuan-section">
+                            <h4 class="tujuan-title">
+                                <i class="bi bi-target"></i>
+                                Tujuan Pembelajaran
+                            </h4>
+                            <div class="tujuan-list">
+                                <div class="tujuan-item">
+                                    <div class="tujuan-badge">1</div>
+                                    <span class="tujuan-text">Mempelajari keragaman sosial budaya dan penyebab terjadinya keragaman tersebut</span>
+                                </div>
+                                <div class="tujuan-item">
+                                    <div class="tujuan-badge">2</div>
+                                    <span class="tujuan-text">Menguraikan masalah yang terjadi karena keragaman sosial budaya dan menemukan solusi untuk mengatasinya</span>
+                                </div>
+                                <div class="tujuan-item">
+                                    <div class="tujuan-badge">3</div>
+                                    <span class="tujuan-text">Mampu menerapkan prinsip hidup bersama dalam keragaman sosial budaya masyarakat</span>
+                                </div>
+                                <div class="tujuan-item">
+                                    <div class="tujuan-badge">4</div>
+                                    <span class="tujuan-text">Mengidentifikasi aktivitas pemberdayaan masyarakat dan mengetahui peranan komunitas dalam pemberdayaan tersebut serta belajar tentang literasi keuangan</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-section">
+            <p>
+                <i class="bi bi-mortarboard me-2"></i>
+                Materi Pembelajaran Kelas VII SMP - Tahun Ajaran 2024/2025
+            </p>
         </div>
     </div>
-
-    <!-- Tom Select JS -->
-    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
-    <!-- Bootstrap Bundle JS (with Toast support) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // Initialize TomSelect
-        new TomSelect("#docSelector", {
-            maxItems: 1,
-            create: false,
-            plugins: ['dropdown_input'],
-            render: {
-                option: function(data, escape) {
-                    return `<div class="d-flex align-items-center p-2">
-                        <i class="bi bi-file-earmark-text me-2 text-primary"></i>
-                        <div>
-                            <div class="fw-semibold">${escape(data.text)}</div>
-                            <small class="text-muted">Dokumen CP/ATP</small>
-                        </div>
-                    </div>`;
-                },
-                item: function(data, escape) {
-                    return `<div class="d-flex align-items-center">
-                        <i class="bi bi-file-earmark-text me-1 text-primary"></i>
-                        <span>${escape(data.text)}</span>
-                    </div>`;
-                }
-            }
-        });
+        document.addEventListener('DOMContentLoaded', function() {
+            // Progress bar functionality
+            window.addEventListener('scroll', function() {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('progressBar').style.width = scrolled + '%';
+            });
 
-        // Function to change the displayed document
-        function changeDoc() {
-            const docId = document.getElementById('docSelector').value;
-            const iframe = document.getElementById('cpAtpFrame');
-            const downloadLink = document.getElementById('downloadLink');
-            const docContent = document.getElementById('docContent');
-            const emptyState = document.getElementById('emptyState');
-            const docTitle = document.getElementById('docTitle');
-            const selectedOption = document.querySelector('#docSelector option:checked');
-
-            // Hide the toast if it's currently showing
-            const toastElement = document.getElementById('notifToast');
-            const toast = bootstrap.Toast.getInstance(toastElement);
-            if (toast) {
-                toast.hide();
-            }
-
-            if (docId) {
-                // Construct Google Drive preview and download links
-                // Note: 'ID_DOC_JARINGAN' and similar values are placeholders.
-                // For actual Google Drive files, these IDs should be valid Google Drive File IDs.
-                iframe.src = `https://drive.google.com/file/d/${docId}/preview`;
-                downloadLink.href = `https://drive.google.com/uc?export=download&id=${docId}`;
+            // Toggle accordion functionality
+            const themeHeaders = document.querySelectorAll('.theme-header');
+            
+            themeHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const targetId = this.id.replace('header', '').toLowerCase();
+                    const content = document.getElementById(targetId);
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    
+                    // Close all other accordions
+                    if (!isExpanded) {
+                        themeHeaders.forEach(otherHeader => {
+                            if (otherHeader !== this) {
+                                const otherTargetId = otherHeader.id.replace('header', '').toLowerCase();
+                                const otherContent = document.getElementById(otherTargetId);
+                                
+                                otherHeader.setAttribute('aria-expanded', 'false');
+                                otherContent.classList.remove('show');
+                                otherHeader.querySelector('.chevron-icon').style.transform = 'rotate(0deg)';
+                            }
+                        });
+                    }
+                    
+                    // Toggle current accordion
+                    this.setAttribute('aria-expanded', !isExpanded);
+                    
+                    if (isExpanded) {
+                        content.classList.remove('show');
+                        this.querySelector('.chevron-icon').style.transform = 'rotate(0deg)';
+                    } else {
+                        content.classList.add('show');
+                        this.querySelector('.chevron-icon').style.transform = 'rotate(180deg)';
+                        
+                        // Smooth scroll to the opened content if it's not fully in view
+                        setTimeout(() => {
+                            const headerRect = this.getBoundingClientRect();
+                            if (headerRect.top < 100) {
+                                window.scrollTo({
+                                    top: window.pageYOffset + headerRect.top - 100,
+                                    behavior: 'smooth'
+                                });
+                            }
+                        }, 100);
+                    }
+                });
+            });
+            
+            // Search functionality
+            const searchInput = document.getElementById('searchInput');
+            
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
                 
-                // Show document content and hide empty state
-                docContent.style.display = 'block';
-                emptyState.style.display = 'none';
+                if (searchTerm === '') {
+                    // Reset all to visible if search is empty
+                    document.querySelectorAll('.theme-card').forEach(card => {
+                        card.style.display = 'block';
+                    });
+                    
+                    document.querySelectorAll('.materi-item, .tujuan-item').forEach(item => {
+                        item.style.display = 'flex';
+                    });
+                    
+                    return;
+                }
                 
-                // Update document title
-                if (selectedOption) {
-                    docTitle.textContent = selectedOption.text;
+                // Search through materi items and tujuan items
+                let foundInThemes = new Set();
+                
+                document.querySelectorAll('.materi-item, .tujuan-item').forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    
+                    if (text.includes(searchTerm)) {
+                        item.style.display = 'flex';
+                        
+                        // Find which theme this item belongs to
+                        let themeCard = item.closest('.theme-card');
+                        if (themeCard) {
+                            foundInThemes.add(themeCard);
+                        }
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                // Show/hide theme cards based on search results
+                document.querySelectorAll('.theme-card').forEach(card => {
+                    if (foundInThemes.has(card)) {
+                        card.style.display = 'block';
+                        
+                        // Expand the theme if it contains search results
+                        const themeId = card.querySelector('.collapse-content').id;
+                        const header = document.getElementById('header' + themeId.charAt(0).toUpperCase() + themeId.slice(1));
+                        
+                        if (header.getAttribute('aria-expanded') === 'false') {
+                            header.click();
+                        }
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Keyboard navigation for accessibility
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && searchInput.value !== '') {
+                    searchInput.value = '';
+                    searchInput.dispatchEvent(new Event('input'));
                 }
-
-                // Show notification toast after a slight delay to ensure iframe loads
-                setTimeout(() => {
-                    const newToast = new bootstrap.Toast(toastElement);
-                    newToast.show();
-                }, 500); // Delay to ensure visual loading perception
-            } else {
-                // If no document is selected, show empty state and hide document content
-                docContent.style.display = 'none';
-                emptyState.style.display = 'block';
-                iframe.src = ''; // Clear iframe content
-                downloadLink.href = '#'; // Reset download link
-                docTitle.textContent = 'Judul Dokumen'; // Reset title
-            }
-        }
-
-        // Function to print the content of the iframe
-        function printIframe() {
-            const iframe = document.getElementById('cpAtpFrame');
-            try {
-                // Check if the iframe contentWindow is accessible
-                const win = iframe.contentWindow;
-                if (win) {
-                    win.focus(); // Focus on the iframe content
-                    win.print(); // Trigger print dialog for iframe content
-                } else {
-                    console.error("Could not access iframe contentWindow for printing.");
-                    // In a real application, you might show a user-friendly message here.
-                }
-            } catch (e) {
-                console.error("Error attempting to print iframe:", e);
-                // Handle security restrictions or other errors during print
-            }
-        }
-
-        // Function to toggle fullscreen mode for the iframe container
-        function toggleFullscreen() {
-            const iframeContainer = document.getElementById('iframeContainer');
-            if (!iframeContainer.classList.contains('fullscreen')) {
-                // Enter fullscreen
-                iframeContainer.classList.add('fullscreen');
-                if (iframeContainer.requestFullscreen) {
-                    iframeContainer.requestFullscreen();
-                } else if (iframeContainer.mozRequestFullScreen) { // Firefox
-                    iframeContainer.mozRequestFullScreen();
-                } else if (iframeContainer.webkitRequestFullscreen) { // Chrome, Safari, Opera
-                    iframeContainer.webkitRequestFullscreen();
-                } else if (iframeContainer.msRequestFullscreen) { // IE/Edge
-                    iframeContainer.msRequestFullscreen();
-                }
-            } else {
-                // Exit fullscreen
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.mozCancelFullScreen) { // Firefox
-                    document.mozCancelFullScreen();
-                } else if (document.webkitExitFullscreen) { // Chrome, Safari, Opera
-                    document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) { // IE/Edge
-                    document.msExitFullscreen();
-                }
-                iframeContainer.classList.remove('fullscreen');
-            }
-        }
-
-        // Listen for changes on the document selector to load new documents
-        document.getElementById('docSelector').addEventListener('change', changeDoc);
-
-        // Optional: Add a listener for fullscreen change events to update button text/icon
-        document.addEventListener('fullscreenchange', () => {
-            const fullscreenBtn = document.querySelector('.fullscreen-btn');
-            if (document.fullscreenElement) {
-                fullscreenBtn.innerHTML = '<i class="bi bi-fullscreen-exit"></i> Keluar Layar Penuh';
-            } else {
-                document.getElementById('iframeContainer').classList.remove('fullscreen'); // Ensure class is removed on exit
-                fullscreenBtn.innerHTML = '<i class="bi bi-fullscreen"></i> Layar Penuh';
-            }
+            });
         });
-        document.addEventListener('mozfullscreenchange', () => {
-            const fullscreenBtn = document.querySelector('.fullscreen-btn');
-            if (document.mozFullScreenElement) {
-                fullscreenBtn.innerHTML = '<i class="bi bi-fullscreen-exit"></i> Keluar Layar Penuh';
-            } else {
-                document.getElementById('iframeContainer').classList.remove('fullscreen');
-                fullscreenBtn.innerHTML = '<i class="bi bi-fullscreen"></i> Layar Penuh';
-            }
-        });
-        document.addEventListener('webkitfullscreenchange', () => {
-            const fullscreenBtn = document.querySelector('.fullscreen-btn');
-            if (document.webkitFullscreenElement) {
-                fullscreenBtn.innerHTML = '<i class="bi bi-fullscreen-exit"></i> Keluar Layar Penuh';
-            } else {
-                document.getElementById('iframeContainer').classList.remove('fullscreen');
-                fullscreenBtn.innerHTML = '<i class="bi bi-fullscreen"></i> Layar Penuh';
-            }
-        });
-        document.addEventListener('msfullscreenchange', () => {
-            const fullscreenBtn = document.querySelector('.fullscreen-btn');
-            if (document.msFullscreenElement) {
-                fullscreenBtn.innerHTML = '<i class="bi bi-fullscreen-exit"></i> Keluar Layar Penuh';
-            } else {
-                document.getElementById('iframeContainer').classList.remove('fullscreen');
-                fullscreenBtn.innerHTML = '<i class="bi bi-fullscreen"></i> Layar Penuh';
-            }
-        });
-
     </script>
 </body>
 </html>

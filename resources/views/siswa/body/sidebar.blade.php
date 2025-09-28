@@ -1,25 +1,21 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <ul class="nav">
-
-    <!-- Profile Header -->
     <li class="nav-item nav-profile border-bottom">
       @php
         $id = Auth::user()->id;
         $siswaData = App\Models\User::find($id);
       @endphp
       <a href="#" class="nav-link flex-column">
-        <div class="nav-profile-image text-center mt-3">
-          <img src="{{ isset($siswaData->profile_image) ? url('upload/siswa_images/' . $siswaData->profile_image) : url('upload/admin_images.jpg') }}"
-              class="img-xs rounded-circle" alt="profile">
+        <div class="nav-profile-image">
+          <img src="{{ isset($siswaData->profile_image) ? url('upload/siswa_images/'. $siswaData->profile_image) : url('upload/admin_images.jpg') }}" class="image-circle elevation-2" alt="profile">
         </div>
-        <div class="nav-profile-text text-center mt-2">
-          <span class="fw-semibold">{{ Auth::user()->name }}</span>
-          <div class="text-secondary small">{{ Auth::user()->email }}</div>
+        <div class="nav-profile-text d-flex ms-0 mb-3 flex-column">
+          <span class="fw-semibold mb-1 mt-2 text-center">{{ Auth::user()->name }}</span>
+          <span class="text-secondary icon-sm text-center">{{ Auth::user()->email }}</span>
         </div>
       </a>
     </li>
 
-    <!-- Dashboard -->
     <li class="nav-item pt-3">
       <a class="nav-link d-block" href="{{ route('siswa.siswa_master') }}">
         <div class="d-flex justify-content-center">
@@ -30,11 +26,10 @@
       </a>
     </li>
 
-    <!-- Profil Section -->
+    <!-- Profil -->
     <li class="pt-2 pb-1">
       <span class="nav-item-head">Profil</span>
     </li>
-
     <li class="nav-item">
       <a class="nav-link" href="{{ route('siswa.siswa_profile') }}">
         <i class="mdi mdi-pencil menu-icon"></i>
@@ -42,33 +37,24 @@
       </a>
     </li>
 
-    {{-- <li class="nav-item">
-      <a class="nav-link" href="{{ route('siswa.semua_siswa') }}">
-        <i class="mdi mdi-account-multiple menu-icon"></i>
-        <span class="menu-title">Data Siswa</span>
-      </a>
-    </li> --}}
-
-    <!-- Modul Section -->
+    <!-- Bahan Ajar -->
     <li class="pt-2 pb-1">
       <span class="nav-item-head">Bahan Ajar</span>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{{ route('siswa.modul.index') }}">
+      <a class="nav-link" href="{{ route('siswa.modul.index')}}">
         <i class="mdi mdi-book-open-page-variant menu-icon"></i>
         <span class="menu-title">Daftar Materi</span>
       </a>
     </li>
 
-
-    <!-- Quiz / Game Section -->
     <li class="nav-item">
-      <a class="nav-link" href="{{ route('siswa.quiz.index') }}">
-        <i class="mdi mdi-trophy-outline menu-icon"></i>
-        <span class="menu-title">Quiz</span>
+      <a class="nav-link" href="{{ route('chat.view') }}">
+      <i class="mdi mdi-robot menu-icon"></i>
+      <span class="menu-title">Chatbot AI</span>
       </a>
     </li>
-
+     
 
     <!-- Logout -->
     <li class="nav-item mt-4">
@@ -78,6 +64,5 @@
         </button>
       </a>
     </li>
-
   </ul>
 </nav>

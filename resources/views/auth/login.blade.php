@@ -19,10 +19,10 @@
     
     <style>
         :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #ec4899;
-            --accent: #06b6d4;
+            --primary: #d4a574; /* Emas Minang */
+            --primary-dark: #b8956a;
+            --secondary: #2d5016; /* Hijau Daun Sirih */
+            --accent: #1e3a5f; /* Biru Laut Minang */
             --success: #10b981;
             --warning: #f59e0b;
             --danger: #ef4444;
@@ -39,6 +39,16 @@
             --gray-700: #374151;
             --gray-800: #1f2937;
             --gray-900: #111827;
+            
+            /* Minangkabau inspired colors */
+            --minang-gold: #d4a574;
+            --minang-green: #2d5016;
+            --minang-teal: #0d9488;
+            --minang-navy: #1e3a5f;
+            --songket-pattern: linear-gradient(45deg, #d4a574 25%, transparent 25%), 
+                               linear-gradient(-45deg, #d4a574 25%, transparent 25%), 
+                               linear-gradient(45deg, transparent 75%, #d4a574 75%), 
+                               linear-gradient(-45deg, transparent 75%, #d4a574 75%);
         }
 
         * {
@@ -49,13 +59,13 @@
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background: linear-gradient(135deg, var(--minang-navy) 0%, var(--minang-teal) 50%, var(--minang-green) 100%);
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
         }
 
-        /* Animated Background */
+        /* Animated Background with Minangkabau motifs */
         .bg-animation {
             position: absolute;
             top: 0;
@@ -69,8 +79,8 @@
         .shape {
             position: absolute;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            animation: float 6s ease-in-out infinite;
+            background: rgba(212, 165, 116, 0.1);
+            animation: float 8s ease-in-out infinite;
         }
 
         .shape:nth-child(1) {
@@ -79,6 +89,7 @@
             top: 10%;
             left: 10%;
             animation-delay: 0s;
+            background: rgba(212, 165, 116, 0.15);
         }
 
         .shape:nth-child(2) {
@@ -87,6 +98,7 @@
             top: 20%;
             right: 10%;
             animation-delay: 2s;
+            background: rgba(45, 80, 22, 0.1);
         }
 
         .shape:nth-child(3) {
@@ -95,6 +107,7 @@
             bottom: 30%;
             left: 15%;
             animation-delay: 4s;
+            background: rgba(13, 148, 136, 0.12);
         }
 
         .shape:nth-child(4) {
@@ -103,6 +116,7 @@
             bottom: 10%;
             right: 20%;
             animation-delay: 1s;
+            background: rgba(212, 165, 116, 0.08);
         }
 
         .shape:nth-child(5) {
@@ -111,6 +125,17 @@
             top: 50%;
             left: 5%;
             animation-delay: 3s;
+            background: rgba(30, 58, 95, 0.15);
+        }
+
+        /* Adding traditional patterns */
+        .shape:nth-child(even) {
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        }
+
+        .shape:nth-child(odd) {
+            clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
+            border-radius: 0;
         }
 
         @keyframes float {
@@ -119,13 +144,32 @@
                 opacity: 0.7;
             }
             33% { 
-                transform: translateY(-30px) translateX(10px) rotate(120deg); 
+                transform: translateY(-40px) translateX(15px) rotate(120deg); 
                 opacity: 0.4;
             }
             66% { 
-                transform: translateY(-10px) translateX(-10px) rotate(240deg); 
-                opacity: 0.8;
+                transform: translateY(-15px) translateX(-15px) rotate(240deg); 
+                opacity: 0.9;
             }
+        }
+
+        /* Traditional ornamental border */
+        .ornamental-border {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image: 
+                radial-gradient(circle at 20px 20px, var(--minang-gold) 2px, transparent 2px),
+                radial-gradient(circle at 80px 80px, var(--minang-gold) 1px, transparent 1px);
+            background-size: 100px 100px, 160px 160px;
+            opacity: 0.1;
+            animation: patternMove 15s linear infinite;
+        }
+
+        @keyframes patternMove {
+            0% { background-position: 0 0, 0 0; }
+            100% { background-position: 100px 100px, 160px 160px; }
         }
 
         /* Main Container */
@@ -139,23 +183,43 @@
             padding: 2rem 1rem;
         }
 
-        /* Login Card */
+        /* Login Card with traditional styling */
         .login-wrapper {
             width: 100%;
             max-width: 1000px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             background: var(--white);
-            border-radius: 24px;
+            border-radius: 28px;
             overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.25),
+                0 0 0 1px rgba(212, 165, 116, 0.1);
             backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(212, 165, 116, 0.2);
+            position: relative;
         }
 
-        /* Left Side - Illustration */
+        .login-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--minang-gold), var(--minang-teal), var(--minang-green), var(--minang-gold));
+            background-size: 200% 100%;
+            animation: borderGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Left Side - Illustration with Minangkabau elements */
         .login-illustration {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background: linear-gradient(135deg, var(--minang-navy) 0%, var(--minang-teal) 50%, var(--minang-green) 100%);
             padding: 3rem;
             display: flex;
             flex-direction: column;
@@ -173,8 +237,27 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
+            background: 
+                radial-gradient(circle at 30% 40%, rgba(212, 165, 116, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(13, 148, 136, 0.08) 0%, transparent 50%);
+            animation: rotate 25s linear infinite;
+        }
+
+        .login-illustration::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,40 Q100,0 200,20 T400,40 L400,40 L0,40 Z' fill='rgba(212,165,116,0.2)'/%3E%3C/svg%3E") repeat-x;
+            background-size: 400px 40px;
+            animation: wave 4s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-200px); }
         }
 
         @keyframes rotate {
@@ -190,20 +273,36 @@
         .illustration-icon {
             width: 120px;
             height: 120px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 30px;
+            background: rgba(212, 165, 116, 0.2);
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 2rem;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(212, 165, 116, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .illustration-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--songket-pattern);
+            background-size: 8px 8px;
+            opacity: 0.1;
         }
 
         .illustration-icon svg {
             width: 60px;
             height: 60px;
             color: var(--white);
+            position: relative;
+            z-index: 2;
         }
 
         .illustration-title {
@@ -212,6 +311,7 @@
             color: var(--white);
             margin-bottom: 1rem;
             line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .illustration-text {
@@ -221,12 +321,58 @@
             max-width: 300px;
         }
 
-        /* Right Side - Form */
+        /* Traditional ornamental elements */
+        .ornament {
+            position: absolute;
+            color: rgba(212, 165, 116, 0.2);
+            font-size: 2rem;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .ornament:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .ornament:nth-child(2) {
+            top: 15%;
+            right: 15%;
+            animation-delay: 1s;
+        }
+
+        .ornament:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.1); }
+        }
+
+        /* Right Side - Form with traditional touches */
         .login-form-section {
             padding: 3rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            background: linear-gradient(145deg, #ffffff 0%, #fefefe 100%);
+            position: relative;
+        }
+
+        .login-form-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: var(--songket-pattern);
+            background-size: 4px 4px;
+            opacity: 0.05;
+            border-radius: 0 28px 0 100px;
         }
 
         .brand-section {
@@ -234,33 +380,64 @@
             align-items: center;
             gap: 1rem;
             margin-bottom: 2rem;
+            position: relative;
         }
 
         .brand-logo {
             width: 48px;
             height: 48px;
             border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 8px 16px rgba(212, 165, 116, 0.3);
+            border: 2px solid var(--minang-gold);
         }
 
         .brand-name {
             font-size: 1.75rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--minang-gold), var(--minang-teal));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            position: relative;
+        }
+
+        .brand-name::after {
+            content: '✦';
+            position: absolute;
+            right: -20px;
+            top: -5px;
+            color: var(--minang-gold);
+            font-size: 1rem;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
         }
 
         .form-header {
             margin-bottom: 2rem;
+            position: relative;
         }
 
         .form-title {
             font-size: 1.875rem;
             font-weight: 700;
-            color: var(--gray-900);
+            color: var(--minang-navy);
             margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .form-title::before {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--minang-gold), var(--minang-teal));
+            border-radius: 2px;
         }
 
         .form-subtitle {
@@ -269,16 +446,17 @@
             font-weight: 400;
         }
 
-        /* Form Styling */
+        /* Form Styling with traditional elements */
         .form-group {
             margin-bottom: 1.5rem;
+            position: relative;
         }
 
         .form-label {
             display: block;
             font-size: 0.875rem;
             font-weight: 600;
-            color: var(--gray-700);
+            color: var(--minang-navy);
             margin-bottom: 0.5rem;
         }
 
@@ -296,12 +474,13 @@
             background: var(--gray-50);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             outline: none;
+            position: relative;
         }
 
         .form-input:focus {
-            border-color: var(--primary);
+            border-color: var(--minang-gold);
             background: var(--white);
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+            box-shadow: 0 0 0 4px rgba(212, 165, 116, 0.1);
             transform: translateY(-1px);
         }
 
@@ -325,8 +504,8 @@
         }
 
         .password-toggle:hover {
-            color: var(--primary);
-            background: rgba(99, 102, 241, 0.1);
+            color: var(--minang-gold);
+            background: rgba(212, 165, 116, 0.1);
         }
 
         .form-options {
@@ -361,8 +540,8 @@
         }
 
         .custom-checkbox input:checked + .checkmark {
-            background: var(--primary);
-            border-color: var(--primary);
+            background: var(--minang-gold);
+            border-color: var(--minang-gold);
         }
 
         .custom-checkbox input:checked + .checkmark::after {
@@ -399,7 +578,7 @@
         }
 
         .forgot-link {
-            color: var(--primary);
+            color: var(--minang-teal);
             font-size: 0.875rem;
             font-weight: 600;
             text-decoration: none;
@@ -407,14 +586,15 @@
         }
 
         .forgot-link:hover {
-            color: var(--primary-dark);
+            color: var(--minang-green);
             text-decoration: underline;
         }
 
+        /* Traditional inspired button */
         .login-button {
             width: 100%;
             padding: 1rem 2rem;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            background: linear-gradient(135deg, var(--minang-gold), var(--minang-teal));
             color: var(--white);
             border: none;
             border-radius: 16px;
@@ -425,6 +605,7 @@
             position: relative;
             overflow: hidden;
             margin-bottom: 1.5rem;
+            box-shadow: 0 8px 20px rgba(212, 165, 116, 0.3);
         }
 
         .login-button::before {
@@ -438,13 +619,26 @@
             transition: left 0.5s;
         }
 
+        .login-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--songket-pattern);
+            background-size: 6px 6px;
+            opacity: 0.1;
+        }
+
         .login-button:hover::before {
             left: 100%;
         }
 
         .login-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 20px 40px rgba(212, 165, 116, 0.4);
+            background: linear-gradient(135deg, var(--minang-teal), var(--minang-gold));
         }
 
         .login-button:active {
@@ -458,14 +652,14 @@
         }
 
         .register-link {
-            color: var(--primary);
+            color: var(--minang-gold);
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
         }
 
         .register-link:hover {
-            color: var(--primary-dark);
+            color: var(--minang-teal);
             text-decoration: underline;
         }
 
@@ -488,10 +682,15 @@
             font-size: 0.8125rem;
             color: rgba(255, 255, 255, 0.8);
             z-index: 10;
+            background: rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .credits a {
-            color: rgba(255, 255, 255, 0.9);
+            color: var(--minang-gold);
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
@@ -500,6 +699,34 @@
         .credits a:hover {
             color: var(--white);
             text-decoration: underline;
+        }
+
+        /* Traditional pattern decorations */
+        .traditional-pattern {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: var(--songket-pattern);
+            background-size: 4px 4px;
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+
+        .pattern-1 {
+            top: 20px;
+            right: 20px;
+            animation: rotatePattern 10s linear infinite;
+        }
+
+        .pattern-2 {
+            bottom: 20px;
+            left: 20px;
+            animation: rotatePattern 15s linear infinite reverse;
+        }
+
+        @keyframes rotatePattern {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         /* Responsive Design */
@@ -520,7 +747,7 @@
             }
             
             .login-wrapper {
-                border-radius: 20px;
+                border-radius: 24px;
                 margin: 0;
             }
             
@@ -589,6 +816,47 @@
                 transform: scale(1);
             }
         }
+
+        /* Success state styling */
+        .form-input.is-valid {
+            border-color: var(--success) !important;
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1) !important;
+        }
+
+        .form-input.is-invalid {
+            border-color: var(--danger) !important;
+            box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1) !important;
+        }
+
+        /* Minangkabau traditional motifs */
+        .motif-decoration {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle, var(--minang-gold) 30%, transparent 30%);
+            background-size: 6px 6px;
+            opacity: 0.1;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .motif-1 {
+            top: 10%;
+            right: 5%;
+            animation-delay: 0s;
+        }
+
+        .motif-2 {
+            bottom: 15%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .motif-3 {
+            top: 30%;
+            left: 5%;
+            animation-delay: 4s;
+        }
     </style>
 </head>
 <body>
@@ -598,34 +866,47 @@
         <div class="shape"></div>
         <div class="shape"></div>
         <div class="shape"></div>
+        <div class="ornamental-border"></div>
     </div>
 
     <main>
         <div class="main-container">
             <div class="login-wrapper">
-                <!-- Left Side - Illustration -->
+                <!-- Left Side - Illustration with Minangkabau theme -->
                 <div class="login-illustration d-flex align-items-center justify-content-center">
+                    <!-- Traditional ornaments -->
+                    <div class="ornament" style="top: 10%; left: 10%;">◈</div>
+                    <div class="ornament" style="top: 15%; right: 15%;">❋</div>
+                    <div class="ornament" style="bottom: 20%; left: 20%;">✧</div>
+                    
                     <div class="illustration-content text-center" style="width: 100%; max-width: 400px;">
-                        <div class="illustration-icon mx-auto mb-3" style="width: 64px; height: 64px;">
+                        <div class="illustration-icon mx-auto mb-3">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width: 100%; height: 100%;">
                                 <path d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/>
                             </svg>
                         </div>
-                        <h2 class="illustration-title mb-2">Selamat Datang di NetPedia</h2>
-                        <p class="illustration-text mx-auto" style="max-width: 300px;">Platform pembelajaran digital yang menghubungkan Anda dengan pengetahuan tak terbatas</p>
+                        <h2 class="illustration-title mb-2">Salamaik Datang di NetPedia</h2>
+                        <p class="illustration-text mx-auto" style="max-width: 300px;">Platform pembelajaran digital nan menghubungkan Anda dengan pengetahuan tak terbatas, dibangun dengan nilai-nilai budaya Minangkabau</p>
                     </div>
                 </div>
 
                 <!-- Right Side - Form -->
                 <div class="login-form-section">
+                    <!-- Traditional motifs -->
+                    <div class="motif-decoration motif-1"></div>
+                    <div class="motif-decoration motif-2"></div>
+                    <div class="motif-decoration motif-3"></div>
+                    <div class="traditional-pattern pattern-1"></div>
+                    <div class="traditional-pattern pattern-2"></div>
+
                     <div class="brand-section">
                         <img src="{{ asset('admin2/assets/img/logo.png') }}" alt="NetPedia" class="brand-logo">
                         <h1 class="brand-name">NetPedia</h1>
                     </div>
 
                     <div class="form-header">
-                        <h2 class="form-title">Masuk ke Akun Anda</h2>
-                        <p class="form-subtitle">Silakan masukkan detail Anda untuk melanjutkan</p>
+                        <h2 class="form-title">Masuk ka Akun Awak</h2>
+                        <p class="form-subtitle">Silakan masukkan detail Anda untuk melanjutkan perjalanan belajar</p>
                     </div>
 
                     <!-- Laravel Authentication Form -->
@@ -640,7 +921,7 @@
                             </div>
                             @error('email')
                                 <div class="error-message">
-                                    <span>email atau kata sandi yang anda masukkan tidak sesuai</span>
+                                    <span>Email atau kata sandi yang Anda masukkan tidak sesuai</span>
                                 </div>
                             @enderror
                         </div>
@@ -659,7 +940,7 @@
                             </div>
                             @error('password')
                                 <div class="error-message">
-                                    <span>kata sandi yang anda masukkan salah</span>
+                                    <span>Kata sandi yang Anda masukkan salah</span>
                                 </div>
                             @enderror
                         </div>
@@ -680,7 +961,7 @@
                         </div>
                         
                         <button class="login-button" type="submit">
-                            Masuk ke NetPedia
+                            <span style="position: relative; z-index: 3;">Masuk ka NetPedia</span>
                         </button>
                         
                         <div class="register-text">
@@ -692,9 +973,9 @@
         </div>
     </main>
 
-    <div class="credits">
-        Designed with by <a href="https://www.instagram.com/ferjuprihamdani/">Ferju Prihamdani</a>
-    </div>
+    {{-- <div class="credits">
+        Designed with ❤️ by <a href="https://www.instagram.com/ferjuprihamdani/">Ferju Prihamdani</a>
+    </div> --}}
 
     <script>
         function togglePassword() {
@@ -723,23 +1004,18 @@
             
             inputs.forEach(input => {
                 input.addEventListener('blur', function() {
-                    // This part uses Laravel's validation errors (is-invalid class)
-                    // combined with basic client-side check.
-                    // If Laravel sends validation errors, the 'is-invalid' class will be present.
-                    // This client-side blur is more for immediate visual feedback before submission.
                     if (this.value.trim() === '') {
-                        this.style.borderColor = 'var(--danger)';
-                        this.style.boxShadow = '0 0 0 4px rgba(239, 68, 68, 0.1)';
+                        this.classList.remove('is-valid');
+                        this.classList.add('is-invalid');
                     } else if (!this.classList.contains('is-invalid')) {
-                        // Only set success style if no Laravel validation error
-                        this.style.borderColor = 'var(--success)';
-                        this.style.boxShadow = '0 0 0 4px rgba(16, 185, 129, 0.1)';
+                        this.classList.remove('is-invalid');
+                        this.classList.add('is-valid');
                     }
                 });
                 
                 input.addEventListener('focus', function() {
-                    this.style.borderColor = 'var(--primary)';
-                    this.style.boxShadow = '0 0 0 4px rgba(99, 102, 241, 0.1)';
+                    this.style.borderColor = 'var(--minang-gold)';
+                    this.style.boxShadow = '0 0 0 4px rgba(212, 165, 116, 0.1)';
                 });
 
                 // Add an immediate check on load if there are errors (from Laravel redirect)
@@ -748,7 +1024,49 @@
                     input.style.boxShadow = '0 0 0 4px rgba(239, 68, 68, 0.1)';
                 }
             });
+
+            // Add traditional touch: gentle animations on hover
+            const loginButton = document.querySelector('.login-button');
+            loginButton.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px) scale(1.02)';
+            });
+            
+            loginButton.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+
+            // Add subtle interactions for traditional elements
+            const shapes = document.querySelectorAll('.shape');
+            shapes.forEach((shape, index) => {
+                shape.addEventListener('mouseenter', function() {
+                    this.style.animationPlayState = 'paused';
+                    this.style.opacity = '0.3';
+                });
+                
+                shape.addEventListener('mouseleave', function() {
+                    this.style.animationPlayState = 'running';
+                    this.style.opacity = '0.7';
+                });
+            });
         });
+
+        // Traditional welcome animation
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                const illustration = document.querySelector('.illustration-content');
+                illustration.style.animation = 'gentleBounce 2s ease-in-out';
+            }, 1000);
+        });
+
+        // Add gentle bounce animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes gentleBounce {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-10px); }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>

@@ -25,6 +25,7 @@ use App\Http\Controllers\Guru\GuruMateriController;
 use App\Http\Controllers\GuruSiswaController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\QuizResultController; // Ensure this class exists in the specified namespace
+use App\Http\Controllers\CobaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -352,18 +353,6 @@ Route::prefix('siswa')->middleware(['auth', 'role:siswa'])->group(function () {
 
 
 
-use App\Http\Controllers\Guru\MateriController;
-use App\Http\Controllers\UjianController;
-use App\Http\Controllers\GuruUjianController;
-
-Route::prefix('guru')->middleware('auth')->group(function () {
-    // Materi
-    Route::get('/materi', [MateriController::class, 'index'])->name('guru.materi.index');
-    Route::post('/materi', [MateriController::class, 'upload'])->name('guru.materi.upload');
-});
-
-
-
 
 
 Route::middleware(['auth'])->group(function () {
@@ -551,7 +540,6 @@ Route::get('/nilai', [SiswaController::class, 'nilaiSiswa'])->name('siswa.nilai'
 // routes/web.php
 Route::prefix('guru')->middleware(['auth', 'role:guru'])->group(function () {
     // Materi Routes
-    Route::resource('materi', \App\Http\Controllers\Guru\MateriController::class);
     
     // Upload gambar untuk editor
     Route::post('upload/image', function(Request $request) {
@@ -567,18 +555,30 @@ Route::prefix('guru')->middleware(['auth', 'role:guru'])->group(function () {
 
 use App\Http\Controllers\Guru\MateriTetapController;
 
-Route::get('tcp-ip', [MateriTetapController::class, 'tcpIp'])->name('guru.materi.tcp_ip');
-Route::get('layanan-jaringan', [MateriTetapController::class, 'layananJaringan'])->name('guru.materi.layanan_jaringan');
-Route::get('keamanan-jaringan', [MateriTetapController::class, 'keamananJaringan'])->name('guru.materi.keamanan_jaringan');
-Route::get('seluler', [MateriTetapController::class, 'seluler'])->name('guru.materi.seluler');
+Route::get('tema1', [MateriTetapController::class, 'tema1'])->name('guru.materi.tema1');
+Route::get('tema2', [MateriTetapController::class, 'tema2'])->name('guru.materi.tema2');
+Route::get('tema3', [MateriTetapController::class, 'tema3'])->name('guru.materi.tema3');
+Route::get('tema4', [MateriTetapController::class, 'tema4'])->name('guru.materi.tema4');
 Route::get('optik', [MateriTetapController::class, 'optik'])->name('guru.materi.optik');
 
 
 use App\Http\Controllers\Siswa\MateriTetapController as SiswaMateriTetapController;
-Route::get('siswa/tcp-ip', [SiswaMateriTetapController::class, 'tcpIp'])->name('siswa.materi.tcp_ip');
-Route::get('siswa/layanan-jaringan', [SiswaMateriTetapController::class, 'layananJaringan'])->name('siswa.materi.layanan_jaringan');
-Route::get('siswa/keamanan-jaringan', [SiswaMateriTetapController::class, 'keamananJaringan'])->name('siswa.materi.keamanan_jaringan');
-Route::get('siswa/seluler', [SiswaMateriTetapController::class, 'seluler'])->name('siswa.materi.seluler');
+Route::get('siswa/tema1', [SiswaMateriTetapController::class, 'tema1'])->name('siswa.materi.tema1');
+Route::get('siswa/tema2', [SiswaMateriTetapController::class, 'tema2'])->name('siswa.materi.tema2');
+Route::get('siswa/tema3', [SiswaMateriTetapController::class, 'tema3'])->name('siswa.materi.tema3');
+Route::get('siswa/tema4', [SiswaMateriTetapController::class, 'tema4'])->name('siswa.materi.tema4');
 Route::get('siswa/optik', [SiswaMateriTetapController::class, 'optik'])->name('siswa.materi.optik');
+
+
+use App\Http\Controllers\ChatbotController;
+
+Route::view('/chat-datuak', 'guru.chat')->name('chat.view');
+Route::view('/chat-datuak', 'siswa.chat')->name('chat.view');
+
+
+// SSE streaming
+Route::post('/chatbot/ask', [ChatbotController::class, 'ask'])->name('chatbot.ask');
+Route::get('/chatbot/history', [ChatbotController::class, 'history'])->name('chatbot.history');
+
 
 require __DIR__.'/auth.php';

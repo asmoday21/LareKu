@@ -1,746 +1,417 @@
 <!DOCTYPE html>
-<html lang="en" style="scroll-behavior: smooth;">
-
+<html lang="id">
 <head>
-    <meta charset="utf-8">
-    <title>NetPedia</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
-
-    <!-- Favicon -->
-    <link href="{{ asset('homepage/img/logo.png')}}" rel="icon">
-
-    <!-- Google Web Fonts -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budaya Minangkabau - Warisan Leluhur yang Abadi</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHg4/JtU43o5/qQ6xJdF6T6O4Q9D5K9/G5J9pL5X3C6W8p1fB0R6Q9a2kL9l0L2O6Q6+G6Q5Q=" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google Fonts - Poppins & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
-
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="{{ asset('homepage/lib/animate/animate.min.css')}}" rel="stylesheet">
-    <link href="{{ asset('homepage/lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
-    <link href="{{ asset('homepage/lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="{{ asset('homepage/css/bootstrap.min.css')}}" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="{{ asset('homepage/css/style.css')}}" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            overflow-x: hidden;
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
         }
-    
-        .container-xxl {
-            max-width: 100% !important;
-            padding: 0;
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
         }
-        /* Removed .hero-header as its properties are now handled by .telecom-hero */
-
-        .telecom-hero {
-            /* Set minimum height to 100vh for full viewport height on larger screens */
-            min-height: 100vh; 
-            display: flex; /* Use flexbox to center content vertically */
-            align-items: center; /* Center items vertically */
-            justify-content: center; /* Center items horizontally */
-            padding: 4rem 0; /* Add some padding for smaller screens */
-            background: linear-gradient(152deg, #0b1120 0%, #1e3a8a 100%);
+        .hero-bg {
+            position: relative;
             overflow: hidden;
-            position: relative; /* Ensure background elements are positioned relative to this */
         }
-
-        /* Ensure content is centered within the hero section */
-        .telecom-hero .container {
-            position: relative;
-            z-index: 10;
-            padding-top: 3rem; /* Adjust padding as flexbox handles vertical centering */
-            padding-bottom: 3rem; /* Adjust padding as flexbox handles vertical centering */
-        }
-
-        .network-grid {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(to right, rgba(99, 102, 241, 0.08) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(99, 102, 241, 0.08) 1px, transparent 1px);
-            background-size: 50px 50px;
-        }
-
-        .floating-dots {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-            background-size: 25px 25px;
-            animation: float-bg 15s infinite linear; /* Renamed to avoid conflict with icon float */
-        }
-
-        .radar-scan {
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 200%;
-            background: conic-gradient(from 0deg, rgba(56, 182, 255, 0) 0%, rgba(56, 182, 255, 0.03) 5%, rgba(56, 182, 255, 0) 10%);
-            animation: radar 8s linear infinite;
-            z-index: 0;
-        }
-
-        .text-gradient {
-            background: linear-gradient(90deg, #38b6ff 0%, #6366f1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .btn-gradient {
-            background: linear-gradient(90deg, #38b6ff 0%, #6366f1 100%);
-            border: none;
-            color: white;
-            transition: all 0.3s ease;
-        }
-
-        .btn-gradient:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(56, 182, 255, 0.3);
-        }
-
-        /* Moved hero-badge style from inline to CSS */
-        .hero-badge {
-            color: white;
-            display: inline-flex; /* Use flex to align icon and text */
-            align-items: center;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
-            backdrop-filter: blur(5px); /* Add a subtle blur for depth */
-            -webkit-backdrop-filter: blur(5px);
-        }
-
-        .hero-badge i {
-            margin-right: 0.5rem;
-        }
-
-        .tech-visual {
-            position: relative;
-            height: 100%;
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .globe-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .globe {
-            position: relative;
-            width: 320px;
-            height: 320px;
-            border-radius: 50%;
-            perspective: 1000px;
-        }
-
-        .ring {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 1px solid rgba(56, 182, 255, 0.3);
-            border-radius: 50%;
-            animation: rotate 20s linear infinite;
-        }
-
-        .ring:nth-child(1) {
-            transform: rotateX(65deg);
-        }
-
-        .ring:nth-child(2) {
-            transform: rotateX(25deg) rotateY(15deg);
-            animation-direction: reverse;
-        }
-
-        .ring:nth-child(3) {
-            transform: rotateX(25deg) rotateY(-15deg);
-            animation-duration: 25s;
-        }
-
-        .nodes {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-
-        .node {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: #38b6ff;
-            border-radius: 50%;
-            box-shadow: 0 0 15px #38b6ff;
-            transform-origin: center;
-        }
-
-        .node:nth-child(1) { top: 10%; left: 50%; transform: translateX(-50%); }
-        .node:nth-child(2) { top: 50%; right: 10%; transform: translateY(-50%); }
-        .node:nth-child(3) { bottom: 10%; left: 50%; transform: translateX(-50%); }
-        .node:nth-child(4) { top: 50%; left: 10%; transform: translateY(-50%); }
-        .node:nth-child(5) { top: 30%; left: 30%; transform: translate(-50%, -50%); }
-
-        .connections {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-
-        .connections::before {
+        .hero-bg::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 80%;
-            height: 80%;
-            transform: translate(-50%, -50%);
-            background: radial-gradient(circle, rgba(56, 182, 255, 0.2) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: pulse 4s infinite;
-        }
-
-        .floating-icons {
-            position: absolute;
-            width: 100%;
-            height: 100%;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('{{asset('homepage/img/Indonesian house.jpg')}}');
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px);
+            transform: scale(1.1);
+            z-index: -1;
         }
-
-        .floating-icons i {
+        .hero-bg::after {
+            content: '';
             position: absolute;
-            color: rgba(56, 182, 255, 0.7);
-            font-size: 1.5rem;
-            animation: float 6s infinite ease-in-out;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(45, 80, 22, 0.85), rgba(45, 80, 22, 0.9));
+            z-index: -1;
         }
-
-        .floating-icons i:nth-child(1) {
-            top: 15%;
-            left: 20%;
-            animation-delay: 0s;
+        .text-gradient {
+            background-image: linear-gradient(to right, #FFD700, #DAA520, #B8860B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: gradientShift 3s ease-in-out infinite alternate;
         }
-        .floating-icons i:nth-child(2) {
-            top: 25%;
-            right: 15%;
-            animation-delay: 1s;
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
         }
-        .floating-icons i:nth-child(3) {
-            bottom: 20%;
-            left: 25%;
-            animation-delay: 2s;
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
         }
-        .floating-icons i:nth-child(4) {
-            bottom: 30%;
-            right: 20%;
-            animation-delay: 3s;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #2d5016, #8b4513);
+            border-radius: 2px;
         }
-
-        @keyframes rotate {
-            0% { transform: rotateX(0) rotateY(0) rotateZ(0); }
-            100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+        .card-hover {
+            transition: all 0.3s ease;
         }
-
-        @keyframes pulse {
-            0% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.95); }
-            50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.05); }
-            100% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.95); }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
-
+        .img-border {
+            border: 3px solid #2d5016;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+        .minang-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0C40 10, 30 0, 20 10C10 20, 0 30, 10 40C20 50, 10 60, 20 70C30 80, 40 90, 50 80C60 90, 70 80, 80 70C90 60, 100 50, 90 40C80 30, 90 20, 80 10C70 0, 60 10, 50 0Z' fill='%2322852255'/%3E%3C/svg%3E");
+            background-size: 200px;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, #8b4513, #2d5016);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
         @keyframes float {
-            0% { transform: translateY(0) translateX(0); }
-            50% { transform: translateY(-20px) translateX(10px); }
-            100% { transform: translateY(0) translateX(0); }
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
         }
-
-        @keyframes float-bg { /* New animation for background dots */
-            0% { background-position: 0 0; }
-            100% { background-position: 50px 50px; }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
-
-        @keyframes radar {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @media (max-width: 992px) {
-            .telecom-hero {
-                min-height: auto; /* Remove min-height on small screens */
-                padding: 5rem 0; /* Adjust padding for mobile */
-                text-align: center;
-            }
-            
-            .telecom-hero .container {
-                padding-top: 2rem;
-                padding-bottom: 2rem;
-            }
-
-            .tech-visual {
-                margin-top: 3rem;
-                min-height: 300px;
-            }
-            
-            .d-flex {
-                justify-content: center;
-            }
-            
-            .border-end {
-                border-right: none !important;
-            }
-            
-            .globe {
-                width: 260px;
-                height: 260px;
-            }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 
-<body>
-    <div class="container-xxl bg-white p-0">
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-        <!-- Spinner End -->
+<body class="bg-gray-50 text-gray-800">
 
-
-        <!-- Navbar & Hero Start -->
-        <div class="container-xxl position-relative p-0">
-            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-                <a href="" class="navbar-brand p-0">
-                    <h1 class="m-0">
-                        <img src="{{ asset('homepage/img/logo.png') }}" alt="NetPedia Logo" style="height: 40px; margin-right: 10px;">
-                        NetPedia<span class="fs-5"></span>
-                    </h1>
-                    <!-- <img src="img/logo.png" alt="Logo"> -->
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto py-0">
-                        <a href="#" class="nav-item nav-link active">Home</a>
-                        <a href="{{ route('cp-atp') }}" class="nav-item nav-link">CP/ATP</a>
-                        <a href="{{ route('materi')}}" class="nav-item nav-link">Materi</a>
-                        <a href="{{ route('referensi') }}" class="nav-item nav-link">Referensi</a>
-                    </div>
-                    <a href="{{ route('login')}}" class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3">Sign In</a>
+    <!-- Header/Navbar -->
+    <header class="sticky top-0 z-50 bg-white shadow-sm transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-3">
+                <!-- Fallback logo -->
+                <div class="h-11 w-11 rounded-full bg-[#2d5016] flex items-center justify-center text-white font-bold text-lg shadow-md">
+                    BM
                 </div>
+                <h1 class="text-xl font-bold text-[#2d5016]">Budaya Minangkabau</h1>
+            </a>
+            <nav class="hidden lg:flex items-center space-x-6">
+                <a href="#hero" class="nav-link text-gray-600 hover:text-[#8b4513] font-medium transition-colors duration-200">Beranda</a>
+                <a href="{{route('materi')}}" class="nav-link text-gray-600 hover:text-[#8b4513] font-medium transition-colors duration-200">Budaya</a>
+                <a href="{{route('cp-atp')}}" class="nav-link text-gray-600 hover:text-[#8b4513] font-medium transition-colors duration-200">Materi</a>
+                <a href="{{route('login')}}" class="px-5 py-2 rounded-full font-semibold text-[#2d5016] bg-amber-400 hover:bg-amber-500 transition-all duration-300 shadow-md hover:shadow-lg">Masuk</a>
             </nav>
-            <div class="telecom-hero bg-dark position-relative overflow-hidden">
-                <div class="network-grid"></div>
-                <div class="floating-dots"></div>
-                <div class="radar-scan"></div>
-                
-                <!-- Content container for hero section -->
-                <div class="container">
-                    <div class="row align-items-center">
-                        <!-- Text Content -->
-                        <div class="col-lg-6 mb-5 mb-lg-0">
-                            <div class="pe-lg-5">
-                                <div class="hero-badge fade-in-up">
-                                    <i class="fas fa-graduation-cap me-2"></i>
-                                    SMK TJKT Kelas X
-                                </div> 
-                                <h1 class="text-white mb-4 animate__animated animate__fadeInUp">
-                                    <span class="text-gradient">Menguasai</span> Jaringan Telekomunikasi Masa Depan
-                                </h1>
-                                <p class="lead text-light mb-5 animate__animated animate__fadeInUp animate__delay-1s">
-                                    Pelajari dasar-dasar jaringan komputer, sistem telekomunikasi, dan teknologi digital bersama para ahli di bidangnya.
-                                </p>
-                                <div class="d-flex flex-wrap gap-3 animate__animated animate__fadeInUp animate__delay-2s">
-                                    <a href="{{ route('register')}}" class="btn btn-gradient btn-lg rounded-pill px-4 py-3">
-                                        Mulai Belajar <i class="fas fa-book-open ms-2"></i>
-                                    </a>
+            <button id="menu-toggle" class="lg:hidden p-2 text-gray-600 hover:text-[#8b4513] focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white shadow-lg transition-all duration-300 ease-in-out transform -translate-y-full absolute top-full left-0 w-full">
+            <nav class="flex flex-col p-4 space-y-2">
+                <a href="#hero" class="py-2 text-gray-600 hover:text-[#8b4513] font-medium transition-colors duration-200">Beranda</a>
+                <a href="#capaian" class="py-2 text-gray-600 hover:text-[#8b4513] font-medium transition-colors duration-200">Budaya</a>
+                <a href="#materi" class="py-2 text-gray-600 hover:text-[#8b4513] font-medium transition-colors duration-200">Materi</a>
+                <a href="{{route('login')}}" class="mt-4 px-4 py-2 text-center rounded-full font-semibold text-[#2d5016] bg-amber-400 hover:bg-amber-500 transition-colors duration-200 shadow-md">Masuk</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- Hero Section -->
+        <section id="hero" class="hero-bg py-20 md:py-32 text-white overflow-hidden relative">
+            <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12 relative z-10">
+                <div class="flex-1 text-center md:text-left fade-in">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 tracking-wide leading-tight">
+                        <span class="text-gradient">Budaya Minangkabau</span> <br>
+                        <span class="text-white">Jelajahi Warisan Leluhur</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed">
+                        Selamat datang di petualangan budaya yang luar biasa! Platform pembelajaran ini dirancang khusus untuk siswa SMP yang ingin menyelami kekayaan budaya Minangkabau.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <a href="{{route('register')}}" class="bg-amber-400 text-[#2d5016] font-bold px-8 py-3 rounded-full hover:bg-amber-500 transition-all duration-300 shadow-lg hover:shadow-xl text-center transform hover:-translate-y-1">
+                            Mulai Petualangan <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#" id="watch-video-btn" data-video="https://www.youtube.com/embed/4-_obvYZloY" class="bg-white bg-opacity-20 text-white font-semibold px-8 py-3 rounded-full hover:bg-white hover:bg-opacity-30 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center transform hover:-translate-y-1">
+                            <i class="fas fa-play-circle mr-2"></i> Tonton Video
+                        </a>
+                    </div>
+                </div>
+                <div class="flex-1 relative mt-12 md:mt-0 text-center fade-in">
+                    <!-- Gambar utama dengan efek floating -->
+                    <div class="floating">
+                        <img src="{{asset('homepage/img/Indonesian house.jpg')}}" alt="Budaya Minangkabau" class="img-fluid rounded-xl img-border mx-auto transform hover:scale-105 transition-transform duration-500 shadow-2xl">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section id="capaian" class="py-16 bg-white minang-pattern">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold text-[#228b22] mb-3 section-title">Apa yang akan kita pelajari?</h2>
+                <p class="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">Mari mengenal lebih dalam kekayaan budaya Minangkabau yang membanggakan dan penuh makna kehidupan!</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="p-8 bg-white rounded-2xl shadow-md card-hover">
+                        <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-green-100 flex items-center justify-center">
+                            <i class="fas fa-handshake fa-2x text-[#228b22]"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-[#2d5016]">Adat Istiadat</h3>
+                        <p class="text-gray-600">Memahami sistem adat dan tradisi yang mengatur kehidupan masyarakat Minangkabau berdasarkan prinsip "Adat basandi syarak, syarak basandi Kitabullah".</p>
+                    </div>
+                    <div class="p-8 bg-white rounded-2xl shadow-md card-hover">
+                        <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-green-100 flex items-center justify-center">
+                            <i class="fas fa-home fa-2x text-[#228b22]"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-[#2d5016]">Rumah Gadang</h3>
+                        <p class="text-gray-600">Mengenal arsitektur unik rumah tradisional Minangkabau dan filosofi di balik setiap ornamen dan strukturnya yang penuh makna.</p>
+                    </div>
+                    <div class="p-8 bg-white rounded-2xl shadow-md card-hover">
+                        <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-green-100 flex items-center justify-center">
+                            <i class="fas fa-paint-brush fa-2x text-[#228b22]"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-[#2d5016]">Seni & Budaya</h3>
+                        <p class="text-gray-600">Mempelajari tarian, musik, makanan, dan kesenian khas Minangkabau yang telah diwariskan turun-temurun.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold text-[#228b22] mb-3 section-title">Fitur Pembelajaran</h2>
+                <p class="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">Platform ini cocok untuk berbagai kalangan yang ingin mendalami budaya Minangkabau</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="p-8 order-2 md:order-1">
+                        <div class="space-y-6 text-left">
+                            <div class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm">
+                                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center">
+                                    <i class="fas fa-check-circle text-[#228b22] text-xl"></i>
                                 </div>
-                                
-                                <div class="d-flex mt-5 pt-2 animate__animated animate__fadeIn animate__delay-3s">
-                                    <div class="pe-4 border-end border-light border-opacity-25">
-                                        <h3 class="text-white mb-1">Teori</h3>
-                                        <p class="text-light opacity-75 mb-0 small">Modul Pembelajaran</p>
-                                    </div>
-                                    <div class="px-4 border-end border-light border-opacity-25">
-                                        <h3 class="text-white mb-1">Praktik</h3>
-                                        <p class="text-light opacity-75 mb-0 small">Langsung di Lab</p>
-                                    </div>
-                                    <div class="ps-4">
-                                        <h3 class="text-white mb-1">Sertifikasi</h3>
-                                        <p class="text-light opacity-75 mb-0 small">Kompetensi</p>
-                                    </div>
+                                <span class="text-lg text-gray-700">Siswa SMP kelas VII yang ingin mengenal budaya Minangkabau</span>
+                            </div>
+                            <div class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm">
+                                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center">
+                                    <i class="fas fa-check-circle text-[#228b22] text-xl"></i>
                                 </div>
+                                <span class="text-lg text-gray-700">Guru mata pelajaran IPS dan Bahasa Daerah</span>
+                            </div>
+                            <div class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm">
+                                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center">
+                                    <i class="fas fa-check-circle text-[#228b22] text-xl"></i>
+                                </div>
+                                <span class="text-lg text-gray-700">Siapa saja yang ingin melestarikan dan memahami budaya Minangkabau</span>
+                            </div>
+                            <div class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm">
+                                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center">
+                                    <i class="fas fa-check-circle text-[#228b22] text-xl"></i>
+                                </div>
+                                <span class="text-lg text-gray-700">Pelajar dari daerah lain yang ingin mengenal kebudayaan Sumatera Barat</span>
                             </div>
                         </div>
-                        
-                        <!-- Image Content -->
-                        <div class="col-lg-6 animate__animated animate__fadeIn">
-                            <div class="tech-visual">
-                                <div class="globe-container">
-                                    <div class="globe">
-                                        <div class="ring"></div>
-                                        <div class="ring"></div>
-                                        <div class="ring"></div>
-                                        <div class="nodes">
-                                            <div class="node"></div>
-                                            <div class="node"></div>
-                                            <div class="node"></div>
-                                            <div class="node"></div>
-                                            <div class="node"></div>
-                                        </div>
-                                        <div class="connections"></div>
-                                    </div>
-                                </div>
-                                <div class="floating-icons">
-                                    <i class="fas fa-network-wired"></i>
-                                    <i class="fas fa-router"></i>
-                                    <i class="fas fa-server"></i>
-                                    <i class="fas fa-wifi"></i>
-                                </div>
+                    </div>
+                    <div class="p-8 order-1 md:order-2">
+                        <!-- Fallback image -->
+                        <div class="floating">
+                            <img src="{{asset('homepage/img/indonesian house.jpg')}}" alt="Fitur Pembelajaran" class="img-fluid rounded-xl img-border mx-auto">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio/Gallery Section -->
+        <section id="portfolio" class="py-16 bg-white">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold text-[#228b22] mb-3 section-title">Galeri Budaya Minangkabau</h2>
+                <p class="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">Kumpulan foto kebudayaan dan tradisi Minangkabau yang kaya akan nilai sejarah dan filosofi</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Image 1 -->
+                    <div class="relative group rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                        <img src="{{asset('homepage/img/download.jpg')}}" alt="Rumah Gadang" class="w-full h-64 object-cover object-center transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:bg-opacity-60 transition-all duration-300">
+                            <div class="text-center p-4">
+                                <p class="text-white text-xl font-semibold mb-2">Rumah Gadang</p>
+                                <p class="text-gray-200">Rumah adat dengan atap bergonjong yang menjadi simbol budaya Minangkabau</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Image 2 -->
+                    <div class="relative group rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                        <img src="{{asset('homepage/img/tari piring.jpg')}}" alt="Tari Piring" class="w-full h-64 object-cover object-center transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:bg-opacity-60 transition-all duration-300">
+                            <div class="text-center p-4">
+                                <p class="text-white text-xl font-semibold mb-2">Tari Piring</p>
+                                <p class="text-gray-200">Tarian tradisional yang menggunakan piring sebagai properti utama</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Image 3 -->
+                    <div class="relative group rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                        <img src="{{asset('homepage/img/rendang.jpg')}}" alt="Rendang" class="w-full h-64 object-cover object-center transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:bg-opacity-60 transition-all duration-300">
+                            <div class="text-center p-4">
+                                <p class="text-white text-xl font-semibold mb-2">Rendang</p>
+                                <p class="text-gray-200">Makanan tradisional yang telah diakui sebagai salah satu makanan terenak di dunia</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> 
-        <!-- Navbar & Hero End -->
+        </section>
+    </main>
 
-        <!-- About Start -->
-        <div class="container-xxl py-5" id="about-us"> <!-- Menambahkan ID untuk tombol "Mulai Belajar" -->
-            <div class="container px-lg-5">
-                <div class="row g-5">
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="section-title position-relative mb-4 pb-2">
-                            <h6 class="position-relative text-primary ps-4">About Us</h6>
-                            <h2 class="mt-2">Tentang NetPedia</h2>
-                        </div>
-                        <p class="mb-4">NetPedia adalah platform pembelajaran digital yang dirancang untuk memberikan pengalaman belajar yang lebih interaktif, dinamis, dan mudah diakses. Kami menghadirkan berbagai materi edukatif dengan pendekatan yang lebih inovatif, sehingga pembelajaran menjadi lebih menarik dan efektif.Dengan fitur video pembelajaran, latihan interaktif, dan sistem pemantauan progres, kami membantu siswa dan pendidik untuk mencapai hasil belajar yang lebih optimal. Akses kapan saja, di mana saja, dan mulai belajar dengan cara yang lebih fleksibel!</p>
-                        <p class="mb-4">Dengan fitur video pembelajaran, latihan interaktif, dan sistem pemantauan progres, kami membantu siswa dan pendidik untuk mencapai hasil belajar yang lebih optimal. Akses kapan saja, di mana saja, dan mulai belajar dengan cara yang lebih fleksibel!</p>
-                        <div class="row g-3">
-                            <div class="col-sm-6">
-                                <h6 class="mb-3"><i class="fa fa-check text-primary me-2"></i>Inovatif</h6>
-                                <h6 class="mb-0"><i class="fa fa-check text-primary me-2"></i>Menyenangkan</h6>
-                            </div>
-                            <div class="col-sm-6">
-                                <h6 class="mb-3"><i class="fa fa-check text-primary me-2"></i>Terstruktur</h6>
-                                <h6 class="mb-0"><i class="fa fa-check text-primary me-2"></i>Gratis & Fleksibel</h6>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center mt-4">
-                            <a class="btn btn-primary rounded-pill px-4 me-3" href="">Read More</a>
-                            <a class="btn btn-outline-primary btn-square me-3" href="https://web.facebook.com/smkn1painan?_rdc=1&_rdr&checkpoint_src=any#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-primary btn-square me-3" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-primary btn-square me-3" href=""><i class="fab fa-instagram"></i></a>
-                            <a class="btn btn-outline-primary btn-square" href=""><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <img class="img-fluid wow zoomIn" data-wow-delay="0.5s" src="{{ asset('homepage/img/netpedia.png')}}">
-                    </div>
-                </div>
+    <!-- Footer -->
+    <footer class="bg-[#2d5016] text-white py-12 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-full h-full minang-pattern"></div>
+        </div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mt-8 pt-6 border-t border-gray-700">
+                <p class="text-sm text-gray-300">&copy; 2025 Platform Budaya Minangkabau. Semua Hak Dilindungi.</p>
+                <p class="text-xs text-gray-400 mt-1">Dikembangkan dengan ❤️ untuk melestarikan budaya Minangkabau</p>
             </div>
         </div>
-        <!-- About End -->
+    </footer>
 
-
-        <!-- Newsletter Start -->
-        <div class="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="container px-lg-5">
-                <div class="row align-items-center" style="height: 250px;">
-                    <div class="col-12 col-md-6">
-                        <h3 class="text-white">Ready to get started</h3>
-                        <small class="text-white">Diam elitr est dolore at sanctus nonumy.</small>
-                        <div class="position-relative w-100 mt-3">
-                            <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Enter Your Email" style="height: 48px;">
-                            <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>
-                        </div>
-                    </div>
-                    <div class="col-md-6 text-center mb-n5 d-none d-md-block">
-                        <img class="img-fluid mt-5" style="height: 250px;" src="{{ asset('homepage/img/newsletter.png')}}">
-                    </div>
-                </div>
+    <!-- Video Modal -->
+    <div id="videoModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-[1000] hidden transition-opacity duration-300">
+        <div class="bg-gray-800 rounded-lg overflow-hidden w-11/12 md:w-2/3 lg:w-1/2 relative transform scale-95 transition-transform duration-300">
+            <button id="close-modal-btn" class="absolute -top-10 right-0 text-white text-3xl hover:text-gray-400 transition-colors z-10">&times;</button>
+            <div class="relative w-full" style="padding-top: 56.25%;">
+                <iframe id="youtubeVideo" class="absolute inset-0 w-full h-full" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
-        <!-- Newsletter End -->
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" class="fixed bottom-6 right-6 p-3 bg-[#2d5016] text-white rounded-full shadow-lg hover:bg-[#3a602d] transition-all duration-300 z-50 hidden transform hover:scale-110">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Modal and video functionality
+        const videoModal = document.getElementById('videoModal');
+        const watchVideoBtn = document.getElementById('watch-video-btn');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const youtubeVideo = document.getElementById('youtubeVideo');
+
+        watchVideoBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const videoUrl = watchVideoBtn.getAttribute('data-video');
+            youtubeVideo.src = videoUrl + "?autoplay=1";
+            videoModal.classList.remove('hidden');
+            setTimeout(() => {
+                videoModal.querySelector('div').classList.remove('scale-95');
+                videoModal.querySelector('div').classList.add('scale-100');
+            }, 10);
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            videoModal.querySelector('div').classList.remove('scale-100');
+            videoModal.querySelector('div').classList.add('scale-95');
+            setTimeout(() => {
+                youtubeVideo.src = "";
+                videoModal.classList.add('hidden');
+            }, 300);
+        });
+
+        // Scroll-to-top button functionality
+        const scrollToTopBtn = document.getElementById('scroll-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.remove('hidden');
+            } else {
+                scrollToTopBtn.classList.add('hidden');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Mobile menu toggle functionality
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('-translate-y-full');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(item => {
+            item.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.add('-translate-y-full');
+            });
+        });
+
+        // Fade-in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
         
-<style>
-    /* Custom CSS to ensure all portfolio images have the same height and aspect ratio */
-    .portfolio-img-wrapper {
-        position: relative;
-        padding-bottom: 75%; /* Creates a 4:3 aspect ratio (height is 75% of width) */
-        height: 0; /* Important for the padding-bottom trick to work */
-        overflow: hidden; /* Hides any content that overflows this container */
-    }
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => {
+            fadeInObserver.observe(element);
+        });
 
-    .portfolio-img-wrapper img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* Ensures the image covers the entire area, cropping if necessary */
-    }
-
-    /* Ensure the portfolio overlay also covers the new fixed aspect ratio container */
-    .portfolio-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex; /* Use flexbox for vertical alignment of content */
-        flex-direction: column; /* Stack content vertically */
-        justify-content: flex-end; /* Align content to the bottom */
-        padding: 1.5rem; /* Add some padding inside the overlay */
-        background: rgba(0, 0, 0, .5); /* Example overlay background */
-        opacity: 0;
-        transition: .5s;
-    }
-
-    .portfolio-item:hover .portfolio-overlay {
-        opacity: 1;
-    }
-
-    .portfolio-overlay a.btn {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        opacity: 0;
-        transition: .5s;
-    }
-
-    .portfolio-item:hover .portfolio-overlay a.btn {
-        opacity: 1;
-    }
-
-</style>
-
-<!-- Portfolio Start -->
-<div class="container-xxl py-5">
-    <div class="container px-lg-5">
-        <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
-            <h6 class="position-relative d-inline text-primary ps-4">Our Projects</h6>
-            <h2 class="mt-2">Recently Launched Projects</h2>
-        </div>
-        <div class="row mt-n2 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="col-12 text-center">
-                <ul class="list-inline mb-5" id="portfolio-flters">
-                    <li class="btn px-3 pe-4 active" data-filter="*">Semua</li>
-                    <li class="btn px-3 pe-4" data-filter=".first">Jaringan</li>
-                    <li class="btn px-3 pe-4" data-filter=".second">Telekomunikasi</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="row g-4 portfolio-container">
-            <!-- Portfolio Item 1 -->
-            <div class="col-lg-4 col-md-6 portfolio-item first wow zoomIn" data-wow-delay="0.1s">
-                <div class="position-relative rounded overflow-hidden portfolio-img-wrapper">
-                    <img class="img-fluid" src="{{ asset('homepage/img/proses bisnis.png')}}" alt="Proses bisnis di bidang teknik jaringan komputer dan telekomunikasi">
-                    <div class="portfolio-overlay">
-                        <a class="btn btn-light" href="{{ asset('homepage/img/proses bisnis.png')}}" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
-                        <div class="mt-auto">
-                            <small class="text-white"><i class="fa fa-folder me-2"></i>Debi Sartika Roza</small>
-                            <a class="h5 d-block text-white mt-1 mb-0" href="">Proses bisnis di bidang teknik jaringan komputer dan telekomunikasi</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Portfolio Item 2 -->
-            <div class="col-lg-4 col-md-6 portfolio-item second wow zoomIn" data-wow-delay="0.3s">
-                <div class="position-relative rounded overflow-hidden portfolio-img-wrapper">
-                    <img class="img-fluid" src="{{ asset('homepage/img/perkembangan.png')}}" alt="Perkembangan teknologi di bidang teknik jaringan komputer dan telekomunikasi">
-                    <div class="portfolio-overlay">
-                        <a class="btn btn-light" href="{{ asset('homepage/img/perkembangan.png')}}" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></i></a>
-                        <div class="mt-auto">
-                            <small class="text-white"><i class="fa fa-folder me-2"></i>Ari Gunawan Giawa</small>
-                            <a class="h5 d-block text-white mt-1 mb-0" href="">Perkembangan teknologi di bidang teknik jaringan komputer dan telekomunikasi</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Portfolio Item 3 -->
-            <div class="col-lg-4 col-md-6 portfolio-item first wow zoomIn" data-wow-delay="0.6s">
-                <div class="position-relative rounded overflow-hidden portfolio-img-wrapper">
-                    <img class="img-fluid" src="{{ asset('homepage/img/profesi.png')}}" alt="Profesi dan Kewirausahaan">
-                    <div class="portfolio-overlay">
-                        <a class="btn btn-light" href="{{ asset('homepage/img/profesi.png')}}" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
-                        <div class="mt-auto">
-                            <small class="text-white"><i class="fa fa-folder me-2"></i>Nadiyahtul Bariyyah</small>
-                            <a class="h5 d-block text-white mt-1 mb-0" href="">Profesi dan Kewirausahaan</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Portfolio Item 4 -->
-            <div class="col-lg-4 col-md-6 portfolio-item second wow zoomIn" data-wow-delay="0.1s">
-                <div class="position-relative rounded overflow-hidden portfolio-img-wrapper">
-                    <img class="img-fluid" src="{{ asset('homepage/img/k3lh.png')}}" alt="Keselamatan dan Kesehatan Kerja Lingkungan Hidup (K3LH) dan budaya kerja industri">
-                    <div class="portfolio-overlay">
-                        <a class="btn btn-light" href="{{ asset('homepage/img/k3lh.png')}}" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
-                        <div class="mt-auto">
-                            <small class="text-white"><i class="fa fa-folder me-2"></i>Reski Wulandari</small>
-                            <a class="h5 d-block text-white mt-1 mb-0" href="">Keselamatan dan Kesehatan Kerja Lingkungan Hidup (K3LH) dan budaya kerja industri</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Portfolio Item 5 -->
-            <div class="col-lg-4 col-md-6 portfolio-item first wow zoomIn" data-wow-delay="0.3s">
-                <div class="position-relative rounded overflow-hidden portfolio-img-wrapper">
-                    <img class="img-fluid" src="{{ asset('homepage/img/media.png')}}" alt="Media dan Jaringan Telekomunikasi">
-                    <div class="portfolio-overlay">
-                        <a class="btn btn-light" href="{{ asset('homepage/img/media.png')}}" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
-                        <div class="mt-auto">
-                            <small class="text-white"><i class="fa fa-folder me-2"></i>Ferju Prihamdani</small>
-                            <a class="h5 d-block text-white mt-1 mb-0" href="">Media dan Jaringan Telekomunikasi</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Portfolio Item 6 -->
-            <div class="col-lg-4 col-md-6 portfolio-item second wow zoomIn" data-wow-delay="0.6s">
-                <div class="position-relative rounded overflow-hidden portfolio-img-wrapper">
-                    <img class="img-fluid" src="{{ asset('homepage/img/alat ukur.png')}}" alt="Penggunaan Alat Ukur">
-                    <div class="portfolio-overlay">
-                        <a class="btn btn-light" href="{{ asset('homepage/img/alat ukur.png')}}" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
-                        <div class="mt-auto">
-                            <small class="text-white"><i class="fa fa-folder me-2"></i>Rifki Fuadi</small>
-                            <a class="h5 d-block text-white mt-1 mb-0" href="">Penggunaan Alat Ukur</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Portfolio End -->
-
-        <!-- Footer Start -->
-        <div class="container-fluid bg-primary text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
-            <div class="container py-5 px-lg-5">
-                <div class="row g-5">
-                    <div class="col-md-6 col-lg-3">
-                        <h5 class="text-white mb-4">Kontak</h5>
-                        <p><i class="fa fa-map-marker-alt me-3"></i>Jl. Dr. Moh. Hatta - Painan</p>
-                        <p><i class="fa fa-phone-alt me-3"></i>+62 75621123</p>
-                        <p><i class="fa fa-envelope me-3"></i>info@smkn1pnn.sch.id</p>
-                        <div class="d-flex pt-2">
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-light btn-social" href="https://web.facebook.com/smkn1painan?_rdc=1&_rdr&checkpoint_src=any#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-instagram"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <h5 class="text-white mb-4">Popular Link</h5>
-                        <a class="btn btn-link" href="#">About Us</a>
-                        <a class="btn btn-link" href="#">Contact Us</a>
-                        <a class="btn btn-link" href="#">Privacy Policy</a>
-                        <a class="btn btn-link" href="#">Terms & Condition</a>
-                        <a class="btn btn-link" href="#">Career</a>
-                    </div>
-<div class="col-md-6 col-lg-3">
-    <h5 class="text-white mb-4">Project Gallery</h5>
-    <div class="row g-2">
-        <div class="col-4">
-            <img src="{{ asset('homepage/img/proses bisnis.png')}}" alt="Image" class="img-fluid" style="height: 100px; object-fit: cover; width: 100%; border-radius: 5px;">
-        </div>
-        <div class="col-4">
-            <img src="{{ asset('homepage/img/perkembangan.png')}}" alt="Image" class="img-fluid" style="height: 100px; object-fit: cover; width: 100%; border-radius: 5px;">
-        </div>
-        <div class="col-4">
-            <img src="{{ asset('homepage/img/profesi.png')}}" alt="Image" class="img-fluid" style="height: 100px; object-fit: cover; width: 100%; border-radius: 5px;">
-        </div>
-        <div class="col-4">
-            <img src="{{ asset('homepage/img/k3lh.png')}}" alt="Image" class="img-fluid" style="height: 100px; object-fit: cover; width: 100%; border-radius: 5px;">
-        </div>
-        <div class="col-4">
-            <img src="{{ asset('homepage/img/media.png')}}" alt="Image" class="img-fluid" style="height: 100px; object-fit: cover; width: 100%; border-radius: 5px;">
-        </div>
-        <div class="col-4">
-            <img src="{{ asset('homepage/img/alat ukur.png')}}" alt="Image" class="img-fluid" style="height: 100px; object-fit: cover; width: 100%; border-radius: 5px;">
-        </div>
-    </div>
-</div>
-                    <div class="col-md-6 col-lg-3">
-                        <h5 class="text-white mb-4">Newsletter 📢</h5>
-                        <p>Gabung dengan ribuan pembelajar lainnya dan dapatkan konten eksklusif, info terbaru, serta tips belajar langsung di inbox kamu!</p>
-                        <div class="position-relative w-100 mt-3">
-                            <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Your Email" style="height: 48px;">
-                            <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container px-lg-5">
-                <div class="copyright">
-                    <div class="row">
-                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            &copy; <a class="border-bottom" href="#">NetPedia</a>, All Right Reserved. 
-                            
-                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                            Designed By <a class="border-bottom" href="#">Ferju Prihamdani</a>
-                        </div>
-                        <div class="col-md-6 text-center text-md-end">
-                            <div class="footer-menu">
-                                <a href="">Home</a>
-                                <a href="">Cookies</a>
-                                <a href="">Help</a>
-                                <a href="">FQAs</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Footer End -->
-
-
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top pt-2"><i class="bi bi-arrow-up"></i></a>
-    </div>
-
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('homepage/lib/wow/wow.min.js')}}"></script>
-    <script src="{{ asset('homepage/lib/easing/easing.min.js')}}"></script>
-    <script src="{{ asset('homepage/lib/waypoints/waypoints.min.js')}}"></script>
-    <script src="{{ asset('homepage/lib/owlcarousel/owl.carousel.min.js')}}"></script>
-    <script src="{{ asset('homepage/lib/isotope/isotope.pkgd.min.js')}}"></script>
-    <script src="{{ asset('homepage/lib/lightbox/js/lightbox.min.js')}}"></script>
-
-    <!-- Template Javascript -->
-    <script src="{{asset('homepage/js/main.js')}}"></script>
+        // Add slight delay to hero elements for staggered animation
+        document.querySelectorAll('.fade-in').forEach((el, index) => {
+            el.style.transitionDelay = `${index * 0.2}s`;
+        });
+    </script>
 </body>
-
 </html>

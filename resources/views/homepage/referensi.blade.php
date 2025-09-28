@@ -415,7 +415,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-                        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto"> <!-- Added ms-auto for right alignment -->
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ url('/') }}">
