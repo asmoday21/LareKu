@@ -254,6 +254,7 @@ class GuruController extends Controller
 
         return redirect()->route('guru.profile')->with('success', 'Profil berhasil diperbarui!');
     }
+
     
     public function logout()
     {
