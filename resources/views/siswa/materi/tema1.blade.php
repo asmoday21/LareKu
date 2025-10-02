@@ -568,10 +568,6 @@
                                             
                                             <div class="video-in-accordion">
                                                 <p class="fw-semibold text-muted mb-2"><i class="bi bi-youtube me-1"></i> Video: Proses Produksi</p>
-                                                <div class="video-container">
-                                                    <!-- Contoh video Produksi -->
-                                                    <iframe src="https://www.youtube.com/embed/S2qY4_o4vWc" title="Video Produksi" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -589,14 +585,6 @@
                                             <p class="fw-semibold">Penjelasan:</p>
                                             <p>Kegiatan menyalurkan barang atau jasa dari produsen kepada konsumen. Distribusi memastikan barang sampai ke tangan yang membutuhkan. Pelakunya disebut <strong>Distributor</strong>.</p>
                                             <p class="mb-0"><small>Contoh: Jasa pengiriman barang, agen sembako, pedagang besar.</small></p>
-
-                                            <div class="video-in-accordion">
-                                                <p class="fw-semibold text-muted mb-2"><i class="bi bi-youtube me-1"></i> Video: Mekanisme Distribusi</p>
-                                                <div class="video-container">
-                                                    <!-- Contoh video Distribusi -->
-                                                    <iframe src="https://www.youtube.com/embed/H0c2Q1t5_uI" title="Video Distribusi" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -615,14 +603,14 @@
                                             <p class="mb-0"><small>Contoh: Membeli makanan di kantin, menggunakan jasa transportasi online, memakai pakaian.</small></p>
 
                                             <div class="video-in-accordion">
-                                                <p class="fw-semibold text-muted mb-2"><i class="bi bi-youtube me-1"></i> Video: Contoh Pola Konsumsi</p>
-                                                <div class="video-container">
-                                                    <!-- Contoh video Konsumsi -->
-                                                    <iframe src="https://www.youtube.com/embed/WJ6Uu2QzXG0" title="Video Konsumsi" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                </div>
+                                                <p class="fw-semibold text-muted mb-2"><i class="bi bi-youtube me-1"></i> Video: Contoh Pola Konsumsi</p>                                                
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="video-container">
+                                    <!-- Contoh video Konsumsi -->
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/oQKT01sGtNE?si=gvJNYvGcDqHSV5xM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                                 </div>
                             </div>
                         </div>
@@ -646,14 +634,6 @@
                                             <p class="fw-semibold">Penjelasan:</p>
                                             <p>Unsur ini merujuk pada <strong>tempat terjadinya peristiwa sejarah</strong>. Lokasi (ruang) menjadi fokus karena setiap peristiwa terikat pada kondisi geografis dan lingkungan spesifik yang memengaruhi jalannya peristiwa. Analisis ruang membantu memahami konteks sosial dan fisik suatu kejadian.</p>
                                             <p class="mb-0"><small>Contoh: Revolusi Proklamasi terjadi di Jakarta, Pertempuran 10 November terjadi di Surabaya.</small></p>
-
-                                            <div class="video-in-accordion">
-                                                <p class="fw-semibold text-muted mb-2"><i class="bi bi-youtube me-1"></i> Video: Peran Ruang dalam Sejarah</p>
-                                                <div class="video-container">
-                                                    <!-- Contoh video Ruang -->
-                                                    <iframe src="https://www.youtube.com/embed/nU2y1Z_p-fQ" title="Video Ruang dalam Sejarah" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -670,14 +650,6 @@
                                             <p class="fw-semibold">Penjelasan:</p>
                                             <p>Unsur ini berkaitan dengan <strong>kapan peristiwa itu terjadi</strong> (kronologi). Waktu adalah konsep dasar yang membedakan sejarah dari ilmu lain, memastikan adanya urutan kejadian (sebab-akibat) yang jelas. Sejarah mengenal konsep <strong>perubahan dan keberlanjutan</strong> seiring berjalannya waktu.</p>
                                             <p class="mb-0"><small>Contoh: Kemerdekaan Indonesia pada 17 Agustus 1945.</small></p>
-
-                                            <div class="video-in-accordion">
-                                                <p class="fw-semibold text-muted mb-2"><i class="bi bi-youtube me-1"></i> Video: Kronologi dan Periodisasi</p>
-                                                <div class="video-container">
-                                                    <!-- Contoh video Waktu -->
-                                                    <iframe src="https://www.youtube.com/embed/5b-zRk_J32A" title="Video Waktu dalam Sejarah" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -694,17 +666,15 @@
                                             <p class="fw-semibold">Penjelasan:</p>
                                             <p>Manusia adalah <strong>pelaku utama atau subjek sekaligus objek sejarah</strong>. Tanpa manusia, tidak ada peristiwa sejarah. Peran manusia, baik sebagai individu maupun kelompok, sangat menentukan arah perubahan di masa lampau, yang kemudian dipelajari di masa kini.</p>
                                             <p class="mb-0"><small>Contoh: Tokoh proklamator, pahlawan daerah, masyarakat biasa yang berjuang di balik layar.</small></p>
-
-                                            <div class="video-in-accordion">
-                                                <p class="fw-semibold text-muted mb-2"><i class="bi bi-youtube me-1"></i> Video: Manusia Sebagai Penggerak Sejarah</p>
-                                                <div class="video-container">
-                                                    <!-- Contoh video Manusia -->
-                                                    <iframe src="https://www.youtube.com/embed/0S4M7ZgK6lY" title="Video Manusia dalam Sejarah" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="video-in-accordion">
+                                        <div class="video-container">
+                                            <!-- Contoh video Manusia -->
+                                            <iframe width="560" height="315" src="https://www.youtube.com/embed/MD56RYVl-pU?si=2LeQYCUde68gU2lU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>                                                
+                                        </div>
+                                    </div>
                             </div>
                         </div>
                         <!-- AKHIR KONSEP DASAR ILMU SEJARAH -->
