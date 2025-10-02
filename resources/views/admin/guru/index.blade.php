@@ -74,7 +74,8 @@
                                         {{ ucfirst($user->role) }}
                                     </span>
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ $user->created_at->format('d M Y') }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ $user->created_at ? $user->created_at->format('d M Y') : '-' }}
+</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                     <a href="{{ route('admin.users.edit', $user->id) }}" class="text-indigo-600 hover:text-indigo-900 mr-3 transition duration-200 ease-in-out">Edit</a>
                                     <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="inline-block">
