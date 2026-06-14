@@ -494,6 +494,8 @@
             <i class="bi bi-arrow-left me-2"></i> Kembali ke Menu Utama
         </button>
 
+        <div class="material-section mt-5">
+
         <div class="row g-4">
             
             <!-- Materi dan Tujuan Pembelajaran -->

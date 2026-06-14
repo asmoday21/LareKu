@@ -562,6 +562,30 @@ Route::get('tema4', [MateriTetapController::class, 'tema4'])->name('guru.materi.
 Route::get('optik', [MateriTetapController::class, 'optik'])->name('guru.materi.optik');
 
 
+use App\Http\Controllers\Guru\VideoController;
+Route::prefix('guru')
+    ->name('guru.')
+    ->group(function () {
+
+        Route::resource(
+            'video',
+            \App\Http\Controllers\Guru\VideoController::class
+        );
+
+    });
+
+Route::prefix('siswa')
+    ->name('siswa.')
+    ->group(function () {
+
+        Route::get(
+            'video',
+            [\App\Http\Controllers\Siswa\VideoController::class, 'index']
+        )->name('video.index');
+
+    });
+
+
 use App\Http\Controllers\Siswa\MateriTetapController as SiswaMateriTetapController;
 Route::get('siswa/tema1', [SiswaMateriTetapController::class, 'tema1'])->name('siswa.materi.tema1');
 Route::get('siswa/tema2', [SiswaMateriTetapController::class, 'tema2'])->name('siswa.materi.tema2');

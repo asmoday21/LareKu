@@ -3,11 +3,11 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     
-    <title>Login - NetPedia</title>
+    <title>Login - Lareku</title>
     
     <!-- Favicons -->
-    <link href="{{ asset('admin2/assets/img/NetPedia.png') }}" rel="icon">
-    <link href="{{ asset('admin2/assets/img/NetPedia.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('admin2/assets/img/Lareku.png') }}" rel="icon">
+    <link href="{{ asset('admin2/assets/img/Lareku.png') }}" rel="apple-touch-icon">
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -885,7 +885,7 @@
                                 <path d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/>
                             </svg>
                         </div>
-                        <h2 class="illustration-title mb-2">Salamaik Datang di NetPedia</h2>
+                        <h2 class="illustration-title mb-2">Salamaik Datang di Lareku</h2>
                         <p class="illustration-text mx-auto" style="max-width: 300px;">Platform pembelajaran digital nan menghubungkan Anda dengan pengetahuan tak terbatas, dibangun dengan nilai-nilai budaya Minangkabau</p>
                     </div>
                 </div>
@@ -900,8 +900,8 @@
                     <div class="traditional-pattern pattern-2"></div>
 
                     <div class="brand-section">
-                        <img src="{{ asset('admin2/assets/img/logo.png') }}" alt="NetPedia" class="brand-logo">
-                        <h1 class="brand-name">NetPedia</h1>
+                        <img src="{{ asset('admin2/assets/img/logo.png') }}" alt="Lareku" class="brand-logo">
+                        <h1 class="brand-name">Lareku</h1>
                     </div>
 
                     <div class="form-header">
@@ -961,7 +961,7 @@
                         </div>
                         
                         <button class="login-button" type="submit">
-                            <span style="position: relative; z-index: 3;">Masuk ka NetPedia</span>
+                            <span style="position: relative; z-index: 3;">Masuk ka Lareku</span>
                         </button>
                         
                         <div class="register-text">

@@ -54,12 +54,19 @@
         <i class="mdi mdi-book-open-page-variant menu-icon"></i>
         <span class="menu-title">Daftar Materi</span>
       </a>
-    </li>
+    </li>    
 
     <li class="nav-item">
+      <a class="nav-link" href="{{ route('guru.video.index') }}">
+        <i class="bi bi-youtube menu-icon"></i>
+        <span class="menu-title">Video Pembelajaran</span>
+      </a>
+    </li>
+    
+    <li class="nav-item">
       <a class="nav-link" href="{{ route('chat.view') }}">
-      <i class="mdi mdi-robot menu-icon"></i>
-      <span class="menu-title">Chatbot AI</span>
+        <i class="mdi mdi-robot menu-icon"></i>
+        <span class="menu-title">Chatbot AI</span>
       </a>
     </li>
      
