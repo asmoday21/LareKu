@@ -681,7 +681,7 @@
     <div class="app-container">
         <div class="d-flex justify-content-between align-items-center">
             <div class="topbar-brand">
-                <i class="bi bi-book-half"></i> LareKu
+                <i class="bi bi-book-half"></i> 
             </div>
             <a href="{{ route('siswa.materi.index') }}" class="btn-back" style="text-decoration: none;">
                 <i class="bi bi-arrow-left"></i> Kembali Menu

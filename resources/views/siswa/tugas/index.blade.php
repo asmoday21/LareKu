@@ -1283,7 +1283,7 @@
     <div class="app-container">
         <div class="d-flex justify-content-between align-items-center">
             <div class="topbar-brand">
-                <i class="bi bi-rocket-takeoff-fill"></i> <span class="d-none d-sm-inline">LareKu</span>
+                <i class="bi bi-rocket-takeoff-fill"></i> <span class="d-none d-sm-inline"></span>
             </div>
             <button class="btn-back" onclick="window.history.back()">
                 <i class="bi bi-arrow-left"></i> <span>Kembali</span>

@@ -737,7 +737,7 @@
     <div class="app-container">
         <div class="d-flex justify-content-between align-items-center">
             <div class="topbar-brand">
-                <i class="bi bi-book-half"></i> LareKu
+                <i class="bi bi-book-half"></i> 
             </div>
             <button class="btn-back" onclick="window.history.back()">
                 <i class="bi bi-arrow-left"></i> Kembali

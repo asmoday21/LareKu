@@ -4,16 +4,16 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Register - LareKu</title>
+    <title>Register - </title>
 
     <!-- Favicons -->
-    <link href="{{ asset('admin2/assets/img/LareKu.png') }}" rel="icon">
-    <link href="{{ asset('admin2/assets/img/LareKu.png') }}" rel="apple-touch-icon">
-    <title>Register - Lareku</title>
+    <link href="{{ asset('admin2/assets/img/.png') }}" rel="icon">
+    <link href="{{ asset('admin2/assets/img/.png') }}" rel="apple-touch-icon">
+    <title>Register - </title>
 
     <!-- Favicons -->
-    <link href="{{ asset('admin2/assets/img/Lareku.png') }}" rel="icon">
-    <link href="{{ asset('admin2/assets/img/Lareku.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('admin2/assets/img/.png') }}" rel="icon">
+    <link href="{{ asset('admin2/assets/img/.png') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -811,10 +811,10 @@
                             </svg>
                         </div>
 
-                        <h2 class="illustration-title mb-2">Bergabung jo LareKu</h2>
-                        <p class="illustration-text mx-auto" style="max-width: 320px;">Mulai perjalanan belajar Anda bersama LareKu. Tambah ilmu, tambah pengalaman, tambah masa depan nan cerah</p>
-                        <h2 class="illustration-title mb-2">Bergabung jo Lareku</h2>
-                        <p class="illustration-text mx-auto" style="max-width: 320px;">Mulai perjalanan belajar Anda bersama Lareku. Tambah ilmu, tambah pengalaman, tambah masa depan nan cerah</p>
+                        <h2 class="illustration-title mb-2">Bergabung jo </h2>
+                        <p class="illustration-text mx-auto" style="max-width: 320px;">Mulai perjalanan belajar Anda bersama . Tambah ilmu, tambah pengalaman, tambah masa depan nan cerah</p>
+                        <h2 class="illustration-title mb-2">Bergabung jo </h2>
+                        <p class="illustration-text mx-auto" style="max-width: 320px;">Mulai perjalanan belajar Anda bersama . Tambah ilmu, tambah pengalaman, tambah masa depan nan cerah</p>
                     </div>
                 </div>
 
@@ -829,10 +829,10 @@
 
                     <div class="brand-section">
 
-                        <img src="{{ asset('admin2/assets/img/logo.png') }}" alt="LareKu" class="brand-logo">
-                        <h1 class="brand-name">LareKu</h1>
-                        <img src="{{ asset('admin2/assets/img/logo.png') }}" alt="Lareku" class="brand-logo">
-                        <h1 class="brand-name">Lareku</h1>
+                        <img src="{{ asset('admin2/assets/img/logo.png') }}" alt="" class="brand-logo">
+                        <h1 class="brand-name"></h1>
+                        <img src="{{ asset('admin2/assets/img/logo.png') }}" alt="" class="brand-logo">
+                        <h1 class="brand-name"></h1>
                     </div>
 
                     <div class="form-header">
@@ -913,8 +913,8 @@
 
                         <button class="register-button" type="submit">
 
-                            <span style="position: relative; z-index: 3;">Daftar ka LareKu</span>
-                            <span style="position: relative; z-index: 3;">Daftar ka Lareku</span>
+                            <span style="position: relative; z-index: 3;">Daftar ka </span>
+                            <span style="position: relative; z-index: 3;">Daftar ka </span>
                         </button>
 
                         <div class="login-text">
