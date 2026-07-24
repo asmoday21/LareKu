@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Guru;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Materi;
-use Illuminate\Support\Facades\Storage;
 use App\Models\MediaPendukung;
 
 class GuruMateriController extends Controller
@@ -63,61 +62,123 @@ class GuruMateriController extends Controller
 
             if ($request->hasFile('file')) {
 
-                $media->file = $request->file('file')
-                    ->store('media_pendukung','public');
+                $file = $request->file('file');
 
+                $filename = time() . '_' . preg_replace(
+                    '/[^A-Za-z0-9.\-_]/',
+                    '',
+                    $file->getClientOriginalName()
+                );
+
+                $destination = public_path('storage/media_pendukung');
+
+                if (!is_dir($destination)) {
+                    mkdir($destination, 0755, true);
+                }
+
+                $file->move($destination, $filename);
+
+                $media->file = 'media_pendukung/' . $filename;
             }
 
             if ($request->jenis == 'video_youtube') {
-
                 $media->video_url = $request->video_url;
-
             }
 
             $media->save();
         }
 
-        return redirect()->route('guru.materi.index')
-            ->with('success','Materi berhasil ditambahkan');
+        return redirect()
+            ->route('guru.materi.index')
+            ->with('success', 'Materi berhasil ditambahkan');
     }
 
     public function edit($id)
     {
-        $materi = Materi::findOrFail($id);
+        $materi = Materi::with('mediaPendukung')->findOrFail($id);
+
         return view('guru.materi.edit', compact('materi'));
     }
 
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         $materi = Materi::findOrFail($id);
 
         $materi->update([
-            'tema'=>$request->tema,
-            'judul'=>$request->judul,
-            'deskripsi'=>$request->deskripsi,
-            'konten'=>$request->konten,
+            'tema' => $request->tema,
+            'judul' => $request->judul,
+            'deskripsi' => $request->deskripsi,
+            'konten' => $request->konten,
         ]);
 
-        return redirect()->route('guru.materi.index')
-                ->with('success','Materi berhasil diperbarui');
+        if ($request->hasFile('file')) {
+
+            $media = $materi->mediaPendukung()->first();
+
+            if ($media) {
+
+                if ($media->file) {
+
+                    $oldFile = public_path('storage/' . $media->file);
+
+                    if (file_exists($oldFile)) {
+                        unlink($oldFile);
+                    }
+                }
+
+                $file = $request->file('file');
+
+                $filename = time() . '_' . preg_replace(
+                    '/[^A-Za-z0-9.\-_]/',
+                    '',
+                    $file->getClientOriginalName()
+                );
+
+                $destination = public_path('storage/media_pendukung');
+
+                if (!is_dir($destination)) {
+                    mkdir($destination, 0755, true);
+                }
+
+                $file->move($destination, $filename);
+
+                $media->file = 'media_pendukung/' . $filename;
+                $media->judul = $request->media_judul;
+                $media->jenis = $request->jenis;
+
+                if ($request->jenis == 'video_youtube') {
+                    $media->video_url = $request->video_url;
+                }
+
+                $media->save();
+            }
+        }
+
+        return redirect()
+            ->route('guru.materi.index')
+            ->with('success', 'Materi berhasil diperbarui');
     }
 
     public function destroy($id)
     {
         $materi = Materi::findOrFail($id);
 
-        foreach($materi->mediaPendukung as $media){
+        foreach ($materi->mediaPendukung as $media) {
 
-            if($media->file){
+            if ($media->file) {
 
-                Storage::disk('public')->delete($media->file);
+                $path = public_path('storage/' . $media->file);
 
+                if (file_exists($path)) {
+                    unlink($path);
+                }
             }
 
+            $media->delete();
         }
 
         $materi->delete();
 
-        return back()->with('success','Materi berhasil dihapus');
+        return back()->with('success', 'Materi berhasil dihapus');
     }
 }
