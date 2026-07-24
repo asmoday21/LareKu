@@ -737,7 +737,7 @@
     <div class="app-container">
         <div class="d-flex justify-content-between align-items-center">
             <div class="topbar-brand">
-                <i class="bi bi-book-half"></i> EduPortal
+                <i class="bi bi-book-half"></i> LareKu
             </div>
             <a href="{{ route('siswa.materi.index') }}" class="btn-back" style="text-decoration: none;">
                 <i class="bi bi-arrow-left"></i> Kembali ke Modul
