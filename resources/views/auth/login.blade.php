@@ -893,9 +893,7 @@
                         </div>
 
                         <h2 class="illustration-title mb-2">Salamaik Datang di LareKu</h2>
-=======
                         <h2 class="illustration-title mb-2">Salamaik Datang di Lareku</h2>
->>>>>>> bc3d876af6eb25fb3e2b5ce53c3d026b8fba5148
                         <p class="illustration-text mx-auto" style="max-width: 300px;">Platform pembelajaran digital nan menghubungkan Anda dengan pengetahuan tak terbatas, dibangun dengan nilai-nilai budaya Minangkabau</p>
                     </div>
                 </div>
@@ -913,10 +911,8 @@
 
                         <img src="{{ asset('admin2/assets/img/logo.png') }}" alt="LareKu" class="brand-logo">
                         <h1 class="brand-name">LareKu</h1>
-=======
                         <img src="{{ asset('admin2/assets/img/logo.png') }}" alt="Lareku" class="brand-logo">
                         <h1 class="brand-name">Lareku</h1>
->>>>>>> bc3d876af6eb25fb3e2b5ce53c3d026b8fba5148
                     </div>
 
                     <div class="form-header">
@@ -978,9 +974,7 @@
                         <button class="login-button" type="submit">
 
                             <span style="position: relative; z-index: 3;">Masuk ka LareKu</span>
-=======
                             <span style="position: relative; z-index: 3;">Masuk ka Lareku</span>
->>>>>>> bc3d876af6eb25fb3e2b5ce53c3d026b8fba5148
                         </button>
                         
                         <div class="register-text">

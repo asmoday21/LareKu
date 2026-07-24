@@ -813,10 +813,8 @@
 
                         <h2 class="illustration-title mb-2">Bergabung jo LareKu</h2>
                         <p class="illustration-text mx-auto" style="max-width: 320px;">Mulai perjalanan belajar Anda bersama LareKu. Tambah ilmu, tambah pengalaman, tambah masa depan nan cerah</p>
-=======
                         <h2 class="illustration-title mb-2">Bergabung jo Lareku</h2>
                         <p class="illustration-text mx-auto" style="max-width: 320px;">Mulai perjalanan belajar Anda bersama Lareku. Tambah ilmu, tambah pengalaman, tambah masa depan nan cerah</p>
->>>>>>> bc3d876af6eb25fb3e2b5ce53c3d026b8fba5148
                     </div>
                 </div>
 
@@ -833,10 +831,8 @@
 
                         <img src="{{ asset('admin2/assets/img/logo.png') }}" alt="LareKu" class="brand-logo">
                         <h1 class="brand-name">LareKu</h1>
-=======
                         <img src="{{ asset('admin2/assets/img/logo.png') }}" alt="Lareku" class="brand-logo">
                         <h1 class="brand-name">Lareku</h1>
->>>>>>> bc3d876af6eb25fb3e2b5ce53c3d026b8fba5148
                     </div>
 
                     <div class="form-header">
@@ -918,9 +914,7 @@
                         <button class="register-button" type="submit">
 
                             <span style="position: relative; z-index: 3;">Daftar ka LareKu</span>
-=======
                             <span style="position: relative; z-index: 3;">Daftar ka Lareku</span>
->>>>>>> bc3d876af6eb25fb3e2b5ce53c3d026b8fba5148
                         </button>
 
                         <div class="login-text">
