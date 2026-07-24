@@ -893,7 +893,6 @@
                         </div>
 
                         <h2 class="illustration-title mb-2">Salamaik Datang di </h2>
-                        <h2 class="illustration-title mb-2">Salamaik Datang di </h2>
                         <p class="illustration-text mx-auto" style="max-width: 300px;">Platform pembelajaran digital nan menghubungkan Anda dengan pengetahuan tak terbatas, dibangun dengan nilai-nilai budaya Minangkabau</p>
                     </div>
                 </div>
@@ -909,8 +908,6 @@
 
                     <div class="brand-section">
 
-                        <img src="{{ asset('admin2/assets/img/logo.png') }}" alt="" class="brand-logo">
-                        <h1 class="brand-name"></h1>
                         <img src="{{ asset('admin2/assets/img/logo.png') }}" alt="" class="brand-logo">
                         <h1 class="brand-name"></h1>
                     </div>
@@ -973,8 +970,7 @@
                         
                         <button class="login-button" type="submit">
 
-                            <span style="position: relative; z-index: 3;">Masuk ka </span>
-                            <span style="position: relative; z-index: 3;">Masuk ka </span>
+                            <span style="position: relative; z-index: 3;">Masuk ka LareKu</span>
                         </button>
                         
                         <div class="register-text">

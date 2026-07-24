@@ -813,8 +813,6 @@
 
                         <h2 class="illustration-title mb-2">Bergabung jo </h2>
                         <p class="illustration-text mx-auto" style="max-width: 320px;">Mulai perjalanan belajar Anda bersama . Tambah ilmu, tambah pengalaman, tambah masa depan nan cerah</p>
-                        <h2 class="illustration-title mb-2">Bergabung jo </h2>
-                        <p class="illustration-text mx-auto" style="max-width: 320px;">Mulai perjalanan belajar Anda bersama . Tambah ilmu, tambah pengalaman, tambah masa depan nan cerah</p>
                     </div>
                 </div>
 
@@ -829,8 +827,6 @@
 
                     <div class="brand-section">
 
-                        <img src="{{ asset('admin2/assets/img/logo.png') }}" alt="" class="brand-logo">
-                        <h1 class="brand-name"></h1>
                         <img src="{{ asset('admin2/assets/img/logo.png') }}" alt="" class="brand-logo">
                         <h1 class="brand-name"></h1>
                     </div>
@@ -913,8 +909,7 @@
 
                         <button class="register-button" type="submit">
 
-                            <span style="position: relative; z-index: 3;">Daftar ka </span>
-                            <span style="position: relative; z-index: 3;">Daftar ka </span>
+                            <span style="position: relative; z-index: 3;">Daftar ka LareKu </span>
                         </button>
 
                         <div class="login-text">
