@@ -49,6 +49,13 @@
     </li>
 
     <li class="nav-item">
+      <a class="nav-link" href="{{ route('siswa.video.index') }}">
+        <i class="bi bi-youtube menu-icon"></i>
+        <span class="menu-title">Video Pembelajaran</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
       <a class="nav-link" href="{{ route('chat.view') }}">
       <i class="mdi mdi-robot menu-icon"></i>
       <span class="menu-title">Chatbot AI</span>
