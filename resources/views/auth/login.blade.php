@@ -9,13 +9,11 @@
     <!-- Favicons -->
     <link href="{{ asset('admin2/assets/img/LareKu.png') }}" rel="icon">
     <link href="{{ asset('admin2/assets/img/LareKu.png') }}" rel="apple-touch-icon">
-=======
     <title>Login - Lareku</title>
     
     <!-- Favicons -->
     <link href="{{ asset('admin2/assets/img/Lareku.png') }}" rel="icon">
     <link href="{{ asset('admin2/assets/img/Lareku.png') }}" rel="apple-touch-icon">
->>>>>>> bc3d876af6eb25fb3e2b5ce53c3d026b8fba5148
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
