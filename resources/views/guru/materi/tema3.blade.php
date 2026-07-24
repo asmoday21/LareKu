@@ -681,7 +681,7 @@
     <div class="app-container">
         <div class="d-flex justify-content-between align-items-center">
             <div class="topbar-brand">
-                <i class="bi bi-book-half"></i> 
+                <i class="bi bi-book-half"></i> EduPortal
             </div>
             <a href="{{ route('guru.materi.index') }}" class="btn-back" style="text-decoration: none;">
                 <i class="bi bi-arrow-left"></i> Kembali Menu
@@ -772,13 +772,12 @@
                         </p>
                     @endif
 
-                    <div class="content-text text-dark">
+                    <div class="content-text text-dark prose">
                         {!! $item->konten !!}
                     </div>
 
-                    @if($item->mediaPendukung->count())
-                        {{-- <hr class="my-5 opacity-25" style="border-color: var(--color-brand);"> --}}
-                        <h5 class="fw-bold mb-4" style="color: var(--text-primary);">
+                    @if($item->mediaPendukung->count() > 0)
+                        <h5 class="fw-bold mb-4 mt-5" style="color: var(--text-primary);">
                             <i class="bi bi-paperclip me-2 text-primary"></i>Media Pendukung
                         </h5>
 
@@ -807,7 +806,7 @@
                                 </div>
 
                                 <div class="d-flex gap-2">
-                                    <button class="btn btn-primary btn-sm rounded-pill px-4 fw-bold" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="background: var(--color-brand); border: none;">
+                                    <button class="btn btn-primary btn-sm rounded-pill px-4 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="background: var(--color-brand); border: none;">
                                         <i class="bi bi-eye me-1"></i> Lihat
                                     </button>
                                     
@@ -824,7 +823,6 @@
                                     <div class="document-iframe-container shadow-sm" style="height: 600px;">
                                         <iframe src="{{ asset('storage/'.$media->file) }}" width="100%" height="100%" style="border: none;" allowfullscreen></iframe>
                                     </div>
-
                                 @elseif($media->jenis == 'word')
                                     <div class="document-iframe-container ratio ratio-16x9 shadow-sm">
                                         <iframe src="https://docs.google.com/gview?url={{ urlencode(asset('storage/'.$media->file)) }}&embedded=true" allowfullscreen style="border: none;"></iframe>
@@ -832,7 +830,6 @@
                                     <div class="text-center small text-muted mt-2 fw-bold">
                                         <i class="bi bi-info-circle text-primary"></i> Render menggunakan Google Docs Viewer (File harus online).
                                     </div>
-
                                 @elseif($media->jenis == 'ppt')
                                     <div class="document-iframe-container ratio ratio-16x9 shadow-sm">
                                         <iframe src="https://view.officeapps.live.com/op/embed.aspx?src={{ urlencode(asset('storage/'.$media->file)) }}" allowfullscreen style="border: none;"></iframe>
@@ -840,7 +837,6 @@
                                     <div class="text-center small text-muted mt-2 fw-bold">
                                         <i class="bi bi-info-circle text-primary"></i> Render menggunakan Microsoft Office Viewer (File harus online).
                                     </div>
-
                                 @elseif($media->jenis == 'video_upload')
                                     <div class="document-iframe-container ratio ratio-16x9 bg-black shadow-sm">
                                         <video controls class="w-100 h-100 rounded-3">
@@ -848,7 +844,6 @@
                                             Browser Anda tidak mendukung tag video.
                                         </video>
                                     </div>
-
                                 @elseif($media->jenis == 'video_youtube')
                                     @php
                                         preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match);
@@ -874,21 +869,21 @@
                 </div>
                 @endforelse
                 
-                <!-- Konten Bawaan (Statis) -->
+                <!-- Konten Bawaan (Statis) - FOKUS MINANGKABAU -->
                 <div class="content-card fade-in-up delay-3">
                     <h4 class="section-title">
                         <i class="bi bi-stars"></i> Pembelajaran Interaktif (Integrasi Minangkabau)
                     </h4>
 
-                    <!-- Topik 1 -->
+                    <!-- Topik 1: Pemanfaatan Potensi SDA -->
                     <div class="topic-block">
                         <div class="topic-header">
                             <div class="topic-icon">
                                 <i class="bi bi-tree-fill"></i>
                             </div>
-                            <h3 class="topic-title">Pemanfaatan & Pelestarian Sumber Daya Alam</h3>
+                            <h3 class="topic-title">Pemanfaatan Potensi SDA</h3>
                         </div>
-                        <p>Sumber daya alam (SDA) adalah segala sesuatu yang ada di permukaan bumi. Di Sumatera Barat, kearifan lokal memegang peran penting dalam pemanfaatan sungai, hutan, dan tanah agraris agar tidak dieksploitasi berlebihan.</p>
+                        <p>Sumber daya alam (SDA) adalah segala sesuatu yang ada di permukaan bumi yang dimanfaatkan untuk memenuhi kebutuhan manusia. Sumatera Barat dianugerahi SDA yang sangat melimpah, namun peleatariaanya menjadi sangat penting agar bisa dinikmati oleh anak cucu kelak.</p>
                         
                         <div class="accordion custom-accordion" id="accordionSDA">
                             <div class="accordion-item">
@@ -899,7 +894,7 @@
                                 </h2>
                                 <div id="collapseRenew" class="accordion-collapse collapse" data-bs-parent="#accordionSDA">
                                     <div class="accordion-body">
-                                        <p class="mb-0 text-dark">Contoh: Hutan tropis dan sungai-sungai di Minangkabau yang dijaga melalui tradisi adat agar ekosistemnya tetap pulih.</p>
+                                        <p class="mb-0 text-dark">Adalah SDA yang dapat pulih kembali secara alami atau dengan campur tangan manusia. Contohnya adalah luasnya hutan tropis dan sungai-sungai bersih di Minangkabau yang senantiasa dijaga ekosistemnya melalui hukum-hukum adat yang mengikat warganya.</p>
                                     </div>
                                 </div>
                             </div>
@@ -911,50 +906,76 @@
                                 </h2>
                                 <div id="collapseNonRenew" class="accordion-collapse collapse" data-bs-parent="#accordionSDA">
                                     <div class="accordion-body">
-                                        <p class="mb-0 text-dark">Contoh: Tambang batu bara (seperti di Ombilin, Sawahlunto masa lampau) dan emas, yang habis jika terus dikeruk.</p>
+                                        <p class="mb-0 text-dark">SDA ini jumlahnya sangat terbatas dan akan habis karena proses pembentukannya butuh waktu jutaan tahun. Contoh nyatanya adalah Tambang Batu Bara di Ombilin, Sawahlunto, yang dulu berjaya namun kini tambangnya telah habis (menjadi situs peninggalan sejarah dunia).</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Topik 2 -->
+                    <!-- Topik 2: Potensi Negara Maju -->
                     <div class="topic-block">
                         <div class="topic-header">
                             <div class="topic-icon" style="background: rgba(245, 158, 11, 0.15); color: var(--color-accent);">
                                 <i class="bi bi-building-up"></i>
                             </div>
-                            <h3 class="topic-title">Potensi Demografi dan Ekonomi Nagari</h3>
+                            <h3 class="topic-title">Potensi Negara Maju</h3>
                         </div>
-                        <p>Indonesia sedang menapaki masa <strong>Bonus Demografi</strong>, di mana usia produktif lebih banyak. Dalam konteks budaya lokal, pemuda Minang memiliki dorongan ekonomi yang kuat melalui tradisi <em>Marantau</em>.</p>
+                        <p>Indonesia diprediksi akan menjadi negara maju pada tahun 2045. Salah satu motor penggerak utamanya adalah <strong>Bonus Demografi</strong>, yakni kondisi di mana jumlah penduduk usia produktif (pekerja) jauh lebih banyak dibandingkan usia non-produktif.</p>
                         
                         <div class="highlight-box">
-                            <p><i class="bi bi-people-fill me-2 fs-5"></i><strong>Kemandirian Ekonomi:</strong><br><span class="mt-2 d-block text-secondary" style="font-family: 'Merriweather', serif; font-weight: normal; font-size: 0.95rem;">Merantau mengajarkan etos kerja, kewirausahaan, dan pertukaran pengetahuan antar ruang (migrasi). Pemuda yang sukses di rantau seringkali mengirimkan modal untuk membangun desa asalnya (Nagari), menjadi motor penggerak ekonomi berkelanjutan.</span></p>
+                            <p><i class="bi bi-lightbulb-fill me-2 fs-5"></i><strong>Kemandirian Pemuda Minang:</strong><br><span class="mt-2 d-block text-secondary" style="font-family: 'Merriweather', serif; font-weight: normal; font-size: 0.95rem;">Budaya <em>Marantau</em> (merantau) pada pemuda Minang menjadi katalis penting. Mereka merantau untuk menuntut ilmu atau berdagang, dan ketika sukses, modal serta ilmunya akan dibawa kembali (dikirim) untuk membangun nagari asal mereka. Ini adalah modal sosial luar biasa untuk menumbuhkan ekonomi Indonesia dari desa.</span></p>
                         </div>
                     </div>
 
-                    <!-- Topik 3 -->
+                    <!-- Topik 3: Toponimi Daerah -->
                     <div class="topic-block">
                         <div class="topic-header">
                             <div class="topic-icon" style="background: rgba(236, 72, 153, 0.15); color: var(--color-pink);">
                                 <i class="bi bi-map-fill"></i>
                             </div>
-                            <h3 class="topic-title">Konsep Toponimi dalam Budaya</h3>
+                            <h3 class="topic-title">Toponimi Daerah</h3>
                         </div>
-                        <p>Toponimi adalah bidang ilmu linguistik dan geografi yang mempelajari <strong>asal-usul penamaan tempat</strong>. Ini merekam jejak sejarah dan identitas suatu masyarakat.</p>
-                        <p>Nama tempat sering merujuk pada bentang alam (geomorfologi). Contohnya di Minangkabau:</p>
+                        <p>Toponimi adalah bidang ilmu (geografi dan linguistik) yang mengkaji <strong>asal-usul penamaan tempat</strong>. Di Minangkabau, nama sebuah tempat biasanya merekam sejarah geomorfologi (bentang alam) dan sejarah leluhur di masa lalu.</p>
+                        <p class="mb-3">Berdasarkan toponimi, kita bisa memetakan bahwa leluhur Minangkabau sangat bergantung pada bentuk alam:</p>
                         <ul class="mb-4">
-                            <li><strong>"Batang"</strong> (berarti sungai), seperti <em>Batang Arau</em> atau <em>Batang Anai</em>.</li>
-                            <li><strong>"Koto" / "Kubu"</strong> (pemukiman berbenteng), seperti <em>Koto Tangah</em>.</li>
-                            <li><strong>"Bukik"</strong> (bukit), seperti <em>Bukiktinggi</em>.</li>
+                            <li><strong>"Batang"</strong> (berarti sungai): Mengindikasikan pemukiman awal yang menggantungkan hidup (air minum, irigasi, transportasi) pada sungai. Contoh: <em>Batang Arau</em>, <em>Batang Anai</em>.</li>
+                            <li><strong>"Koto" / "Kubu"</strong>: Menandakan pemukiman yang dibangun dengan pertahanan (benteng pertahanan bambu/tanah) pada zaman perang/konflik masa lalu. Contoh: <em>Koto Tangah</em>.</li>
+                            <li><strong>"Bukik" / "Ngarai"</strong>: Mengindikasikan penamaan berdasarkan bentuk wilayah perbukitan atau lembah curam. Contoh: <em>Bukiktinggi</em>, <em>Ngarai Sianok</em>.</li>
                         </ul>
+                    </div>
+
+                    <!-- Topik 4: Ekonomi Sekitar & Interaksi Sosial -->
+                    <div class="topic-block">
+                        <div class="topic-header">
+                            <div class="topic-icon" style="background: rgba(16, 185, 129, 0.15); color: var(--color-green);">
+                                <i class="bi bi-people-fill"></i>
+                            </div>
+                            <h3 class="topic-title">Ekonomi Sekitar & Interaksi Sosial</h3>
+                        </div>
+                        <p>Aktivitas ekonomi yang dilakukan sehari-hari, seperti produksi, distribusi, dan konsumsi, pada akhirnya akan membentuk pola interaksi sosial masyarakat. Di Sumatera Barat, pasar tradisional (<em>pasa</em>) bukan hanya tempat jual beli, melainkan juga pusat bertemunya berbagai gagasan, informasi, dan tali silaturahmi antar nagari.</p>
+                        
+                        <div class="row g-3 mt-3">
+                            <div class="col-md-6">
+                                <div class="bg-white p-4 rounded-4 shadow-sm border border-light h-100">
+                                    <h6 class="fw-bold text-brand mb-3"><i class="bi bi-shop me-2"></i>Ekonomi Kreatif Sekitar</h6>
+                                    <p class="small text-secondary mb-0">Masyarakat memproduksi kerajinan tangan lokal seperti Tenun Songket Pandai Sikek atau ukiran kayu, yang didistribusikan ke wisatawan. Ini menciptakan lapangan pekerjaan lokal yang mandiri.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="bg-white p-4 rounded-4 shadow-sm border border-light h-100">
+                                    <h6 class="fw-bold text-accent mb-3"><i class="bi bi-chat-quote me-2"></i>Interaksi Sosial (Asosiatif)</h6>
+                                    <p class="small text-secondary mb-0">Proses tawar menawar di pasar tradisional atau musyawarah penentuan harga hasil panen dengan Niniak Mamak adalah contoh bentuk interaksi sosial yang merekatkan kerja sama dan keadilan ekonomi antar warga.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Video Kesimpulan -->
                     <div class="topic-block bg-white border-0 border-top border-light mt-5 pt-5 text-center">
                         <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2 mb-3 fw-bold border border-primary-subtle"><i class="bi bi-play-btn-fill me-1"></i> Tontonan Pendalaman</span>
                         <h5 class="fw-bold mb-3 font-inter fs-4">Perubahan Potensi Sumber Daya Alam</h5>
-                        <p class="mb-4 mx-auto" style="max-width: 600px;">Simak video berikut untuk melihat bagaimana potensi SDA kita berubah seiring waktu dan aktivitas ekonomi.</p>
+                        <p class="mb-4 mx-auto" style="max-width: 600px;">Simak video edukasi berikut untuk melihat bagaimana kegiatan ekonomi memengaruhi perubahan pada potensi SDA kita dan pentingnya pelestarian.</p>
                         
                         <div class="media-wrapper ratio-16x9 shadow-lg rounded-4 border border-light">
                             <iframe src="https://www.youtube.com/embed/Yph7nGy7nlk" title="YouTube video player" allowfullscreen></iframe>
@@ -969,28 +990,19 @@
                 <!-- Widget Kearifan Lokal -->
                 <div class="sidebar-widget fade-in-up delay-2">
                     <h5 class="widget-title">
-                        <i class="bi bi-globe-central-south-asia" style="color: var(--color-teal);"></i> Kearifan Ekologi
+                        <i class="bi bi-flower1" style="color: var(--color-teal);"></i> Kearifan Ekologi
                     </h5>
-                    <p class="small text-secondary mb-3">Masyarakat adat Minangkabau memiliki cara-cara tradisional yang cerdas untuk mengelola potensi alam ekonomi tanpa merusaknya.</p>
+                    <p class="small text-secondary mb-3">Masyarakat adat Minangkabau memiliki cara tradisional yang terbukti ampuh secara ilmiah untuk mengelola potensi alam tanpa mengeksploitasinya.</p>
                     
-                    <div class="accordion custom-accordion mb-4" id="accordionKearifan">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#kLokal1" style="font-size: 0.9rem;">
-                                    Tradisi Ikan Larangan
-                                </button>
-                            </h2>
-                            <div id="kLokal1" class="accordion-collapse collapse" data-bs-parent="#accordionKearifan">
-                                <div class="accordion-body small text-muted">
-                                    <strong>Konservasi Sungai:</strong> Suatu kawasan sungai disepakati oleh pemuka adat (Niniak Mamak) dan ulama untuk dilarang diambil ikannya selama periode tertentu (misal 6 bulan - 1 tahun).<br><br>
-                                    <strong>Manfaat Ekonomi:</strong> Larangan ini memberi kesempatan ikan berkembang biak. Saat larangan dibuka (panen raya), masyarakat memancing bersama dan hasilnya dilelang/dijual.
-                                </div>
-                            </div>
-                        </div>
+                    <h6 class="fw-bold fs-6 font-inter mt-4">Tradisi Ikan Larangan</h6>
+                    
+                    <div class="wisdom-box mb-3">
+                        <p class="small mb-2 text-dark"><strong>Konservasi Sungai:</strong> Suatu kawasan sungai disepakati oleh pemuka adat (Niniak Mamak) dan pemuka agama untuk dilarang diambil ikannya selama periode tertentu (misal 6 bulan - 1 tahun).</p>
+                        <p class="small mb-0 text-dark"><strong>Manfaat Ekonomi:</strong> Larangan ini memberi kesempatan ekosistem sungai pulih dan ikan berkembang biak. Saat larangan dibuka (panen raya), masyarakat memancing dan hasilnya dilelang. Hasilnya murni untuk kas pembangunan Masjid atau fasilitas desa.</p>
                     </div>
 
                     <!-- Video Thumbnail -->
-                    <div class="position-relative rounded-4 overflow-hidden shadow-sm border border-light" id="kl-video-wrapper" style="cursor: pointer;">
+                    <div class="position-relative rounded-4 overflow-hidden shadow-sm mt-3 border border-light" id="kl-video-wrapper" style="cursor: pointer;">
                         <img src="https://placehold.co/600x400/0284C7/FFFFFF?text=Ikan+Larangan" alt="Video Kearifan Lokal" id="kl-video-thumb" class="img-fluid w-100" style="min-height: 180px; object-fit: cover;">
                         <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.2);"></div>
                         <div class="position-absolute top-50 start-50 translate-middle">
@@ -1005,7 +1017,7 @@
                 <div class="sidebar-widget widget-quiz fade-in-up delay-3 sticky-top" style="top: 100px;">
                     <div class="d-flex justify-content-between align-items-center mb-4 border-bottom border-warning-subtle pb-3">
                         <h5 class="widget-title m-0">
-                            <i class="bi bi-lightning-charge-fill"></i> Kuis Evaluasi
+                            <i class="bi bi-lightning-charge-fill"></i> Kuis Tema 03
                         </h5>
                         <span class="badge bg-white text-dark border border-warning-subtle rounded-pill px-3 py-2 fw-bold shadow-sm" id="quizCounter">1 / 5</span>
                     </div>
@@ -1045,7 +1057,7 @@
         function playVideo() {
             wrapper.innerHTML = `
                 <div class="ratio ratio-16x9">
-                    <iframe src="https://www.youtube.com/embed/HqD22m6rF0I?autoplay=1" allow="autoplay; encrypted-media" class="rounded-4" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/HqD22m6rF0I?autoplay=1" allow="autoplay; encrypted-media" class="rounded-4 bg-black" allowfullscreen></iframe>
                 </div>`;
         }
         
@@ -1053,21 +1065,21 @@
         if(thumb) thumb.addEventListener('click', playVideo);
     });
 
-    // 3. Quiz Logic (Tema 3)
+    // 3. Quiz Logic (Tema 3 - Disesuaikan Minangkabau)
     const quizData = [
         {
             question: "Berikut ini yang merupakan contoh sumber daya alam yang TIDAK DAPAT diperbarui di Sumatera Barat adalah...",
             options: [
-                "Air sungai Batang Anai dan hutan lindung",
-                "Tambang Batu Bara di Sawahlunto",
+                "Air sungai Batang Anai dan hutan tropis",
+                "Tambang Batu Bara di Ombilin, Sawahlunto",
                 "Energi ombak laut di pesisir Mentawai",
-                "Lahan pertanian padi"
+                "Hamparan lahan pertanian sawah padi"
             ],
             answer: 1, 
-            explanation: "Barang tambang seperti batu bara tidak bisa diperbarui karena proses terbentuknya membutuhkan waktu jutaan tahun secara geologis."
+            explanation: "Barang tambang seperti batu bara tidak bisa diperbarui karena proses pembentukannya di dalam bumi membutuhkan waktu jutaan tahun secara geologis."
         },
         {
-            question: "Hutan yang memiliki fungsi pokok sebagai pelindung sistem penyangga kehidupan, mencegah banjir dan mengatur tata air disebut...",
+            question: "Hutan yang memiliki fungsi pokok perlindungan sistem penyangga kehidupan, seperti mencegah banjir dan menjaga tata air di hulu sungai (seperti konsep Rimbo Larangan) adalah...",
             options: [
                 "Hutan Produksi",
                 "Hutan Konservasi",
@@ -1075,32 +1087,32 @@
                 "Hutan Wisata"
             ],
             answer: 2,
-            explanation: "Hutan lindung secara spesifik ditetapkan untuk fungsi menjaga kualitas tanah, mencegah erosi/longsor, dan memastikan cadangan air tanah."
+            explanation: "Hutan lindung secara spesifik ditetapkan dengan tujuan utama menjaga kualitas dan ketahanan tanah, mencegah erosi/longsor, dan memastikan cadangan air tanah tidak mengering."
         },
         {
-            question: "Kondisi di mana mayoritas penduduk berada pada usia produktif (15-64 tahun) sehingga berpeluang besar meningkatkan pertumbuhan ekonomi disebut...",
+            question: "Kondisi di mana mayoritas penduduk suatu negara berada pada usia produktif (15-64 tahun) sehingga berpeluang besar menjadi negara maju disebut...",
             options: [
                 "Ledakan Penduduk",
                 "Migrasi Demografi",
-                "Transmigrasi",
+                "Transmigrasi Terpusat",
                 "Bonus Demografi"
             ],
             answer: 3,
-            explanation: "Bonus demografi adalah keuntungan ekonomis yang disebabkan menurunnya rasio ketergantungan. Usia produktif yang banyak akan mendorong produktivitas."
+            explanation: "Bonus demografi adalah keuntungan di mana rasio ketergantungan menurun drastis. Jumlah usia pekerja/produktif yang besar akan mendorong produktivitas dan pertumbuhan ekonomi negara."
         },
         {
-            question: "Banyak nama daerah di Sumatera Barat berawalan kata 'Batang' (contoh: Batang Arau, Batang Kuranji). Dalam ilmu Toponimi, hal ini menunjukkan identitas historis bahwa...",
+            question: "Banyak nama daerah/nagari di Sumatera Barat yang berawalan kata 'Batang' (contoh: Batang Arau, Batang Anai). Berdasarkan ilmu Toponimi, hal ini merekam jejak sejarah bahwa...",
             options: [
-                "Masyarakat masa lalu banyak berprofesi sebagai tukang kayu",
-                "Daerah tersebut memiliki bentuk wilayah berbukit tajam",
-                "Sungai menjadi pusat awal peradaban dan jalur ekonomi utama",
-                "Penduduknya berasal dari suku Batang"
+                "Masyarakat masa lampau mayoritas berprofesi sebagai tukang tebang kayu",
+                "Daerah tersebut memiliki bentuk lahan berupa perbukitan karang yang tajam",
+                "Sungai (Batang) pernah menjadi pusat awal berdirinya peradaban dan urat nadi transportasi/ekonomi",
+                "Penduduk aslinya merupakan keturunan campuran dari Suku Batang"
             ],
             answer: 2,
-            explanation: "Toponimi (asal usul nama) 'Batang' yang berarti sungai merekam jejak sejarah bahwa sungai adalah urat nadi pemukiman dan transportasi ekonomi nenek moyang."
+            explanation: "Ilmu toponimi (asal usul nama tempat) 'Batang' yang artinya sungai, menjadi bukti valid sejarah bahwa sungai adalah pusat utama pemukiman, sumber air, dan jalur ekonomi nenek moyang di masa lalu."
         },
         {
-            question: "Tradisi adat Minangkabau melarang masyarakat menangkap ikan di aliran sungai tertentu demi menjaga ekosistem. Hasil panen bersama nantinya digunakan untuk membangun desa. Tradisi ini disebut...",
+            question: "Tradisi adat Minangkabau melarang keras masyarakat menangkap ikan di aliran sungai tertentu demi menjaga ekosistem. Saat panen raya, hasilnya dilelang untuk membangun kas desa. Tradisi ini dinamakan...",
             options: [
                 "Mandi Balimau",
                 "Ikan Larangan",
@@ -1108,7 +1120,7 @@
                 "Makan Bajamba"
             ],
             answer: 1,
-            explanation: "Ikan Larangan adalah bentuk kearifan ekologi untuk mencegah eksploitasi sungai, sekaligus memiliki nilai pemberdayaan ekonomi."
+            explanation: "Tradisi Ikan Larangan adalah bentuk cerdas dari kearifan ekologi (mencegah kepunahan ikan & eksploitasi sungai) yang sekaligus diintegrasikan dengan nilai pemberdayaan ekonomi umat (pembangunan fasilitas Nagari)."
         }
     ];
 
@@ -1211,6 +1223,7 @@
 
     // Init Quiz
     renderQuestion();
+
 </script>
 </body>
 </html>

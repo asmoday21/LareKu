@@ -81,7 +81,7 @@
             line-height: 1.8;
         }
 
-        /* Layout presisi seperti Tema 1 (Tidak pakai .container bootstrap untuk wrapper luar) */
+        /* Layout presisi seperti Tema 1 */
         .app-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -646,6 +646,15 @@
         .delay-3 { animation-delay: 0.3s; }
         .delay-4 { animation-delay: 0.4s; }
 
+        /* ====== INFO BOX KEARIFAN LOKAL ====== */
+        .wisdom-box {
+            background: var(--bg-primary);
+            padding: 1rem 1.25rem;
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--color-teal);
+            margin: 1rem 0;
+        }
+
         /* ====== RESPONSIVE ====== */
         @media (max-width: 991.98px) {
             .app-container { padding: 0 1.25rem; }
@@ -681,7 +690,7 @@
     <div class="app-container">
         <div class="d-flex justify-content-between align-items-center">
             <div class="topbar-brand">
-                <i class="bi bi-book-half"></i> 
+                <i class="bi bi-book-half"></i> EduPortal
             </div>
             <a href="{{ route('siswa.materi.index') }}" class="btn-back" style="text-decoration: none;">
                 <i class="bi bi-arrow-left"></i> Kembali Menu
@@ -759,7 +768,7 @@
                             <form action="{{ route('guru.materi.destroy', $item->id) }}" method="POST" class="d-inline m-0">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-outline-danger btn-sm rounded-pill px-3 fw-bold d-flex align-items-center gap-1" onclick="return confirm('Hapus materi ini selamanya?')">
+                                <button type="submit" class="btn btn-outline-danger btn-sm rounded-pill px-3 fw-bold d-flex align-items-center gap-1" onclick="return confirm('Hapus materi ini selamanya?')">
                                     <i class="fas fa-trash"></i> Hapus
                                 </button>
                             </form>
@@ -772,13 +781,12 @@
                         </p>
                     @endif
 
-                    <div class="content-text text-dark">
+                    <div class="content-text text-dark prose">
                         {!! $item->konten !!}
                     </div>
 
-                    @if($item->mediaPendukung->count())
-                        {{-- <hr class="my-5 opacity-25" style="border-color: var(--color-brand);"> --}}
-                        <h5 class="fw-bold mb-4" style="color: var(--text-primary);">
+                    @if($item->mediaPendukung->count() > 0)
+                        {{-- <h5 class="fw-bold mb-4 mt-5" style="color: var(--text-primary);"> --}}
                             <i class="bi bi-paperclip me-2 text-primary"></i>Media Pendukung
                         </h5>
 
@@ -807,7 +815,7 @@
                                 </div>
 
                                 <div class="d-flex gap-2">
-                                    <button class="btn btn-primary btn-sm rounded-pill px-4 fw-bold" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="background: var(--color-brand); border: none;">
+                                    <button class="btn btn-primary btn-sm rounded-pill px-4 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="background: var(--color-brand); border: none;">
                                         <i class="bi bi-eye me-1"></i> Lihat
                                     </button>
                                     
@@ -824,7 +832,6 @@
                                     <div class="document-iframe-container shadow-sm" style="height: 600px;">
                                         <iframe src="{{ asset('storage/'.$media->file) }}" width="100%" height="100%" style="border: none;" allowfullscreen></iframe>
                                     </div>
-
                                 @elseif($media->jenis == 'word')
                                     <div class="document-iframe-container ratio ratio-16x9 shadow-sm">
                                         <iframe src="https://docs.google.com/gview?url={{ urlencode(asset('storage/'.$media->file)) }}&embedded=true" allowfullscreen style="border: none;"></iframe>
@@ -832,7 +839,6 @@
                                     <div class="text-center small text-muted mt-2 fw-bold">
                                         <i class="bi bi-info-circle text-primary"></i> Render menggunakan Google Docs Viewer (File harus online).
                                     </div>
-
                                 @elseif($media->jenis == 'ppt')
                                     <div class="document-iframe-container ratio ratio-16x9 shadow-sm">
                                         <iframe src="https://view.officeapps.live.com/op/embed.aspx?src={{ urlencode(asset('storage/'.$media->file)) }}" allowfullscreen style="border: none;"></iframe>
@@ -840,7 +846,6 @@
                                     <div class="text-center small text-muted mt-2 fw-bold">
                                         <i class="bi bi-info-circle text-primary"></i> Render menggunakan Microsoft Office Viewer (File harus online).
                                     </div>
-
                                 @elseif($media->jenis == 'video_upload')
                                     <div class="document-iframe-container ratio ratio-16x9 bg-black shadow-sm">
                                         <video controls class="w-100 h-100 rounded-3">
@@ -848,7 +853,6 @@
                                             Browser Anda tidak mendukung tag video.
                                         </video>
                                     </div>
-
                                 @elseif($media->jenis == 'video_youtube')
                                     @php
                                         preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match);
@@ -874,21 +878,21 @@
                 </div>
                 @endforelse
                 
-                <!-- Konten Bawaan (Statis) -->
+                <!-- Konten Bawaan (Statis) - FOKUS MINANGKABAU -->
                 <div class="content-card fade-in-up delay-3">
                     <h4 class="section-title">
                         <i class="bi bi-stars"></i> Pembelajaran Interaktif (Integrasi Minangkabau)
                     </h4>
 
-                    <!-- Topik 1 -->
+                    <!-- Topik 1: Keragaman Sosial Budaya -->
                     <div class="topic-block">
                         <div class="topic-header">
                             <div class="topic-icon">
                                 <i class="bi bi-people-fill"></i>
                             </div>
-                            <h3 class="topic-title">Keragaman Sosial Budaya & Permasalahan</h3>
+                            <h3 class="topic-title">Keragaman Sosial Budaya</h3>
                         </div>
-                        <p>Indonesia lahir dari kekayaan suku, ras, bahasa, dan agama yang sangat beragam. Dalam konteks Sumatra Barat, kebudayaan Minangkabau dengan sistem <strong>Matrilineal</strong> (garis keturunan ibu) merupakan salah satu identitas budaya yang sangat khas dan unik di dunia.</p>
+                        <p>Indonesia lahir dari kekayaan suku, ras, bahasa, dan agama yang sangat beragam. Dalam konteks Sumatera Barat, kebudayaan Minangkabau dengan sistem <strong>Matrilineal</strong> (menarik garis keturunan dari pihak ibu) merupakan salah satu identitas budaya yang sangat khas dan paling unik di dunia.</p>
                         
                         <div class="accordion custom-accordion" id="accordionSosial">
                             <div class="accordion-item">
@@ -899,61 +903,77 @@
                                 </h2>
                                 <div id="collapseAdat" class="accordion-collapse collapse" data-bs-parent="#accordionSosial">
                                     <div class="accordion-body">
-                                        <p class="mb-0 text-dark">Filosofi <em>"Adat Basandi Syarak, Syarak Basandi Kitabullah" (ABSSBK)</em> menjadikan adat Minang bersinergi dengan ajaran Islam, menciptakan masyarakat yang religius dan berbudaya.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseModern">
-                                        <i class="bi bi-exclamation-triangle-fill me-2 text-danger"></i> Tantangan Modernisasi
-                                    </button>
-                                </h2>
-                                <div id="collapseModern" class="accordion-collapse collapse" data-bs-parent="#accordionSosial">
-                                    <div class="accordion-body">
-                                        <p class="mb-0 text-dark">Permasalahan muncul ketika nilai sopan santun seperti <em>Sumbang Duo Baleh</em> (aturan etika) mulai luntur di kalangan remaja akibat pengaruh budaya global yang tidak difilter.</p>
+                                        <p class="mb-0 text-dark">Filosofi <em>"Adat Basandi Syarak, Syarak Basandi Kitabullah" (ABSSBK)</em> menjadikan adat istiadat Minangkabau bersinergi penuh dengan ajaran Islam. Hal ini menciptakan karakter masyarakat yang sangat religius namun tetap memegang teguh tradisi leluhur.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Topik 2 -->
+                    <!-- Topik 2: Permasalahan Kehidupan -->
                     <div class="topic-block">
                         <div class="topic-header">
-                            <div class="topic-icon" style="background: rgba(16, 185, 129, 0.15); color: var(--color-accent);">
-                                <i class="bi bi-shop-window"></i>
+                            <div class="topic-icon" style="background: rgba(239, 68, 68, 0.15); color: var(--color-red);">
+                                <i class="bi bi-exclamation-triangle-fill"></i>
                             </div>
-                            <h3 class="topic-title">Kewirausahaan & Literasi Keuangan</h3>
+                            <h3 class="topic-title">Permasalahan Kehidupan</h3>
                         </div>
-                        <p>Pemberdayaan komunitas erat kaitannya dengan kemandirian ekonomi. Masyarakat Minang secara historis terkenal dengan jiwa merantaunya (<em>Marantau</em>) dan keahliannya dalam berdagang (kewirausahaan).</p>
+                        <p>Dinamika sosial seringkali memicu permasalahan dalam kehidupan bermasyarakat, terutama akibat globalisasi dan kemajuan teknologi yang begitu pesat tanpa diimbangi oleh saringan budaya.</p>
                         
                         <div class="highlight-box">
-                            <p><i class="bi bi-lightbulb-fill me-2 fs-5"></i><strong>Tradisi Berdagang:</strong><br><span class="mt-2 d-block text-secondary" style="font-family: 'Merriweather', serif; font-weight: normal; font-size: 0.95rem;">Dalam budaya Minang, merantau dan berdagang bukan hanya soal mencari nafkah, melainkan proses pendewasaan (pemberdayaan diri). Oleh sebab itu, literasi mencatat pendapatan dan pengeluaran secara teliti sangat ditanamkan sejak dini.</span></p>
+                            <p><i class="bi bi-lightbulb-fill me-2 fs-5"></i><strong>Tantangan Modernisasi di Minangkabau:</strong><br><span class="mt-2 d-block text-secondary" style="font-family: 'Merriweather', serif; font-weight: normal; font-size: 0.95rem;">Salah satu masalah sosial saat ini adalah mulai lunturnya nilai sopan santun dan tata krama pergaulan yang telah lama diatur dalam <em>Sumbang Duo Baleh</em> (aturan etika bagi perempuan/remaja Minang). Kenakalan remaja, seperti tawuran atau perilaku menyimpang, terjadi karena kurangnya pemahaman generasi muda terhadap akar budayanya sendiri.</span></p>
                         </div>
                     </div>
 
-                    <!-- Topik 3 -->
+                    <!-- Topik 3: Pemberdayaan Warga -->
+                    <div class="topic-block">
+                        <div class="topic-header">
+                            <div class="topic-icon" style="background: rgba(16, 185, 129, 0.15); color: var(--color-green);">
+                                <i class="bi bi-wallet-fill"></i>
+                            </div>
+                            <h3 class="topic-title">Pemberdayaan Warga (Kewirausahaan)</h3>
+                        </div>
+                        <p>Pemberdayaan komunitas sejatinya bertujuan untuk menciptakan kemandirian warga agar mereka mampu memecahkan masalahnya sendiri, khususnya di bidang ekonomi. Masyarakat Minang secara historis terkenal dengan etos kerja dan jiwa kewirausahaannya melalui tradisi <strong>Marantau</strong>.</p>
+                        
+                        <div class="row g-3 mt-3">
+                            <div class="col-md-6">
+                                <div class="bg-white p-4 rounded-4 shadow-sm border border-light h-100">
+                                    <h6 class="fw-bold text-brand mb-3"><i class="bi bi-shop me-2"></i>Ekonomi Kreatif Lokal</h6>
+                                    <p class="small text-secondary mb-0">Memberdayakan warga desa dengan mengembangkan potensi lokal. Contohnya kerajinan kain Tenun Songket Silungkang atau industri kuliner Rendang rumahan yang pemasarannya bisa menembus tingkat nasional bahkan global.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="bg-white p-4 rounded-4 shadow-sm border border-light h-100">
+                                    <h6 class="fw-bold text-accent mb-3"><i class="bi bi-graph-up-arrow me-2"></i>Literasi Keuangan</h6>
+                                    <p class="small text-secondary mb-0">Tradisi berdagang orang Minang secara tidak langsung mendidik warganya untuk memiliki literasi keuangan yang baik. Kemampuan membedakan kebutuhan (primer) dan keinginan sangat penting untuk diajarkan kepada remaja sejak dini.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Topik 4: Peranan Komunitas -->
                     <div class="topic-block">
                         <div class="topic-header">
                             <div class="topic-icon" style="background: rgba(236, 72, 153, 0.15); color: var(--color-pink);">
                                 <i class="bi bi-diagram-3-fill"></i>
                             </div>
-                            <h3 class="topic-title">Gotong Royong dalam Komunitas</h3>
+                            <h3 class="topic-title">Peranan Komunitas (Gotong Royong)</h3>
                         </div>
-                        <p>Pemberdayaan masyarakat adalah proses membangun kemandirian agar komunitas mampu menyelesaikan masalahnya sendiri. Di Minangkabau, konsep ini sudah tertanam dalam sistem adat.</p>
+                        <p>Permasalahan di tingkat desa/nagari dapat diselesaikan lebih cepat jika komunitas berperan aktif dan mengedepankan prinsip musyawarah (mufakat).</p>
                         
-                        <ul class="mb-4">
-                            <li><strong>Makan Bajamba (Makan Barapak):</strong> Tradisi duduk bersama dalam satu ruangan melingkari hidangan.</li>
-                            <li>Ini bukan sekadar makan, melainkan wujud kesetaraan (tanpa memandang status sosial), rasa syukur, musyawarah (mufakat), dan kuatnya tali persaudaraan dalam menyelesaikan masalah di <em>Nagari</em>.</li>
-                        </ul>
+                        <div class="wisdom-box mt-3" style="border-left-color: var(--color-pink);">
+                            <p class="small mb-0 text-dark">
+                                <strong>Makan Bajamba (Makan Barapak):</strong><br>
+                                Tradisi ini bukan sekadar aktivitas makan bersama. Di balik <em>Makan Bajamba</em>, tersimpan nilai-nilai peranan komunitas yang sangat kuat, seperti menjunjung tinggi asas kesetaraan (semua duduk sama rendah tanpa memandang status ekonomi), wadah bermusyawarah, dan perekat tali persaudaraan antar warga nagari.
+                            </p>
+                        </div>
                     </div>
 
                     <!-- Video Kesimpulan -->
                     <div class="topic-block bg-white border-0 border-top border-light mt-5 pt-5 text-center">
                         <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2 mb-3 fw-bold border border-primary-subtle"><i class="bi bi-play-btn-fill me-1"></i> Tontonan Pendalaman</span>
                         <h5 class="fw-bold mb-3 font-inter fs-4">Pemberdayaan & Tradisi Makan Bajamba</h5>
-                        <p class="mb-4 mx-auto" style="max-width: 600px;">Simak video berikut untuk melihat nilai kebersamaan dan musyawarah yang dibangun dari tradisi Makan Bajamba di tengah masyarakat.</p>
+                        <p class="mb-4 mx-auto" style="max-width: 600px;">Simak video berikut untuk melihat langsung bagaimana tradisi Makan Bajamba menciptakan rasa persatuan dan peranan komunitas yang kuat di Sumatera Barat.</p>
                         
                         <div class="media-wrapper ratio-16x9 shadow-lg rounded-4 border border-light">
                             <iframe src="https://www.youtube.com/embed/5yR_Xz4e7t4" title="YouTube video player" allowfullscreen></iframe>
@@ -970,7 +990,7 @@
                     <h5 class="widget-title">
                         <i class="bi bi-shield-check" style="color: var(--color-teal);"></i> Adat Nan Sabana Adat
                     </h5>
-                    <p class="small text-secondary mb-3">Pemberdayaan sosial dimulai dari perbaikan etika individu. Budaya Minang memiliki aturan tata krama yang spesifik.</p>
+                    <p class="small text-secondary mb-3">Pemberdayaan sosial dimulai dari perbaikan etika individu. Budaya Minangkabau memiliki aturan tata krama yang spesifik bagi generasi mudanya.</p>
                     
                     <div class="accordion custom-accordion mb-4" id="accordionKearifan">
                         <div class="accordion-item">
@@ -981,7 +1001,7 @@
                             </h2>
                             <div id="kLokal1" class="accordion-collapse collapse" data-bs-parent="#accordionKearifan">
                                 <div class="accordion-body small text-muted">
-                                    Merupakan 12 aturan larangan atau hal-hal yang dianggap kurang pantas dilakukan (sumbang), khususnya bagi perempuan Minang (<em>Bundo Kanduang</em>), mulai dari <em>Sumbang Duduak</em> (cara duduk), <em>Sumbang Tagak</em> (berdiri), hingga <em>Sumbang Bicaro</em> (berbicara).
+                                    Merupakan 12 aturan moral berupa larangan atas sikap atau hal-hal yang dianggap "sumbang" (janggal/tidak pantas). Aturan ini dikhususkan bagi perempuan Minang (<em>Bundo Kanduang</em>) untuk mendidik akhlak, meliputi <em>Sumbang Duduak</em> (cara duduk), <em>Sumbang Tagak</em> (cara berdiri), hingga <em>Sumbang Bicaro</em> (cara berbicara).
                                 </div>
                             </div>
                         </div>
@@ -1043,7 +1063,7 @@
         function playVideo() {
             wrapper.innerHTML = `
                 <div class="ratio ratio-16x9">
-                    <iframe src="https://www.youtube.com/embed/O8wPqgZfX0Y?autoplay=1" allow="autoplay; encrypted-media" class="rounded-4" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/O8wPqgZfX0Y?autoplay=1" allow="autoplay; encrypted-media" class="rounded-4 bg-black" allowfullscreen></iframe>
                 </div>`;
         }
         
@@ -1051,10 +1071,10 @@
         if(thumb) thumb.addEventListener('click', playVideo);
     });
 
-    // 3. Quiz Logic (Tema 4)
+    // 3. Quiz Logic (Tema 4 - Diselaraskan dengan Konten)
     const quizData = [
         {
-            question: "Tradisi berkumpul dan makan bersama di Minangkabau yang bermakna kesetaraan dan mempererat tali persaudaraan disebut...",
+            question: "Tradisi berkumpul dan makan bersama di suatu ruangan yang dilakukan masyarakat Minangkabau sebagai wujud kesetaraan dan sarana musyawarah mufakat dinamakan...",
             options: [
                 "Sumbang Duo Baleh",
                 "Makan Bajamba",
@@ -1062,21 +1082,21 @@
                 "Batagak Pangulu"
             ],
             answer: 1, 
-            explanation: "Makan Bajamba atau makan barapak melambangkan tidak adanya perbedaan status sosial karena semua orang duduk sama rendah."
+            explanation: "Makan Bajamba (atau makan barapak) adalah tradisi makan bersama di mana semua orang duduk sama rendah, menyimbolkan peranan komunitas yang solid tanpa membedakan status sosial."
         },
         {
-            question: "Berikut ini yang merupakan contoh penerapan literasi keuangan dan kewirausahaan dalam pemberdayaan masyarakat Minang adalah...",
+            question: "Berikut ini yang merupakan contoh penerapan literasi keuangan (kewirausahaan) dalam konteks pemberdayaan masyarakat nagari (desa) di Minangkabau adalah...",
             options: [
-                "Mengabaikan pencatatan pengeluaran usaha",
-                "Meninggalkan desa dan tidak pernah kembali",
-                "Mengembangkan kerajinan tenun Songket Silungkang untuk dijual secara global",
-                "Menolak bantuan teknologi dalam bertani"
+                "Mengabaikan pencatatan pengeluaran usaha toko/kedai",
+                "Membiarkan generasi muda meninggalkan desa dan tidak pernah kembali membangun nagari",
+                "Mengembangkan kerajinan kain Tenun Songket Silungkang sebagai ekonomi kreatif lokal",
+                "Menolak masuknya teknologi alat komunikasi dalam perdagangan"
             ],
             answer: 2,
-            explanation: "Mengembangkan kerajinan lokal seperti Songket atau Batik Tanah Liek merupakan wujud pemberdayaan ekonomi kreatif berbasis budaya."
+            explanation: "Menciptakan ekonomi kreatif dari potensi lokal seperti Tenun Songket adalah inti dari pemberdayaan warga agar mandiri secara ekonomi (mengentaskan kemiskinan)."
         },
         {
-            question: "Dalam upaya menjaga tata krama dan etika pergaulan sosial, adat Minangkabau memiliki aturan larangan sikap bagi perempuan yang dikenal dengan...",
+            question: "Sebagai upaya mengantisipasi permasalahan degradasi moral akibat modernisasi, masyarakat Minangkabau memiliki aturan tata krama (sopan santun) bagi perempuan yang disebut...",
             options: [
                 "Alam Takambang Jadi Guru",
                 "Sumbang Duo Baleh",
@@ -1084,21 +1104,21 @@
                 "Adat Nan Sabana Adat"
             ],
             answer: 1,
-            explanation: "Sumbang Duo Baleh mengatur dua belas perilaku yang dianggap sumbang (tidak pada tempatnya), seperti cara duduk, berbicara, dan berpakaian."
+            explanation: "Sumbang Duo Baleh merupakan dua belas aturan larangan perilaku agar perempuan (remaja) menjaga kehormatan dan etika pergaulannya."
         },
         {
-            question: "Sistem kekerabatan yang menarik garis keturunan dari pihak ibu dalam masyarakat Minangkabau dinamakan sistem...",
+            question: "Dalam kajian keragaman sosial budaya di Indonesia, salah satu identitas unik suku Minangkabau adalah menganut sistem kekerabatan...",
             options: [
-                "Patrilineal",
-                "Bilateral",
-                "Matrilineal",
+                "Patrilineal (menarik garis keturunan dari ayah)",
+                "Bilateral (dari ayah dan ibu seimbang)",
+                "Matrilineal (menarik garis keturunan dari pihak ibu)",
                 "Parental"
             ],
             answer: 2,
-            explanation: "Minangkabau dikenal sebagai salah satu penganut sistem Matrilineal terbesar di dunia, di mana peran Bundo Kanduang sangat dihormati."
+            explanation: "Sistem matrilineal menempatkan pihak ibu dan garis keturunannya pada posisi penting secara adat, harta pusaka, dan kekerabatan."
         },
         {
-            question: "Filosofi hidup yang menjadikan adat istiadat sejalan dengan ajaran agama Islam di Minangkabau dirangkum dalam pepatah...",
+            question: "Filosofi atau pedoman hidup masyarakat Minangkabau yang berupaya menyelaraskan antara tradisi (budaya) lokal dengan hukum agama (Islam) dirumuskan dalam pepatah...",
             options: [
                 "Alam takambang jadi guru",
                 "Dima bumi dipijak disinan langik dijunjuang",
@@ -1106,7 +1126,7 @@
                 "Barek samo dipikua, ringan samo dijinjiang"
             ],
             answer: 2,
-            explanation: "Pepatah 'Adat basandi syarak, syarak basandi Kitabullah' (ABSSBK) berarti adat bersendikan agama, dan agama bersendikan Al-Qur'an."
+            explanation: "Pepatah 'Adat basandi syarak, syarak basandi Kitabullah' (ABSSBK) menjadi pondasi kerukunan dan pencegahan konflik budaya."
         }
     ];
 
@@ -1209,6 +1229,7 @@
 
     // Init Quiz
     renderQuestion();
+
 </script>
 </body>
 </html>

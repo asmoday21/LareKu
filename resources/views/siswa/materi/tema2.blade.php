@@ -646,6 +646,15 @@
         .delay-3 { animation-delay: 0.3s; }
         .delay-4 { animation-delay: 0.4s; }
 
+        /* ====== INFO BOX KEARIFAN LOKAL ====== */
+        .wisdom-box {
+            background: var(--bg-primary);
+            padding: 1rem 1.25rem;
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--color-teal);
+            margin: 1rem 0;
+        }
+
         /* ====== RESPONSIVE ====== */
         @media (max-width: 991.98px) {
             .app-container { padding: 0 1.25rem; }
@@ -681,7 +690,7 @@
     <div class="app-container">
         <div class="d-flex justify-content-between align-items-center">
             <div class="topbar-brand">
-                <i class="bi bi-book-half"></i> 
+                <i class="bi bi-book-half"></i> EduPortal
             </div>
             <a href="{{ route('siswa.materi.index') }}" class="btn-back" style="text-decoration: none;">
                 <i class="bi bi-arrow-left"></i> Kembali Menu
@@ -753,17 +762,17 @@
                             {{ $item->judul }}
                         </h4>
                         {{-- <div class="d-flex gap-2 flex-shrink-0">
-                            <a href="{{ route('guru.materi.edit', $item->id) }}" class="btn btn-outline-warning btn-sm rounded-pill px-3 fw-bold d-flex align-items-center gap-1">
+                            <a href="{{ route('siswa.materi.edit', $item->id) }}" class="btn btn-outline-warning btn-sm rounded-pill px-3 fw-bold d-flex align-items-center gap-1">
                                 <i class="fas fa-edit"></i> Edit
                             </a>
-                            <form action="{{ route('guru.materi.destroy', $item->id) }}" method="POST" class="d-inline m-0">
+                            <form action="{{ route('siswa.materi.destroy', $item->id) }}" method="POST" class="d-inline m-0">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-outline-danger btn-sm rounded-pill px-3 fw-bold d-flex align-items-center gap-1" onclick="return confirm('Hapus materi ini selamanya?')">
+                                <button type="submit" class="btn btn-outline-danger btn-sm rounded-pill px-3 fw-bold d-flex align-items-center gap-1" onclick="return confirm('Hapus materi ini selamanya?')">
                                     <i class="fas fa-trash"></i> Hapus
                                 </button>
-                            </form>
-                        </div> --}}
+                            </form> --}}
+                        </div>
                     </div>
 
                     @if($item->deskripsi)
@@ -772,13 +781,12 @@
                         </p>
                     @endif
 
-                    <div class="content-text text-dark">
+                    <div class="content-text text-dark prose">
                         {!! $item->konten !!}
                     </div>
 
-                    @if($item->mediaPendukung->count())
-                        {{-- <hr class="my-5 opacity-25" style="border-color: var(--color-brand);"> --}}
-                        <h5 class="fw-bold mb-4" style="color: var(--text-primary);">
+                    @if($item->mediaPendukung->count() > 0)
+                        {{-- <h5 class="fw-bold mb-4 mt-5" style="color: var(--text-primary);"> --}}
                             <i class="bi bi-paperclip me-2 text-primary"></i>Media Pendukung
                         </h5>
 
@@ -807,7 +815,7 @@
                                 </div>
 
                                 <div class="d-flex gap-2">
-                                    <button class="btn btn-primary btn-sm rounded-pill px-4 fw-bold" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="background: var(--color-brand); border: none;">
+                                    <button class="btn btn-primary btn-sm rounded-pill px-4 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="background: var(--color-brand); border: none;">
                                         <i class="bi bi-eye me-1"></i> Lihat
                                     </button>
                                     
@@ -824,7 +832,6 @@
                                     <div class="document-iframe-container shadow-sm" style="height: 600px;">
                                         <iframe src="{{ asset('storage/'.$media->file) }}" width="100%" height="100%" style="border: none;" allowfullscreen></iframe>
                                     </div>
-
                                 @elseif($media->jenis == 'word')
                                     <div class="document-iframe-container ratio ratio-16x9 shadow-sm">
                                         <iframe src="https://docs.google.com/gview?url={{ urlencode(asset('storage/'.$media->file)) }}&embedded=true" allowfullscreen style="border: none;"></iframe>
@@ -832,7 +839,6 @@
                                     <div class="text-center small text-muted mt-2 fw-bold">
                                         <i class="bi bi-info-circle text-primary"></i> Render menggunakan Google Docs Viewer (File harus online).
                                     </div>
-
                                 @elseif($media->jenis == 'ppt')
                                     <div class="document-iframe-container ratio ratio-16x9 shadow-sm">
                                         <iframe src="https://view.officeapps.live.com/op/embed.aspx?src={{ urlencode(asset('storage/'.$media->file)) }}" allowfullscreen style="border: none;"></iframe>
@@ -840,7 +846,6 @@
                                     <div class="text-center small text-muted mt-2 fw-bold">
                                         <i class="bi bi-info-circle text-primary"></i> Render menggunakan Microsoft Office Viewer (File harus online).
                                     </div>
-
                                 @elseif($media->jenis == 'video_upload')
                                     <div class="document-iframe-container ratio ratio-16x9 bg-black shadow-sm">
                                         <video controls class="w-100 h-100 rounded-3">
@@ -848,7 +853,6 @@
                                             Browser Anda tidak mendukung tag video.
                                         </video>
                                     </div>
-
                                 @elseif($media->jenis == 'video_youtube')
                                     @php
                                         preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match);
@@ -874,7 +878,7 @@
                 </div>
                 @endforelse
                 
-                <!-- Konten Bawaan (Statis) -->
+                <!-- Konten Bawaan (Statis) - FOKUS MINANGKABAU -->
                 <div class="content-card fade-in-up delay-3">
                     <h4 class="section-title">
                         <i class="bi bi-stars"></i> Pembelajaran Interaktif (Integrasi Minangkabau)
@@ -911,7 +915,19 @@
                                 </h2>
                                 <div id="collapseAir" class="accordion-collapse collapse" data-bs-parent="#accordionAlam">
                                     <div class="accordion-body">
-                                        <p class="mb-0 text-dark">Pencemaran sungai (seperti Batang Agam atau Batang Arau) oleh limbah rumah tangga dapat merusak ekosistem air tawar.</p>
+                                        <p class="mb-0 text-dark">Pencemaran sungai (seperti Batang Agam atau Batang Arau) oleh limbah rumah tangga dapat merusak ekosistem air tawar yang penting bagi kehidupan masyarakat nagari.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTanah">
+                                        <i class="bi bi-moisture me-2" style="color: #8B4513;"></i> Polusi & Kerusakan Tanah
+                                    </button>
+                                </h2>
+                                <div id="collapseTanah" class="accordion-collapse collapse" data-bs-parent="#accordionAlam">
+                                    <div class="accordion-body">
+                                        <p class="mb-0 text-dark">Penebangan hutan secara liar dan penggunaan bahan kimia di lahan pertanian bisa menghilangkan daya dukung tanah. Di Minangkabau, dicegah dengan adanya aturan ketat mengenai <em>Rimbo Larangan</em>.</p>
                                     </div>
                                 </div>
                             </div>
@@ -926,10 +942,10 @@
                             </div>
                             <h3 class="topic-title">Dinamika Masyarakat & Budaya</h3>
                         </div>
-                        <p>Masyarakat terus mengalami perubahan dari waktu ke waktu; baik dalam cara berpikir, perilaku, maupun teknologi. Hal ini disebut dinamika sosial. Namun, masyarakat Minangkabau berusaha menjaga identitasnya di tengah modernisasi.</p>
+                        <p>Masyarakat terus mengalami perubahan dari waktu ke waktu; baik dalam cara berpikir, perilaku, maupun teknologi. Hal ini disebut dinamika sosial. Namun, masyarakat Minangkabau berusaha menjaga identitas kulturalnya di tengah arus modernisasi.</p>
                         
                         <div class="highlight-box">
-                            <p><i class="bi bi-lightbulb-fill me-2 fs-5"></i><strong>Tradisi Mandoa Aia & Kapalo Banda:</strong><br><span class="mt-2 d-block text-secondary" style="font-family: 'Merriweather', serif; font-weight: normal; font-size: 0.95rem;">Merupakan tradisi syukuran dan doa bersama di hulu sungai (sumber air) sebelum masa tanam padi. Tradisi ini selain mempererat kerukunan antar warga, juga secara tidak langsung menjaga hulu sungai dari kerusakan dan pencemaran.</span></p>
+                            <p><i class="bi bi-lightbulb-fill me-2 fs-5"></i><strong>Tradisi Mandoa Aia & Kapalo Banda:</strong><br><span class="mt-2 d-block text-secondary" style="font-family: 'Merriweather', serif; font-weight: normal; font-size: 0.95rem;">Merupakan tradisi syukuran dan doa bersama di hulu sungai (sumber air) sebelum masa tanam padi. Tradisi ini selain mempererat kerukunan antar warga (dinamika sosial positif), juga secara langsung berfungsi menjaga hulu sungai dari kerusakan dan pencemaran (pelestarian lingkungan).</span></p>
                         </div>
                     </div>
 
@@ -939,12 +955,12 @@
                             <div class="topic-icon" style="background: rgba(236, 72, 153, 0.15); color: var(--color-pink);">
                                 <i class="bi bi-recycle"></i>
                             </div>
-                            <h3 class="topic-title">Pembangunan Berkelanjutan & Mitigasi</h3>
+                            <h3 class="topic-title">Pembangunan Berkelanjutan & Mitigasi Bencana</h3>
                         </div>
-                        <p>Pembangunan berkelanjutan adalah upaya memenuhi kebutuhan saat ini tanpa mengorbankan masa depan. Nenek moyang kita di Minangkabau sudah mempraktikkan mitigasi bencana berkelanjutan lewat arsitektur tradisionalnya.</p>
+                        <p>Pembangunan berkelanjutan adalah upaya memenuhi kebutuhan masa kini tanpa mengorbankan masa depan (SDGs). Nenek moyang kita di Ranah Minang sudah mempraktikkan mitigasi bencana yang berkelanjutan jauh sebelum konsep ini dikenal secara global.</p>
                         <ul class="mb-4">
-                            <li><strong>Rumah Gadang Tahan Gempa:</strong> Sumatera Barat rawan gempa tektonik. Rumah Gadang dibangun tidak menggunakan paku besi, melainkan <em>pasak kayu</em>.</li>
-                            <li>Sistem ini membuat struktur bangunan menjadi lentur dan bisa berayun mengikuti guncangan gempa tanpa roboh.</li>
+                            <li><strong>Rumah Gadang Tahan Gempa:</strong> Sumatera Barat berada di zona rawan gempa tektonik. Konstruksi Rumah Gadang dibangun tidak menggunakan paku besi, melainkan bersistem <em>pasak kayu</em>.</li>
+                            <li><strong>Sistem Sandi (Batu Tapakan):</strong> Tiang rumah gadang tidak ditanam ke tanah, tapi bertumpu pada batu datar yang lebar. Ini membuat bangunan bisa "menari" atau berayun mengikuti guncangan gempa tanpa berisiko roboh.</li>
                         </ul>
                     </div>
 
@@ -952,7 +968,7 @@
                     <div class="topic-block bg-white border-0 border-top border-light mt-5 pt-5 text-center">
                         <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2 mb-3 fw-bold border border-primary-subtle"><i class="bi bi-play-btn-fill me-1"></i> Tontonan Pendalaman</span>
                         <h5 class="fw-bold mb-3 font-inter fs-4">Visualisasi Kearifan Ekologi Minangkabau</h5>
-                        <p class="mb-4 mx-auto" style="max-width: 600px;">Simak video berikut untuk melihat bagaimana pelestarian lingkungan sejalan dengan pembangunan yang berkelanjutan.</p>
+                        <p class="mb-4 mx-auto" style="max-width: 600px;">Simak tayangan berikut untuk melihat bagaimana filosofi alam dan pelestarian lingkungan sejalan dengan pembangunan yang berkelanjutan di Sumatera Barat.</p>
                         
                         <div class="media-wrapper ratio-16x9 shadow-lg rounded-4 border border-light">
                             <iframe src="https://www.youtube.com/embed/9MhOPoOo8QQ" title="YouTube video player" allowfullscreen></iframe>
@@ -967,9 +983,9 @@
                 <!-- Widget Kearifan Lokal -->
                 <div class="sidebar-widget fade-in-up delay-2">
                     <h5 class="widget-title">
-                        <i class="bi bi-flower1" style="color: var(--color-teal);"></i> Kearifan Lokal
+                        <i class="bi bi-flower1" style="color: var(--color-teal);"></i> Adat Sabana Adat
                     </h5>
-                    <p class="small text-secondary mb-3">Masyarakat Minangkabau memiliki nilai-nilai luhur dalam menjaga alam sekitarnya.</p>
+                    <p class="small text-secondary mb-3">Masyarakat Minangkabau memiliki nilai-nilai aturan tidak tertulis yang ampuh dalam menjaga kelestarian alam sekitarnya.</p>
                     
                     <div class="accordion custom-accordion mb-4" id="accordionKearifan">
                         <div class="accordion-item">
@@ -980,7 +996,19 @@
                             </h2>
                             <div id="kLokal1" class="accordion-collapse collapse" data-bs-parent="#accordionKearifan">
                                 <div class="accordion-body small text-muted">
-                                    Adat melarang keras pembukaan lahan dengan cara dibakar untuk mencegah polusi udara massif dan matinya unsur hara tanah.
+                                    Dalam hukum adat, dilarang keras membuka lahan pertanian baru dengan cara dibakar. Hal ini untuk mencegah polusi udara masif (kabut asap) dan menjaga unsur hara tanah agar tetap subur.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#kLokal2" style="font-size: 0.9rem;">
+                                    Rimbo Larangan
+                                </button>
+                            </h2>
+                            <div id="kLokal2" class="accordion-collapse collapse" data-bs-parent="#accordionKearifan">
+                                <div class="accordion-body small text-muted">
+                                    Sebuah kawasan hutan di hulu sungai yang dilindungi penuh oleh hukum adat. Siapapun yang menebang pohon di sini akan dikenakan sanksi denda adat karena dapat memicu kekeringan dan tanah longsor bagi nagari di bawahnya.
                                 </div>
                             </div>
                         </div>
@@ -1042,7 +1070,7 @@
         function playVideo() {
             wrapper.innerHTML = `
                 <div class="ratio ratio-16x9">
-                    <iframe src="https://www.youtube.com/embed/9MhOPoOo8QQ?autoplay=1" allow="autoplay; encrypted-media" class="rounded-4" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/9BqI_4zDq4c?autoplay=1" allow="autoplay; encrypted-media" class="rounded-4 bg-black" allowfullscreen></iframe>
                 </div>`;
         }
         
@@ -1050,7 +1078,7 @@
         if(thumb) thumb.addEventListener('click', playVideo);
     });
 
-    // 3. Quiz Logic (Tema 2)
+    // 3. Quiz Logic (Tema 2 - Disesuaikan dengan Minangkabau)
     const quizData = [
         {
             question: "Filosofi hidup masyarakat Minangkabau yang menjadikan alam dan segala isinya sebagai sumber pelajaran dan inspirasi hidup dikenal dengan pepatah...",
@@ -1061,7 +1089,7 @@
                 "Dima bumi dipijak, disinan langik dijunjuang"
             ],
             answer: 2, 
-            explanation: "Filosofi 'Alam Takambang Jadi Guru' mengajarkan agar manusia mengamati, meniru, dan memelihara keseimbangan alam sekitar."
+            explanation: "Filosofi 'Alam Takambang Jadi Guru' mengajarkan agar manusia senantiasa mengamati, meniru, dan memelihara keseimbangan alam sekitar."
         },
         {
             question: "Kawasan hutan di wilayah adat Minangkabau yang sengaja dijaga dan dilarang untuk ditebang kayunya demi melindungi sumber air dan mencegah longsor disebut...",
@@ -1072,40 +1100,40 @@
                 "Sawah Tumpak"
             ],
             answer: 0,
-            explanation: "Rimbo Larangan adalah kearifan lokal bentuk konservasi hutan. Siapapun yang melanggar dan menebang pohon di sana akan dikenakan sanksi adat."
+            explanation: "Rimbo Larangan adalah kearifan lokal dalam bentuk konservasi hutan pelindung. Siapapun yang melanggar dan menebang pohon di sana akan dikenakan sanksi denda adat."
         },
         {
-            question: "Apa kaitan arsitektur Rumah Gadang dengan adaptasi terhadap kondisi lingkungan alam Sumatera Barat?",
+            question: "Apa kaitan langsung arsitektur Rumah Gadang dengan adaptasi terhadap kondisi lingkungan alam Sumatera Barat?",
             options: [
-                "Atapnya yang tinggi dirancang khusus untuk menampung air hujan",
-                "Pondasinya dicor sangat dalam agar tidak tersapu banjir",
-                "Strukturnya menggunakan pasak kayu sehingga lentur dan tahan terhadap guncangan gempa tektonik",
-                "Dibangun dari kayu tahan api untuk mencegah kebakaran hutan"
+                "Atapnya yang tinggi dirancang khusus untuk menampung air hujan berlebih",
+                "Pondasinya dicor sangat dalam agar tidak tersapu oleh banjir bandang",
+                "Strukturnya menggunakan pasak kayu sehingga lentur dan tahan terhadap guncangan gempa",
+                "Dibangun seluruhnya dari kayu tahan api untuk mencegah kebakaran di musim kemarau"
             ],
             answer: 2,
-            explanation: "Sumatera Barat berada di jalur rawan gempa. Konstruksi Rumah Gadang yang tanpa paku (menggunakan pasak) membuatnya fleksibel dan tahan gempa."
+            explanation: "Sumatera Barat berada di jalur patahan rawan gempa. Konstruksi Rumah Gadang yang didesain tanpa paku (menggunakan pasak kayu) membuatnya sangat fleksibel (dinamis) dan tahan gempa."
         },
         {
-            question: "Tradisi 'Mandoa Aia' atau 'Turun ke Aia' yang dilakukan petani Minangkabau memiliki nilai kearifan lingkungan berupa...",
+            question: "Tradisi 'Mandoa Aia' atau 'Turun ke Aia' yang biasanya dilakukan oleh para petani Minangkabau memiliki nilai kearifan lingkungan berupa...",
             options: [
-                "Syarat mutlak untuk memanggil hujan di musim kemarau",
-                "Rasa syukur dan komitmen bersama menjaga kebersihan hulu sungai/sumber air sebelum masa tanam",
-                "Melarang masyarakat mengambil ikan di sungai",
-                "Upacara pembagian hasil panen kepada tetua adat"
+                "Syarat mutlak secara mistis untuk memanggil hujan di musim kemarau panjang",
+                "Wujud rasa syukur dan komitmen bersama untuk menjaga kebersihan hulu sungai/sumber air",
+                "Aturan melarang masyarakat mengambil segala jenis ikan di sungai selamanya",
+                "Upacara rutin pembagian hasil panen padi kepada pemuka dan tetua adat"
             ],
             answer: 1,
-            explanation: "Tradisi ini menanamkan rasa hormat secara spiritual dan sosial agar masyarakat ikut bertanggung jawab menjaga kebersihan saluran irigasi dan hulu sungai."
+            explanation: "Tradisi berkumpul di hulu sungai ini menanamkan rasa hormat secara spiritual dan kewajiban sosial agar masyarakat bersama-sama bertanggung jawab menjaga kebersihan saluran irigasi dari polusi."
         },
         {
-            question: "Penumpukan gas emisi sisa pembakaran (CO₂) di atmosfer yang menyebabkan suhu bumi semakin panas disebut fenomena...",
+            question: "Penumpukan gas emisi sisa pembakaran (CO₂) di atmosfer yang menyebabkan suhu bumi semakin panas secara global disebut fenomena...",
             options: [
                 "Pemanasan Global (Efek Rumah Kaca)",
-                "Dinamika Sosial",
+                "Dinamika Sosial Geografis",
                 "Angin Muson Tropis",
                 "Pembangunan Berkelanjutan"
             ],
             answer: 0,
-            explanation: "Pemanasan global atau efek rumah kaca terjadi karena gas rumah kaca memerangkap panas matahari di dalam atmosfer bumi."
+            explanation: "Pemanasan global atau efek rumah kaca terjadi karena tingginya tingkat polusi udara (gas rumah kaca) yang memerangkap panas matahari di dalam atmosfer bumi."
         }
     ];
 
@@ -1208,6 +1236,7 @@
 
     // Init Quiz
     renderQuestion();
+
 </script>
 </body>
 </html>

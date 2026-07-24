@@ -737,11 +737,11 @@
     <div class="app-container">
         <div class="d-flex justify-content-between align-items-center">
             <div class="topbar-brand">
-                <i class="bi bi-book-half"></i> 
+                <i class="bi bi-book-half"></i> EduPortal
             </div>
-            <button class="btn-back" onclick="window.history.back()">
-                <i class="bi bi-arrow-left"></i> Kembali
-            </button>
+            <a href="{{ route('siswa.materi.index') }}" class="btn-back" style="text-decoration: none;">
+                <i class="bi bi-arrow-left"></i> Kembali ke Modul
+            </a>
         </div>
     </div>
 </nav>
@@ -788,7 +788,7 @@
                                 </select>
                             </form>
                         </div>
-                        {{-- <a href="{{ route('guru.materi.create') }}" class="btn-add-materi" style="text-decoration: none;">
+                        {{-- <a href="{{ route('siswa.materi.create') }}" class="btn-add-materi" style="text-decoration: none;">
                             <i class="fas fa-plus"></i> Tambah Materi
                         </a> --}}
                     </div>
@@ -809,13 +809,13 @@
                             {{ $item->judul }}
                         </h4>
                         {{-- <div class="d-flex gap-2 flex-shrink-0">
-                            <a href="{{ route('guru.materi.edit', $item->id) }}" class="btn btn-outline-warning btn-sm rounded-pill px-3 fw-bold d-flex align-items-center gap-1">
+                            <a href="{{ route('siswa.materi.edit', $item->id) }}" class="btn btn-outline-warning btn-sm rounded-pill px-3 fw-bold d-flex align-items-center gap-1">
                                 <i class="fas fa-edit"></i> Edit
                             </a>
-                            <form action="{{ route('guru.materi.destroy', $item->id) }}" method="POST" class="d-inline m-0">
+                            <form action="{{ route('siswa.materi.destroy', $item->id) }}" method="POST" class="d-inline m-0">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-outline-danger btn-sm rounded-pill px-3 fw-bold d-flex align-items-center gap-1" onclick="return confirm('Hapus materi ini selamanya?')">
+                                <button type="submit" class="btn btn-outline-danger btn-sm rounded-pill px-3 fw-bold d-flex align-items-center gap-1" onclick="return confirm('Hapus materi ini selamanya?')">
                                     <i class="fas fa-trash"></i> Hapus
                                 </button>
                             </form>
@@ -828,13 +828,12 @@
                         </p>
                     @endif
 
-                    <div class="content-text text-dark">
+                    <div class="content-text text-dark prose">
                         {!! $item->konten !!}
                     </div>
 
-                    @if($item->mediaPendukung->count())
-                        {{-- <hr class="my-5 opacity-25" style="border-color: var(--color-brand);"> --}}
-                        <h5 class="fw-bold mb-4" style="color: var(--text-primary);">
+                    @if($item->mediaPendukung->count() > 0)
+                        <h5 class="fw-bold mb-4 mt-5" style="color: var(--text-primary);">
                             <i class="bi bi-paperclip me-2 text-primary"></i>Media Pendukung
                         </h5>
 
@@ -863,7 +862,7 @@
                                 </div>
 
                                 <div class="d-flex gap-2">
-                                    <button class="btn btn-primary btn-sm rounded-pill px-4 fw-bold" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="background: var(--color-brand); border: none;">
+                                    <button class="btn btn-primary btn-sm rounded-pill px-4 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="background: var(--color-brand); border: none;">
                                         <i class="bi bi-eye me-1"></i> Lihat
                                     </button>
                                     
@@ -880,7 +879,6 @@
                                     <div class="document-iframe-container shadow-sm" style="height: 600px;">
                                         <iframe src="{{ asset('storage/'.$media->file) }}" width="100%" height="100%" style="border: none;" allowfullscreen></iframe>
                                     </div>
-
                                 @elseif($media->jenis == 'word')
                                     <div class="document-iframe-container ratio ratio-16x9 shadow-sm">
                                         <iframe src="https://docs.google.com/gview?url={{ urlencode(asset('storage/'.$media->file)) }}&embedded=true" allowfullscreen style="border: none;"></iframe>
@@ -888,7 +886,6 @@
                                     <div class="text-center small text-muted mt-2 fw-bold">
                                         <i class="bi bi-info-circle text-primary"></i> Render menggunakan Google Docs Viewer (File harus online).
                                     </div>
-
                                 @elseif($media->jenis == 'ppt')
                                     <div class="document-iframe-container ratio ratio-16x9 shadow-sm">
                                         <iframe src="https://view.officeapps.live.com/op/embed.aspx?src={{ urlencode(asset('storage/'.$media->file)) }}" allowfullscreen style="border: none;"></iframe>
@@ -896,7 +893,6 @@
                                     <div class="text-center small text-muted mt-2 fw-bold">
                                         <i class="bi bi-info-circle text-primary"></i> Render menggunakan Microsoft Office Viewer (File harus online).
                                     </div>
-
                                 @elseif($media->jenis == 'video_upload')
                                     <div class="document-iframe-container ratio ratio-16x9 bg-black shadow-sm">
                                         <video controls class="w-100 h-100 rounded-3">
@@ -904,7 +900,6 @@
                                             Browser Anda tidak mendukung tag video.
                                         </video>
                                     </div>
-
                                 @elseif($media->jenis == 'video_youtube')
                                     @php
                                         preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match);
@@ -930,121 +925,135 @@
                 </div>
                 @endforelse
                 
-                <!-- Konten Bawaan (Statis) -->
+                <!-- Konten Bawaan (Statis) yang Telah Diperdalam -->
                 <div class="content-card fade-in-up delay-3">
                     <h4 class="section-title">
                         <i class="bi bi-stars"></i> Pembelajaran Interaktif
                     </h4>
 
-                    <!-- Topik 1 -->
+                    <!-- Topik 1: Mengenal Lokasi Tinggal -->
                     <div class="topic-block">
                         <div class="topic-header">
                             <div class="topic-icon">
-                                <i class="bi bi-geo-fill"></i>
+                                <i class="bi bi-house-door-fill"></i>
                             </div>
-                            <h3 class="topic-title">Lokasi & Konektivitas Antarruang</h3>
+                            <h3 class="topic-title">Mengenal Lokasi Tinggal</h3>
                         </div>
-                        <p>Lokasi adalah letak suatu objek di permukaan bumi. Memahami lokasi penting untuk mengetahui potensi suatu daerah. Lokasi dibedakan menjadi dua jenis utama:</p>
-                        <ul class="mb-4">
-                            <li><strong>Lokasi Absolut:</strong> Merupakan letak yang tetap terhadap sistem koordinat (garis lintang dan bujur). Sifatnya tetap dan tidak bisa diubah oleh campur tangan manusia.</li>
-                            <li><strong>Lokasi Relatif:</strong> Adalah letak suatu tempat yang nilainya ditentukan oleh objek lain di sekitarnya. Misalnya, tanah di pinggir jalan raya lebih mahal daripada di dalam gang.</li>
-                        </ul>
+                        <p>Lokasi bukan sekadar alamat rumah kita. Dalam geografi, lokasi sangat menentukan bagaimana cara kita bertahan hidup, potensi apa yang ada di sekitar kita, hingga ancaman bencana apa yang mungkin terjadi.</p>
                         
-                        <div class="highlight-box">
-                            <p><i class="bi bi-lightbulb-fill me-2 fs-5"></i><strong>Mengapa Ruang Saling Berinteraksi?</strong><br><span class="mt-2 d-block text-secondary" style="font-family: 'Merriweather', serif; font-weight: normal; font-size: 0.95rem;">Setiap tempat memiliki potensi dan kebutuhan yang berbeda (Saling Melengkapi). Terkadang ada hambatan (Kesempatan Berintervensi), dan kelancarannya bergantung pada infrastruktur (Kemudahan Pemindahan).</span></p>
+                        <div class="row g-4 mt-2">
+                            <div class="col-md-6">
+                                <div class="bg-white p-4 rounded-4 shadow-sm border border-light h-100">
+                                    <h6 class="fw-bold text-brand mb-3"><i class="bi bi-pin-map-fill me-2"></i>Lokasi Absolut</h6>
+                                    <p class="small text-secondary mb-0">Lokasi ini didasarkan pada garis lintang dan bujur. Titik koordinat ini bersifat mutlak dan tidak berubah. Keuntungannya, kita bisa mengetahui iklim suatu wilayah hanya dari koordinatnya (misal: Indonesia beriklim tropis karena berada di ekuator).</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="bg-white p-4 rounded-4 shadow-sm border border-light h-100">
+                                    <h6 class="fw-bold text-accent mb-3"><i class="bi bi-signpost-split-fill me-2"></i>Lokasi Relatif</h6>
+                                    <p class="small text-secondary mb-0">Lokasi ini ditentukan oleh letak tempat lain di sekitarnya dan bisa berubah nilainya. Misalnya, harga tanah di pinggir jalan raya lebih mahal dibandingkan di dalam gang buntu karena aksesibilitasnya yang tinggi.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Topik 2 -->
+                    <!-- Topik 2: Konektivitas Antarruang -->
+                    <div class="topic-block">
+                        <div class="topic-header">
+                            <div class="topic-icon" style="background: rgba(20, 184, 166, 0.15); color: var(--color-teal);">
+                                <i class="bi bi-share-fill"></i>
+                            </div>
+                            <h3 class="topic-title">Konektivitas Antarruang</h3>
+                        </div>
+                        <p>Tidak ada satu pun wilayah di bumi yang bisa memenuhi semua kebutuhannya sendiri. Wilayah pegunungan menghasilkan sayuran, wilayah pesisir menghasilkan ikan. Dari perbedaan inilah muncul interaksi antarruang.</p>
+                        
+                        <div class="highlight-box">
+                            <p><i class="bi bi-lightbulb-fill me-2 fs-5"></i><strong>Syarat Terjadinya Interaksi Antarruang:</strong><br>
+                            <span class="mt-2 d-block text-secondary" style="font-family: 'Merriweather', serif; font-weight: normal; font-size: 0.95rem;">
+                                <ul class="mb-0">
+                                    <li><strong>Saling Melengkapi (Complementarity):</strong> Daerah A butuh beras, Daerah B butuh ikan.</li>
+                                    <li><strong>Kesempatan Antara (Intervening Opportunity):</strong> Daerah A biasanya membeli ikan ke Daerah B, tapi ternyata Daerah C lebih dekat dan murah, maka interaksi A dan B melemah.</li>
+                                    <li><strong>Kemudahan Transfer (Transferability):</strong> Semua interaksi membutuhkan infrastruktur jalan dan sarana transportasi yang memadai.</li>
+                                </ul>
+                            </span></p>
+                        </div>
+                    </div>
+
+                    <!-- Topik 3: Perubahan Iklim & Bencana Alam -->
+                    <div class="topic-block">
+                        <div class="topic-header">
+                            <div class="topic-icon" style="background: rgba(239, 68, 68, 0.15); color: var(--color-red);">
+                                <i class="bi bi-cloud-lightning-rain-fill"></i>
+                            </div>
+                            <h3 class="topic-title">Perubahan Iklim & Bencana Alam</h3>
+                        </div>
+                        <p>Kondisi alam kita semakin tidak menentu. Indonesia, selain berada di jalur rawan gempa (<em>Ring of Fire</em>), kini juga menghadapi ancaman dari perubahan iklim global akibat pemanasan bumi.</p>
+                        
+                        <div class="accordion custom-accordion" id="accordionBencana">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseIklim">
+                                        <i class="bi bi-thermometer-sun me-2"></i> Dampak Perubahan Iklim
+                                    </button>
+                                </h2>
+                                <div id="collapseIklim" class="accordion-collapse collapse" data-bs-parent="#accordionBencana">
+                                    <div class="accordion-body">
+                                        <p class="mb-2 text-dark">Perubahan iklim memicu cuaca ekstrem yang sulit diprediksi.</p>
+                                        <p class="text-muted small m-0">Kemarau yang terlalu panjang menyebabkan kekeringan dan gagal panen, sementara curah hujan yang tiba-tiba tinggi dalam waktu singkat seringkali menyebabkan banjir bandang di perkotaan.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGeologi">
+                                        <i class="bi bi-tsunami me-2"></i> Bencana Geologi
+                                    </button>
+                                </h2>
+                                <div id="collapseGeologi" class="accordion-collapse collapse" data-bs-parent="#accordionBencana">
+                                    <div class="accordion-body">
+                                        <p class="mb-2 text-dark">Bencana yang berasal dari dalam bumi.</p>
+                                        <p class="text-muted small m-0">Contohnya gempa bumi tektonik, letusan gunung berapi, dan tsunami. Bencana ini tidak bisa dicegah, namun dampaknya bisa diminimalisir dengan mitigasi (seperti membangun rumah tahan gempa).</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Topik 4: Kegiatan Ekonomi & Interaksi Sosial -->
                     <div class="topic-block">
                         <div class="topic-header">
                             <div class="topic-icon" style="background: rgba(245, 158, 11, 0.15); color: var(--color-accent);">
-                                <i class="bi bi-graph-up-arrow"></i>
+                                <i class="bi bi-diagram-3-fill"></i>
                             </div>
-                            <h3 class="topic-title">Kegiatan Ekonomi Masyarakat</h3>
+                            <h3 class="topic-title">Kegiatan Ekonomi & Interaksi Sosial</h3>
                         </div>
-                        <p>Kegiatan ekonomi adalah tulang punggung kehidupan sosial. Kegiatan ini merupakan cara manusia bertahan hidup dan meningkatkan kesejahteraan melalui tiga pilar utama:</p>
-                        
-                        <div class="accordion custom-accordion" id="accordionEkonomi">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProd">
-                                        1. Produksi (Menciptakan Nilai)
-                                    </button>
-                                </h2>
-                                <div id="collapseProd" class="accordion-collapse collapse" data-bs-parent="#accordionEkonomi">
-                                    <div class="accordion-body">
-                                        <p class="mb-2 text-dark">Proses menciptakan atau menambah nilai guna suatu barang/jasa. Pelakunya disebut <strong>Produsen</strong>.</p>
-                                        <p class="text-muted small m-0"><i class="bi bi-info-circle me-1 text-primary"></i> Contoh: Petani mengolah lahan untuk menghasilkan padi, atau pabrik garmen menjahit kain menjadi pakaian siap pakai.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDist">
-                                        2. Distribusi (Menyalurkan)
-                                    </button>
-                                </h2>
-                                <div id="collapseDist" class="accordion-collapse collapse" data-bs-parent="#accordionEkonomi">
-                                    <div class="accordion-body">
-                                        <p class="mb-2 text-dark">Kegiatan menyalurkan barang dari produsen ke tangan konsumen akhir. Pelakunya disebut <strong>Distributor</strong>.</p>
-                                        <p class="text-muted small m-0"><i class="bi bi-info-circle me-1 text-primary"></i> Contoh: Perusahaan logistik, agen sembako, kurir ekspedisi, atau pedagang grosir di pasar.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseKons">
-                                        3. Konsumsi (Menggunakan)
-                                    </button>
-                                </h2>
-                                <div id="collapseKons" class="accordion-collapse collapse" data-bs-parent="#accordionEkonomi">
-                                    <div class="accordion-body">
-                                        <p class="mb-3 text-dark">Kegiatan menghabiskan atau mengurangi nilai guna barang/jasa untuk memenuhi kebutuhan. Pelakunya adalah <strong>Konsumen</strong>.</p>
-                                        <p class="text-muted small mb-3"><i class="bi bi-info-circle me-1 text-primary"></i> Contoh: Kita makan nasi, memakai sepatu ke sekolah, atau menggunakan kuota internet.</p>
-                                        
-                                        <div class="media-wrapper ratio-16x9 mt-3 shadow-sm border border-secondary-subtle">
-                                            <iframe src="https://www.youtube.com/embed/oQKT01sGtNE?si=gvJNYvGcDqHSV5xM" title="YouTube video player" allowfullscreen></iframe>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Topik 3 -->
-                    <div class="topic-block">
-                        <div class="topic-header">
-                            <div class="topic-icon" style="background: rgba(236, 72, 153, 0.15); color: var(--color-pink);">
-                                <i class="bi bi-hourglass-split"></i>
-                            </div>
-                            <h3 class="topic-title">Konsep Dasar Sejarah</h3>
-                        </div>
-                        <p>Mempelajari kondisi lingkungan tidak lepas dari sejarah masa lalu. Ilmu sejarah berpijak pada tiga unsur mutlak yang membentuk suatu peristiwa:</p>
+                        <p>Untuk bertahan hidup menghadapi berbagai kondisi lingkungan, manusia bekerja sama melalui interaksi sosial dan kegiatan ekonomi.</p>
                         
                         <div class="row g-3 mt-3">
                             <div class="col-md-4">
                                 <div class="p-4 rounded-4 bg-white shadow-sm h-100 border-2 border-start border-primary" style="border-left-width: 4px !important; text-align: center;">
-                                    <i class="bi bi-geo-alt fs-2 text-primary mb-2 d-block"></i>
-                                    <h6 class="fw-bold font-inter">Ruang</h6>
-                                    <p class="small mb-0 text-muted">Lokasi fisik terjadinya peristiwa. Lingkungan sangat memengaruhi jalannya sejarah.</p>
+                                    <i class="bi bi-box-seam fs-2 text-primary mb-2 d-block"></i>
+                                    <h6 class="fw-bold font-inter">Produksi</h6>
+                                    <p class="small mb-0 text-muted">Menciptakan nilai guna barang, seperti mengolah kayu jati dari hutan menjadi mebel.</p>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="p-4 rounded-4 bg-white shadow-sm h-100 border-2 border-start border-success" style="border-left-width: 4px !important; text-align: center;">
-                                    <i class="bi bi-clock-history fs-2 text-success mb-2 d-block"></i>
-                                    <h6 class="fw-bold font-inter">Waktu</h6>
-                                    <p class="small mb-0 text-muted">Kapan peristiwa terjadi, menggambarkan kronologi dan kesinambungan masa.</p>
+                                    <i class="bi bi-truck fs-2 text-success mb-2 d-block"></i>
+                                    <h6 class="fw-bold font-inter">Distribusi</h6>
+                                    <p class="small mb-0 text-muted">Kegiatan menyalurkan mebel tersebut dari produsen di desa ke konsumen di perkotaan.</p>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="p-4 rounded-4 bg-white shadow-sm h-100 border-2 border-start border-warning" style="border-left-width: 4px !important; text-align: center;">
-                                    <i class="bi bi-people fs-2 text-warning mb-2 d-block"></i>
-                                    <h6 class="fw-bold font-inter">Manusia</h6>
-                                    <p class="small mb-0 text-muted">Aktor utama penggerak sejarah. Tanpa manusia, sejarah tidak tercatat.</p>
+                                    <i class="bi bi-cart-check fs-2 text-warning mb-2 d-block"></i>
+                                    <h6 class="fw-bold font-inter">Konsumsi</h6>
+                                    <p class="small mb-0 text-muted">Penggunaan mebel tersebut oleh pembeli untuk melengkapi kebutuhan rumah tangganya.</p>
                                 </div>
                             </div>
                         </div>
+                        
+                        <p class="mt-4 mb-0 text-secondary">Ketiga kegiatan ekonomi di atas tidak akan berjalan tanpa adanya <strong>Interaksi Sosial</strong>. Interaksi sosial, seperti tawar-menawar harga di pasar (interaksi asosiatif), merupakan bentuk dasar bagaimana masyarakat membangun jaringan kehidupan sosial mereka di tengah kondisi lingkungan yang beragam.</p>
                     </div>
 
                     <!-- Video Kesimpulan -->
@@ -1140,7 +1149,7 @@
         if(thumb) thumb.addEventListener('click', playVideo);
     });
 
-    // 3. Quiz Logic (SAMA PERSIS FUNGSIONALNYA)
+    // 3. Quiz Logic 
     const quizData = [
         {
             question: "Apa perbedaan mendasar antara lokasi absolut dan lokasi relatif?",
@@ -1165,26 +1174,26 @@
             explanation: "Sambungan pasak kayu membuat struktur menjadi lentur (fleksibel), sehingga saat gempa bangunan bisa berayun tanpa patah."
         },
         {
-            question: "Unsur pokok yang saling berkaitan dalam ilmu sejarah adalah...",
+            question: "Mana dari berikut ini yang merupakan syarat terjadinya interaksi antarruang?",
             options: [
-                "Politik, Ekonomi, Sosial",
-                "Ruang, Waktu, Manusia",
-                "Prasejarah, Aksara, Modern",
-                "Sebab, Akibat, Solusi"
+                "Saling Melengkapi (Complementarity)",
+                "Pemisahan Budaya",
+                "Kesamaan Hasil Bumi",
+                "Isolasi Geografis"
             ],
-            answer: 1,
-            explanation: "Setiap peristiwa sejarah pasti terjadi di suatu Tempat (Ruang), pada saat tertentu (Waktu), dan dilakukan oleh tokoh (Manusia)."
+            answer: 0,
+            explanation: "Interaksi terjadi jika ada daerah yang saling melengkapi kebutuhannya, misalnya desa penghasil sayur dengan pantai penghasil ikan."
         },
         {
-            question: "Peran hutan pantai atau mangrove bagi mitigasi bencana masyarakat pesisir adalah...",
+            question: "Kegiatan menggunakan atau menghabiskan nilai guna suatu barang disebut dengan...",
             options: [
-                "Meningkatkan hasil tangkapan ikan",
-                "Menjadi tempat wisata alam",
-                "Meredam energi gelombang tsunami & abrasi",
-                "Menyediakan bahan bakar kayu"
+                "Produksi",
+                "Distribusi",
+                "Konsumsi",
+                "Investasi"
             ],
             answer: 2,
-            explanation: "Akar pepohonan mangrove yang rapat terbukti efektif memecah dan meredam kekuatan gelombang besar seperti tsunami sebelum mencapai daratan utama."
+            explanation: "Konsumsi adalah kegiatan akhir dari proses ekonomi di mana individu menggunakan barang atau jasa untuk memenuhi kebutuhannya."
         },
         {
             question: "Indonesia rawan letusan gunung berapi karena...",
@@ -1195,7 +1204,7 @@
                 "Berada di jalur Cincin Api (Ring of Fire) & pertemuan lempeng"
             ],
             answer: 3,
-            explanation: "Letak geologis Indonesia pada pertemuan lempeng tektonik dunia (Eurasia, Indo-Australia, Pasifik) menciptakan barisan gunung berapi aktif (Ring of Fire)."
+            explanation: "Letak geologis Indonesia pada pertemuan lempeng tektonik dunia menciptakan barisan gunung berapi aktif yang dikenal sebagai Ring of Fire."
         }
     ];
 
@@ -1298,6 +1307,7 @@
 
     // Init Quiz
     renderQuestion();
+
 </script>
 </body>
 </html>

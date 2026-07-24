@@ -11,23 +11,23 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('media_pendukung', function (Blueprint $table) {
-            $table->id();
+        // Schema::create('media_pendukung', function (Blueprint $table) {
+        //     $table->id();
 
-            $table->string('tema');
-            $table->string('judul');
+        //     $table->string('tema');
+        //     $table->string('judul');
 
-            $table->enum('jenis', [
-                'video',
-                'dokumen'
-            ]);
+        //     $table->enum('jenis', [
+        //         'video',
+        //         'dokumen'
+        //     ]);
 
-            $table->text('link')->nullable();
+        //     $table->text('link')->nullable();
 
-            $table->string('file')->nullable();
+        //     $table->string('file')->nullable();
 
-            $table->timestamps();
-        });
+        //     $table->timestamps();
+        // });
     }
 
     /**
