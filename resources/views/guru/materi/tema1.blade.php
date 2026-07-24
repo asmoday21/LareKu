@@ -799,13 +799,11 @@
 
         <div class="row g-4 g-lg-5">
             <!-- Kolom Kiri: Materi -->
-=======
         <div class="material-section mt-5">
 
         <div class="row g-4">
             
             <!-- Materi dan Tujuan Pembelajaran -->
->>>>>>> bc3d876af6eb25fb3e2b5ce53c3d026b8fba5148
             <div class="col-lg-8">
                 
                 <!-- Looping Materi dari Database -->
