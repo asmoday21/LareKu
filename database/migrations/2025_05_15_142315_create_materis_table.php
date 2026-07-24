@@ -6,30 +6,38 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        // database/migrations/xxxx_create_materis_table.php
-        Schema::create('materis', function (Blueprint $table) {
+        Schema::create('materi', function (Blueprint $table) {
+
             $table->id();
-            $table->foreignId('mapel_id')->constrained();
-            $table->foreignId('guru_id')->constrained('users');
+
+            $table->foreignId('guru_id')
+                  ->nullable()
+                  ->constrained('users')
+                  ->nullOnDelete();
+
+            $table->enum('tema', [
+                'tema1',
+                'tema2',
+                'tema3',
+                'tema4'
+            ]);
+
             $table->string('judul');
-            $table->text('deskripsi');
-            $table->longText('konten');
-            $table->string('video_url')->nullable();
-            $table->string('file_path')->nullable();
-            $table->integer('durasi');
+
+            $table->text('deskripsi')->nullable();
+
+            $table->longText('konten')->nullable();
+
+            $table->unsignedInteger('durasi')->default(0);
+
             $table->boolean('is_published')->default(false);
+
             $table->timestamps();
-        });    
+        });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('materi');

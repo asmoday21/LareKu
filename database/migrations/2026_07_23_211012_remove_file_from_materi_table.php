@@ -6,22 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::create('cobas', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('materi', function (Blueprint $table) {
+            $table->dropColumn('file');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('cobas');
+        Schema::table('materi', function (Blueprint $table) {
+            $table->string('file');
+        });
     }
 };

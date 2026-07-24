@@ -1,598 +1,1213 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tema 02: Keberagaman Lingkungan Sekitar</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Materi Pembelajaran - Tema 2</title>
+    
+    <!-- Font Google modern -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary: #2c786c;
-            --secondary: #ff9800;
-            --accent: #004445;
-            --light: #f8f9fa;
-            --dark: #343a40;
+            /* PALET WARNA TEMA 2 - Nature (Emerald/Teal/Gold) */
+            --bg-primary: #F0FDF4; /* Very light green */
+            --bg-secondary: #FFFFFF;
+            --bg-gradient-start: #047857;
+            --bg-gradient-end: #0D9488;
+            --bg-gradient-light: linear-gradient(135deg, #F0FDF4 0%, #F0FDFA 100%);
+            
+            --text-primary: #1E1B4B;
+            --text-secondary: #4B5563;
+            --text-muted: #9CA3AF;
+            
+            --color-brand: #059669;
+            --color-brand-light: #6EE7B7;
+            --color-brand-dark: #047857;
+            --color-accent: #D97706; /* Gold */
+            --color-accent-light: #FBBF24;
+            --color-pink: #0D9488; /* Teal as secondary */
+            --color-teal: #0F766E;
+            --color-red: #EF4444;
+            --color-green: #10B981;
+            
+            --surface-white: #FFFFFF;
+            --surface-glass: rgba(255, 255, 255, 0.7);
+            --border-color: #E5E7EB;
+            
+            --shadow-sm: 0 1px 3px rgba(5, 150, 105, 0.06);
+            --shadow-md: 0 4px 20px rgba(5, 150, 105, 0.08);
+            --shadow-lg: 0 10px 40px rgba(5, 150, 105, 0.12);
+            --shadow-xl: 0 20px 60px rgba(5, 150, 105, 0.15);
+            
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
         }
-        
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8fafc;
-            color: #334155;
-            padding-top: 20px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-gradient-light);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
-        
-        .navbar {
-            background: var(--primary);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--text-primary);
         }
-        
-        .navbar-brand {
-            font-weight: 700;
-            color: white !important;
+
+        p, li, .content-text {
+            font-family: 'Merriweather', serif;
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
         }
-        
-        .header-section {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            border-radius: 12px;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            color: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+        /* Layout persis seperti Tema 1 */
+        .app-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
-        
-        .header-title {
-            font-weight: 700;
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
+
+        /* ====== TOPBAR ====== */
+        .topbar {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(5, 150, 105, 0.08);
+            padding: 0.75rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1030;
+            transition: all 0.3s ease;
         }
-        
-        .subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
+
+        .topbar-brand {
+            font-weight: 900;
+            font-size: 1.25rem;
+            color: var(--color-brand);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        
-        .card {
+
+        .topbar-brand i {
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, var(--color-brand), var(--color-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-back {
+            background: var(--bg-primary);
             border: none;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            margin-bottom: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .card-header {
-            background: white;
-            border-bottom: 2px solid rgba(44, 120, 108, 0.1);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
             font-weight: 600;
-            color: var(--primary);
-            border-radius: 12px 12px 0 0 !important;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        
-        .nav-pills .nav-link {
-            border-radius: 6px;
-            margin: 0 5px;
-            color: var(--dark);
-            font-weight: 500;
+
+        .btn-back:hover {
+            background: var(--color-brand);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
-        
-        .nav-pills .nav-link.active {
-            background: var(--primary);
+
+        /* ====== HEADER ====== */
+        .page-header {
+            background: linear-gradient(135deg, #047857 0%, #0D9488 50%, #D97706 100%);
+            padding: 5rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2.5rem;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .page-header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(217, 119, 6, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -30px) scale(1.1); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
             color: white;
         }
-        
-        .topic-item {
-            border-left: 4px solid var(--primary);
-            padding-left: 1rem;
+
+        .header-content h1 {
+            color: white;
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .header-content .lead {
+            font-family: 'Merriweather', serif;
+            color: rgba(255,255,255,0.85);
+            font-size: 1.2rem;
+            max-width: 700px;
+            line-height: 1.8;
+        }
+
+        .header-badge {
+            display: inline-block;
+            padding: 0.4rem 1.25rem;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: white;
             margin-bottom: 1.5rem;
         }
-        
-        .video-container {
+
+        .badge-tag-white {
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.9);
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        /* ====== ADMIN CONTROLS ====== */
+        .admin-controls-card {
+            background: var(--surface-white);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem 2rem;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(5, 150, 105, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .admin-controls-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .admin-title {
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .admin-title .badge-admin {
+            background: linear-gradient(135deg, var(--color-brand), var(--color-accent));
+            color: white;
+            font-size: 0.65rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .filter-select {
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            padding: 0.4rem 2rem 0.4rem 1.25rem;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .filter-select:focus {
+            border-color: var(--color-brand);
+            box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.1);
+            outline: none;
+        }
+
+        .btn-add-materi {
+            background: linear-gradient(135deg, var(--color-brand), var(--color-brand-dark));
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            color: white;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-add-materi:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+            color: white;
+        }
+
+        /* ====== CONTENT CARD ====== */
+        .content-card {
+            background: var(--surface-white);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(5, 150, 105, 0.04);
+            transition: all 0.3s ease;
             position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
             overflow: hidden;
-            border-radius: 12px;
+            word-wrap: break-word;
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-brand), var(--color-accent), var(--color-pink));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .content-card:hover::before {
+            opacity: 1;
+        }
+
+        .content-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .dynamic-content-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin: 0;
+        }
+
+        .dynamic-content-title i {
+            color: var(--color-brand);
+            font-size: 1.75rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--bg-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .section-title i {
+            color: var(--color-brand);
+            font-size: 1.75rem;
+        }
+
+        /* ====== TOPIC BLOCK ====== */
+        .topic-block {
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            background: var(--bg-primary);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--color-brand);
+        }
+
+        .topic-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .topic-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .topic-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.1), rgba(217, 119, 6, 0.1));
+            color: var(--color-brand);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            flex-shrink: 0;
+        }
+
+        .topic-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin: 0;
+            color: var(--text-primary);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+            border-radius: var(--radius-md);
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0;
+            border-left: 5px solid var(--color-accent);
+            position: relative;
+        }
+
+        .highlight-box p {
+            color: #78350F;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .highlight-box i {
+            color: var(--color-accent);
+        }
+
+        /* ====== ACCORDION ====== */
+        .custom-accordion {
+            margin-top: 1.5rem;
         }
         
-        .video-container iframe {
+        .custom-accordion .accordion-item {
+            border: none;
+            border-radius: var(--radius-md) !important;
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            background: white;
+        }
+
+        .custom-accordion .accordion-button {
+            background: white;
+            color: var(--text-primary);
+            font-weight: 700;
+            padding: 1.25rem 1.5rem;
+            font-family: 'Inter', sans-serif;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .custom-accordion .accordion-button:not(.collapsed) {
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.05), rgba(217, 119, 6, 0.05));
+            color: var(--color-brand);
+            box-shadow: none;
+        }
+
+        .custom-accordion .accordion-button:focus {
+            box-shadow: none;
+            border-color: transparent;
+        }
+
+        .custom-accordion .accordion-button:hover {
+            background: var(--bg-primary);
+        }
+
+        .custom-accordion .accordion-body {
+            background: white;
+            padding: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* ====== MEDIA WRAPPER ====== */
+        .media-wrapper {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            margin: 1.5rem 0;
+            background: #000;
+            position: relative;
+        }
+
+        .ratio-16x9 {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+        }
+
+        .ratio-16x9 iframe,
+        .ratio-16x9 video,
+        .ratio-16x9 img {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border-radius: 12px;
+            border: 0;
+            object-fit: cover;
         }
-        
-        .local-wisdom {
-            background: rgba(44, 120, 108, 0.05);
-            border-radius: 12px;
-            padding: 1.5rem;
+
+        /* ====== SIDEBAR WIDGET ====== */
+        .sidebar-widget {
+            background: var(--surface-white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(5, 150, 105, 0.04);
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-widget:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .sidebar-widget.widget-quiz {
+            background: linear-gradient(135deg, #FFFBEB, #FEF3C7);
+            border: 2px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .widget-title {
+            font-size: 1.25rem;
+            font-weight: 800;
             margin-bottom: 1.5rem;
-            border-left: 4px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-primary);
         }
-        
-        .quiz-container {
-            background: #f8f9fa;
-            border-radius: 12px;
+
+        .widget-title i { color: var(--color-brand); }
+        .widget-quiz .widget-title i { color: var(--color-accent); }
+
+        /* ====== QUIZ ====== */
+        .quiz-option {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 1rem 1.25rem;
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            margin-bottom: 0.75rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--color-brand);
+            background: var(--bg-primary);
+            transform: translateX(6px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .quiz-option.correct {
+            background: #D1FAE5;
+            border-color: var(--color-green);
+            color: #065F46;
+        }
+
+        .quiz-option.wrong {
+            background: #FEE2E2;
+            border-color: var(--color-red);
+            color: #991B1B;
+        }
+
+        .quiz-result-box {
             padding: 1.5rem;
+            border-radius: var(--radius-md);
+            margin-top: 1.5rem;
+            font-family: 'Inter', sans-serif;
         }
-        
-        .btn-primary {
-            background: var(--primary);
+
+        .btn-action {
+            background: linear-gradient(135deg, var(--color-brand), var(--color-brand-dark));
+            color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
         }
-        
-        .btn-primary:hover {
-            background: var(--accent);
-        }
-        
-        .btn-outline-primary {
-            color: var(--primary);
-            border-color: var(--primary);
-        }
-        
-        .btn-outline-primary:hover {
-            background: var(--primary);
+
+        .btn-action:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
             color: white;
         }
-        
-        .progress {
-            height: 10px;
-            border-radius: 5px;
-        }
-        
-        .progress-bar {
-            background: var(--primary);
-        }
-        
-        .sidebar {
-            position: sticky;
-            top: 20px;
-        }
-        
-        .sidebar .list-group-item {
-            border: none;
-            border-left: 3px solid transparent;
-            border-radius: 0;
-            padding: 0.75rem 1.25rem;
-            font-weight: 500;
-        }
-        
-        .sidebar .list-group-item.active {
+
+        /* ====== PROGRESS BAR ====== */
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
             background: transparent;
-            color: var(--primary);
-            border-left-color: var(--primary);
+            z-index: 1040;
         }
         
-        .sidebar .list-group-item:hover {
-            background: rgba(44, 120, 108, 0.05);
+        .reading-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-brand), var(--color-accent), var(--color-pink));
+            width: 0%;
+            border-radius: 0 2px 2px 0;
+            transition: width 0.1s ease;
+        }
+
+        /* ====== ATTACHMENT / PREVIEW ====== */
+        .attachment-box {
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
         }
         
-        .badge-primary {
-            background: var(--primary);
+        .attachment-box:hover {
+            border-color: var(--color-brand);
+            box-shadow: var(--shadow-md);
         }
-        
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 2rem 0;
-            margin-top: 3rem;
+
+        .document-iframe-container {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #f8fafc;
+            width: 100%;
         }
+
+        /* ====== ANIMATIONS ====== */
+        .fade-in-up { opacity: 0; transform: translateY(30px); animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+
+        /* ====== RESPONSIVE ====== */
+        @media (max-width: 991.98px) {
+            .app-container { padding: 0 1.25rem; }
+            .content-card { padding: 1.5rem; }
+            .page-header { padding: 3rem 0; }
+            .header-content h1 { font-size: 2.25rem; }
+            .admin-controls-card { padding: 1.25rem; }
+        }
+        @media (max-width: 767.98px) {
+            .header-content h1 { font-size: 1.75rem; }
+            .topic-block { padding: 1rem; }
+            .sidebar-widget { padding: 1.25rem; }
+            .dynamic-content-title { font-size: 1.15rem; flex-direction: column; align-items: flex-start; }
+            .admin-title { font-size: 1.1rem; }
+        }
+
+        /* ====== SCROLLBAR ====== */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, var(--color-brand), var(--color-pink)); border-radius: 50px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--color-brand-dark); }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark mb-4 rounded">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <i class="fas fa-graduation-cap me-2"></i>Materi Pembelajaran
+
+<!-- Progress Bar -->
+<div class="reading-progress">
+    <div class="reading-progress-bar" id="progressBar"></div>
+</div>
+
+<!-- Navbar Baru -->
+<nav class="topbar">
+    <div class="app-container">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="topbar-brand">
+                <i class="bi bi-book-half"></i> LareKu
+            </div>
+            <a href="{{ route('guru.materi.index') }}" class="btn-back" style="text-decoration: none;">
+                <i class="bi bi-arrow-left"></i> Kembali Menu
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('guru.materi.index')}}"><i class="fas fa-home me-1"></i> Beranda</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#"><i class="fas fa-book me-1"></i> Materi</a>
-                    </li>
-                    {{-- <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-tasks me-1"></i> Tugas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-chart-line me-1"></i> Progress</a>
-                    </li> --}}
-                </ul>
-            </div>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <div class="container">
-        <!-- Header Section -->
-        <div class="header-section">
+<!-- Page Header Baru -->
+<header class="page-header">
+    <div class="app-container header-content">
+        <span class="header-badge">
+            <i class="bi bi-globe-americas me-2"></i>Materi Inti • Tema 2
+        </span>
+        <h1>Keberagaman Lingkungan Sekitar</h1>
+        <p class="lead">Mempelajari dinamika sosial masyarakat, perubahan budaya yang dinamis, dan bagaimana kita melestarikan lingkungan demi masa depan.</p>
+        
+        <div class="d-flex flex-wrap gap-3 mt-4">
+            <span class="badge-tag-white"><i class="bi bi-clock me-1"></i> Estimasi baca: 20 mnt</span>
+            <span class="badge-tag-white"><i class="bi bi-tree me-1"></i> Lingkungan Hidup</span>
+            <span class="badge-tag-white"><i class="bi bi-people me-1"></i> Sosial Budaya</span>
+        </div>
+    </div>
+</header>
+
+<div class="content-wrapper" style="padding-bottom: 4rem;">
+    <div class="app-container">
+        
+        <!-- Admin Controls Area -->
+        <div class="admin-controls-card fade-in-up delay-1">
             <div class="row align-items-center">
-                <div class="col-md-8">
-                    <h1 class="header-title">Tema 02: Keberagaman Lingkungan Sekitar</h1>
-                    <p class="subtitle">Mempelajari dinamika sosial, perubahan budaya, dan pelestarian lingkungan</p>
-                </div>
-                {{-- <div class="col-md-4 text-md-end">
-                    <div class="d-flex justify-content-md-end">
-                        <div class="bg-white rounded p-2 text-center me-2">
-                            <div class="text-primary fw-bold">25%</div>
-                            <small class="text-muted">Progress</small>
-                        </div>
-                        <div class="bg-white rounded p-2 text-center">
-                            <div class="text-primary fw-bold">120</div>
-                            <small class="text-muted">Menit</small>
-                        </div>
-                    </div>
-                    <div class="progress mt-2 bg-white">
-                        <div class="progress-bar" style="width: 25%"></div>
-                    </div>
-                </div> --}}
-            </div>
-        </div>
-
-        <div class="row">
-            <!-- Sidebar Navigation -->
-            <div class="col-lg-3">
-                <div class="sidebar">
-                    <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action active">
-                            <i class="fas fa-book me-2"></i>Materi Pembelajaran
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <i class="fas fa-film me-2"></i>Video Pembelajaran
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <i class="fas fa-seedling me-2"></i>Kearifan Lokal
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <i class="fas fa-question-circle me-2"></i>Kuis
-                        </a>
-                        {{-- <a href="#" class="list-group-item list-group-item-action">
-                            <i class="fas fa-file-download me-2"></i>Unduh Materi
-                        </a> --}}
-                    </div>
-                    
-                    <div class="card mt-4">
-                        <div class="card-header">
-                            <i class="fas fa-info-circle me-2"></i>Informasi Materi
-                        </div>
-                        <div class="card-body">
-                            <p><i class="fas fa-clock me-2 text-primary"></i><strong>Durasi:</strong> 120 menit</p>
-                            <p><i class="fas fa-book me-2 text-primary"></i><strong>Topik:</strong> 3 bagian</p>
-                            <p><i class="fas fa-question me-2 text-primary"></i><strong>Kuis:</strong> 10 soal</p>
-                            <p><i class="fas fa-film me-2 text-primary"></i><strong>Video:</strong> 2 materi</p>
-                        </div>
+                <div class="col-12 col-md-4 mb-3 mb-md-0">
+                    <div class="admin-title">
+                        Tema 2
+                        <span class="badge-admin">Mode Kelola</span>
                     </div>
                 </div>
-            </div>
-
-            <!-- Main Content -->
-            <div class="col-lg-9">
-                <ul class="nav nav-pills mb-4">
-                    <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="pill" href="#materi">Materi</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="pill" href="#video">Video</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="pill" href="#kearifan">Kearifan Lokal</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="pill" href="#kuis">Kuis</a>
-                    </li>
-                </ul>
-
-                <div class="tab-content">
-                    <!-- Materi Tab -->
-                    <div id="materi" class="tab-pane active">
-                        <div class="card">
-                            <div class="card-header d-flex justify-content-between align-items-center">
-                                <span>A. Berkenalan dengan Lingkungan Sekitar</span>
-                                <span class="badge bg-primary">30 menit</span>
-                            </div>
-                            <div class="card-body">
-                                <div class="topic-item">
-                                    <h5>1. Berkenalan dengan Alam</h5>
-                                    <p>Setelah bumi terbentuk dan dapat dihuni manusia, berbagai perubahan pada bumi masih terjadi. Kini, bumi sedang mengalami pemanasan global (global warming) akibat efek rumah kaca, polusi udara, polusi air, dan polusi tanah.</p>
-                                    
-                                    <h6>a. Pencemaran Udara</h6>
-                                    <p>Pencemaran udara terjadi karena emisi gas yang dihasilkan selama proses pembakaran, menghasilkan gas karbon dioksida (CO₂). Kandungan CO₂ yang berlebih di atmosfer menyebabkan efek rumah kaca.</p>
-                                    
-                                    <h6>b. Pencemaran Air</h6>
-                                    <p>Pencemaran air disebabkan oleh konsentrasi zat berbahaya di dalam air yang berlangsung lama. Penggunaan bahan peledak dalam penangkapan ikan dan pembuangan limbah industri ke sungai/laut merupakan contoh pencemaran air.</p>
-                                    
-                                    <h6>c. Pencemaran Tanah</h6>
-                                    <p>Pencemaran tanah terjadi karena tanah kehilangan komponen penting sebagai daya dukungnya. Penggunaan pestisida berlebihan dan pembuangan limbah industri ke tanah merupakan contoh pencemaran tanah.</p>
-                                </div>
-                                
-                                <div class="topic-item">
-                                    <h5>2. Berkenalan dengan Masyarakat</h5>
-                                    <p>Kondisi masyarakat mengalami perubahan dari waktu ke waktu berupa perubahan cara berpikir, perubahan perilaku, dan perubahan dalam alat-alat kehidupan.</p>
-                                    
-                                    <h6>a. Perubahan Sosial dan Dinamika Sosial</h6>
-                                    <p>Dinamika sosial adalah perubahan sosial dalam masyarakat yang dapat terjadi pada perorangan atau kelompok. Dinamika sosial terjadi karena faktor internal dan faktor eksternal.</p>
-                                    
-                                    <h6>b. Pembentukan Karakteristik Budaya</h6>
-                                    <p>Budaya terdiri atas semua ide, keyakinan, perilaku, dan produk umum yang mendefinisikan cara hidup kelompok. Budaya membentuk cara individu dalam memandang dunia.</p>
-                                </div>
-                            </div>
+                <div class="col-12 col-md-8">
+                    <div class="d-flex flex-column flex-md-row justify-content-md-end gap-3 align-items-md-center">
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="fw-semibold text-secondary mb-0" style="font-size:0.9rem; white-space: nowrap;">Filter Tema:</label>
+                            <form action="{{ route('guru.materi.index') }}" method="GET" id="temaForm" class="m-0">
+                                <select class="filter-select" name="tema" onchange="this.form.submit()">
+                                    <option value="tema1" {{ request('tema')=='tema1' ? 'selected' : '' }}>Tema 1</option>
+                                    <option value="tema2" {{ request('tema')=='tema2' ? 'selected' : '' }}>Tema 2</option>
+                                    <option value="tema3" {{ request('tema')=='tema3' ? 'selected' : '' }}>Tema 3</option>
+                                    <option value="tema4" {{ request('tema')=='tema4' ? 'selected' : '' }}>Tema 4</option>
+                                </select>
+                            </form>
                         </div>
-                        
-                        <div class="card">
-                            <div class="card-header d-flex justify-content-between align-items-center">
-                                <span>B. Pembiasaan Diri untuk Melestarikan Lingkungan</span>
-                                <span class="badge bg-primary">45 menit</span>
-                            </div>
-                            <div class="card-body">
-                                <div class="topic-item">
-                                    <h5>1. Pembiasaan Melestarikan Sumber Daya Udara</h5>
-                                    <p>Beberapa cara melestarikan sumber daya udara antara lain mengurangi penggunaan kendaraan bermotor, menanam pohon, dan menggunakan energi terbarukan.</p>
-                                </div>
-                                
-                                <div class="topic-item">
-                                    <h5>2. Pembiasaan Melestarikan Sumber Daya Air</h5>
-                                    <p>Upaya pelestarian sumber daya air dapat dilakukan dengan tidak membuang sampah ke sungai, menggunakan air secara efisien, dan menjaga daerah resapan air.</p>
-                                </div>
-                                
-                                <div class="topic-item">
-                                    <h5>3. Pembiasaan Melestarikan Sumber Daya Tanah</h5>
-                                    <p>Pelestarian sumber daya tanah dapat dilakukan dengan mengurangi penggunaan pestisida, melakukan rotasi tanaman, dan mencegah erosi.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card">
-                            <div class="card-header d-flex justify-content-between align-items-center">
-                                <span>C. Pembiasaan Diri dalam Kebutuhan</span>
-                                <span class="badge bg-primary">45 menit</span>
-                            </div>
-                            <div class="card-body">
-                                <div class="topic-item">
-                                    <h5>1. Pembangunan Berkelanjutan</h5>
-                                    <p>Pembangunan berkelanjutan merupakan upaya untuk memenuhi kebutuhan masa kini dengan meminimalkan dampak buruk terhadap lingkungan, sehingga kualitas kehidupan saat ini tidak terganggu dan sumber daya alam tetap terjaga untuk generasi mendatang.</p>
-                                </div>
-                                
-                                <div class="topic-item">
-                                    <h5>2. Karakteristik Pembangunan Berkelanjutan</h5>
-                                    <p>Karakteristik pembangunan berkelanjutan antara lain: memperkirakan dampak terhadap kesehatan dan kelestarian lingkungan, mendorong perilaku manusia yang mendukung pengelolaan sumber daya alam berkelanjutan, dan menjunjung tinggi tanggung jawab terhadap alam.</p>
-                                </div>
-                                
-                                <div class="topic-item">
-                                    <h5>3. Tujuan Pembangunan Berkelanjutan</h5>
-                                    <p>Berdasarkan Deklarasi SDGs, terdapat 17 tujuan pembangunan berkelanjutan yang dikelompokkan menjadi 4 pilar: sosial, ekonomi, lingkungan hidup, dan tata kelola.</p>
-                                </div>
-                                
-                                <div class="topic-item">
-                                    <h5>4. Masalah Pokok Ekonomi</h5>
-                                    <p>Masalah pokok ekonomi meliputi: apa barang yang akan diproduksi, bagaimana cara memproduksi barang tersebut, dan untuk siapa barang dan jasa diproduksi.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Video Tab -->
-                    <div id="video" class="tab-pane fade">
-                        <div class="card">
-                            <div class="card-header">
-                                Video Pembelajaran - Dinamika Sosial dan Perubahan Lingkungan
-                            </div>
-                            <div class="card-body">
-                                <div class="video-container mb-4">
-                                    <iframe src="https://www.youtube.com/embed/5M2uO6Uny_c" frameborder="0" allowfullscreen></iframe>
-                                </div>
-                                <h5>Deskripsi Video</h5>
-                                <p>Video ini menjelaskan tentang dinamika sosial masyarakat dan perubahan lingkungan yang terjadi di sekitar kita. Materi mencakup perubahan sosial, pencemaran lingkungan, dan upaya pelestarian lingkungan.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="card">
-                            <div class="card-header">
-                                Video Pembelajaran - Kearifan Lokal dalam Pelestarian Lingkungan
-                            </div>
-                            <div class="card-body">
-                                <div class="video-container mb-4">
-                                    <iframe src="https://www.youtube.com/embed/9MhOPoOo8QQ" frameborder="0" allowfullscreen></iframe>
-                                </div>
-                                <h5>Deskripsi Video</h5>
-                                <p>Video ini menampilkan berbagai kearifan lokal masyarakat Indonesia dalam melestarikan lingkungan, termasuk praktik-praktik tradisional yang ramah lingkungan.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Kearifan Lokal Tab -->
-                    <div id="kearifan" class="tab-pane fade">
-                        <div class="card">
-                            <div class="card-header">
-                                Kearifan Lokal Sumatera Barat dalam Pelestarian Lingkungan
-                            </div>
-                            <div class="card-body">
-                                <div class="local-wisdom">
-                                    <h5><i class="fas fa-leaf me-2 text-success"></i>Larangan Membuka Lahan dengan Membakar</h5>
-                                    <p>Masyarakat Minangkabau memiliki kearifan lokal berupa larangan membuka lahan dengan cara membakar. Hal ini ditujukan untuk mencegah pencemaran udara dan kerusakan tanah.</p>
-                                    <div class="video-container mt-3">
-                                        <iframe src="https://www.youtube.com/embed/3n9uIe2xW_c" frameborder="0" allowfullscreen></iframe>
-                                    </div>
-                                </div>
-                                
-                                <div class="local-wisdom">
-                                    <h5><i class="fas fa-water me-2 text-info"></i>Pelestarian Sungai dan Sumber Air</h5>
-                                    <p>Masyarakat Minangkabau memiliki tradisi "mandoa aia" atau berdoa untuk air yang merupakan bentuk penghormatan terhadap sumber air. Mereka juga memiliki sanksi adat bagi yang mencemari sungai.</p>
-                                    <div class="video-container mt-3">
-                                        <iframe src="https://www.youtube.com/embed/7R9e_1N6Hxc" frameborder="0" allowfullscreen></iframe>
-                                    </div>
-                                </div>
-                                
-                                <div class="local-wisdom">
-                                    <h5><i class="fas fa-tree me-2 text-success"></i>Sistem Pertanian Berkelanjutan</h5>
-                                    <p>Masyarakat Minangkabau menerapkan sistem pertanian berkelanjutan dengan rotasi tanaman dan penggunaan pupuk alami untuk menjaga kesuburan tanah.</p>
-                                    <div class="video-container mt-3">
-                                        <iframe src="https://www.youtube.com/embed/4Hq8VhnM-ec" frameborder="0" allowfullscreen></iframe>
-                                    </div>
-                                </div>
-                                
-                                <div class="local-wisdom">
-                                    <h5><i class="fas fa-users me-2 text-primary"></i>Nilai Kearifan Lokal dalam Kehidupan Sehari-hari</h5>
-                                    <p>Nilai-nilai kearifan lokal Minangkabau dalam kehidupan sehari-hari seperti "adat basandi syarak, syarak basandi Kitabullah" menjadi pedoman dalam berinteraksi dengan lingkungan.</p>
-                                    <ul>
-                                        <li>Berbelanja: Prioritaskan produk lokal dan ramah lingkungan</li>
-                                        <li>Pernikahan: Menggunakan sirih sebagai simbol yang lebih alamiah daripada permen</li>
-                                        <li>Mendidik anak: Menanamkan nilai cinta lingkungan sejak dini</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Kuis Tab -->
-                    <div id="kuis" class="tab-pane fade">
-                        <div class="card">
-                            <div class="card-header">
-                                Kuis Tema 02: Keberagaman Lingkungan Sekitar
-                            </div>
-                            <div class="card-body">
-                                <div class="quiz-container">
-                                    <p>Uji pemahaman Anda tentang materi Keberagaman Lingkungan Sekitar dengan mengerjakan kuis berikut. Kuis terdiri dari 10 soal pilihan ganda.</p>
-                                    <div class="d-grid gap-2">
-                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#quizModal">
-                                            <i class="fas fa-play me-2"></i>Mulai Kuis
-                                        </button>
-                                    </div>
-                                </div>
-                                
-                                <div class="mt-4">
-                                    <h5>Hasil Kuis Terakhir</h5>
-                                    <div class="card bg-light">
-                                        <div class="card-body">
-                                            <p class="mb-1">Anda belum mengerjakan kuis untuk tema ini</p>
-                                            <div class="progress mt-2">
-                                                <div class="progress-bar" style="width: 0%">0%</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="{{ route('guru.materi.create',['tema'=>'tema2']) }}" class="btn-add-materi" style="text-decoration: none;">
+                            <i class="fas fa-plus"></i> Tambah Materi
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Footer -->
-    <footer class="mt-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h5>Materi Pembelajaran IPS</h5>
-                    <p>Platform pembelajaran interaktif untuk siswa kelas VII</p>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <p>&copy; 2023 Sekolah Indonesia. All rights reserved.</p>
-                    <div class="social-links">
-                        <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Quiz Modal -->
-    <div class="modal fade" id="quizModal" tabindex="-1">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Kuis Tema 02: Keberagaman Lingkungan Sekitar</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="quiz-progress mb-3">
-                        <div class="d-flex justify-content-between">
-                            <span>Soal 1 dari 10</span>
-                            <span>Waktu: 15:00</span>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 10%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="quiz-question">
-                        <h5>1. Apa penyebab utama pemanasan global menurut materi?</h5>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="quizQuestion1" id="q1Option1">
-                            <label class="form-check-label" for="q1Option1">A. Efek rumah kaca, polusi udara, polusi air, dan polusi tanah</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="quizQuestion1" id="q1Option2">
-                            <label class="form-check-label" for="q1Option2">B. Penggunaan kendaraan bermotor saja</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="quizQuestion1" id="q1Option3">
-                            <label class="form-check-label" for="q1Option3">C. Pembuangan sampah plastik</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="quizQuestion1" id="q1Option4">
-                            <label class="form-check-label" for="q1Option4">D. Penebangan hutan secara liar</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <button type="button" class="btn btn-primary">Soal Selanjutnya <i class="fas fa-arrow-right ms-2"></i></button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Tab functionality
-            const triggerTabList = document.querySelectorAll('#myTab button')
-            triggerTabList.forEach(triggerEl => {
-                new bootstrap.Tab(triggerEl)
-            })
-            
-            // Quiz timer simulation
-            const quizModal = document.getElementById('quizModal')
-            quizModal.addEventListener('show.bs.modal', function () {
-                // Simulate timer
-                let timeLeft = 900; // 15 minutes in seconds
-                const timerElement = document.querySelector('.quiz-progress span:last-child');
+        <div class="row g-4 g-lg-5">
+            <!-- Kolom Kiri: Materi -->
+            <div class="col-lg-8">
                 
-                const timerInterval = setInterval(function() {
-                    if (timeLeft <= 0) {
-                        clearInterval(timerInterval);
-                        timerElement.textContent = "Waktu: 00:00";
-                    } else {
-                        const minutes = Math.floor(timeLeft / 60);
-                        const seconds = timeLeft % 60;
-                        timerElement.textContent = `Waktu: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                        timeLeft--;
-                    }
-                }, 1000);
-            });
+                <!-- Looping Materi dari Database -->
+                @forelse($materi as $item)
+                <div class="content-card fade-in-up delay-2">
+                    <div class="d-flex justify-content-between align-items-start border-bottom pb-3 mb-4 flex-wrap gap-3">
+                        <h4 class="dynamic-content-title">
+                            <i class="bi bi-journal-text"></i>
+                            {{ $item->judul }}
+                        </h4>
+                        <div class="d-flex gap-2 flex-shrink-0">
+                            <a href="{{ route('guru.materi.edit', $item->id) }}" class="btn btn-outline-warning btn-sm rounded-pill px-3 fw-bold d-flex align-items-center gap-1">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <form action="{{ route('guru.materi.destroy', $item->id) }}" method="POST" class="d-inline m-0">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-outline-danger btn-sm rounded-pill px-3 fw-bold d-flex align-items-center gap-1" onclick="return confirm('Hapus materi ini selamanya?')">
+                                    <i class="fas fa-trash"></i> Hapus
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    @if($item->deskripsi)
+                        <p class="fw-bold p-3 mb-4 rounded-3" style="background: var(--bg-primary); border-left: 4px solid var(--color-brand); font-family: 'Inter', sans-serif;">
+                            {{ $item->deskripsi }}
+                        </p>
+                    @endif
+
+                    <div class="content-text text-dark">
+                        {!! $item->konten !!}
+                    </div>
+
+                    @if($item->mediaPendukung->count())
+                        {{-- <hr class="my-5 opacity-25" style="border-color: var(--color-brand);"> --}}
+                        <h5 class="fw-bold mb-4" style="color: var(--text-primary);">
+                            <i class="bi bi-paperclip me-2 text-primary"></i>Media Pendukung
+                        </h5>
+
+                        @foreach($item->mediaPendukung as $media)
+                        <div class="attachment-box">
+                            <div class="d-flex w-100 justify-content-between align-items-center flex-wrap gap-3">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="bg-white p-2 rounded-3 shadow-sm d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                        @if($media->jenis == 'pdf')
+                                            <i class="bi bi-file-earmark-pdf-fill fs-3 text-danger"></i>
+                                        @elseif($media->jenis == 'word')
+                                            <i class="bi bi-file-earmark-word-fill fs-3 text-primary"></i>
+                                        @elseif($media->jenis == 'ppt')
+                                            <i class="bi bi-file-earmark-slides-fill fs-3 text-warning"></i>
+                                        @elseif($media->jenis == 'video_upload' || $media->jenis == 'video_youtube')
+                                            <i class="bi bi-play-circle-fill fs-3 text-success"></i>
+                                        @else
+                                            <i class="bi bi-file-earmark-fill fs-3 text-secondary"></i>
+                                        @endif
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="mb-1 fw-bold" style="font-family: 'Inter', sans-serif;">{{ $media->judul }}</h6>
+                                        <span class="badge bg-white text-secondary border border-secondary-subtle text-uppercase" style="font-size: 0.7rem; letter-spacing: 0.5px;">{{ str_replace('_', ' ', $media->jenis) }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-primary btn-sm rounded-pill px-4 fw-bold" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="background: var(--color-brand); border: none;">
+                                        <i class="bi bi-eye me-1"></i> Lihat
+                                    </button>
+                                    
+                                    @if($media->jenis != 'video_youtube')
+                                    <a href="{{ asset('storage/'.$media->file) }}" target="_blank" download class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;" title="Download">
+                                        <i class="bi bi-cloud-arrow-down-fill"></i>
+                                    </a>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div id="preview{{ $media->id }}" class="collapse mt-4 w-100">
+                                @if($media->jenis == 'pdf')
+                                    <div class="document-iframe-container shadow-sm" style="height: 600px;">
+                                        <iframe src="{{ asset('storage/'.$media->file) }}" width="100%" height="100%" style="border: none;" allowfullscreen></iframe>
+                                    </div>
+
+                                @elseif($media->jenis == 'word')
+                                    <div class="document-iframe-container ratio ratio-16x9 shadow-sm">
+                                        <iframe src="https://docs.google.com/gview?url={{ urlencode(asset('storage/'.$media->file)) }}&embedded=true" allowfullscreen style="border: none;"></iframe>
+                                    </div>
+                                    <div class="text-center small text-muted mt-2 fw-bold">
+                                        <i class="bi bi-info-circle text-primary"></i> Render menggunakan Google Docs Viewer (File harus online).
+                                    </div>
+
+                                @elseif($media->jenis == 'ppt')
+                                    <div class="document-iframe-container ratio ratio-16x9 shadow-sm">
+                                        <iframe src="https://view.officeapps.live.com/op/embed.aspx?src={{ urlencode(asset('storage/'.$media->file)) }}" allowfullscreen style="border: none;"></iframe>
+                                    </div>
+                                    <div class="text-center small text-muted mt-2 fw-bold">
+                                        <i class="bi bi-info-circle text-primary"></i> Render menggunakan Microsoft Office Viewer (File harus online).
+                                    </div>
+
+                                @elseif($media->jenis == 'video_upload')
+                                    <div class="document-iframe-container ratio ratio-16x9 bg-black shadow-sm">
+                                        <video controls class="w-100 h-100 rounded-3">
+                                            <source src="{{ asset('storage/'.$media->file) }}">
+                                            Browser Anda tidak mendukung tag video.
+                                        </video>
+                                    </div>
+
+                                @elseif($media->jenis == 'video_youtube')
+                                    @php
+                                        preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match);
+                                    @endphp
+                                    @if(isset($match[1]))
+                                        <div class="document-iframe-container ratio ratio-16x9 shadow-sm">
+                                            <iframe src="https://www.youtube.com/embed/{{ $match[1] }}" allowfullscreen style="border: none;"></iframe>
+                                        </div>
+                                    @endif
+                                @endif
+                            </div>
+                        </div>
+                        @endforeach
+                    @endif
+                </div>
+                @empty
+                <div class="content-card text-center p-5">
+                    <div class="alert alert-info border-0 rounded-4 bg-primary-subtle text-primary mb-0 p-4">
+                        <i class="bi bi-inbox fs-1 d-block mb-3"></i>
+                        <h5 class="fw-bold font-inter">Belum ada materi pembelajaran</h5>
+                        <p class="mb-0 small">Klik tombol "Tambah Materi" di atas untuk mulai membuat konten untuk Tema 2.</p>
+                    </div>
+                </div>
+                @endforelse
+                
+                <!-- Konten Bawaan (Statis) -->
+                <div class="content-card fade-in-up delay-3">
+                    <h4 class="section-title">
+                        <i class="bi bi-stars"></i> Pembelajaran Interaktif (Integrasi Minangkabau)
+                    </h4>
+
+                    <!-- Topik 1 -->
+                    <div class="topic-block">
+                        <div class="topic-header">
+                            <div class="topic-icon">
+                                <i class="bi bi-tree-fill"></i>
+                            </div>
+                            <h3 class="topic-title">Berkenalan dengan Alam: "Alam Takambang Jadi Guru"</h3>
+                        </div>
+                        <p>Masyarakat Minangkabau memiliki filosofi dasar <strong>"Alam Takambang Jadi Guru"</strong>. Artinya, segala sesuatu yang terjadi di alam semesta ini merupakan pelajaran hidup. Sayangnya, bumi kita saat ini menghadapi tantangan besar seperti pemanasan global akibat ulah manusia.</p>
+                        
+                        <div class="accordion custom-accordion" id="accordionAlam">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseUdara">
+                                        <i class="bi bi-wind me-2 text-info"></i> Polusi Udara
+                                    </button>
+                                </h2>
+                                <div id="collapseUdara" class="accordion-collapse collapse" data-bs-parent="#accordionAlam">
+                                    <div class="accordion-body">
+                                        <p class="mb-0 text-dark">Penumpukan emisi gas sisa pembakaran (CO₂) di atmosfer memicu efek rumah kaca, mengubah iklim lokal yang dulunya sejuk.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAir">
+                                        <i class="bi bi-droplet-fill me-2 text-primary"></i> Polusi Air & Sungai
+                                    </button>
+                                </h2>
+                                <div id="collapseAir" class="accordion-collapse collapse" data-bs-parent="#accordionAlam">
+                                    <div class="accordion-body">
+                                        <p class="mb-0 text-dark">Pencemaran sungai (seperti Batang Agam atau Batang Arau) oleh limbah rumah tangga dapat merusak ekosistem air tawar.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Topik 2 -->
+                    <div class="topic-block">
+                        <div class="topic-header">
+                            <div class="topic-icon" style="background: rgba(245, 158, 11, 0.15); color: var(--color-accent);">
+                                <i class="bi bi-people-fill"></i>
+                            </div>
+                            <h3 class="topic-title">Dinamika Masyarakat & Budaya</h3>
+                        </div>
+                        <p>Masyarakat terus mengalami perubahan dari waktu ke waktu; baik dalam cara berpikir, perilaku, maupun teknologi. Hal ini disebut dinamika sosial. Namun, masyarakat Minangkabau berusaha menjaga identitasnya di tengah modernisasi.</p>
+                        
+                        <div class="highlight-box">
+                            <p><i class="bi bi-lightbulb-fill me-2 fs-5"></i><strong>Tradisi Mandoa Aia & Kapalo Banda:</strong><br><span class="mt-2 d-block text-secondary" style="font-family: 'Merriweather', serif; font-weight: normal; font-size: 0.95rem;">Merupakan tradisi syukuran dan doa bersama di hulu sungai (sumber air) sebelum masa tanam padi. Tradisi ini selain mempererat kerukunan antar warga, juga secara tidak langsung menjaga hulu sungai dari kerusakan dan pencemaran.</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Topik 3 -->
+                    <div class="topic-block">
+                        <div class="topic-header">
+                            <div class="topic-icon" style="background: rgba(236, 72, 153, 0.15); color: var(--color-pink);">
+                                <i class="bi bi-recycle"></i>
+                            </div>
+                            <h3 class="topic-title">Pembangunan Berkelanjutan & Mitigasi</h3>
+                        </div>
+                        <p>Pembangunan berkelanjutan adalah upaya memenuhi kebutuhan saat ini tanpa mengorbankan masa depan. Nenek moyang kita di Minangkabau sudah mempraktikkan mitigasi bencana berkelanjutan lewat arsitektur tradisionalnya.</p>
+                        <ul class="mb-4">
+                            <li><strong>Rumah Gadang Tahan Gempa:</strong> Sumatera Barat rawan gempa tektonik. Rumah Gadang dibangun tidak menggunakan paku besi, melainkan <em>pasak kayu</em>.</li>
+                            <li>Sistem ini membuat struktur bangunan menjadi lentur dan bisa berayun mengikuti guncangan gempa tanpa roboh.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Video Kesimpulan -->
+                    <div class="topic-block bg-white border-0 border-top border-light mt-5 pt-5 text-center">
+                        <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2 mb-3 fw-bold border border-primary-subtle"><i class="bi bi-play-btn-fill me-1"></i> Tontonan Pendalaman</span>
+                        <h5 class="fw-bold mb-3 font-inter fs-4">Visualisasi Kearifan Ekologi Minangkabau</h5>
+                        <p class="mb-4 mx-auto" style="max-width: 600px;">Simak video berikut untuk melihat bagaimana pelestarian lingkungan sejalan dengan pembangunan yang berkelanjutan.</p>
+                        
+                        <div class="media-wrapper ratio-16x9 shadow-lg rounded-4 border border-light">
+                            <iframe src="https://www.youtube.com/embed/9MhOPoOo8QQ" title="YouTube video player" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kolom Kanan: Sidebar -->
+            <div class="col-lg-4">
+                
+                <!-- Widget Kearifan Lokal -->
+                <div class="sidebar-widget fade-in-up delay-2">
+                    <h5 class="widget-title">
+                        <i class="bi bi-flower1" style="color: var(--color-teal);"></i> Kearifan Lokal
+                    </h5>
+                    <p class="small text-secondary mb-3">Masyarakat Minangkabau memiliki nilai-nilai luhur dalam menjaga alam sekitarnya.</p>
+                    
+                    <div class="accordion custom-accordion mb-4" id="accordionKearifan">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#kLokal1" style="font-size: 0.9rem;">
+                                    Larangan Membakar Lahan
+                                </button>
+                            </h2>
+                            <div id="kLokal1" class="accordion-collapse collapse" data-bs-parent="#accordionKearifan">
+                                <div class="accordion-body small text-muted">
+                                    Adat melarang keras pembukaan lahan dengan cara dibakar untuk mencegah polusi udara massif dan matinya unsur hara tanah.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video Thumbnail -->
+                    <div class="position-relative rounded-4 overflow-hidden shadow-sm border border-light" id="kl-video-wrapper" style="cursor: pointer;">
+                        <img src="https://placehold.co/600x400/047857/FFFFFF?text=Kearifan+Lokal" alt="Video Kearifan Lokal" id="kl-video-thumb" class="img-fluid w-100" style="min-height: 180px; object-fit: cover;">
+                        <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.2);"></div>
+                        <div class="position-absolute top-50 start-50 translate-middle">
+                            <div class="bg-white text-primary rounded-circle d-flex align-items-center justify-content-center shadow-lg" style="width: 56px; height: 56px; transition: transform 0.2s;" id="kl-video-play" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                                <i class="bi bi-play-fill fs-2 ms-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Widget Kuis -->
+                <div class="sidebar-widget widget-quiz fade-in-up delay-3 sticky-top" style="top: 100px;">
+                    <div class="d-flex justify-content-between align-items-center mb-4 border-bottom border-warning-subtle pb-3">
+                        <h5 class="widget-title m-0">
+                            <i class="bi bi-lightning-charge-fill"></i> Kuis Evaluasi
+                        </h5>
+                        <span class="badge bg-white text-dark border border-warning-subtle rounded-pill px-3 py-2 fw-bold shadow-sm" id="quizCounter">1 / 5</span>
+                    </div>
+                    
+                    <div id="quiz-area"></div>
+                    <div id="quiz-result-area" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Minimalis -->
+<footer class="bg-white border-top py-4 mt-5">
+    <div class="app-container text-center text-muted small fw-bold font-inter">
+        <p class="mb-0">&copy; Platform Pembelajaran IPS. Terintegrasi Desain Modern.</p>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // 1. Reading Progress Bar
+    window.addEventListener('scroll', () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById('progressBar').style.width = scrolled + '%';
+    });
+
+    // 2. Video Thumbnail Logic
+    document.addEventListener('DOMContentLoaded', function() {
+        const wrapper = document.getElementById('kl-video-wrapper');
+        const playBtn = document.getElementById('kl-video-play');
+        const thumb = document.getElementById('kl-video-thumb');
+        
+        function playVideo() {
+            wrapper.innerHTML = `
+                <div class="ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/9MhOPoOo8QQ?autoplay=1" allow="autoplay; encrypted-media" class="rounded-4" allowfullscreen></iframe>
+                </div>`;
+        }
+        
+        if(playBtn) playBtn.addEventListener('click', playVideo);
+        if(thumb) thumb.addEventListener('click', playVideo);
+    });
+
+    // 3. Quiz Logic (Tema 2)
+    const quizData = [
+        {
+            question: "Filosofi hidup masyarakat Minangkabau yang menjadikan alam dan segala isinya sebagai sumber pelajaran dan inspirasi hidup dikenal dengan pepatah...",
+            options: [
+                "Barek samo dipikua, ringan samo dijinjiang",
+                "Adat basandi syarak, syarak basandi Kitabullah",
+                "Alam takambang jadi guru",
+                "Dima bumi dipijak, disinan langik dijunjuang"
+            ],
+            answer: 2, 
+            explanation: "Filosofi 'Alam Takambang Jadi Guru' mengajarkan agar manusia mengamati, meniru, dan memelihara keseimbangan alam sekitar."
+        },
+        {
+            question: "Kawasan hutan di wilayah adat Minangkabau yang sengaja dijaga dan dilarang untuk ditebang kayunya demi melindungi sumber air dan mencegah longsor disebut...",
+            options: [
+                "Rimbo Larangan",
+                "Hutan Produksi",
+                "Tanah Ulayat",
+                "Sawah Tumpak"
+            ],
+            answer: 0,
+            explanation: "Rimbo Larangan adalah kearifan lokal bentuk konservasi hutan. Siapapun yang melanggar dan menebang pohon di sana akan dikenakan sanksi adat."
+        },
+        {
+            question: "Apa kaitan arsitektur Rumah Gadang dengan adaptasi terhadap kondisi lingkungan alam Sumatera Barat?",
+            options: [
+                "Atapnya yang tinggi dirancang khusus untuk menampung air hujan",
+                "Pondasinya dicor sangat dalam agar tidak tersapu banjir",
+                "Strukturnya menggunakan pasak kayu sehingga lentur dan tahan terhadap guncangan gempa tektonik",
+                "Dibangun dari kayu tahan api untuk mencegah kebakaran hutan"
+            ],
+            answer: 2,
+            explanation: "Sumatera Barat berada di jalur rawan gempa. Konstruksi Rumah Gadang yang tanpa paku (menggunakan pasak) membuatnya fleksibel dan tahan gempa."
+        },
+        {
+            question: "Tradisi 'Mandoa Aia' atau 'Turun ke Aia' yang dilakukan petani Minangkabau memiliki nilai kearifan lingkungan berupa...",
+            options: [
+                "Syarat mutlak untuk memanggil hujan di musim kemarau",
+                "Rasa syukur dan komitmen bersama menjaga kebersihan hulu sungai/sumber air sebelum masa tanam",
+                "Melarang masyarakat mengambil ikan di sungai",
+                "Upacara pembagian hasil panen kepada tetua adat"
+            ],
+            answer: 1,
+            explanation: "Tradisi ini menanamkan rasa hormat secara spiritual dan sosial agar masyarakat ikut bertanggung jawab menjaga kebersihan saluran irigasi dan hulu sungai."
+        },
+        {
+            question: "Penumpukan gas emisi sisa pembakaran (CO₂) di atmosfer yang menyebabkan suhu bumi semakin panas disebut fenomena...",
+            options: [
+                "Pemanasan Global (Efek Rumah Kaca)",
+                "Dinamika Sosial",
+                "Angin Muson Tropis",
+                "Pembangunan Berkelanjutan"
+            ],
+            answer: 0,
+            explanation: "Pemanasan global atau efek rumah kaca terjadi karena gas rumah kaca memerangkap panas matahari di dalam atmosfer bumi."
+        }
+    ];
+
+    let currentQ = 0;
+    let score = 0;
+    
+    const quizArea = document.getElementById('quiz-area');
+    const resultArea = document.getElementById('quiz-result-area');
+    const counterDisplay = document.getElementById('quizCounter');
+
+    function renderQuestion() {
+        if (currentQ >= quizData.length) {
+            showResult();
+            return;
+        }
+
+        const q = quizData[currentQ];
+        counterDisplay.textContent = `${currentQ + 1} / ${quizData.length}`;
+        
+        let html = `
+            <div class="mb-3">
+                <p class="fw-bold mb-4 font-inter fs-6 text-dark">${q.question}</p>
+                <div class="d-flex flex-column gap-2">
+        `;
+        
+        q.options.forEach((opt, index) => {
+            html += `<button class="quiz-option shadow-sm" onclick="checkAnswer(${index}, this)">${opt}</button>`;
         });
-    </script>
+        
+        html += `</div></div>`;
+        quizArea.innerHTML = html;
+        resultArea.style.display = 'none';
+        quizArea.style.display = 'block';
+    }
+
+    function checkAnswer(selectedIndex, btnElement) {
+        const allBtns = quizArea.querySelectorAll('.quiz-option');
+        allBtns.forEach(btn => btn.style.pointerEvents = 'none');
+        
+        const q = quizData[currentQ];
+        const isCorrect = selectedIndex === q.answer;
+        
+        if (isCorrect) {
+            btnElement.classList.add('correct');
+            score++;
+        } else {
+            btnElement.classList.add('wrong');
+            allBtns[q.answer].classList.add('correct');
+            allBtns[q.answer].style.opacity = '0.7';
+        }
+
+        setTimeout(() => {
+            quizArea.style.display = 'none';
+            resultArea.innerHTML = `
+                <div class="quiz-result-box ${isCorrect ? 'bg-success text-white' : 'bg-danger text-white'} rounded-4 shadow-sm border border-light">
+                    <h6 class="fw-bold font-inter fs-5"><i class="bi ${isCorrect ? 'bi-check-circle-fill' : 'bi-x-circle-fill'} me-2"></i> ${isCorrect ? 'Tepat Sekali! 🎉' : 'Kurang Tepat 💡'}</h6>
+                    <p class="small mb-4 mt-2" style="opacity: 0.95; line-height: 1.6;">${q.explanation}</p>
+                    <button class="btn btn-light btn-sm w-100 fw-bold text-dark rounded-pill py-2 font-inter shadow-sm" onclick="nextQuestion()">Lanjut Soal <i class="bi bi-arrow-right ms-1"></i></button>
+                </div>
+            `;
+            resultArea.style.display = 'block';
+        }, 900);
+    }
+
+    function nextQuestion() {
+        currentQ++;
+        renderQuestion();
+    }
+
+    function showResult() {
+        quizArea.style.display = 'none';
+        counterDisplay.textContent = "Selesai";
+        counterDisplay.className = 'badge bg-success text-white rounded-pill px-3 py-2 fw-bold shadow-sm';
+        
+        const percentage = Math.round((score / quizData.length) * 100);
+        let msg = percentage >= 80 ? "Sangat Baik! 🏆" : (percentage >= 60 ? "Cukup Baik 👍" : "Perlu Belajar Lagi 📚");
+        
+        resultArea.innerHTML = `
+            <div class="text-center py-4">
+                <div class="display-3 fw-bold mb-2" style="color: var(--color-brand); font-family: 'Inter', sans-serif;">${score}<span class="fs-3 text-muted">/${quizData.length}</span></div>
+                <h5 class="fw-bold font-inter text-dark">${msg}</h5>
+                <div class="progress my-3 mx-auto" style="height: 8px; width: 80%; border-radius: 50px;">
+                  <div class="progress-bar ${percentage >= 80 ? 'bg-success' : (percentage >= 60 ? 'bg-warning' : 'bg-danger')}" role="progressbar" style="width: ${percentage}%"></div>
+                </div>
+                <p class="small text-secondary mb-4">Nilai ketuntasan kamu: <span class="fw-bold text-dark">${percentage}%</span></p>
+                <button class="btn-action w-100 rounded-pill shadow-sm d-flex justify-content-center align-items-center gap-2" onclick="resetQuiz()">
+                    <i class="bi bi-arrow-counterclockwise"></i> Ulangi Kuis
+                </button>
+            </div>
+        `;
+        resultArea.style.display = 'block';
+    }
+
+    function resetQuiz() {
+        currentQ = 0;
+        score = 0;
+        counterDisplay.className = 'badge bg-white text-dark border border-warning-subtle rounded-pill px-3 py-2 fw-bold shadow-sm';
+        renderQuestion();
+    }
+
+    // Init Quiz
+    renderQuestion();
+</script>
 </body>
 </html>

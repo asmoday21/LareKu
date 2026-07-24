@@ -5,611 +5,490 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Materi Pembelajaran</title>
+    <title>Daftar Materi Pembelajaran - IPS Terpadu</title>
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Google Fonts: Outfit & Nunito (Sesuai dengan Tema Dalam) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
+    
     <style>
         :root {
-            --primary: #667eea;
-            --primary-dark: #5a67d8;
-            --secondary: #f093fb;
-            --secondary-dark: #e879f9;
-            --success: #4facfe;
-            --success-dark: #3b82f6;
-            --warning: #43e97b;
-            --warning-dark: #22c55e;
-            --light-bg: #f8fafc;
-            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --card-shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.1);
-            --border-radius: 12px;
+            /* Skema Warna Global - Vibrant EdTech */
+            --bg-main: #F7F9FC;         /* Soft Gray/Blueish background */
+            --surface: #FFFFFF;         /* Card background */
+            
+            --text-dark: #1E293B;       /* Heading */
+            --text-gray: #64748B;       /* Paragraph */
+            
+            --border-color: rgba(0,0,0,0.06); 
+            
+            /* Warna Tema 1 (Sosial/Geografi) - Indigo/Pink */
+            --theme-1-main: #4F46E5;    
+            --theme-1-secondary: #EC4899;
+            --theme-1-bg: #EEF2FF;
+            
+            /* Warna Tema 2 (Lingkungan) - Emerald/Teal */
+            --theme-2-main: #059669;    
+            --theme-2-secondary: #0D9488;
+            --theme-2-bg: #F0FDF4;
+            
+            /* Warna Tema 3 (Ekonomi) - Blue/Orange */
+            --theme-3-main: #0284C7;    
+            --theme-3-secondary: #EA580C;
+            --theme-3-bg: #F0F9FF;
+            
+            /* Warna Tema 4 (Pemberdayaan/Sosial) - Deep Indigo/Green */
+            --theme-4-main: #4338CA;    
+            --theme-4-secondary: #10B981;
+            --theme-4-bg: #EEF2FF;
+            
+            /* Shadows & Border Radius (Squircle) */
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 10px 25px rgba(0,0,0,0.06);
+            --shadow-lg: 0 20px 40px rgba(0,0,0,0.08);
+            --shadow-hover: 0 25px 50px rgba(0,0,0,0.12);
+            
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f1f5f9;
-            color: #334155;
-            padding-top: 1rem;
-            padding-bottom: 2rem;
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            padding-bottom: 4rem;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .header-section {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--card-shadow);
-        }
-
-        .header-title {
-            color: var(--primary);
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', sans-serif;
             font-weight: 700;
-            font-size: 2.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        /* Container Limit (Menyelaraskan dengan Tema Dalam) */
+        .app-container {
+            max-width: 1400px; /* Diperlebar agar 4 kartu muat rapi dalam 1 baris */
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ====== HERO BANNER BARU (Gaya EdTech Modern) ====== */
+        .hero-banner {
+            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+            border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+            padding: 5rem 2rem 6rem;
+            margin-bottom: -3rem; /* Overlap effect for cards */
             text-align: center;
-            margin-bottom: 0.5rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Ornamen Glassmorphism di Hero */
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(79,70,229,0.3) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+        }
+
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            right: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(236,72,153,0.2) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            color: #FFFFFF;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
         }
         
-        .subtitle {
-            color: #64748b;
-            text-align: center;
-            margin-bottom: 1.5rem;
+        .hero-title span {
+            background: linear-gradient(135deg, #818CF8, #F472B6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* Progress Section */
-        .progress-section {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            box-shadow: var(--card-shadow);
-            margin-bottom: 2rem;
-        }
-
-        .progress-title {
-            font-weight: 600;
-            color: #334155;
-            margin-bottom: 1rem;
-        }
-
-        .progress {
-            height: 10px;
-            border-radius: 5px;
-            background: #e2e8f0;
-        }
-
-        .progress-bar {
-            background: linear-gradient(to right, var(--success), var(--success-dark));
-            border-radius: 5px;
-        }
-
-        .progress-stats {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .stat-item {
-            text-align: center;
-            flex: 1;
-            min-width: 100px;
-            margin: 0.5rem 0;
-        }
-
-        .stat-number {
+        p.hero-desc {
+            font-family: 'Nunito', sans-serif;
             font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--primary);
+            color: #94A3B8;
+            font-weight: 500;
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
 
-        .stat-label {
-            color: #64748b;
-            font-size: 0.85rem;
+        /* ====== KARTU TEMA ====== */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Memaksa 4 kartu berjejer dalam 1 baris */
+            gap: 1.5rem;
+            position: relative;
+            z-index: 10;
         }
 
-        /* Card Styles */
         .card-materi {
-            border: none;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            transition: all 0.3s ease;
+            background: var(--surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem 1.5rem; /* Padding sedikit disesuaikan agar proporsional */
             height: 100%;
-            box-shadow: var(--card-shadow);
-            background: white;
-            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Top Border Accent Effect */
+        .card-materi::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
         }
         
         .card-materi:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--card-shadow-hover);
-        }
-        
-        .card-theme-1 {
-            border-top: 4px solid var(--primary);
-        }
-        
-        .card-theme-2 {
-            border-top: 4px solid var(--secondary);
-        }
-        
-        .card-theme-3 {
-            border-top: 4px solid var(--success);
-        }
-        
-        .card-theme-4 {
-            border-top: 4px solid var(--warning);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
         }
 
-        .icon-container {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
+        .card-materi:hover::before {
+            opacity: 1;
+        }
+
+        .badge-count {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            align-self: flex-start;
+        }
+
+        .card-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 1.5rem auto;
-            font-size: 1.8rem;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
         }
-        
-        .icon-theme-1 {
-            background: rgba(102, 126, 234, 0.1);
-            color: var(--primary);
-        }
-        
-        .icon-theme-2 {
-            background: rgba(240, 147, 251, 0.1);
-            color: var(--secondary);
-        }
-        
-        .icon-theme-3 {
-            background: rgba(79, 172, 254, 0.1);
-            color: var(--success);
-        }
-        
-        .icon-theme-4 {
-            background: rgba(67, 233, 123, 0.1);
-            color: var(--warning);
+
+        .card-materi:hover .card-icon {
+            transform: scale(1.1) rotate(-5deg);
         }
 
         .card-title {
-            font-weight: 600;
-            color: #334155;
-            font-size: 1.2rem;
-            text-align: center;
-            margin-bottom: 1rem;
+            font-size: 1.25rem; /* Ukuran font disesuaikan untuk layout 4 kolom */
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
         }
 
-        .card-text {
-            color: #64748b;
-            line-height: 1.5;
-            text-align: center;
+        .card-desc {
+            color: var(--text-gray);
+            font-size: 0.95rem; /* Ukuran font disesuaikan */
+            line-height: 1.6;
             margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
-
-        .card-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding: 0.8rem;
-            background: #f8fafc;
-            border-radius: 8px;
-        }
-
-        .meta-item {
-            display: flex;
-            align-items: center;
-            font-size: 0.85rem;
-            color: #64748b;
+            flex-grow: 1;
             font-weight: 500;
         }
 
-        .meta-item i {
-            margin-right: 0.4rem;
-        }
+        /* THEME STYLING (Menyelaraskan dengan palet di materi dalam) */
         
+        /* Theme 1 - Sosial (Indigo/Pink) */
+        .theme-1::before { background: linear-gradient(90deg, var(--theme-1-main), var(--theme-1-secondary)); }
+        .theme-1 .badge-count { background: var(--theme-1-bg); color: var(--theme-1-main); }
+        .theme-1 .card-icon { background: linear-gradient(135deg, rgba(79,70,229,0.1), rgba(236,72,153,0.1)); color: var(--theme-1-main); }
+        .theme-1 .btn-learn { background: linear-gradient(135deg, var(--theme-1-main), #3730A3); }
+
+        /* Theme 2 - Lingkungan (Emerald/Teal) */
+        .theme-2::before { background: linear-gradient(90deg, var(--theme-2-main), var(--theme-2-secondary)); }
+        .theme-2 .badge-count { background: var(--theme-2-bg); color: var(--theme-2-main); }
+        .theme-2 .card-icon { background: linear-gradient(135deg, rgba(5,150,105,0.1), rgba(13,148,136,0.1)); color: var(--theme-2-main); }
+        .theme-2 .btn-learn { background: linear-gradient(135deg, var(--theme-2-main), #047857); }
+
+        /* Theme 3 - Ekonomi (Blue/Orange) */
+        .theme-3::before { background: linear-gradient(90deg, var(--theme-3-main), var(--theme-3-secondary)); }
+        .theme-3 .badge-count { background: var(--theme-3-bg); color: var(--theme-3-main); }
+        .theme-3 .card-icon { background: linear-gradient(135deg, rgba(2,132,199,0.1), rgba(234,88,12,0.1)); color: var(--theme-3-main); }
+        .theme-3 .btn-learn { background: linear-gradient(135deg, var(--theme-3-main), #0369A1); }
+
+        /* Theme 4 - Pemberdayaan (Deep Indigo/Soft Green) */
+        .theme-4::before { background: linear-gradient(90deg, var(--theme-4-main), var(--theme-4-secondary)); }
+        .theme-4 .badge-count { background: var(--theme-4-bg); color: var(--theme-4-main); }
+        .theme-4 .card-icon { background: linear-gradient(135deg, rgba(67,56,202,0.1), rgba(16,185,129,0.1)); color: var(--theme-4-main); }
+        .theme-4 .btn-learn { background: linear-gradient(135deg, var(--theme-4-main), #312E81); }
+
+        /* Bottom Meta & Button */
+        .meta-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            margin-bottom: 1.5rem;
+        }
+
+        .meta-time {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-gray);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .meta-tag {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.35rem 0.75rem;
+            border-radius: 8px;
+            background: var(--bg-main);
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         .btn-learn {
             border: none;
-            border-radius: 6px;
-            padding: 10px 20px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
-            display: inline-block;
-            text-align: center;
+            border-radius: 50px;
+            padding: 0.8rem 1.5rem;
+            font-weight: 700;
+            font-size: 1rem;
+            font-family: 'Outfit', sans-serif;
+            color: white;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
             text-decoration: none;
-            color: white;
-            width: 100%;
+            box-shadow: var(--shadow-sm);
         }
         
-        .btn-theme-1 {
-            background: var(--primary);
-        }
-        
-        .btn-theme-1:hover {
-            background: var(--primary-dark);
-            color: white;
-        }
-        
-        .btn-theme-2 {
-            background: var(--secondary);
-        }
-        
-        .btn-theme-2:hover {
-            background: var(--secondary-dark);
-            color: white;
-        }
-        
-        .btn-theme-3 {
-            background: var(--success);
-        }
-        
-        .btn-theme-3:hover {
-            background: var(--success-dark);
-            color: white;
-        }
-        
-        .btn-theme-4 {
-            background: var(--warning);
-        }
-        
-        .btn-theme-4:hover {
-            background: var(--warning-dark);
+        .btn-learn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
             color: white;
         }
 
-        /* Info Badge */
-        .info-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 0.75rem;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-weight: 500;
+        /* Responsiveness & Animations */
+        /* Tablet & Laptop Kecil (Membuat 2 baris x 2 kolom agar seimbang) */
+        @media (max-width: 1100px) {
+            .card-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+            .card-materi { padding: 2rem; }
         }
 
-        .badge-primary { background: var(--primary); color: white; }
-        .badge-secondary { background: var(--secondary); color: white; }
-        .badge-success { background: var(--success); color: white; }
-        .badge-warning { background: var(--warning); color: white; }
-        .badge-info { background: #cbd5e1; color: #334155; }
-        .badge-light { background: #e2e8f0; color: #475569; }
-
-        /* Quick Actions */
-        .quick-actions {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            margin-top: 2rem;
-            box-shadow: var(--card-shadow);
-        }
-
-        .action-btn {
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            padding: 8px 15px;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            margin: 0.3rem;
-            background: white;
-            font-size: 0.9rem;
-            color: #475569;
-        }
-
-        .action-btn:hover {
-            background: #f1f5f9;
-            border-color: #94a3b8;
-        }
-        
-        /* Floating Action Button */
-        .floating-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            box-shadow: var(--card-shadow-hover);
-            z-index: 100;
-            background: var(--primary);
-            border: none;
-            color: white;
-        }
-
-        .floating-btn:hover {
-            background: var(--primary-dark);
-        }
-        
-        /* Modal Styles */
-        .modal-content {
-            border-radius: var(--border-radius);
-            border: none;
-            box-shadow: var(--card-shadow-hover);
-        }
-        
-        .modal-header {
-            border-bottom: 1px solid #e2e8f0;
-        }
-        
-        .modal-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin: 0 auto 1rem;
-            background: #f1f5f9;
-            color: var(--primary);
-        }
-
-        .modal-title {
-            font-weight: 600;
-            color: #334155;
-        }
-
-        .modal-btn {
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            padding: 10px 15px;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            background: white;
-            margin-bottom: 10px;
-            text-align: left;
-            width: 100%;
-        }
-
-        .modal-btn:hover {
-            background: #f8fafc;
-            border-color: #94a3b8;
-        }
-
-        /* Responsive */
+        /* Mobile */
         @media (max-width: 768px) {
-            .header-title {
-                font-size: 1.8rem;
-            }
-            
-            .progress-stats {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .stat-item {
-                margin: 0.5rem 0;
-            }
-            
-            .action-btn {
-                width: 100%;
-                margin: 0.3rem 0;
-            }
+            .hero-banner { padding: 4rem 1.5rem 5rem; border-radius: 0 0 32px 32px; }
+            .hero-title { font-size: 2rem; }
+            p.hero-desc { font-size: 1.05rem; }
+            .card-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .card-materi { padding: 2rem 1.5rem; }
         }
 
-        /* Coming soon cards */
-        .coming-soon {
-            opacity: 0.7;
+        .fade-in-up {
+            animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
 
-        .coming-soon .icon-container {
-            background: #e2e8f0;
-            color: #94a3b8;
-        }
-
-        .coming-soon .btn-learn {
-            background: #94a3b8;
-            cursor: not-allowed;
-        }
-
-        .coming-soon .btn-learn:hover {
-            background: #94a3b8;
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-    <div class="container py-3">
-        <!-- Header Section -->
-        <header class="header-section">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <h1 class="header-title">Materi Pembelajaran IPS Kelas VII</h1>
-                    <p class="subtitle">
-                        <i class="fas fa-graduation-cap me-2"></i>
-                        Eksplorasi lingkungan dan masyarakat di sekitarmu dengan pembelajaran interaktif
-                    </p>
-                    
-                </div>
-            </div>
-        </header>
+    
+    <!-- Hero Section -->
+    <header class="hero-banner fade-in-up">
+        <div class="hero-content">
+            <span class="hero-badge"><i class="fas fa-graduation-cap me-2"></i>IPS Terpadu Kelas VII</span>
+            <h1 class="hero-title">Eksplorasi Lingkungan &<br><span>Dinamika Masyarakat</span></h1>
+            <p class="hero-desc mt-3 mb-0">
+                Pilih tema pembelajaran untuk mulai memahami interaksi keruangan, potensi alam, kegiatan ekonomi, dan kehidupan sosial budaya di sekitarmu.
+            </p>
+        </div>
+    </header>
 
+    <div class="app-container">
         <!-- Materials Grid -->
-        <div class="row">
-            <!-- Card 1 -->
-            <div class="col-lg-6 mb-4">
-                <div class="card card-materi card-theme-1">
-                    <div class="card-body p-4 position-relative">
-                        <span class="info-badge badge-primary">
-                            <i class="fas fa-book me-1"></i> 5 Materi
-                        </span>
-                        
-                        <div class="icon-container icon-theme-1">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        
-                        <h3 class="card-title">Tema 01: Kehidupan Sosial dan Kondisi Lingkungan Sekitar</h3>
-                        <p class="card-text">Pelajari tentang cara kita berinteraksi dan pengaruh lingkungan terhadap kehidupan sehari-hari.</p>
-                        
-                        <div class="card-meta">
-                            <div class="meta-item">
-                                <i class="far fa-clock"></i> 120 menit
-                            </div>
-                            <span class="badge badge-info">
-                                <i class="fas fa-star me-1"></i> Penting
-                            </span>
-                        </div>
-                        
-                        <div class="text-center">
-                            <a href="{{ route('guru.materi.tema1', ['id' => 1]) }}" class="btn btn-learn btn-theme-1">
-                                <i class="fas fa-play me-2"></i> Mulai Belajar
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="card-grid">
             
-            <!-- Card 2 -->
-            <div class="col-lg-6 mb-4">
-                <div class="card card-materi card-theme-2">
-                    <div class="card-body p-4 position-relative">
-                        <span class="info-badge badge-secondary">
-                            <i class="fas fa-book me-1"></i> 4 Materi
-                        </span>
-                        
-                        <div class="icon-container icon-theme-2">
-                            <i class="fas fa-globe-asia"></i>
-                        </div>
-                        
-                        <h3 class="card-title">Tema 02: Keberagaman Lingkungan Sekitar</h3>
-                        <p class="card-text">Kenali berbagai budaya, suku, dan kekayaan alam yang ada di sekitar kita.</p>
-                        
-                        <div class="card-meta">
-                            <div class="meta-item">
-                                <i class="far fa-clock"></i> 90 menit
-                            </div>
-                            <span class="badge badge-success">
-                                <i class="fas fa-gamepad me-1"></i> Interaktif
-                            </span>
-                        </div>
-                        
-                        <div class="text-center">
-                            <a href="{{ route('guru.materi.tema2', ['id' => 2]) }}" class="btn btn-learn btn-theme-2">
-                                <i class="fas fa-play me-2"></i> Mulai Belajar
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Card 3 -->
-            <div class="col-lg-6 mb-4">
-                <div class="card card-materi card-theme-3">
-                    <div class="card-body p-4 position-relative">
-                        <span class="info-badge badge-success">
-                            <i class="fas fa-book me-1"></i> 6 Materi
-                        </span>
-                        
-                        <div class="icon-container icon-theme-3">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        
-                        <h3 class="card-title">Tema 03: Potensi Ekonomi Lingkungan</h3>
-                        <p class="card-text">Cari tahu bagaimana sumber daya alam dan kegiatan masyarakat bisa menciptakan peluang ekonomi.</p>
-                        
-                        <div class="card-meta">
-                            <div class="meta-item">
-                                <i class="far fa-clock"></i> 150 menit
-                            </div>
-                            <span class="badge badge-warning">
-                                <i class="fas fa-lightbulb me-1"></i> Kreatif
-                            </span>
-                        </div>
-                        
-                        <div class="text-center">
-                            <a href="{{ route('guru.materi.tema3', ['id' => 3]) }}" class="btn btn-learn btn-theme-3">
-                                <i class="fas fa-play me-2"></i> Mulai Belajar
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Card 4 -->
-            <div class="col-lg-6 mb-4">
-                <div class="card card-materi card-theme-4">
-                    <div class="card-body p-4 position-relative">
-                        <span class="info-badge badge-warning">
-                            <i class="fas fa-book me-1"></i> 5 Materi
-                        </span>
-                        
-                        <div class="icon-container icon-theme-4">
-                            <i class="fas fa-hands-helping"></i>
-                        </div>
-                        
-                        <h3 class="card-title">Tema 04: Pemberdayaan Masyarakat</h3>
-                        <p class="card-text">Pelajari tentang cara masyarakat bekerja sama untuk membangun komunitas yang lebih baik.</p>
-                        
-                        <div class="card-meta">
-                            <div class="meta-item">
-                                <i class="far fa-clock"></i> 110 menit
-                            </div>
-                            <span class="badge badge-info">
-                                <i class="fas fa-users me-1"></i> Kolaboratif
-                            </span>
-                        </div>
-                        
-                        <div class="text-center">
-                            <a href="{{ route('guru.materi.tema4', ['id' => 4]) }}" class="btn btn-learn btn-theme-4">
-                                <i class="fas fa-play me-2"></i> Mulai Belajar
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-    </div>
-    
-    <!-- Floating Action Button -->
-    {{-- <button class="floating-btn" data-bs-toggle="modal" data-bs-target="#helpModal" title="Butuh Bantuan?">
-        <i class="fas fa-headset"></i>
-    </button> --}}
-    
-    <!-- Help Modal -->
-    <div class="modal fade" id="helpModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Pusat Bantuan & Dukungan</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="modal-icon mb-3">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <p class="text-muted mb-4 text-center">Pilih layanan yang Anda butuhkan:</p>
+            <!-- Card Tema 1 -->
+            <div class="fade-in-up delay-1">
+                <div class="card-materi theme-1">
+                    <span class="badge-count">
+                        <i class="fas fa-layer-group"></i> 5 Sub-materi
+                    </span>
                     
-                    <div class="d-grid gap-2">
-                        <button class="btn modal-btn" onclick="openGuide()">
-                            <i class="fas fa-book-open me-2"></i> Panduan Lengkap
-                        </button>
-                        <button class="btn modal-btn" onclick="contactTeacher()">
-                            <i class="fas fa-user-tie me-2"></i> Hubungi Guru
-                        </button>
-                        <button class="btn modal-btn" onclick="watchTutorial()">
-                            <i class="fas fa-play-circle me-2"></i> Video Tutorial
-                        </button>
-                        <button class="btn modal-btn" onclick="reportIssue()">
-                            <i class="fas fa-bug me-2"></i> Laporkan Masalah
-                        </button>
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
                     </div>
-
-                    <div class="mt-4 p-3 bg-light rounded">
-                        <h6 class="fw-bold mb-2">Kontak Darurat</h6>
-                        <p class="mb-1 small"><strong>WhatsApp:</strong> +62 812-3456-7890</p>
-                        <p class="mb-1 small"><strong>Email:</strong> support@sekolah.edu</p>
-                        <p class="mb-0 small"><strong>Jam Layanan:</strong> 08:00 - 17:00 WIB</p>
+                    
+                    <h3 class="card-title">Tema 01: Kehidupan Sosial dan Kondisi Lingkungan Sekitar</h3>
+                    <p class="card-desc">Pelajari tentang cara kita berinteraksi, mengenal lokasi absolut/relatif, dan pengaruh lingkungan terhadap kehidupan sehari-hari secara mendalam.</p>
+                    
+                    <div class="meta-info">
+                        <div class="meta-time">
+                            <i class="far fa-clock"></i> 120 Menit
+                        </div>
+                        <span class="meta-tag">Geografi & Sosiologi</span>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    
+                    <a href="{{ route('guru.materi.tema1', ['id' => 1]) }}" class="btn-learn mt-auto">
+                        Mulai Belajar <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
                 </div>
             </div>
+            
+            <!-- Card Tema 2 -->
+            <div class="fade-in-up delay-2">
+                <div class="card-materi theme-2">
+                    <span class="badge-count">
+                        <i class="fas fa-layer-group"></i> 4 Sub-materi
+                    </span>
+                    
+                    <div class="card-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    
+                    <h3 class="card-title">Tema 02: Keberagaman Lingkungan Sekitar</h3>
+                    <p class="card-desc">Kenali pembentukan bumi, cuaca, iklim, pelestarian lingkungan alam, serta adaptasi budaya dan mitigasi bencana masyarakat lokal.</p>
+                    
+                    <div class="meta-info">
+                        <div class="meta-time">
+                            <i class="far fa-clock"></i> 90 Menit
+                        </div>
+                        <span class="meta-tag">Lingkungan Hidup</span>
+                    </div>
+                    
+                    <a href="{{ route('guru.materi.tema2', ['id' => 2]) }}" class="btn-learn mt-auto">
+                        Mulai Belajar <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Card Tema 3 -->
+            <div class="fade-in-up delay-3">
+                <div class="card-materi theme-3">
+                    <span class="badge-count">
+                        <i class="fas fa-layer-group"></i> 6 Sub-materi
+                    </span>
+                    
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    
+                    <h3 class="card-title">Tema 03: Potensi Ekonomi Lingkungan</h3>
+                    <p class="card-desc">Cari tahu bagaimana pemanfaatan sumber daya alam, dinamika kependudukan, dan kegiatan maritim bisa menciptakan peluang ekonomi berkelanjutan.</p>
+                    
+                    <div class="meta-info">
+                        <div class="meta-time">
+                            <i class="far fa-clock"></i> 150 Menit
+                        </div>
+                        <span class="meta-tag">Ekonomi</span>
+                    </div>
+                    
+                    <a href="{{ route('guru.materi.tema3', ['id' => 3]) }}" class="btn-learn mt-auto">
+                        Mulai Belajar <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Card Tema 4 -->
+            <div class="fade-in-up delay-4">
+                <div class="card-materi theme-4">
+                    <span class="badge-count">
+                        <i class="fas fa-layer-group"></i> 5 Sub-materi
+                    </span>
+                    
+                    <div class="card-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    
+                    <h3 class="card-title">Tema 04: Pemberdayaan Masyarakat</h3>
+                    <p class="card-desc">Pelajari keragaman sosial budaya, sejarah lokal, literasi keuangan dasar, dan bagaimana komunitas bekerja sama untuk menjadi mandiri.</p>
+                    
+                    <div class="meta-info">
+                        <div class="meta-time">
+                            <i class="far fa-clock"></i> 110 Menit
+                        </div>
+                        <span class="meta-tag">Pemberdayaan</span>
+                    </div>
+                    
+                    <a href="{{ route('guru.materi.tema4', ['id' => 4]) }}" class="btn-learn mt-auto">
+                        Mulai Belajar <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -617,53 +496,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Quick action functions
-        function showAchievements() {
-            alert('Pencapaian Anda:\n• Pemula Hebat: Menyelesaikan tema pertama\n• Konsisten: Belajar 3 hari berturut\n• Cerdas: Nilai kuis di atas 80%');
-        }
-
-        function showHistory() {
-            alert('Riwayat pembelajaran Anda:\n• Tema 1: Selesai (85%)\n• Tema 2: Dalam Progress (60%)\n• Total waktu belajar: 3 jam 45 menit');
-        }
-
-        function downloadMaterials() {
-            alert('Materi PDF siap diunduh! File akan tersimpan di folder Download Anda.');
-        }
-
-        function showStats() {
-            alert('Statistik Pembelajaran:\n• Rata-rata nilai kuis: 82%\n• Waktu belajar minggu ini: 8 jam\n• Materi diselesaikan: 2/8');
-        }
-
-        function showCalendar() {
-            alert('Jadwal Pembelajaran Minggu Ini:\n• Senin: Tema 3 (2 jam)\n• Rabu: Review Tema 1-2 (1 jam)\n• Jumat: Kuis Tema 3 (30 menit)');
-        }
-
-        // Modal functions
-        function openGuide() {
-            alert('Panduan lengkap akan dibuka di tab baru.');
-            window.open('#', '_blank');
-        }
-
-        function contactTeacher() {
-            alert('Mengarahkan ke email guru...');
-            window.open('mailto:guru@sekolah.edu?subject=Bantuan Pembelajaran IPS', '_blank');
-        }
-
-        function watchTutorial() {
-            alert('Membuka video tutorial...');
-            window.open('https://www.youtube.com', '_blank');
-        }
-
-        function reportIssue() {
-            alert('Form laporan masalah telah dibuka. Silakan deskripsikan masalah yang Anda alami.');
-        }
-
-        // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
-            // Show welcome message
-            setTimeout(() => {
-                console.log('Selamat datang di platform pembelajaran IPS!');
-            }, 1000);
+            console.log('Halaman Daftar Materi (EdTech Theme) berhasil dimuat.');
         });
     </script>
 </body>

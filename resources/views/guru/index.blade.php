@@ -473,7 +473,7 @@
                     <span class="text-gray-700 font-semibold">Budaya Minangkabau</span>
                 </div>
                 <p class="text-gray-500 text-sm">
-                    &copy; 2025 Pembelajaran Budaya Minangkabau • Kelas VII SMP
+                    &copy; Pembelajaran Budaya Minangkabau • Kelas VII SMP
                 </p>
             </div>
         </div>

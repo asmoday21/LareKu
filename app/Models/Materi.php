@@ -12,14 +12,13 @@ class Materi extends Model
     protected $table = 'materi';
 
     protected $fillable = [
-        'judul', 
+        'guru_id',
+        'tema',
+        'judul',
         'deskripsi',
         'konten',
-        'video_url',
-        'file_path',
         'durasi',
         'is_published',
-        'guru_id'
     ];
 
     public function guru()
@@ -27,20 +26,8 @@ class Materi extends Model
         return $this->belongsTo(User::class, 'guru_id');
     }
 
-    public function materi()
+    public function mediaPendukung()
     {
-        return $this->belongsTo(Materi::class, 'materi_id');
+        return $this->hasMany(MediaPendukung::class, 'materi_id');
     }
-
-    public function kelas()
-    {
-        return $this->belongsTo(Kelas::class);
-    }
-
-    public function mapel()
-    {
-        return $this->belongsTo(Mapel::class);
-    }
-
-
 }

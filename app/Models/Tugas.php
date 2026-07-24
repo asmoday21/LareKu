@@ -33,80 +33,21 @@ class Tugas extends Model
         'link_tugas', // Tambahkan kolom untuk link tugas eksternal
     ];
 
-    /**
-     * Mengatur casting untuk atribut tanggal agar secara otomatis menjadi instance Carbon.
-     * Ini lebih disukai daripada `$dates` di Laravel versi modern (7+).
-     */
     protected $casts = [
         'batas_pengumpulan' => 'datetime',
     ];
 
-    /*
-    |--------------------------------------------------------------------------
-    | Relasi Model
-    |--------------------------------------------------------------------------
-    */
-
-    /**
-     * Relasi dengan model Kelas (many-to-one).
-     * Sebuah Tugas dimiliki oleh satu Kelas.
-     */
     public function kelas()
     {
         return $this->belongsTo(Kelas::class);
     }
 
-    /**
-     * Relasi dengan model User (guru) (many-to-one).
-     * Sebuah Tugas dibuat oleh satu Guru.
-     */
     public function guru()
     {
         // Asumsi model User adalah representasi dari guru
         return $this->belongsTo(User::class, 'guru_id');
     }
 
-    /**
-     * Relasi dengan model TugasJawaban (one-to-many).
-     * Sebuah Tugas dapat memiliki banyak Jawaban Tugas dari siswa.
-     * Nama method 'jawabanTugas' lebih deskriptif.
-     */
-    public function jawabanTugas()
-    {
-        return $this->hasMany(TugasJawaban::class);
-    }
-
-    /**
-     * Relasi dengan model TugasJawaban (one-to-one), khusus untuk jawaban dari siswa yang sedang login.
-     * Berguna untuk mengecek apakah siswa saat ini sudah mengumpulkan tugas ini.
-     */
-    public function jawabanSiswa()
-    {
-        // Menggunakan nama method yang lebih spesifik jika ingin membedakan dari jawabanTugas()
-        // Misalnya, jika Anda punya relasi lain bernama 'jawaban()', Anda bisa mempertahankan ini.
-        // Atau gabungkan logika ini ke 'jawabanTugas' dengan filter di controller.
-        return $this->hasOne(TugasJawaban::class)->where('siswa_id', Auth::id());
-    }
-
-    /**
-     * Relasi dengan model PengumpulanTugas (one-to-many).
-     * Pastikan model PengumpulanTugas ada dan relevan.
-     */
-    public function pengumpulan()
-    {
-        return $this->hasMany(PengumpulanTugas::class);
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Aksesor & Mutator
-    |--------------------------------------------------------------------------
-    */
-
-    /**
-     * Aksesor untuk mendapatkan format tanggal 'batas_pengumpulan' yang diformat.
-     * Menggunakan timezone Asia/Jakarta untuk konsistensi.
-     */
     public function getBatasPengumpulanFormattedAttribute()
     {
         return Carbon::parse($this->batas_pengumpulan)

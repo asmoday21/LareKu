@@ -2,598 +2,828 @@
 
 @section('guru')
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pepatah Petitih Minangkabau</title>
-    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Menggunakan font Google modern untuk konsistensi desain -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary': '#2563eb',
-                        'primary-light': '#3b82f6',
-                        'secondary': '#1e40af',
-                        'accent': '#f59e0b',
-                        'accent-light': '#fbbf24',
-                        'success': '#10b981',
-                        'warning': '#f59e0b',
-                        'danger': '#ef4444',
-                        'dark': '#1f2937',
-                        'light': '#f8fafc',
-                        'minang-red': '#dc2626',
-                        'minang-gold': '#d97706',
-                    },
-                    fontFamily: {
-                        'sans': ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
-                    },
-                    keyframes: {
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        slideInLeft: {
-                            '0%': { opacity: '0', transform: 'translateX(-30px)' },
-                            '100%': { opacity: '1', transform: 'translateX(0)' },
-                        },
-                        slideInRight: {
-                            '0%': { opacity: '0', transform: 'translateX(30px)' },
-                            '100%': { opacity: '1', transform: 'translateX(0)' },
-                        },
-                        bounceGentle: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        },
-                        pulseSoft: {
-                            '0%, 100%': { opacity: '0.6' },
-                            '50%': { opacity: '1' },
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-8px)' },
-                        },
-                        glow: {
-                            '0%': { 'box-shadow': '0 0 5px rgba(242, 160, 40, 0.5)' },
-                            '100%': { 'box-shadow': '0 0 20px rgba(242, 160, 40, 0.8)' },
-                        },
-                        scalePulse: {
-                            '0%, 100%': { transform: 'scale(1)' },
-                            '50%': { transform: 'scale(1.05)' },
-                        },
-                        pulseGentle: {
-                            '0%, 100%': { opacity: '1' },
-                            '50%': { opacity: '0.7' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-light: #3b82f6;
-            --secondary: #1e40af;
-            --accent: #f59e0b;
-            --accent-light: #fbbf24;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --dark: #1f2937;
-            --light: #f8fafc;
-            --minang-red: #dc2626;
-            --minang-gold: #d97706;
+            /* Skema Warna Global - Vibrant EdTech */
+            --bg-main: #F7F9FC;
+            --surface: #FFFFFF;
+            
+            --text-dark: #1E293B;
+            --text-gray: #64748B;
+            
+            --border-color: rgba(0,0,0,0.06); 
+            
+            /* Warna Khusus Tema Pepatah (Purple/Indigo) */
+            --brand-primary: #6366F1;    
+            --brand-secondary: #8B5CF6;
+            --brand-accent: #EC4899;
+            --brand-warning: #F59E0B;
+            --brand-success: #10B981;
+            
+            /* Shadows & Border Radius (Squircle) */
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 10px 25px rgba(0,0,0,0.06);
+            --shadow-lg: 0 20px 40px rgba(0,0,0,0.08);
+            --shadow-hover: 0 25px 50px rgba(99, 102, 241, 0.15);
+            
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-            min-height: 100vh;
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            -webkit-font-smoothing: antialiased;
         }
 
-        .header-wrapper {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--minang-red) 100%);
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .app-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            padding-bottom: 5rem;
+        }
+
+        /* ====== HERO BANNER ====== */
+        .hero-banner {
+            background: linear-gradient(135deg, #1E1B4B 0%, #312E81 50%, #4C1D95 100%);
+            border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+            padding: 5rem 2rem 6rem;
+            margin-bottom: -3rem; /* Memberi ruang untuk kartu overlay */
+            text-align: center;
             position: relative;
             overflow: hidden;
+            box-shadow: var(--shadow-md);
         }
 
-        .header-pattern {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.1;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.3'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3Ccircle cx='0' cy='0' r='2'/%3E%3Ccircle cx='60' cy='0' r='2'/%3E%3Ccircle cx='0' cy='60' r='2'/%3E%3Ccircle cx='60' cy='60' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        .glass-effect {
-            backdrop-filter: blur(20px);
-            background: rgba(255, 255, 255, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-modern {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card-modern::before {
+        /* Ornamen Glassmorphism di Hero */
+        .hero-banner::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--minang-red));
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            top: -20%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(99,102,241,0.3) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            animation: pulseGentle 4s ease-in-out infinite alternate;
         }
 
-        .card-modern:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            right: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(236,72,153,0.2) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            animation: pulseGentle 5s ease-in-out infinite alternate-reverse;
         }
 
-        .card-modern:hover::before {
-            opacity: 1;
+        @keyframes pulseGentle {
+            0% { opacity: 0.6; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1.05); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.25rem;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            color: #FFFFFF;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, #FCD34D, #F59E0B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.hero-desc {
+            font-size: 1.1rem;
+            color: #CBD5E1;
+            font-weight: 500;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-hero-primary {
+            background: linear-gradient(135deg, #F59E0B, #D97706);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+            text-decoration: none;
+        }
+
+        .btn-hero-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(245, 158, 11, 0.4);
+            color: white;
+        }
+
+        .btn-hero-secondary {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-hero-secondary:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+            color: white;
+        }
+
+        /* ====== INTRODUCTION CARDS ====== */
+        .intro-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .intro-title {
+            font-size: 1.75rem;
+            color: var(--brand-primary);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .intro-item {
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .intro-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .intro-item-1 { background: #EEF2FF; border: 1px solid #C7D2FE; }
+        .intro-item-1 i { color: #4F46E5; }
+        
+        .intro-item-2 { background: #F0FDF4; border: 1px solid #A7F3D0; }
+        .intro-item-2 i { color: #10B981; }
+        
+        .intro-item-3 { background: #FFFBEB; border: 1px solid #FDE68A; }
+        .intro-item-3 i { color: #F59E0B; }
+
+        .intro-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .intro-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .intro-item p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* ====== FLIP CARDS (PEPATAH) ====== */
+        .section-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.25rem;
+            color: var(--text-dark);
+        }
+        
+        .section-header span {
+            background: linear-gradient(135deg, var(--brand-primary), var(--brand-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .flip-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
         }
 
         .flip-card {
+            background-color: transparent;
+            height: 320px;
             perspective: 1000px;
+            cursor: pointer;
         }
 
         .flip-card-inner {
-            transition: transform 0.6s;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transform-style: preserve-3d;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
         }
 
         .flip-card:hover .flip-card-inner {
             transform: rotateY(180deg);
+            box-shadow: var(--shadow-hover);
         }
 
         .flip-card-front, .flip-card-back {
-            backface-visibility: hidden;
             position: absolute;
             width: 100%;
             height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: var(--radius-lg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .flip-card-front {
+            background-color: var(--surface);
+            color: var(--text-dark);
+        }
+
+        .flip-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .flip-subtitle {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .flip-quote {
+            font-size: 1.25rem;
+            font-weight: 700;
+            font-style: italic;
+            line-height: 1.5;
+            margin: 0;
         }
 
         .flip-card-back {
             transform: rotateY(180deg);
+            color: white;
+        }
+
+        .flip-back-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .flip-back-desc {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .flip-tag {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(5px);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Warna Spesifik Kartu */
+        .card-blue .flip-quote { color: #2563EB; }
+        .card-blue .flip-icon { color: #2563EB; }
+        .card-blue .flip-card-back { background: linear-gradient(135deg, #2563EB, #1D4ED8); border: none; }
+
+        .card-green .flip-quote { color: #059669; }
+        .card-green .flip-icon { color: #059669; }
+        .card-green .flip-card-back { background: linear-gradient(135deg, #10B981, #047857); border: none; }
+
+        .card-purple .flip-quote { color: #7C3AED; }
+        .card-purple .flip-icon { color: #7C3AED; }
+        .card-purple .flip-card-back { background: linear-gradient(135deg, #8B5CF6, #6D28D9); border: none; }
+
+        .card-teal .flip-quote { color: #0D9488; }
+        .card-teal .flip-icon { color: #0D9488; }
+        .card-teal .flip-card-back { background: linear-gradient(135deg, #14B8A6, #0F766E); border: none; }
+
+        .card-orange .flip-quote { color: #EA580C; }
+        .card-orange .flip-icon { color: #EA580C; }
+        .card-orange .flip-card-back { background: linear-gradient(135deg, #F97316, #C2410C); border: none; }
+
+        .card-red .flip-quote { color: #DC2626; }
+        .card-red .flip-icon { color: #DC2626; }
+        .card-red .flip-card-back { background: linear-gradient(135deg, #EF4444, #B91C1C); border: none; }
+
+        /* ====== TIPS CARDS ====== */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .tips-card {
+            background: var(--surface);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tips-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .tips-icon-box {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* ====== MODAL SKOR ====== */
+        .modal-custom .modal-content {
+            border-radius: var(--radius-lg);
+            border: none;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+        }
+
+        .modal-custom .modal-header {
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 2rem;
+            background: #F8FAFC;
+        }
+
+        .modal-custom .modal-body {
+            padding: 2rem;
+        }
+
+        .form-control-custom {
+            font-family: 'Nunito', sans-serif;
+            border: 2px solid var(--border-color);
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            text-align: center;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .form-control-custom:focus {
+            border-color: var(--brand-primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+            outline: none;
+        }
+
+        .result-box {
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            margin-top: 1.5rem;
+            text-align: center;
+            display: none; /* Hidden by default */
+            animation: fadeInUp 0.4s ease;
         }
         
-        .gradient-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+        .result-box.show { display: block; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .gradient-success {
-            background: linear-gradient(135deg, #10b981, #059669);
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .flip-grid, .intro-grid, .tips-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-banner { padding: 4rem 1.5rem 5rem; }
+            .hero-title { font-size: 2.25rem; }
         }
 
-        .gradient-warning {
-            background: linear-gradient(135deg, var(--accent), var(--minang-gold));
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, var(--primary), var(--minang-red));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .minang-pattern {
-            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23f59e0b' fill-opacity='0.05'%3E%3Cpath d='M20 0L30 10L20 20L10 10z'/%3E%3Cpath d='M20 20L30 30L20 40L10 30z'/%3E%3Cpath d='M0 20L10 30L20 20L10 10z'/%3E%3Cpath d='M20 20L30 10L40 20L30 30z'/%3E%3C/g%3E%3C/svg%3E");
+        @media (max-width: 768px) {
+            .flip-grid, .intro-grid, .tips-grid { grid-template-columns: 1fr; }
+            .hero-actions { flex-direction: column; }
+            .hero-actions a, .hero-actions button { width: 100%; }
         }
     </style>
 </head>
-<body class="flex flex-col min-h-screen">
+<body>
 
-    <div class="relative w-full py-12 lg:py-16 header-wrapper">
-        <div class="header-pattern"></div>
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <h1 class="text-4xl sm:text-6xl font-extrabold text-white mb-4 drop-shadow-lg" data-aos="fade-up">
-                <span class="text-white/90">Pepatah Petitih</span>
-                <span class="text-minang-gold">Minangkabau</span>
-            </h1>
-            <p class="text-white/80 text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed font-medium" data-aos="fade-up" data-aos-delay="100">
-                Kearifan lokal dalam bentuk ungkapan bijak yang mengandung nilai-nilai moral, etika, dan filosofi hidup masyarakat Minangkabau.
+    <!-- HERO SECTION -->
+    <header class="hero-banner">
+        <div class="hero-content" data-aos="fade-up">
+            
+            <div class="hero-badge">
+                <i class="fas fa-quote-left text-warning"></i> 
+                <span>Seni Berbahasa Minangkabau</span>
+            </div>
+            
+            <h1 class="hero-title">Pepatah Petitih <span>Minangkabau</span></h1>
+            
+            <p class="hero-desc">
+                Kearifan lokal dalam bentuk ungkapan bijak yang mengandung nilai-nilai moral, etika, dan filosofi hidup masyarakat Minangkabau yang tak lekang oleh waktu.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <button onclick="scrollToContent()" class="bg-minang-gold hover:bg-minang-red transition-all text-white font-bold py-3 px-8 rounded-full shadow-lg" data-aos="fade-up" data-aos-delay="200">
-                    <i class="mdi mdi-book-search-outline me-2"></i> Jelajahi Pepatah
+            
+            <div class="hero-actions">
+                <a href="#koleksi" class="btn-hero-primary">
+                    <i class="bi bi-search me-2"></i> Jelajahi Pepatah
+                </a>
+                <button type="button" class="btn-hero-secondary" data-bs-toggle="modal" data-bs-target="#scoreModal">
+                    <i class="bi bi-bar-chart-fill me-2"></i> Lihat Skor Siswa
                 </button>
-                <button onclick="openScoreModal()" class="bg-white hover:bg-gray-100 transition-all text-dark font-bold py-3 px-8 rounded-full shadow-lg" data-aos="fade-up" data-aos-delay="300">
-                    <i class="mdi mdi-account-card-details-outline me-2"></i> Lihat Skor Siswa
-                </button>
+            </div>
+            
+        </div>
+    </header>
+
+    <div class="app-container">
+        
+        <!-- INTRODUCTION CARD -->
+        <div class="intro-card" data-aos="fade-up" data-aos-delay="100">
+            <h2 class="intro-title">Apa itu Pepatah Petitih?</h2>
+            <p class="text-center text-secondary mb-0" style="max-width: 800px; margin: 0 auto; font-family: 'Nunito', sans-serif;">
+                Pepatah petitih adalah ungkapan tradisional Minangkabau yang berisi nasihat, ajaran moral, dan panduan hidup. Biasanya disampaikan dalam bentuk kiasan atau perumpamaan alam yang mudah diingat dan dipahami.
+            </p>
+            
+            <div class="intro-grid">
+                <div class="intro-item intro-item-1">
+                    <i class="bi bi-lightbulb-fill intro-icon"></i>
+                    <h4>Mengandung Hikmah</h4>
+                    <p>Setiap pepatah mengandung pelajaran hidup yang mendalam dan relevan.</p>
+                </div>
+                <div class="intro-item intro-item-2">
+                    <i class="bi bi-chat-quote-fill intro-icon"></i>
+                    <h4>Mudah Diingat</h4>
+                    <p>Disampaikan dalam bahasa yang indah, berima, dan puitis.</p>
+                </div>
+                <div class="intro-item intro-item-3">
+                    <i class="bi bi-tree-fill intro-icon"></i>
+                    <h4>Menggunakan Kiasan</h4>
+                    <p>Menyampaikan pesan tersirat melalui perumpamaan gejala alam sekitar.</p>
+                </div>
             </div>
         </div>
+
+        <!-- FLIP CARDS SECTION -->
+        <div id="koleksi" class="section-header" data-aos="fade-up">
+            <h2>Koleksi <span>Pepatah Petitih</span></h2>
+            <p class="text-secondary">Arahkan kursor ke kartu (hover) untuk melihat makna dan penjelasannya.</p>
+        </div>
+
+        <div class="flip-grid">
+            
+            <!-- Card 1 -->
+            <div class="flip-card card-blue" data-aos="fade-up" data-aos-delay="100">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <i class="bi bi-tree flip-icon"></i>
+                        <div class="flip-subtitle">Pepatah #1</div>
+                        <p class="flip-quote">"Alam takambang jadi guru"</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <i class="bi bi-book-half fs-1 mb-3"></i>
+                        <h3 class="flip-back-title">Makna & Penjelasan</h3>
+                        <p class="flip-back-desc">Alam semesta menjadi guru bagi kehidupan. Semua gejala, sifat, dan kejadian di alam dapat memberikan pelajaran berharga bagi manusia.</p>
+                        <span class="flip-tag">Pendidikan & Ilmu</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="flip-card card-green" data-aos="fade-up" data-aos-delay="200">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <i class="bi bi-people flip-icon"></i>
+                        <div class="flip-subtitle">Pepatah #2</div>
+                        <p class="flip-quote">"Bulek aia dek pambuluah, bulek kato dek mufakat"</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <i class="bi bi-diagram-3-fill fs-1 mb-3"></i>
+                        <h3 class="flip-back-title">Makna & Penjelasan</h3>
+                        <p class="flip-back-desc">Air menjadi bulat (menyatu) karena bambu, kata menjadi bulat (sepakat) karena mufakat. Menekankan pentingnya musyawarah dalam mengambil keputusan.</p>
+                        <span class="flip-tag">Gotong Royong</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="flip-card card-purple" data-aos="fade-up" data-aos-delay="300">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <i class="bi bi-symmetry-horizontal flip-icon"></i>
+                        <div class="flip-subtitle">Pepatah #3</div>
+                        <p class="flip-quote">"Duduak samo randah, tagak samo tinggi"</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <i class="bi bi-person-check-fill fs-1 mb-3"></i>
+                        <h3 class="flip-back-title">Makna & Penjelasan</h3>
+                        <p class="flip-back-desc">Duduk sama rendah, berdiri sama tinggi. Menggajarkan pentingnya kesetaraan, keadilan, dan tidak saling merendahkan dalam masyarakat.</p>
+                        <span class="flip-tag">Kesetaraan Sosial</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="flip-card card-teal" data-aos="fade-up" data-aos-delay="100">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <i class="bi bi-shield-check flip-icon"></i>
+                        <div class="flip-subtitle">Pepatah #4</div>
+                        <p class="flip-quote">"Batang tarandam akar takuak"</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <i class="bi bi-lightning-charge-fill fs-1 mb-3"></i>
+                        <h3 class="flip-back-title">Makna & Penjelasan</h3>
+                        <p class="flip-back-desc">Batang terendam akar terapung. Mengajarkan untuk tetap kuat menghadapi kesulitan hidup dan tidak mudah menyerah pada keadaan.</p>
+                        <span class="flip-tag">Ketahanan & Kegigihan</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="flip-card card-orange" data-aos="fade-up" data-aos-delay="200">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <i class="bi bi-geo-alt flip-icon"></i>
+                        <div class="flip-subtitle">Pepatah #5</div>
+                        <p class="flip-quote">"Dimana bumi dipijak, disitu langit dijunjung"</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <i class="bi bi-globe-americas fs-1 mb-3"></i>
+                        <h3 class="flip-back-title">Makna & Penjelasan</h3>
+                        <p class="flip-back-desc">Di mana pun kita berada atau merantau, kita harus menghormati adat istiadat, budaya, dan aturan masyarakat setempat.</p>
+                        <span class="flip-tag">Adaptasi Budaya</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="flip-card card-red" data-aos="fade-up" data-aos-delay="300">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <i class="bi bi-gem flip-icon"></i>
+                        <div class="flip-subtitle">Pepatah #6</div>
+                        <p class="flip-quote">"Emas tempawan, timah dibuang"</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <i class="bi bi-stars fs-1 mb-3"></i>
+                        <h3 class="flip-back-title">Makna & Penjelasan</h3>
+                        <p class="flip-back-desc">Emas disimpan, timah dibuang. Mengajarkan kita untuk selektif: mengambil dan mempertahankan hal yang baik, serta membuang hal yang buruk.</p>
+                        <span class="flip-tag">Kebijaksanaan</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- TIPS SECTION -->
+        <div class="section-header" data-aos="fade-up">
+            <h2>Tips Menghafal <span>Pepatah</span></h2>
+        </div>
+
+        <div class="tips-grid">
+            <div class="tips-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="tips-icon-box" style="background: #EEF2FF; color: #4F46E5;">
+                    <i class="bi bi-music-note-beamed"></i>
+                </div>
+                <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem;">Cari Iramanya</h3>
+                <p class="text-secondary small mb-0">Pepatah Minang memiliki irama berima. Bacalah dengan nada yang berpantun agar lebih mudah melekat di ingatan.</p>
+            </div>
+            <div class="tips-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="tips-icon-box" style="background: #F0FDF4; color: #10B981;">
+                    <i class="bi bi-image"></i>
+                </div>
+                <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem;">Bayangkan Visualnya</h3>
+                <p class="text-secondary small mb-0">Visualisasikan kiasan yang ada dalam pepatah. Bayangkan alam, benda, atau situasi yang sedang digambarkan.</p>
+            </div>
+            <div class="tips-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="tips-icon-box" style="background: #FFFBEB; color: #F59E0B;">
+                    <i class="bi bi-chat-quote"></i>
+                </div>
+                <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem;">Praktikkan Langsung</h3>
+                <p class="text-secondary small mb-0">Sisipkan pepatah dalam percakapan atau tulisan sehari-hari. Semakin sering digunakan, maknanya makin meresap.</p>
+            </div>
+        </div>
+
     </div>
 
-    <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8 flex-grow -mt-4">
-        
-        <section class="content-section p-8 mb-8 text-center minang-pattern" id="content" data-aos="fade-up">
-            <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 gradient-text">
-                Apa itu Pepatah Petitih?
-            </h2>
-            <div class="max-w-4xl mx-auto bg-white/70 rounded-2xl p-6 shadow-md border border-gray-100">
-                <p class="text-base text-gray-600 leading-relaxed mb-6">
-                    Pepatah petitih adalah ungkapan tradisional Minangkabau yang berisi nasihat, ajaran moral, dan panduan hidup. 
-                    Biasanya disampaikan dalam bentuk kiasan atau perumpamaan yang mudah diingat dan dipahami.
-                </p>
-                <div class="grid md:grid-cols-3 gap-6 mt-8">
-                    <div class="bg-blue-50/70 rounded-xl p-6 transition-all duration-300 hover:scale-105">
-                        <div class="text-blue-600 text-4xl mb-4"><i class="mdi mdi-lightbulb-on-outline"></i></div>
-                        <h3 class="font-bold text-gray-800 mb-2">Mengandung Hikmah</h3>
-                        <p class="text-sm text-gray-600">Setiap pepatah mengandung pelajaran hidup yang mendalam.</p>
-                    </div>
-                    <div class="bg-green-50/70 rounded-xl p-6 transition-all duration-300 hover:scale-105">
-                        <div class="text-green-600 text-4xl mb-4"><i class="mdi mdi-forum-outline"></i></div>
-                        <h3 class="font-bold text-gray-800 mb-2">Mudah Diingat</h3>
-                        <p class="text-sm text-gray-600">Disampaikan dalam bahasa yang indah dan berima.</p>
-                    </div>
-                    <div class="bg-yellow-50/70 rounded-xl p-6 transition-all duration-300 hover:scale-105">
-                        <div class="text-yellow-600 text-4xl mb-4"><i class="mdi mdi-image-filter-frames"></i></div>
-                        <h3 class="font-bold text-gray-800 mb-2">Menggunakan Kiasan</h3>
-                        <p class="text-sm text-gray-600">Menyampaikan pesan melalui perumpamaan alam.</p>
-                    </div>
+    <!-- MODAL SKOR SISWA -->
+    <div class="modal fade modal-custom" id="scoreModal" tabindex="-1" aria-labelledby="scoreModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="scoreModalLabel" style="font-family: 'Outfit';">
+                        <i class="bi bi-bar-chart-fill text-primary me-2"></i> Pantau Hasil Kuis Siswa
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-            </div>
-        </section>
-
-        <section class="mb-16">
-            <h2 class="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-10 gradient-text">
-                Koleksi Pepatah Petitih
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <div class="flip-card card-modern overflow-hidden h-80" data-aos="fade-up" data-aos-delay="100">
-                    <div class="flip-card-inner relative h-full">
-                        <div class="flip-card-front absolute inset-0 p-8 flex flex-col justify-center">
-                            <div class="text-blue-600 text-4xl mb-4 text-center"><i class="mdi mdi-nature-outline"></i></div>
-                            <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Pepatah #1</h3>
-                            <p class="text-blue-600 font-semibold text-center italic leading-relaxed">
-                                "Alam takambang jadi guru"
-                            </p>
-                        </div>
-                        <div class="flip-card-back absolute inset-0 p-8 bg-blue-600 text-white flex flex-col justify-center">
-                            <div class="text-4xl mb-4 text-center"><i class="mdi mdi-school"></i></div>
-                            <h3 class="text-xl font-bold mb-4 text-center">Makna & Penjelasan</h3>
-                            <p class="text-center leading-relaxed mb-4">
-                                Alam semesta menjadi guru bagi kehidupan. Semua yang ada di alam dapat memberikan pelajaran berharga.
-                            </p>
-                            <div class="text-center">
-                                <span class="bg-white/20 px-4 py-2 rounded-full text-sm">
-                                    Pendidikan & Pembelajaran
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flip-card card-modern overflow-hidden h-80" data-aos="fade-up" data-aos-delay="200">
-                    <div class="flip-card-inner relative h-full">
-                        <div class="flip-card-front absolute inset-0 p-8 flex flex-col justify-center">
-                            <div class="text-green-600 text-4xl mb-4 text-center"><i class="mdi mdi-account-group-outline"></i></div>
-                            <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Pepatah #2</h3>
-                            <p class="text-green-600 font-semibold text-center italic leading-relaxed">
-                                "Bulek aia dek pambuluah, bulek kato dek mufakat"
-                            </p>
-                        </div>
-                        <div class="flip-card-back absolute inset-0 p-8 bg-green-600 text-white flex flex-col justify-center">
-                            <div class="text-4xl mb-4 text-center"><i class="mdi mdi-handshake-outline"></i></div>
-                            <h3 class="text-xl font-bold mb-4 text-center">Makna & Penjelasan</h3>
-                            <p class="text-center leading-relaxed mb-4">
-                                Air menjadi bulat karena bambu, kata menjadi bulat karena mufakat. Pentingnya musyawarah dalam mengambil keputusan.
-                            </p>
-                            <div class="text-center">
-                                <span class="bg-white/20 px-4 py-2 rounded-full text-sm">
-                                    Gotong Royong & Musyawarah
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flip-card card-modern overflow-hidden h-80" data-aos="fade-up" data-aos-delay="300">
-                    <div class="flip-card-inner relative h-full">
-                        <div class="flip-card-front absolute inset-0 p-8 flex flex-col justify-center">
-                            <div class="text-purple-600 text-4xl mb-4 text-center"><i class="mdi mdi-scale-balance"></i></div>
-                            <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Pepatah #3</h3>
-                            <p class="text-purple-600 font-semibold text-center italic leading-relaxed">
-                                "Duduak samo randah, tagak samo tinggi"
-                            </p>
-                        </div>
-                        <div class="flip-card-back absolute inset-0 p-8 bg-purple-600 text-white flex flex-col justify-center">
-                            <div class="text-4xl mb-4 text-center"><i class="mdi mdi-chess-queen"></i></div>
-                            <h3 class="text-xl font-bold mb-4 text-center">Makna & Penjelasan</h3>
-                            <p class="text-center leading-relaxed mb-4">
-                                Duduk sama rendah, berdiri sama tinggi. Menekankan pentingnya kesetaraan dan keadilan dalam masyarakat.
-                            </p>
-                            <div class="text-center">
-                                <span class="bg-white/20 px-4 py-2 rounded-full text-sm">
-                                    Kesetaraan & Keadilan
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flip-card card-modern overflow-hidden h-80" data-aos="fade-up" data-aos-delay="400">
-                    <div class="flip-card-inner relative h-full">
-                        <div class="flip-card-front absolute inset-0 p-8 flex flex-col justify-center">
-                            <div class="text-teal-600 text-4xl mb-4 text-center"><i class="mdi mdi-pine-tree-outline"></i></div>
-                            <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Pepatah #4</h3>
-                            <p class="text-teal-600 font-semibold text-center italic leading-relaxed">
-                                "Batang tarandam akar takuak"
-                            </p>
-                        </div>
-                        <div class="flip-card-back absolute inset-0 p-8 bg-teal-600 text-white flex flex-col justify-center">
-                            <div class="text-4xl mb-4 text-center"><i class="mdi mdi-shield-check-outline"></i></div>
-                            <h3 class="text-xl font-bold mb-4 text-center">Makna & Penjelasan</h3>
-                            <p class="text-center leading-relaxed mb-4">
-                                Batang terendam akar terapung. Mengajarkan untuk tetap kuat menghadapi kesulitan dan tidak mudah menyerah.
-                            </p>
-                            <div class="text-center">
-                                <span class="bg-white/20 px-4 py-2 rounded-full text-sm">
-                                    Ketahanan & Kegigihan
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flip-card card-modern overflow-hidden h-80" data-aos="fade-up" data-aos-delay="500">
-                    <div class="flip-card-inner relative h-full">
-                        <div class="flip-card-front absolute inset-0 p-8 flex flex-col justify-center">
-                            <div class="text-orange-600 text-4xl mb-4 text-center"><i class="mdi mdi-map-marker-outline"></i></div>
-                            <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Pepatah #5</h3>
-                            <p class="text-orange-600 font-semibold text-center italic leading-relaxed">
-                                "Dimana bumi dipijak, disitu langit dijunjung"
-                            </p>
-                        </div>
-                        <div class="flip-card-back absolute inset-0 p-8 bg-orange-600 text-white flex flex-col justify-center">
-                            <div class="text-4xl mb-4 text-center"><i class="mdi mdi-earth"></i></div>
-                            <h3 class="text-xl font-bold mb-4 text-center">Makna & Penjelasan</h3>
-                            <p class="text-center leading-relaxed mb-4">
-                                Di mana kita berada, di situ kita harus menghormati adat dan budaya setempat.
-                            </p>
-                            <div class="text-center">
-                                <span class="bg-white/20 px-4 py-2 rounded-full text-sm">
-                                    Adaptasi & Penghormatan
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flip-card card-modern overflow-hidden h-80" data-aos="fade-up" data-aos-delay="600">
-                    <div class="flip-card-inner relative h-full">
-                        <div class="flip-card-front absolute inset-0 p-8 flex flex-col justify-center">
-                            <div class="text-red-600 text-4xl mb-4 text-center"><i class="mdi mdi-diamond-stone"></i></div>
-                            <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Pepatah #6</h3>
-                            <p class="text-red-600 font-semibold text-center italic leading-relaxed">
-                                "Emas tempawan, timah dibuang"
-                            </p>
-                        </div>
-                        <div class="flip-card-back absolute inset-0 p-8 bg-red-600 text-white flex flex-col justify-center">
-                            <div class="text-4xl mb-4 text-center"><i class="mdi mdi-star-circle-outline"></i></div>
-                            <h3 class="text-xl font-bold mb-4 text-center">Makna & Penjelasan</h3>
-                            <p class="text-center leading-relaxed mb-4">
-                                Emas disimpan, timah dibuang. Mengajarkan untuk memilih dan mempertahankan yang baik, membuang yang buruk.
-                            </p>
-                            <div class="text-center">
-                                <span class="bg-white/20 px-4 py-2 rounded-full text-sm">
-                                    Selektif & Bijaksana
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="mt-8" data-aos="fade-up" data-aos-delay="400">
-            <div class="relative bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 rounded-3xl p-8 mx-auto max-w-4xl shadow-lg border border-amber-200/50 overflow-hidden">
-                <div class="absolute -top-6 -right-6 w-32 h-32 bg-amber-200/20 rounded-full animate-[pulseGentle_3s_ease-in-out_infinite]"></div>
-                <div class="absolute -bottom-6 -left-6 w-28 h-28 bg-red-200/20 rounded-full animate-[pulseGentle_3s_ease-in-out_infinite]" style="animation-delay: 1.5s;"></div>
-                <div class="absolute top-4 right-4 w-4 h-4 bg-amber-300/40 rounded-full"></div>
-                <div class="absolute bottom-4 left-4 w-6 h-6 bg-red-300/40 rounded-full"></div>
-                
-                <div class="relative z-10 text-center">
-                    <div class="mb-6">
-                        <div class="w-16 h-16 rounded-2xl gradient-warning flex items-center justify-center mx-auto mb-4 shadow-lg">
-                            <i class="mdi mdi-account-card-details-outline text-white text-2xl"></i>
-                        </div>
-                        <h6 class="font-bold text-2xl text-gray-800 mb-2">Pantau Hasil Siswa!</h6>
-                        <div class="w-16 h-1 bg-gradient-to-r from-amber-400 to-red-400 mx-auto rounded-full"></div>
-                    </div>
-                    <p class="text-gray-700 text-base leading-relaxed mb-6">
-                        Lihat skor dan hasil kuis dari setiap siswa dengan memasukkan NISN mereka.
-                    </p>
-                    <button onclick="openScoreModal()" class="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-red-500 hover:shadow-2xl text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
-                        <i class="mdi mdi-eye-outline me-2"></i> Lihat Skor Siswa
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <section class="mt-16">
-            <h2 class="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-10 gradient-text">
-                Tips Menghafal Pepatah
-            </h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="card-modern p-8 text-center" data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-blue-600 text-4xl mb-4"><i class="mdi mdi-music-note-eighth-outline"></i></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Cari Iramanya</h3>
-                    <p class="text-gray-600">Pepatah Minang memiliki irama yang indah. Bacalah dengan nada yang tepat untuk mudah diingat.</p>
-                </div>
-                <div class="card-modern p-8 text-center" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-green-600 text-4xl mb-4"><i class="mdi mdi-image-outline"></i></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Bayangkan Gambarnya</h3>
-                    <p class="text-gray-600">Visualisasikan kiasan yang ada dalam pepatah. Bayangkan alam, benda, atau situasi yang digambarkan.</p>
-                </div>
-                <div class="card-modern p-8 text-center" data-aos="fade-up" data-aos-delay="300">
-                    <div class="text-yellow-600 text-4xl mb-4"><i class="mdi mdi-lightbulb-multiple-outline"></i></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Praktikkan dalam Kehidupan</h3>
-                    <p class="text-gray-600">Terapkan makna pepatah dalam situasi sehari-hari. Semakin sering digunakan, semakin mudah diingat.</p>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <div id="scoreModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-xl">
-            <div class="p-8">
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-2xl font-bold text-dark"><i class="mdi mdi-account-card-details-outline text-blue-500 me-2"></i>Lihat Skor Siswa</h2>
-                    <button onclick="closeScoreModal()" class="text-gray-500 hover:text-gray-800 transition-colors">
-                        <i class="mdi mdi-close text-2xl"></i>
-                    </button>
-                </div>
-                
-                <div id="scoreContent">
-                    <div class="text-center mb-8">
-                        <div class="text-blue-500 text-6xl mb-4"><i class="mdi mdi-eye-outline"></i></div>
-                        <p class="text-lg text-gray-600 mb-6">Masukkan Nomor Induk Siswa Nasional (NISN) untuk melihat hasil kuis.</p>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <i class="bi bi-search text-primary" style="font-size: 3rem;"></i>
+                        <p class="text-secondary mt-3 mb-4">Masukkan Nomor Induk Siswa Nasional (NISN) untuk melihat hasil evaluasi kuis.</p>
+                        
                         <form id="nisnForm" onsubmit="event.preventDefault(); checkScoreByNISN()">
-                            <input type="text" id="nisnInput" name="nisn" placeholder="Masukkan NISN siswa..." class="w-full md:w-2/3 p-3 text-center border-2 border-gray-300 rounded-xl focus:border-blue-500 focus:ring-blue-500 transition-all duration-300" required>
-                            <button type="submit" class="mt-4 w-full md:w-auto bg-gradient-to-r from-blue-500 to-red-500 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
-                                <i class="mdi mdi-magnify me-2"></i> Cari Skor
+                            <input type="text" id="nisnInput" name="nisn" placeholder="Ketik NISN di sini..." class="form-control-custom mb-3" required autocomplete="off">
+                            <button type="submit" class="btn-hero-primary border-0 w-100 py-3" style="background: linear-gradient(135deg, #4F46E5, #3730A3);">
+                                Cek Skor Siswa
                             </button>
                         </form>
-                        <div id="resultContainer" class="mt-6 text-left p-6 bg-gray-50 rounded-xl hidden">
-                            </div>
+                    </div>
+
+                    <!-- Container Hasil -->
+                    <div id="resultContainer" class="result-box">
+                        <!-- Hasil disuntik lewat JS -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    <footer class="bg-dark text-white py-8 mt-16">
-        <div class="container mx-auto px-4">
-            <div class="text-center">
-                <p class="text-white/60 text-sm">
-                    &copy; 2025 Pembelajaran Budaya Minangkabau • Kelas VII SMP
-                </p>
-            </div>
-        </div>
-    </footer>
 
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize AOS
-        AOS.init({ 
-            duration: 1000, 
-            once: true,
-            easing: 'ease-out-cubic'
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS Animation
+            AOS.init({ 
+                duration: 800, 
+                once: true,
+                offset: 50,
+                easing: 'ease-out-cubic'
+            });
+
+            // Reset modal form saat ditutup
+            const scoreModal = document.getElementById('scoreModal');
+            scoreModal.addEventListener('hidden.bs.modal', function () {
+                document.getElementById('nisnInput').value = '';
+                document.getElementById('resultContainer').classList.remove('show');
+            });
         });
 
-        // Simulasi data skor siswa
+        // Simulasi data skor siswa (Database Tiruan)
         const studentScores = {
             '1234567890': { name: 'Budi Santoso', score: 5, total: 5, message: 'Luar biasa! Siswa ini memiliki pemahaman yang sangat baik.' },
-            '0987654321': { name: 'Siti Rahmawati', score: 3, total: 5, message: 'Hasil yang bagus. Siswa ini sudah cukup memahami, tapi bisa ditingkatkan lagi.' },
+            '0987654321': { name: 'Siti Rahmawati', score: 3, total: 5, message: 'Hasil yang cukup bagus, tapi masih bisa ditingkatkan lagi.' },
             '1122334455': { name: 'Ahmad Faisal', score: 2, total: 5, message: 'Perlu lebih banyak belajar. Sarankan siswa untuk meninjau kembali materi.' },
-            '6677889900': { name: 'Dewi Lestari', score: 4, total: 5, message: 'Sangat baik! Siswa ini hampir sempurna.' },
+            '6677889900': { name: 'Dewi Lestari', score: 4, total: 5, message: 'Sangat baik! Pemahaman siswa ini hampir sempurna.' },
         };
 
-        // Fungsi untuk scroll ke konten utama
-        function scrollToContent() {
-            const content = document.getElementById('content');
-            if (content) {
-                window.scrollTo({
-                    top: content.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
-        }
-
-        // Fungsi untuk membuka modal skor
-        function openScoreModal() {
-            document.getElementById('scoreModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-            // Reset tampilan modal setiap kali dibuka
-            const resultContainer = document.getElementById('resultContainer');
-            resultContainer.innerHTML = '';
-            resultContainer.classList.add('hidden');
-            document.getElementById('nisnInput').value = '';
-        }
-
-        // Fungsi untuk menutup modal skor
-        function closeScoreModal() {
-            document.getElementById('scoreModal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Fungsi untuk memeriksa skor berdasarkan NISN
+        // Fungsi Cek Skor
         function checkScoreByNISN() {
             const nisnInput = document.getElementById('nisnInput').value;
-            const resultContainer = document.getElementById('resultContainer');
-            resultContainer.classList.remove('hidden');
-            resultContainer.classList.remove('bg-red-50', 'bg-green-50', 'bg-yellow-50');
+            const resultBox = document.getElementById('resultContainer');
+            
+            // Animasi reset
+            resultBox.classList.remove('show');
+            
+            // Tunggu sebentar untuk efek loading (opsional)
+            setTimeout(() => {
+                const scoreData = studentScores[nisnInput];
 
-            const scoreData = studentScores[nisnInput];
+                if (scoreData) {
+                    const percentage = Math.round((scoreData.score / scoreData.total) * 100);
+                    let colorClass = 'bg-primary-subtle';
+                    let textClass = 'text-primary';
+                    let icon = '<i class="bi bi-check-circle-fill"></i>';
 
-            if (scoreData) {
-                const percentage = Math.round((scoreData.score / scoreData.total) * 100);
-                let colorClass = 'bg-blue-50';
-                let emoji = '<i class="mdi mdi-check-circle-outline"></i>';
+                    if (percentage >= 80) {
+                        colorClass = 'bg-success-subtle'; textClass = 'text-success';
+                        icon = '<i class="bi bi-trophy-fill"></i>';
+                    } else if (percentage >= 60) {
+                        colorClass = 'bg-warning-subtle'; textClass = 'text-warning';
+                        icon = '<i class="bi bi-emoji-smile-fill"></i>';
+                    } else {
+                        colorClass = 'bg-danger-subtle'; textClass = 'text-danger';
+                        icon = '<i class="bi bi-exclamation-triangle-fill"></i>';
+                    }
 
-                if (percentage >= 80) {
-                    colorClass = 'bg-green-50';
-                    emoji = '<i class="mdi mdi-trophy-variant-outline"></i>';
-                } else if (percentage >= 60) {
-                    colorClass = 'bg-yellow-50';
-                    emoji = '<i class="mdi mdi-emoticon-happy-outline"></i>';
-                } else {
-                    colorClass = 'bg-red-50';
-                    emoji = '<i class="mdi mdi-emoticon-sad-outline"></i>';
-                }
-
-                resultContainer.classList.add(colorClass);
-
-                resultContainer.innerHTML = `
-                    <div class="text-center">
-                        <div class="text-4xl text-gray-800 mb-4">${emoji}</div>
-                        <h4 class="text-xl font-bold mb-2 text-gray-800">${scoreData.name}</h4>
-                        <p class="text-lg text-gray-600 mb-4">NISN: ${nisnInput}</p>
-                        <div class="inline-block bg-white px-6 py-3 rounded-full shadow-md">
-                            <span class="text-3xl font-bold text-blue-600">${scoreData.score} / ${scoreData.total}</span>
+                    resultBox.className = `result-box show ${colorClass}`;
+                    resultBox.innerHTML = `
+                        <div class="display-4 ${textClass} mb-3">${icon}</div>
+                        <h4 class="fw-bold mb-1" style="font-family: 'Outfit';">${scoreData.name}</h4>
+                        <p class="text-secondary small mb-3">NISN: ${nisnInput}</p>
+                        <div class="d-inline-block bg-white px-4 py-2 rounded-pill shadow-sm mb-3">
+                            <span class="fs-3 fw-bold ${textClass}">${scoreData.score} <span class="text-muted fs-5">/ ${scoreData.total}</span></span>
                         </div>
-                        <p class="mt-4 text-sm text-gray-500">${scoreData.message}</p>
-                    </div>
-                `;
-            } else {
-                resultContainer.classList.add('bg-red-50');
-                resultContainer.innerHTML = `
-                    <div class="text-center">
-                        <div class="text-4xl text-red-500 mb-4"><i class="mdi mdi-alert-circle-outline"></i></div>
-                        <h4 class="text-xl font-bold text-gray-800 mb-2">Data Tidak Ditemukan</h4>
-                        <p class="text-gray-600">NISN yang Anda masukkan tidak terdaftar atau siswa belum mengerjakan kuis.</p>
-                    </div>
-                `;
-            }
+                        <p class="small text-dark mb-0">${scoreData.message}</p>
+                    `;
+                } else {
+                    resultBox.className = `result-box show bg-danger-subtle`;
+                    resultBox.innerHTML = `
+                        <div class="display-4 text-danger mb-3"><i class="bi bi-x-circle-fill"></i></div>
+                        <h4 class="fw-bold text-danger mb-2" style="font-family: 'Outfit';">Data Tidak Ditemukan</h4>
+                        <p class="text-dark small mb-0">NISN yang Anda masukkan tidak terdaftar atau siswa belum mengerjakan kuis. Silakan periksa kembali.</p>
+                    `;
+                }
+            }, 150);
         }
-
-        // Tutup modal saat mengklik di luar area modal
-        document.getElementById('scoreModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeScoreModal();
-            }
-        });
     </script>
 </body>
 </html>
-
 @endsection

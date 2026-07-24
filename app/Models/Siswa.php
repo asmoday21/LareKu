@@ -30,18 +30,6 @@ class Siswa extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // Relasi ke pengumpulan tugas
-    public function pengumpulanTugas()
-    {
-        return $this->hasMany(PengumpulanTugas::class);
-    }
-
-    // Relasi ke kelas
-    public function kelas()
-    {
-        return $this->belongsTo(Kelas::class);
-    }
-
     // Relasi ke user (karena ini extend Authenticatable)
     public function user()
     {

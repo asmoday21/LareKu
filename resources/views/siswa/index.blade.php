@@ -402,7 +402,7 @@
                     </div>
                 </a>
 
-                {{-- <!-- Kearifan Lokal Card -->
+                <!-- Kearifan Lokal Card -->
                 <a href="{{ route('siswa.tugas.index')}}" class="block menu-item group" data-aos="fade-up" data-aos-delay="200">
                     <div class="card-modern p-8 text-center h-full">
                         <div class="absolute top-0 right-0 w-24 h-24 rounded-bl-3xl bg-green-50/70"></div>
@@ -416,7 +416,7 @@
                             <i class="mdi mdi-arrow-right text-lg group-hover:translate-x-1 transition-transform"></i>
                         </div>
                     </div>
-                </a> --}}
+                </a>
 
                 <!-- Pepatah Petitih Card -->
                 <a href="{{ route('siswa.quiz.index')}}" class="block menu-item group" data-aos="fade-up" data-aos-delay="300">
@@ -482,7 +482,7 @@
                     <span class="text-gray-700 font-semibold">Budaya Minangkabau</span>
                 </div>
                 <p class="text-gray-500 text-sm">
-                    &copy; 2025 Pembelajaran Budaya Minangkabau • Kelas VII SMP
+                    &copy; Pembelajaran Budaya Minangkabau • Kelas VII SMP
                 </p>
             </div>
         </div>

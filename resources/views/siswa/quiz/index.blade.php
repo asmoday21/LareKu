@@ -498,9 +498,9 @@
     <footer class="bg-dark text-white py-8 mt-16">
         <div class="container mx-auto px-4">
             <div class="text-center">
-                <p class="text-white/60 text-sm">
+                {{-- <p class="text-white/60 text-sm">
                     &copy; 2025 Pembelajaran Budaya Minangkabau • Kelas VII SMP
-                </p>
+                </p> --}}
             </div>
         </div>
     </footer>

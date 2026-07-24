@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Register - NetPedia</title>
+    <title>Register - LareKu</title>
 
     <!-- Favicons -->
-    <link href="{{ asset('admin2/assets/img/NetPedia.png') }}" rel="icon">
-    <link href="{{ asset('admin2/assets/img/NetPedia.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('admin2/assets/img/LareKu.png') }}" rel="icon">
+    <link href="{{ asset('admin2/assets/img/LareKu.png') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -804,8 +804,8 @@
                                 <path d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 1 1-8 0 4 4 0 0 1 8 0ZM3 20a6 6 0 0 1 12 0v1H3v-1Z"/>
                             </svg>
                         </div>
-                        <h2 class="illustration-title mb-2">Bergabung jo NetPedia</h2>
-                        <p class="illustration-text mx-auto" style="max-width: 320px;">Mulai perjalanan belajar Anda bersama NetPedia. Tambah ilmu, tambah pengalaman, tambah masa depan nan cerah</p>
+                        <h2 class="illustration-title mb-2">Bergabung jo LareKu</h2>
+                        <p class="illustration-text mx-auto" style="max-width: 320px;">Mulai perjalanan belajar Anda bersama LareKu. Tambah ilmu, tambah pengalaman, tambah masa depan nan cerah</p>
                     </div>
                 </div>
 
@@ -819,8 +819,8 @@
                     <div class="traditional-pattern pattern-2"></div>
 
                     <div class="brand-section">
-                        <img src="{{ asset('admin2/assets/img/logo.png') }}" alt="NetPedia" class="brand-logo">
-                        <h1 class="brand-name">NetPedia</h1>
+                        <img src="{{ asset('admin2/assets/img/logo.png') }}" alt="LareKu" class="brand-logo">
+                        <h1 class="brand-name">LareKu</h1>
                     </div>
 
                     <div class="form-header">
@@ -900,7 +900,7 @@
                         <input type="hidden" name="role" value="siswa">
 
                         <button class="register-button" type="submit">
-                            <span style="position: relative; z-index: 3;">Daftar ka NetPedia</span>
+                            <span style="position: relative; z-index: 3;">Daftar ka LareKu</span>
                         </button>
 
                         <div class="login-text">
