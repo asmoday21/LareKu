@@ -796,7 +796,7 @@
             </div>
         </div>
 
-<<<<<<< HEAD
+
         <div class="row g-4 g-lg-5">
             <!-- Kolom Kiri: Materi -->
 =======
