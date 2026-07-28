@@ -700,7 +700,6 @@
         <p class="lead">Mempelajari pemanfaatan sumber daya alam yang berkelanjutan, potensi ekonomi menuju negara maju, dan interaksi sosial masyarakat.</p>
         
         <div class="d-flex flex-wrap gap-3 mt-4">
-            <span class="badge-tag-white"><i class="bi bi-clock me-1"></i> Estimasi baca: 25 mnt</span>
             <span class="badge-tag-white"><i class="bi bi-cash-coin me-1"></i> Ekonomi</span>
             <span class="badge-tag-white"><i class="bi bi-tree me-1"></i> Sumber Daya Alam</span>
         </div>

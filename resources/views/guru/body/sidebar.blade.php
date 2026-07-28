@@ -64,7 +64,7 @@
     </li>
     
     <li class="nav-item">
-      <a class="nav-link" href="{{ route('chat.view') }}">
+      <a class="nav-link" href="{{ route('guru.chat.view') }}">
         <i class="mdi mdi-robot menu-icon"></i>
         <span class="menu-title">Chatbot AI</span>
       </a>

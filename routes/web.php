@@ -596,13 +596,30 @@ Route::get('siswa/optik', [SiswaMateriTetapController::class, 'optik'])->name('s
 
 use App\Http\Controllers\ChatbotController;
 
-Route::view('/chat-datuak', 'guru.chat')->name('chat.view');
-Route::view('/chat-datuak', 'siswa.chat')->name('chat.view');
+Route::middleware('auth')->group(function () {
+
+    // Halaman Guru
+    Route::view('/guru/chat-datuak', 'guru.chat')
+        ->name('guru.chat.view');
+
+    // Halaman Siswa
+    Route::view('/siswa/chat-datuak', 'siswa.chat')
+        ->name('siswa.chat.view');
 
 
-// SSE streaming
-Route::post('/chatbot/ask', [ChatbotController::class, 'ask'])->name('chatbot.ask');
-Route::get('/chatbot/history', [ChatbotController::class, 'history'])->name('chatbot.history');
+    // Chatbot API
+    Route::post('/chatbot/ask', [
+        ChatbotController::class,
+        'ask'
+    ])->name('chatbot.ask');
+
+
+    Route::get('/chatbot/history', [
+        ChatbotController::class,
+        'history'
+    ])->name('chatbot.history');
+
+});
 
 
 require __DIR__.'/auth.php';

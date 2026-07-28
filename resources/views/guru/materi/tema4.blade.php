@@ -709,7 +709,6 @@
         <p class="lead">Mempelajari keragaman sosial budaya, cara menghadapi permasalahan masyarakat, serta mengelola keuangan dasar demi kemandirian komunitas.</p>
         
         <div class="d-flex flex-wrap gap-3 mt-4">
-            <span class="badge-tag-white"><i class="bi bi-clock me-1"></i> Estimasi baca: 25 mnt</span>
             <span class="badge-tag-white"><i class="bi bi-heart me-1"></i> Sosial Budaya</span>
             <span class="badge-tag-white"><i class="bi bi-wallet2 me-1"></i> Literasi Finansial</span>
         </div>

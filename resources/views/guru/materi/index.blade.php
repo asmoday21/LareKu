@@ -396,9 +396,6 @@
                     <p class="card-desc">Pelajari tentang cara kita berinteraksi, mengenal lokasi absolut/relatif, dan pengaruh lingkungan terhadap kehidupan sehari-hari secara mendalam.</p>
                     
                     <div class="meta-info">
-                        <div class="meta-time">
-                            <i class="far fa-clock"></i> 120 Menit
-                        </div>
                         <span class="meta-tag">Geografi & Sosiologi</span>
                     </div>
                     
@@ -423,9 +420,6 @@
                     <p class="card-desc">Kenali pembentukan bumi, cuaca, iklim, pelestarian lingkungan alam, serta adaptasi budaya dan mitigasi bencana masyarakat lokal.</p>
                     
                     <div class="meta-info">
-                        <div class="meta-time">
-                            <i class="far fa-clock"></i> 90 Menit
-                        </div>
                         <span class="meta-tag">Lingkungan Hidup</span>
                     </div>
                     
@@ -450,9 +444,6 @@
                     <p class="card-desc">Cari tahu bagaimana pemanfaatan sumber daya alam, dinamika kependudukan, dan kegiatan maritim bisa menciptakan peluang ekonomi berkelanjutan.</p>
                     
                     <div class="meta-info">
-                        <div class="meta-time">
-                            <i class="far fa-clock"></i> 150 Menit
-                        </div>
                         <span class="meta-tag">Ekonomi</span>
                     </div>
                     
@@ -477,9 +468,6 @@
                     <p class="card-desc">Pelajari keragaman sosial budaya, sejarah lokal, literasi keuangan dasar, dan bagaimana komunitas bekerja sama untuk menjadi mandiri.</p>
                     
                     <div class="meta-info">
-                        <div class="meta-time">
-                            <i class="far fa-clock"></i> 110 Menit
-                        </div>
                         <span class="meta-tag">Pemberdayaan</span>
                     </div>
                     

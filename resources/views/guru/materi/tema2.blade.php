@@ -709,7 +709,6 @@
         <p class="lead">Mempelajari dinamika sosial masyarakat, perubahan budaya yang dinamis, dan bagaimana kita melestarikan lingkungan demi masa depan.</p>
         
         <div class="d-flex flex-wrap gap-3 mt-4">
-            <span class="badge-tag-white"><i class="bi bi-clock me-1"></i> Estimasi baca: 20 mnt</span>
             <span class="badge-tag-white"><i class="bi bi-tree me-1"></i> Lingkungan Hidup</span>
             <span class="badge-tag-white"><i class="bi bi-people me-1"></i> Sosial Budaya</span>
         </div>
@@ -878,7 +877,7 @@
                 </div>
                 @endforelse
                 
-                <!-- Konten Bawaan (Statis) - FOKUS MINANGKABAU -->
+                <!-- Konten Bawaan (Statis) - FOKUS MINANGKABAU (DIPERDALAM) -->
                 <div class="content-card fade-in-up delay-3">
                     <h4 class="section-title">
                         <i class="bi bi-stars"></i> Pembelajaran Interaktif (Integrasi Minangkabau)
@@ -892,45 +891,60 @@
                             </div>
                             <h3 class="topic-title">Berkenalan dengan Alam: "Alam Takambang Jadi Guru"</h3>
                         </div>
-                        <p>Masyarakat Minangkabau memiliki filosofi dasar <strong>"Alam Takambang Jadi Guru"</strong>. Artinya, segala sesuatu yang terjadi di alam semesta ini merupakan pelajaran hidup. Sayangnya, bumi kita saat ini menghadapi tantangan besar seperti pemanasan global akibat ulah manusia.</p>
+                        <p>Masyarakat Minangkabau memiliki filosofi ekologis yang sangat dalam, yakni <strong>"Alam Takambang Jadi Guru"</strong>. Filosofi ini bukan sekadar kiasan puitis, melainkan prinsip hidup yang meyakini bahwa alam bukanlah objek yang boleh dieksploitasi semena-mena, melainkan subjek (guru) yang mengajarkan harmoni dan keseimbangan.</p>
+                        <p>Ketika manusia mengambil lebih dari yang alam bisa pulihkan, keseimbangan itu akan hancur dan menjadi bumerang. Di era modern ini, kita dihadapkan pada kerusakan lingkungan akibat pengabaian filosofi tersebut, yang secara nyata mengancam kelestarian Ranah Minang.</p>
                         
                         <div class="accordion custom-accordion" id="accordionAlam">
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseUdara">
-                                        <i class="bi bi-wind me-2 text-info"></i> Polusi Udara
+                                        <i class="bi bi-wind me-2 text-info"></i> Polusi Udara & Emisi Karbon
                                     </button>
                                 </h2>
                                 <div id="collapseUdara" class="accordion-collapse collapse" data-bs-parent="#accordionAlam">
                                     <div class="accordion-body">
-                                        <p class="mb-0 text-dark">Penumpukan emisi gas sisa pembakaran (CO₂) di atmosfer memicu efek rumah kaca, mengubah iklim lokal yang dulunya sejuk.</p>
+                                        <p class="mb-0 text-dark">Penumpukan gas sisa pembakaran kendaraan dan aktivitas industri (seperti pabrik di kawasan pesisir) memicu efek rumah kaca yang meningkatkan suhu bumi secara global. Hawa sejuk yang dahulu menjadi ciri khas kota wisata seperti Bukittinggi perlahan terancam akibat perubahan iklim dan cuaca ekstrem.</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAir">
-                                        <i class="bi bi-droplet-fill me-2 text-primary"></i> Polusi Air & Sungai
+                                        <i class="bi bi-droplet-fill me-2 text-primary"></i> Pencemaran Ekosistem Sungai
                                     </button>
                                 </h2>
                                 <div id="collapseAir" class="accordion-collapse collapse" data-bs-parent="#accordionAlam">
                                     <div class="accordion-body">
-                                        <p class="mb-0 text-dark">Pencemaran sungai (seperti Batang Agam atau Batang Arau) oleh limbah rumah tangga dapat merusak ekosistem air tawar yang penting bagi kehidupan masyarakat nagari.</p>
+                                        <p class="mb-0 text-dark">Bagi masyarakat nagari, sungai (seperti Batang Agam atau Batang Kuranji) bukan sekadar aliran air, melainkan pusat urat nadi kehidupan komunal (tempat mandi, mencuci, dan tradisi lokal). Pencemaran sampah plastik dan limbah rumah tangga dapat mematikan habitat ikan air tawar lokal yang menjadi sumber protein penting bagi warga desa.</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTanah">
-                                        <i class="bi bi-moisture me-2" style="color: #8B4513;"></i> Polusi & Kerusakan Tanah
+                                        <i class="bi bi-moisture me-2" style="color: #8B4513;"></i> Kerusakan Daya Dukung Tanah
                                     </button>
                                 </h2>
                                 <div id="collapseTanah" class="accordion-collapse collapse" data-bs-parent="#accordionAlam">
                                     <div class="accordion-body">
-                                        <p class="mb-0 text-dark">Penebangan hutan secara liar dan penggunaan bahan kimia di lahan pertanian bisa menghilangkan daya dukung tanah. Di Minangkabau, dicegah dengan adanya aturan ketat mengenai <em>Rimbo Larangan</em>.</p>
+                                        <p class="mb-0 text-dark">Penebangan hutan resapan air secara liar dan konversi lahan secara masif akan menghilangkan akar pengikat tanah. Ketika musim hujan tiba dengan intensitas ekstrem (akibat anomali cuaca), ketiadaan hutan pelindung ini menjadi pemicu utama longsor dan banjir bandang (Galodo) yang kerap menelan korban di wilayah perbukitan Sumatera Barat.</p>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+                        <!-- Cek Pemahaman Topik 1 -->
+                        <div class="mt-4 p-4 bg-white rounded-4 border border-light shadow-sm" id="mini-quiz-topic1">
+                            <h6 class="fw-bold text-brand mb-3 d-flex align-items-center gap-2">
+                                <i class="bi bi-patch-question-fill fs-5"></i> Cek Pemahaman Singkat
+                            </h6>
+                            <p class="small text-dark fw-semibold mb-3">Apa makna utama dari filosofi "Alam Takambang Jadi Guru" dalam kaitannya dengan pelestarian lingkungan?</p>
+                            <div class="d-flex flex-column gap-2">
+                                <button class="quiz-option shadow-sm mini-option py-2" onclick="checkMiniQuiz('topic1', 0, 0, this)">Menganggap alam sebagai guru dan mitra yang harus dijaga keseimbangannya, bukan sekadar objek untuk dieksploitasi.</button>
+                                <button class="quiz-option shadow-sm mini-option py-2" onclick="checkMiniQuiz('topic1', 1, 0, this)">Mempercayai bahwa alam menyimpan kekuatan magis yang tidak boleh disentuh sama sekali oleh manusia.</button>
+                                <button class="quiz-option shadow-sm mini-option py-2" onclick="checkMiniQuiz('topic1', 2, 0, this)">Menjadikan hasil alam sebagai satu-satunya komoditas ekonomi yang harus dihabiskan untuk kemakmuran.</button>
+                            </div>
+                            <div id="mini-result-topic1" class="mt-3 p-3 rounded-3 bg-light border border-light" style="display: none; font-size: 0.9rem;"></div>
                         </div>
                     </div>
 
@@ -940,12 +954,27 @@
                             <div class="topic-icon" style="background: rgba(245, 158, 11, 0.15); color: var(--color-accent);">
                                 <i class="bi bi-people-fill"></i>
                             </div>
-                            <h3 class="topic-title">Dinamika Masyarakat & Budaya</h3>
+                            <h3 class="topic-title">Dinamika Masyarakat & Pelestarian Budaya</h3>
                         </div>
-                        <p>Masyarakat terus mengalami perubahan dari waktu ke waktu; baik dalam cara berpikir, perilaku, maupun teknologi. Hal ini disebut dinamika sosial. Namun, masyarakat Minangkabau berusaha menjaga identitas kulturalnya di tengah arus modernisasi.</p>
+                        <p>Dinamika atau perubahan sosial dalam masyarakat adalah suatu keniscayaan (tidak bisa dihindari). Globalisasi, urbanisasi, dan masuknya teknologi digital perlahan mengubah gaya hidup dan jenis mata pencaharian masyarakat Minangkabau yang awalnya sangat agraris.</p>
+                        <p>Meski banyak anak muda kini merantau dan bekerja di sektor modern, masyarakat Minang tetap mempertahankan ketahanan sosial (solidaritas) dan akar tradisinya dengan semboyan <em>"Adat Basandi Syarak, Syarak Basandi Kitabullah"</em>. Salah satu bentuk keluwesan namun keteguhan budaya ini terlihat dalam tradisi sosial pedesaan.</p>
                         
                         <div class="highlight-box">
-                            <p><i class="bi bi-lightbulb-fill me-2 fs-5"></i><strong>Tradisi Mandoa Aia & Kapalo Banda:</strong><br><span class="mt-2 d-block text-secondary" style="font-family: 'Merriweather', serif; font-weight: normal; font-size: 0.95rem;">Merupakan tradisi syukuran dan doa bersama di hulu sungai (sumber air) sebelum masa tanam padi. Tradisi ini selain mempererat kerukunan antar warga (dinamika sosial positif), juga secara langsung berfungsi menjaga hulu sungai dari kerusakan dan pencemaran (pelestarian lingkungan).</span></p>
+                            <p><i class="bi bi-lightbulb-fill me-2 fs-5"></i><strong>Tradisi Mandoa Kapalo Banda (Kenduri Tolak Bala):</strong><br><span class="mt-2 d-block text-secondary" style="font-family: 'Merriweather', serif; font-weight: normal; font-size: 0.95rem;">Ini adalah wujud dinamika komunal yang masih bertahan di era mesin traktor modern. Sebelum musim tanam padi dimulai, masyarakat petani secara swadaya akan bergotong-royong membersihkan hulu irigasi (kapalo banda). Kegiatan fisik ini dipadukan dengan ritual syukuran, makan bersama (makan bajamba), dan doa tolak bala. Tradisi ini menanamkan solidaritas sosial tingkat tinggi sekaligus memastikan jaminan kualitas air irigasi yang vital bagi ketahanan pangan lokal.</span></p>
+                        </div>
+
+                        <!-- Cek Pemahaman Topik 2 -->
+                        <div class="mt-4 p-4 bg-white rounded-4 border border-light shadow-sm" id="mini-quiz-topic2">
+                            <h6 class="fw-bold text-accent mb-3 d-flex align-items-center gap-2" style="color: var(--color-accent);">
+                                <i class="bi bi-patch-question-fill fs-5"></i> Cek Pemahaman Singkat
+                            </h6>
+                            <p class="small text-dark fw-semibold mb-3">Bagaimana masyarakat agraris Minangkabau merespons perubahan zaman sekaligus memastikan kebersihan sumber air irigasi pertanian mereka?</p>
+                            <div class="d-flex flex-column gap-2">
+                                <button class="quiz-option shadow-sm mini-option py-2" onclick="checkMiniQuiz('topic2', 0, 1, this)">Menyerahkan seluruh pengelolaan irigasi kepada pihak swasta dari luar desa.</button>
+                                <button class="quiz-option shadow-sm mini-option py-2" onclick="checkMiniQuiz('topic2', 1, 1, this)">Mempertahankan tradisi gotong-royong komunal "Mandoa Kapalo Banda" untuk membersihkan hulu saluran air.</button>
+                                <button class="quiz-option shadow-sm mini-option py-2" onclick="checkMiniQuiz('topic2', 2, 1, this)">Beralih sepenuhnya meninggalkan profesi bertani dan menimbun hulu sungai.</button>
+                            </div>
+                            <div id="mini-result-topic2" class="mt-3 p-3 rounded-3 bg-light border border-light" style="display: none; font-size: 0.9rem;"></div>
                         </div>
                     </div>
 
@@ -955,25 +984,30 @@
                             <div class="topic-icon" style="background: rgba(236, 72, 153, 0.15); color: var(--color-pink);">
                                 <i class="bi bi-recycle"></i>
                             </div>
-                            <h3 class="topic-title">Pembangunan Berkelanjutan & Mitigasi Bencana</h3>
+                            <h3 class="topic-title">Pembangunan Berkelanjutan & Ketahanan Pangan</h3>
                         </div>
-                        <p>Pembangunan berkelanjutan adalah upaya memenuhi kebutuhan masa kini tanpa mengorbankan masa depan (SDGs). Nenek moyang kita di Ranah Minang sudah mempraktikkan mitigasi bencana yang berkelanjutan jauh sebelum konsep ini dikenal secara global.</p>
+                        <p>Pembangunan berkelanjutan (<em>Sustainable Development</em>) mensyaratkan adanya keseimbangan antara pertumbuhan ekonomi, kelestarian lingkungan, dan kesejahteraan sosial jaminan masa depan. Nenek moyang Minangkabau telah menerapkan konsep ini melalui teknologi bangunan dan arsitektur lumbung pangannya.</p>
+                        
                         <ul class="mb-4">
-                            <li><strong>Rumah Gadang Tahan Gempa:</strong> Sumatera Barat berada di zona rawan gempa tektonik. Konstruksi Rumah Gadang dibangun tidak menggunakan paku besi, melainkan bersistem <em>pasak kayu</em>.</li>
-                            <li><strong>Sistem Sandi (Batu Tapakan):</strong> Tiang rumah gadang tidak ditanam ke tanah, tapi bertumpu pada batu datar yang lebar. Ini membuat bangunan bisa "menari" atau berayun mengikuti guncangan gempa tanpa berisiko roboh.</li>
+                            <li><strong>Mitigasi Bencana Struktural:</strong> Arsitektur asli <em>Rumah Gadang</em> dibangun secara cerdas tanpa menggunakan paku logam, melainkan pasak kayu, serta berdiri bebas di atas pondasi <em>batu sandi datar</em>. Konstruksi ini memberinya kelenturan untuk berayun menyerap guncangan saat gempa tektonik (Sesar Sumatera) terjadi, menghindari keruntuhan fatal.</li>
+                            <li><strong>Ketahanan Pangan dan Sosial Berkelanjutan (Lumbung Rangkiang):</strong> Di halaman depan Rumah Gadang selalu terdapat bangunan kecil bernama <em>Rangkiang</em> (Lumbung Padi). Ini merupakan manajemen ekonomi dan logistik kuno yang visioner. Padi dibagi secara khusus: ada <em>Rangkiang Sitinjau Lauik</em> untuk membantu warga desa yang kelaparan (Jaring Pengaman Sosial), dan <em>Rangkiang Sibayau-bayau</em> untuk kebutuhan pangan sehari-hari keluarga penghuni rumah.</li>
                         </ul>
+
+                        <!-- Cek Pemahaman Topik 3 -->
+                        <div class="mt-4 p-4 bg-white rounded-4 border border-light shadow-sm" id="mini-quiz-topic3">
+                            <h6 class="fw-bold text-pink mb-3 d-flex align-items-center gap-2" style="color: var(--color-pink);">
+                                <i class="bi bi-patch-question-fill fs-5"></i> Cek Pemahaman Singkat
+                            </h6>
+                            <p class="small text-dark fw-semibold mb-3">Keberadaan "Rangkiang Sitinjau Lauik" di pekarangan Rumah Gadang membuktikan bahwa masyarakat Minangkabau pada masa lampau telah mempraktikkan konsep pembangunan berkelanjutan di bidang...</p>
+                            <div class="d-flex flex-column gap-2">
+                                <button class="quiz-option shadow-sm mini-option py-2" onclick="checkMiniQuiz('topic3', 0, 1, this)">Teknologi Industri Modern.</button>
+                                <button class="quiz-option shadow-sm mini-option py-2" onclick="checkMiniQuiz('topic3', 1, 1, this)">Ketahanan pangan (Food Security) dan Jaring Pengaman Bantuan Sosial.</button>
+                                <button class="quiz-option shadow-sm mini-option py-2" onclick="checkMiniQuiz('topic3', 2, 1, this)">Eksploitasi hasil hutan secara masif untuk diekspor ke luar negeri.</button>
+                            </div>
+                            <div id="mini-result-topic3" class="mt-3 p-3 rounded-3 bg-light border border-light" style="display: none; font-size: 0.9rem;"></div>
+                        </div>
                     </div>
 
-                    <!-- Video Kesimpulan -->
-                    <div class="topic-block bg-white border-0 border-top border-light mt-5 pt-5 text-center">
-                        <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2 mb-3 fw-bold border border-primary-subtle"><i class="bi bi-play-btn-fill me-1"></i> Tontonan Pendalaman</span>
-                        <h5 class="fw-bold mb-3 font-inter fs-4">Visualisasi Kearifan Ekologi Minangkabau</h5>
-                        <p class="mb-4 mx-auto" style="max-width: 600px;">Simak tayangan berikut untuk melihat bagaimana filosofi alam dan pelestarian lingkungan sejalan dengan pembangunan yang berkelanjutan di Sumatera Barat.</p>
-                        
-                        <div class="media-wrapper ratio-16x9 shadow-lg rounded-4 border border-light">
-                            <iframe src="https://www.youtube.com/embed/9MhOPoOo8QQ" title="YouTube video player" allowfullscreen></iframe>
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -1008,7 +1042,7 @@
                             </h2>
                             <div id="kLokal2" class="accordion-collapse collapse" data-bs-parent="#accordionKearifan">
                                 <div class="accordion-body small text-muted">
-                                    Sebuah kawasan hutan di hulu sungai yang dilindungi penuh oleh hukum adat. Siapapun yang menebang pohon di sini akan dikenakan sanksi denda adat karena dapat memicu kekeringan dan tanah longsor bagi nagari di bawahnya.
+                                    Sebuah kawasan hutan di hulu sungai yang dilindungi penuh oleh hukum adat. Siapapun yang menebang pohon di sini akan dikenakan sanksi denda adat karena hutan ini berfungsi mengatur debit irigasi air dan menolak bencana <em>galodo</em>.
                                 </div>
                             </div>
                         </div>
@@ -1043,13 +1077,6 @@
     </div>
 </div>
 
-<!-- Footer Minimalis -->
-<footer class="bg-white border-top py-4 mt-5">
-    <div class="app-container text-center text-muted small fw-bold font-inter">
-        <p class="mb-0">&copy; Platform Pembelajaran IPS. Terintegrasi Desain Modern.</p>
-    </div>
-</footer>
-
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -1078,6 +1105,38 @@
         if(thumb) thumb.addEventListener('click', playVideo);
     });
 
+    // --- TAMBAHAN: Logika untuk Mini Kuis (Cek Pemahaman) Tema 2 ---
+    const miniQuizExplanations = {
+        'topic1': 'Tepat! Filosofi Alam Takambang Jadi Guru mengajarkan kita untuk menjadikan alam sebagai pendidik dan sumber inspirasi kehidupan, sehingga tumbuh kesadaran untuk tidak merusak dan menjaga keberlanjutannya.',
+        'topic2': 'Benar! Dinamika sosial adalah hal yang wajar. Masyarakat desa merespons kemajuan dengan cara tetap mempertahankan tradisi luhur gotong royong dan spiritual (seperti Mandoa Kapalo Banda) yang terbukti menjaga ketahanan sosial dan pangan mereka.',
+        'topic3': 'Tepat Sekali! Rangkiang bukan sekadar hiasan kayu, melainkan sistem ketahanan logistik dan sosial mandiri desa. Rangkiang Sitinjau Lauik secara khusus diperuntukkan bagi simpanan logistik krisis komunal.'
+    };
+
+    function checkMiniQuiz(topicId, selectedIndex, correctIndex, btnElement) {
+        const container = document.getElementById(`mini-quiz-${topicId}`);
+        const allBtns = container.querySelectorAll('.mini-option');
+        const resultDiv = document.getElementById(`mini-result-${topicId}`);
+
+        // Disable semua tombol di mini kuis ini agar tidak bisa diklik dua kali
+        allBtns.forEach(btn => btn.style.pointerEvents = 'none');
+
+        const isCorrect = selectedIndex === correctIndex;
+
+        if (isCorrect) {
+            btnElement.classList.add('correct');
+            resultDiv.innerHTML = `<span class="text-success fw-bold d-block mb-1"><i class="bi bi-check-circle-fill me-1"></i> Tepat Sekali!</span> <span class="text-secondary fw-normal">${miniQuizExplanations[topicId]}</span>`;
+        } else {
+            btnElement.classList.add('wrong');
+            // Highlight jawaban yang benar
+            allBtns[correctIndex].classList.add('correct');
+            allBtns[correctIndex].style.opacity = '0.7';
+            resultDiv.innerHTML = `<span class="text-danger fw-bold d-block mb-1"><i class="bi bi-x-circle-fill me-1"></i> Kurang Tepat.</span> <span class="text-secondary fw-normal">Perhatikan kembali esensi materinya ya. ${miniQuizExplanations[topicId]}</span>`;
+        }
+
+        resultDiv.style.display = 'block';
+        resultDiv.classList.add('fade-in-up');
+    }
+
     // 3. Quiz Logic (Tema 2 - Disesuaikan dengan Minangkabau)
     const quizData = [
         {
@@ -1103,18 +1162,18 @@
             explanation: "Rimbo Larangan adalah kearifan lokal dalam bentuk konservasi hutan pelindung. Siapapun yang melanggar dan menebang pohon di sana akan dikenakan sanksi denda adat."
         },
         {
-            question: "Apa kaitan langsung arsitektur Rumah Gadang dengan adaptasi terhadap kondisi lingkungan alam Sumatera Barat?",
+            question: "Bangunan kecil khusus penyimpanan padi di depan Rumah Gadang yang juga merepresentasikan kemandirian ekonomi sosial kaum adat dikenal dengan nama...",
             options: [
-                "Atapnya yang tinggi dirancang khusus untuk menampung air hujan berlebih",
-                "Pondasinya dicor sangat dalam agar tidak tersapu oleh banjir bandang",
-                "Strukturnya menggunakan pasak kayu sehingga lentur dan tahan terhadap guncangan gempa",
-                "Dibangun seluruhnya dari kayu tahan api untuk mencegah kebakaran di musim kemarau"
+                "Anjuang",
+                "Lumbuang / Rangkiang",
+                "Balai Adat",
+                "Surau Nagari"
             ],
-            answer: 2,
-            explanation: "Sumatera Barat berada di jalur patahan rawan gempa. Konstruksi Rumah Gadang yang didesain tanpa paku (menggunakan pasak kayu) membuatnya sangat fleksibel (dinamis) dan tahan gempa."
+            answer: 1,
+            explanation: "Rangkiang adalah lumbung penyimpanan padi panen yang pembagian pendistribusiannya diatur sangat ketat untuk menghadapi ancaman krisis kelaparan keluarga maupun komunal desa."
         },
         {
-            question: "Tradisi 'Mandoa Aia' atau 'Turun ke Aia' yang biasanya dilakukan oleh para petani Minangkabau memiliki nilai kearifan lingkungan berupa...",
+            question: "Tradisi 'Mandoa Aia' atau 'Mandoa Kapalo Banda' yang biasanya dilakukan oleh para petani Minangkabau memiliki nilai kearifan lingkungan berupa...",
             options: [
                 "Syarat mutlak secara mistis untuk memanggil hujan di musim kemarau panjang",
                 "Wujud rasa syukur dan komitmen bersama untuk menjaga kebersihan hulu sungai/sumber air",
@@ -1122,7 +1181,7 @@
                 "Upacara rutin pembagian hasil panen padi kepada pemuka dan tetua adat"
             ],
             answer: 1,
-            explanation: "Tradisi berkumpul di hulu sungai ini menanamkan rasa hormat secara spiritual dan kewajiban sosial agar masyarakat bersama-sama bertanggung jawab menjaga kebersihan saluran irigasi dari polusi."
+            explanation: "Tradisi berkumpul di hulu sungai ini menanamkan rasa hormat secara spiritual dan kewajiban sosial agar masyarakat bersama-sama bertanggung jawab (gotong-royong) menjaga kebersihan saluran irigasi."
         },
         {
             question: "Penumpukan gas emisi sisa pembakaran (CO₂) di atmosfer yang menyebabkan suhu bumi semakin panas secara global disebut fenomena...",
@@ -1133,7 +1192,7 @@
                 "Pembangunan Berkelanjutan"
             ],
             answer: 0,
-            explanation: "Pemanasan global atau efek rumah kaca terjadi karena tingginya tingkat polusi udara (gas rumah kaca) yang memerangkap panas matahari di dalam atmosfer bumi."
+            explanation: "Pemanasan global atau efek rumah kaca terjadi karena tingginya tingkat polusi udara (gas rumah kaca) yang memerangkap panas radiasi matahari agar tidak bisa keluar lagi dari atmosfer bumi."
         }
     ];
 
