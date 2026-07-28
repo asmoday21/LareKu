@@ -12,9 +12,6 @@ class ChatbotController extends Controller
 {
     /**
      * Mengambil user yang sedang login.
-     *
-     * Project menggunakan guard "web".
-     * Guru dan siswa dibedakan melalui kolom role pada users.
      */
     private function getAuthenticatedUser(): array
     {
@@ -41,6 +38,7 @@ class ChatbotController extends Controller
         ];
     }
 
+
     /**
      * Prompt Datuak berdasarkan role pengguna.
      */
@@ -48,7 +46,7 @@ class ChatbotController extends Controller
     {
         /*
         |--------------------------------------------------------------------------
-        | Prompt Guru
+        | GURU
         |--------------------------------------------------------------------------
         */
 
@@ -71,14 +69,21 @@ Ketentuan jawaban:
 - Berikan contoh yang relevan dengan proses pembelajaran.
 - Sesuaikan jawaban agar dapat digunakan guru sebagai bahan pembelajaran.
 - Hindari informasi yang tidak berkaitan dengan pertanyaan.
+- Berikan jawaban yang sistematis dan lengkap.
+- Utamakan informasi yang relevan dengan kebutuhan pembelajaran.
+- Hindari penjelasan berulang atau terlalu bertele-tele.
+- Pastikan setiap penjelasan dan kalimat diselesaikan secara utuh.
+- Jangan berhenti di tengah kalimat atau di tengah pembahasan.
+- Gunakan poin atau penomoran jika dapat membuat penjelasan lebih mudah dipahami.
 
 Kamu sedang berbicara dengan seorang guru.
 PROMPT;
         }
 
+
         /*
         |--------------------------------------------------------------------------
-        | Prompt Siswa
+        | SISWA
         |--------------------------------------------------------------------------
         */
 
@@ -98,10 +103,17 @@ Ketentuan jawaban:
 - Fokus pada pertanyaan siswa.
 - Jangan memberikan jawaban terlalu panjang kecuali diminta.
 - Dorong siswa untuk memahami konsep, bukan sekadar menghafal.
+- Berikan jawaban yang ringkas tetapi lengkap.
+- Utamakan poin-poin penting dari pertanyaan.
+- Jangan memperpanjang jawaban dengan informasi yang tidak diperlukan.
+- Pastikan setiap kalimat diselesaikan secara utuh.
+- Jangan berhenti di tengah kalimat atau di tengah pembahasan.
+- Gunakan poin atau penomoran jika membuat materi lebih mudah dipahami.
 
 Kamu sedang berbicara dengan seorang siswa.
 PROMPT;
     }
+
 
     /**
      * Mengirim pertanyaan ke Datuak.
@@ -118,6 +130,7 @@ PROMPT;
             'question' => 'required|string|max:2000',
         ]);
 
+
         /*
         |--------------------------------------------------------------------------
         | Ambil User
@@ -129,6 +142,7 @@ PROMPT;
         $user = $auth['user'];
         $userType = $auth['type'];
 
+
         if (!$user) {
             return response()->json([
                 'success' => false,
@@ -136,7 +150,9 @@ PROMPT;
             ], 401);
         }
 
+
         $question = trim($validated['question']);
+
 
         /*
         |--------------------------------------------------------------------------
@@ -151,7 +167,9 @@ PROMPT;
             'gemini-2.5-flash'
         );
 
+
         if (empty($apiKey)) {
+
             Log::error('GEMINI_API_KEY tidak ditemukan.');
 
             return response()->json([
@@ -160,6 +178,7 @@ PROMPT;
             ], 500);
         }
 
+
         /*
         |--------------------------------------------------------------------------
         | Simpan Pertanyaan User
@@ -167,6 +186,7 @@ PROMPT;
         */
 
         try {
+
             ChatHistory::create([
                 'user_id' => $user->id,
                 'user_type' => $userType,
@@ -189,7 +209,9 @@ PROMPT;
             ], 500);
         }
 
+
         try {
+
             /*
             |--------------------------------------------------------------------------
             | Buat Prompt
@@ -199,6 +221,7 @@ PROMPT;
             $systemPrompt = $this->getSystemPrompt(
                 $userType
             );
+
 
             /*
             |--------------------------------------------------------------------------
@@ -218,6 +241,7 @@ PROMPT;
                         'contents' => [
                             [
                                 'role' => 'user',
+
                                 'parts' => [
                                     [
                                         'text' =>
@@ -230,12 +254,22 @@ PROMPT;
                             ],
                         ],
 
+                        /*
+                        |--------------------------------------------------------------------------
+                        | Generation Config
+                        |--------------------------------------------------------------------------
+                        */
+
                         'generationConfig' => [
                             'temperature' => 0.7,
-                            'maxOutputTokens' => 1000,
+
+                            // Sebelumnya 1000.
+                            // Ditingkatkan supaya jawaban tidak mudah terpotong.
+                            'maxOutputTokens' => 4096,
                         ],
                     ]
                 );
+
 
             /*
             |--------------------------------------------------------------------------
@@ -247,6 +281,7 @@ PROMPT;
 
                 $responseData = $response->json();
 
+
                 Log::error('Gemini API Error', [
                     'status' => $response->status(),
                     'model' => $model,
@@ -255,6 +290,7 @@ PROMPT;
                     'user_type' => $userType,
                 ]);
 
+
                 /*
                 |--------------------------------------------------------------------------
                 | Rate Limit / Quota
@@ -262,12 +298,14 @@ PROMPT;
                 */
 
                 if ($response->status() === 429) {
+
                     return response()->json([
                         'success' => false,
                         'error' =>
                             'Kuota Datuak sedang habis atau batas penggunaan Gemini tercapai. Silakan coba kembali nanti.',
                     ], 429);
                 }
+
 
                 /*
                 |--------------------------------------------------------------------------
@@ -279,12 +317,14 @@ PROMPT;
                     $response->status() === 401 ||
                     $response->status() === 403
                 ) {
+
                     return response()->json([
                         'success' => false,
                         'error' =>
                             'API Gemini tidak dapat diakses. Periksa API Key.',
                     ], $response->status());
                 }
+
 
                 /*
                 |--------------------------------------------------------------------------
@@ -293,12 +333,14 @@ PROMPT;
                 */
 
                 if ($response->status() === 404) {
+
                     return response()->json([
                         'success' => false,
                         'error' =>
                             "Model Gemini '{$model}' tidak ditemukan atau tidak tersedia.",
                     ], 404);
                 }
+
 
                 /*
                 |--------------------------------------------------------------------------
@@ -310,11 +352,10 @@ PROMPT;
                     'success' => false,
                     'error' => 'Gemini API gagal merespons.',
                     'status' => $response->status(),
-
-                    // Bisa dihapus ketika production
                     'details' => $responseData,
                 ], $response->status());
             }
+
 
             /*
             |--------------------------------------------------------------------------
@@ -325,6 +366,36 @@ PROMPT;
             $reply = $response->json(
                 'candidates.0.content.parts.0.text'
             );
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | Ambil Alasan Gemini Berhenti
+            |--------------------------------------------------------------------------
+            |
+            | STOP       = jawaban selesai normal
+            | MAX_TOKENS = output mencapai batas token
+            |
+            */
+
+            $finishReason = $response->json(
+                'candidates.0.finishReason'
+            );
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | Logging Response Gemini
+            |--------------------------------------------------------------------------
+            */
+
+            Log::info('Gemini Response', [
+                'model' => $model,
+                'finish_reason' => $finishReason,
+                'user_id' => $user->id,
+                'user_type' => $userType,
+            ]);
+
 
             /*
             |--------------------------------------------------------------------------
@@ -338,11 +409,13 @@ PROMPT;
                     'Gemini tidak mengembalikan jawaban.',
                     [
                         'model' => $model,
+                        'finish_reason' => $finishReason,
                         'response' => $response->json(),
                         'user_id' => $user->id,
                         'user_type' => $userType,
                     ]
                 );
+
 
                 return response()->json([
                     'success' => false,
@@ -350,6 +423,27 @@ PROMPT;
                         'Datuak belum dapat memberikan jawaban. Silakan coba lagi.',
                 ], 500);
             }
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | Deteksi Jawaban Terpotong
+            |--------------------------------------------------------------------------
+            */
+
+            if ($finishReason === 'MAX_TOKENS') {
+
+                Log::warning(
+                    'Jawaban Datuak mencapai batas token.',
+                    [
+                        'model' => $model,
+                        'user_id' => $user->id,
+                        'user_type' => $userType,
+                        'question' => $question,
+                    ]
+                );
+            }
+
 
             /*
             |--------------------------------------------------------------------------
@@ -364,6 +458,7 @@ PROMPT;
                 'message' => $reply,
             ]);
 
+
             /*
             |--------------------------------------------------------------------------
             | Response Sukses
@@ -373,9 +468,14 @@ PROMPT;
             return response()->json([
                 'success' => true,
                 'reply' => $reply,
+
+                // Berguna untuk debugging.
+                'finish_reason' => $finishReason,
             ]);
 
+
         } catch (\Illuminate\Http\Client\ConnectionException $e) {
+
 
             /*
             |--------------------------------------------------------------------------
@@ -390,13 +490,16 @@ PROMPT;
                 'user_type' => $userType,
             ]);
 
+
             return response()->json([
                 'success' => false,
                 'error' =>
                     'Tidak dapat terhubung ke layanan Datuak. Periksa koneksi dan coba kembali.',
             ], 503);
 
+
         } catch (\Throwable $e) {
+
 
             /*
             |--------------------------------------------------------------------------
@@ -413,21 +516,19 @@ PROMPT;
                 'user_type' => $userType,
             ]);
 
+
             return response()->json([
                 'success' => false,
                 'error' =>
                     'Terjadi kesalahan saat menghubungi Datuak.',
-
-                // Hapus saat production jika tidak ingin
-                // detail internal terlihat di frontend.
                 'message' => $e->getMessage(),
             ], 500);
         }
     }
 
+
     /**
-     * Mengambil history chat berdasarkan
-     * user yang sedang login.
+     * Mengambil history chat berdasarkan user yang sedang login.
      */
     public function history()
     {
@@ -442,7 +543,9 @@ PROMPT;
         $user = $auth['user'];
         $userType = $auth['type'];
 
+
         if (!$user) {
+
             return response()->json([
                 'success' => false,
                 'error' =>
@@ -450,7 +553,9 @@ PROMPT;
             ], 401);
         }
 
+
         try {
+
             /*
             |--------------------------------------------------------------------------
             | Ambil History
@@ -471,6 +576,7 @@ PROMPT;
                 )
                 ->get();
 
+
             /*
             |--------------------------------------------------------------------------
             | Response
@@ -482,13 +588,16 @@ PROMPT;
                 'data' => $chats,
             ]);
 
+
         } catch (\Throwable $e) {
+
 
             Log::error('Chat History Error', [
                 'message' => $e->getMessage(),
                 'user_id' => $user->id,
                 'user_type' => $userType,
             ]);
+
 
             return response()->json([
                 'success' => false,
