@@ -14,6 +14,7 @@ class Materi extends Model
     protected $fillable = [
         'guru_id',
         'tema',
+        'subtema',
         'judul',
         'deskripsi',
         'konten',

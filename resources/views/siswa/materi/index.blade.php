@@ -394,11 +394,7 @@
                     
                     <h3 class="card-title">Tema 01: Kehidupan Sosial dan Kondisi Lingkungan Sekitar</h3>
                     <p class="card-desc">Pelajari tentang cara kita berinteraksi, mengenal lokasi absolut/relatif, dan pengaruh lingkungan terhadap kehidupan sehari-hari secara mendalam.</p>
-                    
-                    <div class="meta-info">
-                        <span class="meta-tag">Geografi & Sosiologi</span>
-                    </div>
-                    
+                                        
                     <a href="{{ route('siswa.materi.tema1', ['id' => 1]) }}" class="btn-learn mt-auto">
                         Mulai Belajar <i class="fas fa-arrow-right ms-1"></i>
                     </a>
@@ -418,10 +414,6 @@
                     
                     <h3 class="card-title">Tema 02: Keberagaman Lingkungan Sekitar</h3>
                     <p class="card-desc">Kenali pembentukan bumi, cuaca, iklim, pelestarian lingkungan alam, serta adaptasi budaya dan mitigasi bencana masyarakat lokal.</p>
-                    
-                    <div class="meta-info">
-                        <span class="meta-tag">Lingkungan Hidup</span>
-                    </div>
                     
                     <a href="{{ route('siswa.materi.tema2', ['id' => 2]) }}" class="btn-learn mt-auto">
                         Mulai Belajar <i class="fas fa-arrow-right ms-1"></i>
@@ -443,10 +435,6 @@
                     <h3 class="card-title">Tema 03: Potensi Ekonomi Lingkungan</h3>
                     <p class="card-desc">Cari tahu bagaimana pemanfaatan sumber daya alam, dinamika kependudukan, dan kegiatan maritim bisa menciptakan peluang ekonomi berkelanjutan.</p>
                     
-                    <div class="meta-info">
-                        <span class="meta-tag">Ekonomi</span>
-                    </div>
-                    
                     <a href="{{ route('siswa.materi.tema3', ['id' => 3]) }}" class="btn-learn mt-auto">
                         Mulai Belajar <i class="fas fa-arrow-right ms-1"></i>
                     </a>
@@ -466,10 +454,6 @@
                     
                     <h3 class="card-title">Tema 04: Pemberdayaan Masyarakat</h3>
                     <p class="card-desc">Pelajari keragaman sosial budaya, sejarah lokal, literasi keuangan dasar, dan bagaimana komunitas bekerja sama untuk menjadi mandiri.</p>
-                    
-                    <div class="meta-info">
-                        <span class="meta-tag">Pemberdayaan</span>
-                    </div>
                     
                     <a href="{{ route('siswa.materi.tema4', ['id' => 4]) }}" class="btn-learn mt-auto">
                         Mulai Belajar <i class="fas fa-arrow-right ms-1"></i>

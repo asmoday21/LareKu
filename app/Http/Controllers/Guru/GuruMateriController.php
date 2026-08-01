@@ -22,9 +22,12 @@ class GuruMateriController extends Controller
         return view('guru.materi.index', compact('materi'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        return view('guru.materi.create');
+        return view('guru.materi.create',[
+            'tema'=>$request->tema,
+            'subtema'=>$request->subtema
+        ]);
     }
 
     public function store(Request $request)
@@ -32,6 +35,7 @@ class GuruMateriController extends Controller
         $request->validate([
             'tema' => 'required',
             'judul' => 'required|max:255',
+            'subtema' => 'nullable|max:255',
             'deskripsi' => 'nullable',
             'konten' => 'nullable',
 
@@ -45,6 +49,7 @@ class GuruMateriController extends Controller
             'guru_id' => auth()->id(),
             'tema' => $request->tema,
             'judul' => $request->judul,
+            'subtema' => $request->subtema,
             'deskripsi' => $request->deskripsi,
             'konten' => $request->konten,
             'durasi' => 0,
@@ -107,6 +112,7 @@ class GuruMateriController extends Controller
         $materi->update([
             'tema' => $request->tema,
             'judul' => $request->judul,
+            'subtema' => $request->subtema,
             'deskripsi' => $request->deskripsi,
             'konten' => $request->konten,
         ]);

@@ -24,6 +24,7 @@ return new class extends Migration
                 'tema4'
             ]);
 
+            
             $table->string('judul');
 
             $table->text('deskripsi')->nullable();

@@ -224,20 +224,39 @@
 
                     <!-- Body Konten Utama -->
                     <div class="card-body p-4 p-md-5">
-                        <!-- Tema Selection -->
+                        <!-- Tema Selection (Diperbarui dengan request('tema')) -->
                         <div class="mb-4 pb-2">
                             <label class="form-label">
                                 <div class="icon-wrapper"><i class="bi bi-grid-fill"></i></div> 
                                 Tema Pembelajaran <span class="text-danger ms-1">*</span>
                             </label>
+                            
                             <select name="tema" class="form-select @error('tema') is-invalid @enderror" required>
                                 <option value="" disabled selected>-- Pilih Tema Pembelajaran --</option>
-                                <option value="tema1" {{ old('tema') == 'tema1' ? 'selected' : '' }}>Tema 1: Kehidupan Sosial dan Kondisi Lingkungan Sekitar</option>
-                                <option value="tema2" {{ old('tema') == 'tema2' ? 'selected' : '' }}>Tema 2: Keberagaman Lingkungan Sekitar</option>
-                                <option value="tema3" {{ old('tema') == 'tema3' ? 'selected' : '' }}>Tema 3: Potensi Ekonomi Lingkungan</option>
-                                <option value="tema4" {{ old('tema') == 'tema4' ? 'selected' : '' }}>Tema 4: Pemberdayaan Masyarakat</option>
+                                <option value="tema1" {{ old('tema', request('tema')) == 'tema1' ? 'selected' : '' }}>Tema 1: Kehidupan Sosial dan Kondisi Lingkungan Sekitar</option>
+                                <option value="tema2" {{ old('tema', request('tema')) == 'tema2' ? 'selected' : '' }}>Tema 2: Keberagaman Lingkungan Sekitar</option>
+                                <option value="tema3" {{ old('tema', request('tema')) == 'tema3' ? 'selected' : '' }}>Tema 3: Potensi Ekonomi Lingkungan</option>
+                                <option value="tema4" {{ old('tema', request('tema')) == 'tema4' ? 'selected' : '' }}>Tema 4: Pemberdayaan Masyarakat</option>
                             </select>
                             @error('tema')
+                                <div class="invalid-feedback"><i class="bi bi-exclamation-circle-fill me-2"></i> {{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <!-- Subtema (Diperbarui dengan request('subtema') dan Readonly opsional jika terisi otomatis) -->
+                        <div class="mb-4 pb-2">
+                            <label for="subtema" class="form-label">
+                                <div class="icon-wrapper"><i class="bi bi-list-task"></i></div> 
+                                Subtema <span class="text-muted">(Opsional)</span>
+                            </label>
+                            <!-- Menangkap request('subtema') dari URL -->
+                            <input type="text" class="form-control @error('subtema') is-invalid @enderror {{ request('subtema') ? 'bg-light text-primary fw-bold' : '' }}" id="subtema" name="subtema" value="{{ old('subtema', request('subtema')) }}" placeholder="Maks. 255 karakter" {{ request('subtema') ? 'readonly' : '' }}>
+                            
+                            @if(request('subtema'))
+                                <div class="form-text text-primary mt-2"><i class="bi bi-info-circle me-1"></i> Subtema terisi otomatis sesuai blok materi yang Anda pilih.</div>
+                            @endif
+                            
+                            @error('subtema')
                                 <div class="invalid-feedback"><i class="bi bi-exclamation-circle-fill me-2"></i> {{ $message }}</div>
                             @enderror
                         </div>

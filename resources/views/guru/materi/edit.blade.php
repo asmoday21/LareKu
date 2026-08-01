@@ -258,6 +258,31 @@
                             @enderror
                         </div>
 
+                        <!-- Subtema -->
+                        <div class="mb-4 pb-2">
+                            <label for="subtema" class="form-label">
+                                <div class="icon-wrapper"><i class="bi bi-list-task"></i></div> 
+                                Subtema <span class="text-muted">(Opsional)</span>
+                            </label>
+                            
+                            @php
+                                $isSystemSubtema = in_array(
+                                    \Illuminate\Support\Str::slug($materi->subtema ?? ''), 
+                                    ['lokasi-tinggal', 'konektivitas', 'iklim', 'bencana', 'ekonomi', 'sosial']
+                                );
+                            @endphp
+                            
+                            <input type="text" class="form-control @error('subtema') is-invalid @enderror {{ $isSystemSubtema ? 'bg-light text-primary fw-bold' : '' }}" id="subtema" name="subtema" value="{{ old('subtema', $materi->subtema ?? '') }}" placeholder="Maks. 255 karakter" {{ $isSystemSubtema ? 'readonly' : '' }}>
+                            
+                            @if($isSystemSubtema)
+                                <div class="form-text text-primary mt-2"><i class="bi bi-info-circle me-1"></i> Subtema ini tidak dapat diubah karena terhubung dengan blok materi interaktif di modul.</div>
+                            @endif
+                            
+                            @error('subtema')
+                                <div class="invalid-feedback"><i class="bi bi-exclamation-circle-fill me-2"></i> {{ $message }}</div>
+                            @enderror
+                        </div>
+
                         <!-- Judul Materi -->
                         <div class="mb-4 pb-2">
                             <label for="judul" class="form-label">

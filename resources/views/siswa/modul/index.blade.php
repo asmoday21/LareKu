@@ -567,9 +567,6 @@
                 <div class="card-icon"><i class="fas fa-globe-asia"></i></div>
                 <h3 class="card-title">Tema 01: Lingkungan Sekitar</h3>
                 <p class="card-desc">Pelajari tentang interaksi keruangan dan lokasi tempat tinggal secara mendalam.</p>
-                <div class="meta-info">
-                    <span class="meta-tag">Penting</span>
-                </div>
                 <a href="{{ route('siswa.materi.tema1', ['id' => 1]) }}" class="btn-learn mt-auto">
                     Mulai Belajar <i class="fas fa-arrow-right ms-1"></i>
                 </a>
@@ -583,9 +580,6 @@
                 <div class="card-icon"><i class="fas fa-tree"></i></div>
                 <h3 class="card-title">Tema 02: Keberagaman Lingkungan</h3>
                 <p class="card-desc">Kenali pelestarian alam dan diversitas budaya yang ada di sekitar kita.</p>
-                <div class="meta-info">
-                    <span class="meta-tag">Interaktif</span>
-                </div>
                 <a href="{{ route('siswa.materi.tema2', ['id' => 2]) }}" class="btn-learn mt-auto">
                     Mulai Belajar <i class="fas fa-arrow-right ms-1"></i>
                 </a>
@@ -599,9 +593,6 @@
                 <div class="card-icon"><i class="fas fa-chart-line"></i></div>
                 <h3 class="card-title">Tema 03: Potensi Ekonomi</h3>
                 <p class="card-desc">Bagaimana sumber daya alam menciptakan peluang ekonomi berkelanjutan.</p>
-                <div class="meta-info">
-                    <span class="meta-tag">Analitis</span>
-                </div>
                 <a href="{{ route('siswa.materi.tema3', ['id' => 3]) }}" class="btn-learn mt-auto">
                     Mulai Belajar <i class="fas fa-arrow-right ms-1"></i>
                 </a>
@@ -615,9 +606,6 @@
                 <div class="card-icon"><i class="fas fa-hands-helping"></i></div>
                 <h3 class="card-title">Tema 04: Pemberdayaan</h3>
                 <p class="card-desc">Cara masyarakat bekerja sama membangun komunitas yang lebih mandiri.</p>
-                <div class="meta-info">
-                    <span class="meta-tag">Sosial</span>
-                </div>
                 <a href="{{ route('siswa.materi.tema4', ['id' => 4]) }}" class="btn-learn mt-auto">
                     Mulai Belajar <i class="fas fa-arrow-right ms-1"></i>
                 </a>
