@@ -56,12 +56,12 @@
       </a>
     </li>    
 
-    <li class="nav-item">
+    {{-- <li class="nav-item">
       <a class="nav-link" href="{{ route('guru.video.index') }}">
         <i class="bi bi-youtube menu-icon"></i>
         <span class="menu-title">Video Pembelajaran</span>
       </a>
-    </li>
+    </li> --}}
     
     <li class="nav-item">
       <a class="nav-link" href="{{ route('guru.chat.view') }}">
@@ -69,7 +69,13 @@
         <span class="menu-title">Chatbot AI</span>
       </a>
     </li>
-     
+
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('guru.petunjuk') }}">
+        <i class="mdi mdi-help-circle menu-icon"></i>
+        <span class="menu-title">Petunjuk</span>
+      </a>
+    </li>
 
     <!-- Logout -->
     <li class="nav-item mt-4">

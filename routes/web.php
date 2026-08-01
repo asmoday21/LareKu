@@ -23,6 +23,8 @@ use App\Http\Controllers\Siswa\SiswaUjianController;
 use App\Http\Controllers\GuruTugasController;
 use App\Http\Controllers\Guru\GuruMateriController;
 use App\Http\Controllers\GuruSiswaController;
+use App\Http\Controllers\Guru\PetunjukController;
+use App\Http\Controllers\Siswa\PetunjukController as SiswaPetunjukController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\QuizResultController; // Ensure this class exists in the specified namespace
 use App\Http\Controllers\CobaController;
@@ -621,5 +623,14 @@ Route::middleware('auth')->group(function () {
 
 });
 
+Route::middleware(['auth','role:guru'])->group(function () {
+    Route::get('/guru/petunjuk', [PetunjukController::class, 'index'])
+        ->name('guru.petunjuk');
+});
+
+Route::middleware(['auth','role:siswa'])->group(function () {
+    Route::get('/siswa/petunjuk', [SiswaPetunjukController::class, 'index'])
+        ->name('siswa.petunjuk');
+});
 
 require __DIR__.'/auth.php';

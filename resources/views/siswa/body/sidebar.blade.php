@@ -48,17 +48,24 @@
       </a>
     </li>
 
-    <li class="nav-item">
+    {{-- <li class="nav-item">
       <a class="nav-link" href="{{ route('siswa.video.index') }}">
         <i class="bi bi-youtube menu-icon"></i>
         <span class="menu-title">Video Pembelajaran</span>
       </a>
-    </li>
+    </li> --}}
 
     <li class="nav-item">
       <a class="nav-link" href="{{ route('siswa.chat.view') }}">
       <i class="mdi mdi-robot menu-icon"></i>
       <span class="menu-title">Chatbot AI</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('siswa.petunjuk') }}">
+        <i class="mdi mdi-help-circle menu-icon"></i>
+        <span class="menu-title">Petunjuk</span>
       </a>
     </li>
      
