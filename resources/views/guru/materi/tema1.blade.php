@@ -647,24 +647,6 @@
                         <span class="badge-admin">Mode Kelola</span>
                     </div>
                 </div>
-                {{-- <div class="col-12 col-md-8">
-                    <div class="d-flex flex-column flex-md-row justify-content-md-end gap-3 align-items-md-center">
-                        <div class="d-flex align-items-center gap-2">
-                            <label class="fw-semibold text-secondary mb-0 font-inter" style="font-size:0.9rem; white-space: nowrap;">Filter Tema:</label>
-                            <form action="{{ route('guru.materi.index') }}" method="GET" id="temaForm" class="m-0">
-                                <select class="filter-select font-inter" name="tema" onchange="this.form.submit()">
-                                    <option value="tema1" {{ request('tema')=='tema1' ? 'selected' : '' }}>Tema 1</option>
-                                    <option value="tema2" {{ request('tema')=='tema2' ? 'selected' : '' }}>Tema 2</option>
-                                    <option value="tema3" {{ request('tema')=='tema3' ? 'selected' : '' }}>Tema 3</option>
-                                    <option value="tema4" {{ request('tema')=='tema4' ? 'selected' : '' }}>Tema 4</option>
-                                </select>
-                            </form>
-                        </div>
-                        <a href="{{ route('guru.materi.create') }}" class="btn-add-materi text-decoration-none font-inter">
-                            <i class="fas fa-plus"></i> Tambah Bebas
-                        </a>
-                    </div>
-                </div> --}}
             </div>
         </div>
 

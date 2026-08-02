@@ -1,1168 +1,660 @@
 @extends('siswa.siswa_master')
 
 @section('siswa')
-<div class="edit-profile-container">
-  <!-- Background Elements -->
-  <div class="bg-decoration">
-    <div class="floating-orb orb-1"></div>
-    <div class="floating-orb orb-2"></div>
-    <div class="floating-orb orb-3"></div>
-    <div class="floating-pattern"></div>
-  </div>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profil Siswa</title>
+    
+    <!-- Material Design Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-  <div class="container py-5">
-    <div class="row justify-content-center">
-      <div class="col-lg-9 col-xl-8">
-        <!-- Progress Bar -->
+    <style>
+        :root {
+            --primary-blue: #1a56db;
+            --primary-blue-dark: #1e3a8a;
+            --primary-blue-light: #dbeafe;
+            --accent-purple: #7c3aed;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8edf5 100%);
+            min-height: 100vh;
+        }
 
-        <!-- Main Form Card -->
-        <div class="form-card glass-effect">
-          <!-- Header -->
-          <div class="form-header">
-            <div class="header-content">
-              <div class="header-icon">
-                <i class="fas fa-user-cog"></i>
-              </div>
-              <div class="header-text">
-                <h3>Perbarui Profil Anda</h3>
-                <p>Pastikan informasi yang Anda masukkan akurat dan terkini</p>
-              </div>
+        /* Full Width Container */
+        .edit-profile-wrapper {
+            min-height: 100vh;
+            padding: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        /* Glass Card - Full Width */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            border-radius: 24px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 1400px;
+        }
+
+        /* Header Gradient */
+        .header-gradient {
+            background: linear-gradient(135deg, #1a56db 0%, #7c3aed 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 1.5rem 2rem;
+        }
+
+        .header-gradient::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* Profile Image Upload */
+        .avatar-wrapper {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            flex-shrink: 0;
+        }
+
+        .avatar-ring {
+            position: absolute;
+            inset: -3px;
+            border-radius: 50%;
+            padding: 3px;
+            background: conic-gradient(from 0deg, #60a5fa, #a855f7, #60a5fa);
+            -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #fff calc(100% - 2px));
+            mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #fff calc(100% - 2px));
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .avatar-overlay {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            z-index: 2;
+            color: white;
+            gap: 4px;
+        }
+
+        .avatar-wrapper:hover .avatar-overlay {
+            opacity: 1;
+        }
+
+        .avatar-overlay i {
+            font-size: 1.5rem;
+        }
+
+        .avatar-overlay span {
+            font-size: 0.65rem;
+            font-weight: 500;
+        }
+
+        /* Input Field */
+        .input-group-custom {
+            position: relative;
+        }
+
+        .input-group-custom .input-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .input-group-custom .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.8rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            background: white;
+            color: var(--text-primary);
+        }
+
+        .input-group-custom .form-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 4px rgba(26, 86, 219, 0.1);
+        }
+
+        .input-group-custom .form-input.is-invalid {
+            border-color: #ef4444;
+        }
+
+        .input-group-custom .form-input:focus ~ .input-icon {
+            color: var(--primary-blue);
+        }
+
+        .input-group-custom .form-input:disabled {
+            background: #f1f5f9;
+            cursor: not-allowed;
+        }
+
+        /* Error Message */
+        .error-text {
+            color: #ef4444;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        /* Buttons */
+        .btn-primary-gradient {
+            background: linear-gradient(135deg, #1a56db 0%, #7c3aed 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(26, 86, 219, 0.3);
+        }
+
+        .btn-primary-gradient:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-secondary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 2px solid #e2e8f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-outline:hover {
+            background: #f8fafc;
+            border-color: #cbd5e0;
+            transform: translateY(-2px);
+        }
+
+        .btn-remove {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .btn-remove:hover {
+            background: rgba(239, 68, 68, 0.2);
+        }
+
+        /* Success Alert */
+        .alert-success-custom {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 12px;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .alert-success-custom i {
+            color: #10b981;
+            font-size: 1.25rem;
+        }
+
+        /* Hide file input */
+        #profileImage {
+            display: none;
+        }
+
+        /* Form Body */
+        .form-body {
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .edit-profile-wrapper {
+                padding: 0.75rem;
+            }
+            
+            .header-gradient {
+                padding: 1.25rem 1.5rem;
+            }
+            
+            .form-body {
+                padding: 1.25rem;
+            }
+            
+            .avatar-wrapper {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .edit-profile-wrapper {
+                padding: 0.5rem;
+            }
+            
+            .header-gradient {
+                padding: 1rem 1.25rem;
+            }
+            
+            .form-body {
+                padding: 1rem;
+            }
+            
+            .glass-card {
+                border-radius: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="edit-profile-wrapper">
+    <div class="glass-card" data-aos="fade-up" data-aos-duration="600">
+        
+        <!-- Header -->
+        <div class="header-gradient text-white">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-white/20 backdrop-blur flex items-center justify-center flex-shrink-0">
+                    <i class="mdi mdi-account-edit text-2xl"></i>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-xl md:text-2xl font-extrabold tracking-tight">Edit Profil</h3>
+                    <p class="text-white/80 text-sm">Perbarui informasi pribadi Anda</p>
+                </div>
+                <div class="text-white/60 text-xs hidden md:block">
+                    <i class="mdi mdi-information-outline"></i>
+                    Pastikan data akurat
+                </div>
             </div>
-          </div>
+        </div>
 
-          <!-- Success Alert -->
-          @if(session('success'))
-            <div class="alert-custom alert-success">
-              <div class="alert-icon">
-                <i class="fas fa-check-circle"></i>
-              </div>
-              <div class="alert-content">
-                <div class="alert-title">Berhasil!</div>
-                <div class="alert-message">{{ session('success') }}</div>
-              </div>
-              <button class="alert-close" onclick="this.parentElement.remove()">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
-          @endif
+        <!-- Body -->
+        <div class="form-body">
+            
+            <!-- Success Alert -->
+            @if(session('success'))
+                <div class="alert-success-custom mb-6" data-aos="fade-down">
+                    <i class="mdi mdi-check-circle"></i>
+                    <div class="flex-1">
+                        <div class="font-semibold text-green-700 text-sm">Berhasil!</div>
+                        <div class="text-green-600 text-sm">{{ session('success') }}</div>
+                    </div>
+                    <button onclick="this.parentElement.remove()" class="text-green-400 hover:text-green-600 transition text-xl leading-none">
+                        <i class="mdi mdi-close"></i>
+                    </button>
+                </div>
+            @endif
 
-          <!-- Form Body -->
-          <div class="form-body">
             <form id="profileForm" action="{{ route('siswa.store_profile') }}" method="POST" enctype="multipart/form-data">
-              @csrf
+                @csrf
 
-              <!-- Profile Image Section -->
-              <div class="profile-image-section">
-                <div class="section-title">
-                  <h6>
-                    <i class="fas fa-image me-2"></i>
-                    Foto Profil
-                  </h6>
-                  <span class="section-subtitle">Pilih foto yang merepresentasikan diri Anda</span>
-                </div>
-
-                <div class="image-upload-container">
-                  <div class="image-preview-wrapper">
-                    <div class="image-preview" id="imagePreview">
-                      @if ($editData->profile_image)
-                        <img src="{{ asset('upload/siswa_images/' . $editData->profile_image) }}" 
-                             alt="Foto Profil" 
-                             class="preview-img"
-                             id="previewImg">
-                      @else
-                        <div class="placeholder-img" id="placeholderImg">
-                          <i class="fas fa-user-plus"></i>
-                          <span>Upload Foto</span>
+                <!-- Profile Image -->
+                <div class="mb-8">
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4">
+                        <div class="flex items-center gap-2">
+                            <i class="mdi mdi-image text-blue-600 text-lg"></i>
+                            <h6 class="font-bold text-slate-800 text-sm">Foto Profil</h6>
                         </div>
-                      @endif
+                        <span class="text-xs text-slate-400">• Format: JPG, PNG • Maks: 2MB • Rasio 1:1</span>
                     </div>
                     
-                    <div class="image-overlay">
-                      <div class="overlay-content">
-                        <i class="fas fa-camera"></i>
-                        <span>Ubah Foto</span>
-                      </div>
-                    </div>
-                  </div>
+                    <div class="flex flex-col md:flex-row items-center gap-6">
+                        <!-- Avatar -->
+                        <div class="avatar-wrapper">
+                            <div class="avatar-ring"></div>
+                            <img src="{{ $editData->profile_image ? asset('upload/siswa_images/' . $editData->profile_image) : asset('upload/default_profile.jpg') }}" 
+                                 onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name='+encodeURIComponent('{{ $editData->name ?? 'Siswa' }}')+'&background=1a56db&color=fff&size=120';"
+                                 alt="Profile" 
+                                 class="avatar-img"
+                                 id="avatarPreview">
+                            <label for="profileImage" class="avatar-overlay">
+                                <i class="mdi mdi-camera"></i>
+                                <span>Ubah Foto</span>
+                            </label>
+                        </div>
 
-                  <div class="upload-controls">
-                    <input type="file" 
-                           name="profile_image" 
-                           id="profileImage" 
-                           class="file-input @error('profile_image') is-invalid @enderror" 
-                           accept=".jpg,.jpeg,.png"
-                           onchange="previewImage(this)">
-                    
-                    <label for="profileImage" class="upload-btn">
-                      <i class="fas fa-cloud-upload-alt me-2"></i>
-                      Pilih Gambar
-                    </label>
-                    
-                    <button type="button" class="remove-btn" onclick="removeImage()" style="display: {{ $editData->profile_image ? 'flex' : 'none' }}">
-                      <i class="fas fa-trash-alt me-2"></i>
-                      Hapus
-                    </button>
-                  </div>
+                        <!-- Controls -->
+                        <div class="flex-1 flex flex-wrap items-center gap-3 w-full">
+                            <input type="file" 
+                                   name="profile_image" 
+                                   id="profileImage" 
+                                   accept=".jpg,.jpeg,.png"
+                                   onchange="previewImage(event)">
+                            
+                            <label for="profileImage" class="btn-primary-gradient text-sm px-4 py-2.5 cursor-pointer">
+                                <i class="mdi mdi-cloud-upload"></i>
+                                Pilih Foto
+                            </label>
+                            
+                            @if($editData->profile_image)
+                                <button type="button" class="btn-remove" onclick="removeImage()">
+                                    <i class="mdi mdi-delete"></i>
+                                    Hapus
+                                </button>
+                            @endif
 
-                  <div class="upload-info">
-                    <div class="info-item">
-                      <i class="fas fa-info-circle"></i>
-                      <span>Format: JPG, JPEG, PNG</span>
+                            <span class="text-xs text-slate-400 ml-auto hidden sm:inline">Klik avatar untuk mengubah</span>
+                        </div>
                     </div>
-                    <div class="info-item">
-                      <i class="fas fa-weight-hanging"></i>
-                      <span>Maksimal: 2MB</span>
-                    </div>
-                    <div class="info-item">
-                      <i class="fas fa-crop-alt"></i>
-                      <span>Rasio: 1:1 (Persegi)</span>
-                    </div>
-                  </div>
 
-                  @error('profile_image')
-                    <div class="error-message">
-                      <i class="fas fa-exclamation-triangle"></i>
-                      {{ $message }}
-                    </div>
-                  @enderror
-                </div>
-              </div>
-
-              <!-- Personal Information Section -->
-              <div class="form-section">
-                <div class="section-title">
-                  <h6>
-                    <i class="fas fa-user me-2"></i>
-                    Informasi Pribadi
-                  </h6>
-                  <span class="section-subtitle">Lengkapi data pribadi Anda dengan benar</span>
+                    @error('profile_image')
+                        <div class="error-text mt-2">
+                            <i class="mdi mdi-alert-circle"></i>
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
 
-                <div class="form-grid">
-                  <!-- Name Field -->
-                  <div class="form-group">
-                    <label for="name" class="form-label">
-                      <i class="fas fa-user-tag me-2"></i>
-                      Nama Lengkap
-                      <span class="required">*</span>
-                    </label>
-                    <div class="input-wrapper">
-                      <input type="text" 
-                             name="name" 
-                             id="name" 
-                             class="form-input @error('name') is-invalid @enderror" 
-                             value="{{ old('name', $editData->name) }}" 
-                             placeholder="Masukkan nama lengkap Anda"
-                             required
-                             autocomplete="name">
-                      <div class="input-icon">
-                        <i class="fas fa-user"></i>
-                      </div>
-                      <div class="input-focus-border"></div>
+                <!-- Form Fields - Full Width Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <!-- Nama - Full Width -->
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-semibold text-slate-700 mb-1.5">
+                            <i class="mdi mdi-account text-blue-600 mr-1"></i>
+                            Nama Lengkap
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <div class="input-group-custom">
+                            <i class="mdi mdi-account-circle input-icon"></i>
+                            <input type="text" 
+                                   name="name" 
+                                   id="name"
+                                   class="form-input @error('name') is-invalid @enderror" 
+                                   value="{{ old('name', $editData->name) }}" 
+                                   placeholder="Masukkan nama lengkap"
+                                   required>
+                        </div>
+                        @error('name')
+                            <div class="error-text"><i class="mdi mdi-alert-circle"></i> {{ $message }}</div>
+                        @enderror
                     </div>
-                    @error('name')
-                      <div class="error-message">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        {{ $message }}
-                      </div>
-                    @enderror
-                  </div>
 
-                  <!-- NIS Field -->
-                  <div class="form-group">
-                    <label for="nis" class="form-label">
-                      <i class="fas fa-id-card me-2"></i>
-                      NIS
-                      <span class="required">*</span>
-                    </label>
-                    <div class="input-wrapper">
-                      <input type="text" 
-                            name="nis" 
-                            id="nis" 
-                            class="form-input @error('nis') is-invalid @enderror" 
-                            value="{{ old('nis', $editData->nis) }}" 
-                            placeholder="Masukkan Nomor Induk Siswa"
-                            required>
-                      <div class="input-icon">
-                        <i class="fas fa-id-badge"></i>
-                      </div>
-                      <div class="input-focus-border"></div>
+                    <!-- NIS -->
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-1.5">
+                            <i class="mdi mdi-card-account-details text-blue-600 mr-1"></i>
+                            NIS
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <div class="input-group-custom">
+                            <i class="mdi mdi-id-card input-icon"></i>
+                            <input type="text" 
+                                   name="nis" 
+                                   id="nis"
+                                   class="form-input @error('nis') is-invalid @enderror" 
+                                   value="{{ old('nis', $editData->nis) }}" 
+                                   placeholder="Nomor Induk Siswa"
+                                   required>
+                        </div>
+                        @error('nis')
+                            <div class="error-text"><i class="mdi mdi-alert-circle"></i> {{ $message }}</div>
+                        @enderror
                     </div>
-                    @error('nis')
-                      <div class="error-message">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        {{ $message }}
-                      </div>
-                    @enderror
-                  </div>
 
-
-                  <!-- Email Field -->
-                  <div class="form-group">
-                    <label for="email" class="form-label">
-                      <i class="fas fa-envelope me-2"></i>
-                      Alamat Email
-                      <span class="required">*</span>
-                    </label>
-                    <div class="input-wrapper">
-                      <input type="email" 
-                             name="email" 
-                             id="email" 
-                             class="form-input @error('email') is-invalid @enderror" 
-                             value="{{ old('email', $editData->email) }}" 
-                             placeholder="contoh@email.com"
-                             required
-                             autocomplete="email">
-                      <div class="input-icon">
-                        <i class="fas fa-envelope"></i>
-                      </div>
-                      <div class="input-focus-border"></div>
+                    <!-- Email -->
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-1.5">
+                            <i class="mdi mdi-email text-blue-600 mr-1"></i>
+                            Alamat Email
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <div class="input-group-custom">
+                            <i class="mdi mdi-email-outline input-icon"></i>
+                            <input type="email" 
+                                   name="email" 
+                                   id="email"
+                                   class="form-input @error('email') is-invalid @enderror" 
+                                   value="{{ old('email', $editData->email) }}" 
+                                   placeholder="contoh@email.com"
+                                   required>
+                        </div>
+                        @error('email')
+                            <div class="error-text"><i class="mdi mdi-alert-circle"></i> {{ $message }}</div>
+                        @enderror
                     </div>
-                    @error('email')
-                      <div class="error-message">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        {{ $message }}
-                      </div>
-                    @enderror
-                  </div>
+
+                    <!-- Password - Optional -->
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-semibold text-slate-700 mb-1.5">
+                            <i class="mdi mdi-lock text-blue-600 mr-1"></i>
+                            Password Baru
+                            <span class="text-xs font-normal text-slate-400">(Opsional - kosongkan jika tidak diubah)</span>
+                        </label>
+                        <div class="input-group-custom">
+                            <i class="mdi mdi-lock-outline input-icon"></i>
+                            <input type="password" 
+                                   name="password" 
+                                   id="password"
+                                   class="form-input @error('password') is-invalid @enderror" 
+                                   placeholder="Masukkan password baru (min 8 karakter)"
+                                   autocomplete="new-password">
+                        </div>
+                        @error('password')
+                            <div class="error-text"><i class="mdi mdi-alert-circle"></i> {{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
-              </div>
 
-              <!-- Form Actions -->
-              <div class="form-actions">
-                <div class="actions-wrapper">
-                    <a href="{{ route('siswa.siswa_profile') }}" class="btn-secondary" style="color: black;">
-                    <i class="fas fa-arrow-left me-2" style="color: black;"></i>
-                    <span>Kembali</span>
+                <!-- Actions -->
+                <div class="mt-8 pt-6 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <a href="{{ route('siswa.siswa_profile') }}" class="btn-outline text-sm w-full sm:w-auto justify-center">
+                        <i class="mdi mdi-arrow-left"></i>
+                        Kembali ke Profil
                     </a>
-                  
-                  <div class="primary-actions">
-                    <button type="button" class="btn-preview" onclick="previewChanges()">
-                      <i class="fas fa-eye me-2"></i>
-                      <span>Preview</span>
-                    </button>
                     
-                    <button type="submit" class="btn-primary" id="submitBtn">
-                      <div class="btn-content">
-                        <i class="fas fa-save me-2"></i>
-                        <span>Simpan Perubahan</span>
-                      </div>
-                      <div class="btn-loading" style="display: none;">
-                        <i class="fas fa-spinner fa-spin me-2"></i>
-                        <span>Menyimpan...</span>
-                      </div>
-                    </button>
-                  </div>
+                    <div class="flex flex-wrap gap-3 w-full sm:w-auto">
+                        <button type="button" class="btn-outline text-sm flex-1 sm:flex-none justify-center" onclick="previewChanges()">
+                            <i class="mdi mdi-eye"></i>
+                            Preview
+                        </button>
+                        
+                        <button type="submit" class="btn-primary-gradient text-sm flex-1 sm:flex-none justify-center" id="submitBtn">
+                            <span class="flex items-center gap-2" id="btnContent">
+                                <i class="mdi mdi-content-save"></i>
+                                Simpan Perubahan
+                            </span>
+                            <span class="flex items-center gap-2 hidden" id="btnLoading">
+                                <i class="mdi mdi-loading mdi-spin"></i>
+                                Menyimpan...
+                            </span>
+                        </button>
+                    </div>
                 </div>
-              </div>
             </form>
-          </div>
         </div>
-
-        <!-- Tips Card -->
-        <div class="tips-card glass-effect mt-4">
-          <div class="tips-header">
-            <i class="fas fa-lightbulb"></i>
-            <h6>Tips Profil yang Baik</h6>
-          </div>
-          <div class="tips-list">
-            <div class="tip-item">
-              <i class="fas fa-check-circle"></i>
-              <span>Gunakan foto yang jelas dan profesional</span>
-            </div>
-            <div class="tip-item">
-              <i class="fas fa-check-circle"></i>
-              <span>Pastikan nama lengkap sesuai dengan dokumen resmi</span>
-            </div>
-            <div class="tip-item">
-              <i class="fas fa-check-circle"></i>
-              <span>Email yang aktif untuk notifikasi penting</span>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
 </div>
 
 <!-- Preview Modal -->
-<div class="modal fade" id="previewModal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content glass-effect border-0">
-      <div class="modal-header border-0">
-        <h5 class="modal-title">
-          <i class="fas fa-eye me-2"></i>
-          Preview Profil
-        </h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body text-center">
-        <div class="preview-profile">
-          <div class="preview-avatar mb-3">
-            <img id="modalPreviewImg" src="" alt="Preview" class="rounded-circle">
-          </div>
-          <h5 id="modalPreviewName"></h5>
-          <p id="modalPreviewNis" class="text-muted"></p>
-          <p id="modalPreviewEmail" class="text-muted"></p>
+<div id="previewModal" class="fixed inset-0 z-50 flex items-center justify-center px-4" style="display:none;">
+    <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closePreview()"></div>
+    <div class="relative bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl" data-aos="zoom-in">
+        <div class="text-center">
+            <div class="w-24 h-24 rounded-full overflow-hidden border-4 border-blue-200 mx-auto mb-4">
+                <img id="modalAvatar" src="" alt="Preview" class="w-full h-full object-cover">
+            </div>
+            <h5 id="modalName" class="font-bold text-slate-800 text-lg">-</h5>
+            <p id="modalNis" class="text-slate-500 text-sm">NIS: -</p>
+            <p id="modalEmail" class="text-slate-500 text-sm">-</p>
         </div>
-      </div>
-      <div class="modal-footer border-0">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="color: black;">
-          <i class="fas fa-times me-2" style="color: black;"></i>
-          Tutup
-        </button>
-        <button type="button" class="btn btn-primary" onclick="document.getElementById('profileForm').submit()">
-          Simpan Profil
-        </button>
-      </div>
+        <div class="flex gap-3 mt-6">
+            <button onclick="closePreview()" class="btn-outline flex-1 justify-center text-sm">
+                <i class="mdi mdi-close"></i>
+                Tutup
+            </button>
+            <button onclick="submitForm()" class="btn-primary-gradient flex-1 justify-center text-sm">
+                <i class="mdi mdi-content-save"></i>
+                Simpan
+            </button>
+        </div>
     </div>
-  </div>
 </div>
 
-{{-- External Libraries --}}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-
-<style>
-  /* Root Variables */
-  :root {
-    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    --success-gradient: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
-    --text-primary: #2d3748;
-    --text-secondary: #718096;
-    --text-muted: #a0aec0;
-    --bg-light: #f7fafc;
-    --white: #ffffff;
-    --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.1);
-    --shadow-medium: 0 20px 60px rgba(0, 0, 0, 0.15);
-    --border-radius: 20px;
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  /* Base Styles */
-  .edit-profile-container {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    position: relative;
-    overflow-x: hidden;
-  }
-
-  /* Background Decoration */
-  .bg-decoration {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: hidden;
-  }
-
-  .floating-orb {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-  }
-
-  .orb-1 {
-    width: 100px;
-    height: 100px;
-    top: 10%;
-    left: 10%;
-  }
-
-  .orb-2 {
-    width: 150px;
-    height: 150px;
-    top: 60%;
-    right: 10%;
-  }
-
-  .orb-3 {
-    width: 80px;
-    height: 80px;
-    bottom: 20%;
-    left: 20%;
-  }
-
-  .floating-pattern {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
-    opacity: 0.5;
-  }
-
-  /* Glass Effect */
-  .glass-effect {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: var(--shadow-soft);
-  }
-
-  /* Progress Bar */
-  .progress-wrapper {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  .progress-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-    color: white;
-  }
-
-  .progress-indicator {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .step {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    font-size: 0.85rem;
-  }
-
-  .step.active {
-    background: white;
-    color: var(--text-primary);
-  }
-
-  .step-label {
-    font-size: 0.9rem;
-    opacity: 0.9;
-  }
-
-  .progress-custom {
-    height: 6px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-
-  .progress-bar {
-    background: linear-gradient(90deg, #ffffff, rgba(255, 255, 255, 0.8));
-    transition: width 0.6s ease;
-  }
-
-  /* Form Card */
-  .form-card {
-    border-radius: var(--border-radius);
-    overflow: hidden;
-  }
-
-  /* Form Header */
-  .form-header {
-    background: var(--primary-gradient);
-    color: white;
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .form-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="60" cy="60" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="1.5" fill="rgba(255,255,255,0.05)"/></svg>');
-    opacity: 0.3;
-  }
-
-  .header-content {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    position: relative;
-    z-index: 2;
-  }
-
-  .header-icon {
-    width: 60px;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    backdrop-filter: blur(10px);
-  }
-
-  .header-text h3 {
-    margin: 0 0 0.5rem 0;
-    font-weight: 700;
-    font-size: 1.5rem;
-  }
-
-  .header-text p {
-    margin: 0;
-    opacity: 0.9;
-    font-size: 0.95rem;
-  }
-
-  /* Alert Custom */
-  .alert-custom {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 1.5rem;
-    margin: 1.5rem;
-    border-radius: 12px;
-    position: relative;
-  }
-
-  .alert-success {
-    background: linear-gradient(135deg, rgba(78, 205, 196, 0.1), rgba(68, 160, 141, 0.1));
-    border: 1px solid rgba(78, 205, 196, 0.3);
-    color: #2d7d76;
-  }
-
-  .alert-icon {
-    font-size: 1.2rem;
-  }
-
-  .alert-content {
-    flex-grow: 1;
-  }
-
-  .alert-title {
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-  }
-
-  .alert-message {
-    font-size: 0.9rem;
-    opacity: 0.9;
-  }
-
-  .alert-close {
-    background: none;
-    border: none;
-    color: inherit;
-    cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 8px;
-    transition: var(--transition);
-  }
-
-  .alert-close:hover {
-    background: rgba(0, 0, 0, 0.1);
-  }
-
-  /* Form Body */
-  .form-body {
-    padding: 2rem;
-  }
-
-  /* Section Styles */
-  .profile-image-section,
-  .form-section {
-    margin-bottom: 3rem;
-  }
-
-  .section-title {
-    margin-bottom: 1.5rem;
-  }
-
-  .section-title h6 {
-    color: var(--text-primary);
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-    display: flex;
-    align-items: center;
-  }
-
-  .section-subtitle {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-  }
-
-  /* Image Upload */
-  .image-upload-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-  }
-
-  .image-preview-wrapper {
-    position: relative;
-    cursor: pointer;
-    transition: var(--transition);
-  }
-
-  .image-preview-wrapper:hover {
-    transform: scale(1.02);
-  }
-
-  .image-preview {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 4px solid rgba(102, 126, 234, 0.2);
-    position: relative;
-    transition: var(--transition);
-  }
-
-  .preview-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .placeholder-img {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    gap: 0.5rem;
-  }
-
-  .placeholder-img i {
-    font-size: 2rem;
-  }
-
-  .image-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: var(--transition);
-    border-radius: 50%;
-  }
-
-  .image-preview-wrapper:hover .image-overlay {
-    opacity: 1;
-  }
-
-  .overlay-content {
-    color: white;
-    text-align: center;
-    font-size: 0.9rem;
-  }
-
-  .overlay-content i {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    display: block;
-  }
-
-  .upload-controls {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-  }
-
-  .file-input {
-    display: none;
-  }
-
-  .upload-btn,
-  .remove-btn {
-    display: flex;
-    align-items: center;
-    padding: 0.75rem 1.25rem;
-    border-radius: 12px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: var(--transition);
-    border: none;
-    font-size: 0.9rem;
-  }
-
-  .upload-btn {
-    background: var(--primary-gradient);
-    color: white;
-  }
-
-  .upload-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-  }
-
-  .remove-btn {
-    background: rgba(245, 87, 108, 0.1);
-    color: #f5576c;
-    border: 1px solid rgba(245, 87, 108, 0.3);
-  }
-
-  .remove-btn:hover {
-    background: rgba(245, 87, 108, 0.2);
-  }
-
-  .upload-info {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .info-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--text-secondary);
-    font-size: 0.85rem;
-  }
-
-  .info-item i {
-    color: var(--primary-color);
-  }
-
-  /* Form Grid */
-  .form-grid {
-    display: grid;
-    gap: 1.5rem;
-    grid-template-columns: 1fr;
-  }
-
-  /* Form Group */
-  .form-group {
-    position: relative;
-  }
-
-  .form-label {
-    display: block;
-    margin-bottom: 0.75rem;
-    color: var(--text-primary);
-    font-weight: 600;
-    font-size: 0.95rem;
-    display: flex;
-    align-items: center;
-  }
-
-  .required {
-    color: #f5576c;
-    margin-left: 0.25rem;
-  }
-
-  /* Input Wrapper */
-  .input-wrapper {
-    position: relative;
-  }
-
-  .form-input {
-    width: 100%;
-    padding: 1rem 1rem 1rem 3rem;
-    border: 2px solid #e2e8f0;
-    border-radius: 12px;
-    font-size: 1rem;
-    transition: var(--transition);
-    background: white;
-  }
-
-  .form-input:focus {
-    outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-  }
-
-  .form-input.is-invalid {
-    border-color: #f5576c;
-  }
-
-  .input-icon {
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--text-muted);
-    transition: var(--transition);
-  }
-
-  .form-input:focus + .input-icon {
-    color: #667eea;
-  }
-
-  .input-focus-border {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--primary-gradient);
-    transition: width 0.3s ease;
-  }
-
-  .form-input:focus ~ .input-focus-border {
-    width: 100%;
-  }
-
-  /* Error Message */
-  .error-message {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: #f5576c;
-    font-size: 0.85rem;
-    margin-top: 0.5rem;
-  }
-
-  /* Form Actions */
-  .form-actions {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid #e2e8f0;
-  }
-
-  .actions-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .primary-actions {
-    display: flex;
-    gap: 1rem;
-  }
-
-  /* Buttons */
-  .btn-secondary,
-  .btn-preview,
-  .btn-primary {
-    display: flex;
-    align-items: center;
-    padding: 0.875rem 1.5rem;
-    border-radius: 12px;
-    font-weight: 500;
-    text-decoration: none;
-    cursor: pointer;
-    transition: var(--transition);
-    border: none;
-    font-size: 0.95rem;
-  }
-
-  .btn-secondary {
-    background: white;
-    color: var(--text-primary);
-    border: 2px solid #e2e8f0;
-  }
-
-  .btn-secondary:hover {
-    background: #f8fafc;
-    border-color: #cbd5e0;
-    transform: translateY(-1px);
-    color: var(--text-primary);
-  }
-
-  .btn-preview {
-    background: rgba(102, 126, 234, 0.1);
-    color: #667eea;
-    border: 2px solid rgba(102, 126, 234, 0.2);
-      }
-
-  .btn-preview:hover {
-    background: rgba(102, 126, 234, 0.2);
-    transform: translateY(-1px);
-  }
-
-  .btn-primary {
-    background: var(--primary-gradient);
-    color: white;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-  }
-
-  .btn-primary::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-    opacity: 0;
-    transition: var(--transition);
-  }
-
-  .btn-primary:hover::after {
-    opacity: 1;
-  }
-
-  .btn-content, .btn-loading {
-    display: flex;
-    align-items: center;
-  }
-
-  /* Tips Card */
-  .tips-card {
-    border-radius: var(--border-radius);
-    padding: 1.5rem;
-  }
-
-  .tips-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    color: var(--text-primary);
-  }
-
-  .tips-header i {
-    font-size: 1.5rem;
-    color: #667eea;
-  }
-
-  .tips-header h6 {
-    margin: 0;
-    font-weight: 600;
-  }
-
-  .tips-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .tip-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-
-  .tip-item i {
-    color: #4ecdc4;
-    font-size: 0.9rem;
-    margin-top: 0.15rem;
-  }
-
-  .tip-item span {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    line-height: 1.5;
-  }
-
-  /* Preview Modal */
-  .modal-content {
-    border-radius: var(--border-radius);
-    overflow: hidden;
-  }
-
-  .modal-header {
-    background: var(--primary-gradient);
-    color: white;
-  }
-
-  .btn-close {
-    filter: brightness(0) invert(1);
-  }
-
-  .preview-profile {
-    padding: 1rem;
-  }
-
-  .preview-avatar {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 4px solid rgba(102, 126, 234, 0.2);
-  }
-
-  .preview-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  /* Responsive Adjustments */
-  @media (max-width: 768px) {
-    .form-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .actions-wrapper {
-      flex-direction: column-reverse;
-    }
-
-    .primary-actions {
-      width: 100%;
-      justify-content: space-between;
-    }
-
-    .btn-secondary {
-      width: 100%;
-      justify-content: center;
-      margin-top: 1rem;
-    }
-  }
-
-  @media (max-width: 576px) {
-    .form-header {
-      padding: 1.5rem;
-    }
-
-    .header-content {
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .header-icon {
-      margin-bottom: 1rem;
-    }
-
-    .form-body {
-      padding: 1.5rem;
-    }
-
-    .upload-controls {
-      flex-direction: column;
-      width: 100%;
-    }
-
-    .upload-btn, .remove-btn {
-      width: 100%;
-      justify-content: center;
-    }
-  }
-</style>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
+<!-- Scripts -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  // Image Preview Functionality
-  function previewImage(input) {
-    const preview = document.getElementById('imagePreview');
-    const placeholder = document.getElementById('placeholderImg');
-    const removeBtn = document.querySelector('.remove-btn');
-    const file = input.files[0];
-    
-    if (file) {
-      const reader = new FileReader();
-      
-      reader.onload = function(e) {
-        if (placeholder) placeholder.style.display = 'none';
+    AOS.init({ duration: 600, once: true, easing: 'ease-out-cubic' });
+
+    // Image Preview
+    function previewImage(event) {
+        const file = event.target.files[0];
+        if (!file) return;
         
-        let img = document.getElementById('previewImg');
-        if (!img) {
-          img = document.createElement('img');
-          img.id = 'previewImg';
-          img.className = 'preview-img';
-          preview.appendChild(img);
-        }
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('avatarPreview').src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+
+    // Remove Image
+    function removeImage() {
+        if (!confirm('Hapus foto profil?')) return;
         
-        img.src = e.target.result;
-        removeBtn.style.display = 'flex';
-      }
-      
-      reader.readAsDataURL(file);
+        const input = document.getElementById('profileImage');
+        input.value = '';
+        document.getElementById('avatarPreview').src = "{{ asset('upload/default_profile.jpg') }}";
+        
+        // Sembunyikan tombol hapus
+        const btn = document.querySelector('.btn-remove');
+        if (btn) btn.style.display = 'none';
     }
-  }
 
-  // Remove Image Functionality
-  function removeImage() {
-    const preview = document.getElementById('imagePreview');
-    const placeholder = document.getElementById('placeholderImg');
-    const fileInput = document.getElementById('profileImage');
-    const removeBtn = document.querySelector('.remove-btn');
-    
-    // Reset file input
-    fileInput.value = '';
-    
-    // Hide remove button
-    removeBtn.style.display = 'none';
-    
-    // Remove preview image if exists
-    const img = document.getElementById('previewImg');
-    if (img) img.remove();
-    
-    // Show placeholder
-    if (placeholder) placeholder.style.display = 'flex';
-  }
-
-  // Preview Changes Modal
-  function previewChanges() {
-    // Get form values
-    const name = document.getElementById('name').value;
-    const nis = document.getElementById('nis').value;
-    const email = document.getElementById('email').value;
-    
-    // Get image preview
-    let imageSrc = '';
-    const previewImg = document.getElementById('previewImg');
-    if (previewImg) {
-      imageSrc = previewImg.src;
-    } else {
-      const existingImg = "{{ $editData->profile_image ? asset('upload/siswa_images/' . $editData->profile_image) : '' }}";
-      if (existingImg) {
-        imageSrc = existingImg;
-      } else {
-        imageSrc = "{{ asset('backend/assets/img/avatars/avatar.png') }}";
-      }
+    // Preview Changes
+    function previewChanges() {
+        const name = document.getElementById('name').value || 'Nama belum diisi';
+        const nis = document.getElementById('nis').value || '-';
+        const email = document.getElementById('email').value || '-';
+        const avatar = document.getElementById('avatarPreview').src;
+        
+        document.getElementById('modalAvatar').src = avatar;
+        document.getElementById('modalName').textContent = name;
+        document.getElementById('modalNis').textContent = 'NIS: ' + nis;
+        document.getElementById('modalEmail').textContent = email;
+        
+        document.getElementById('previewModal').style.display = 'flex';
     }
-    
-    // Set modal content
-    document.getElementById('modalPreviewImg').src = imageSrc;
-    document.getElementById('modalPreviewName').textContent = name || "Nama belum diisi";
-    document.getElementById('modalPreviewNis').textContent = nis || "NIS belum diisi";
-    document.getElementById('modalPreviewEmail').textContent = email || "Email belum diisi";
-    
-    // Show modal
-    const previewModal = new bootstrap.Modal(document.getElementById('previewModal'));
-    previewModal.show();
-  }
 
-  // Form Submission Handling
-  document.getElementById('profileForm').addEventListener('submit', function(e) {
-    const submitBtn = document.getElementById('submitBtn');
-    const btnContent = submitBtn.querySelector('.btn-content');
-    const btnLoading = submitBtn.querySelector('.btn-loading');
-    
-    // Show loading state
-    btnContent.style.display = 'none';
-    btnLoading.style.display = 'flex';
-    
-    // Disable button to prevent multiple submissions
-    submitBtn.disabled = true;
-  });
+    function closePreview() {
+        document.getElementById('previewModal').style.display = 'none';
+    }
 
-  // Input validation
-  document.querySelectorAll('.form-input').forEach(input => {
-    input.addEventListener('input', function() {
-      if (this.value.trim() !== '') {
-        this.classList.remove('is-invalid');
-      }
+    function submitForm() {
+        closePreview();
+        document.getElementById('profileForm').submit();
+    }
+
+    // Form Submit Loading
+    document.getElementById('profileForm').addEventListener('submit', function(e) {
+        const btn = document.getElementById('submitBtn');
+        const content = document.getElementById('btnContent');
+        const loading = document.getElementById('btnLoading');
+        
+        content.classList.add('hidden');
+        loading.classList.remove('hidden');
+        btn.disabled = true;
     });
-  });
+
+    // Auto-close alert after 5s
+    document.querySelectorAll('.alert-success-custom').forEach(el => {
+        setTimeout(() => {
+            el.style.transition = 'all 0.5s ease';
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(-10px)';
+            setTimeout(() => el.remove(), 500);
+        }, 5000);
+    });
+
+    // Close modal on ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closePreview();
+    });
+
+    // Close modal on outside click
+    document.getElementById('previewModal').addEventListener('click', function(e) {
+        if (e.target === this) closePreview();
+    });
 </script>
 
+</body>
+</html>
 @endsection
