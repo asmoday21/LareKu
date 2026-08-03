@@ -314,7 +314,7 @@
         .content-card:hover::before { opacity: 1; }
         .content-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
         
-        /* CSS KHUSUS NESTED CARD (Siswa: Tanpa Hover Hover Lebay) */
+        /* CSS KHUSUS NESTED CARD (Siswa) */
         .nested-card {
             background: #FFFFFF;
             border: 1px solid rgba(0,0,0,0.08);
@@ -323,6 +323,11 @@
             margin-top: 1.25rem;
             position: relative;
             box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        
+        .nested-card:hover {
+            border-color: var(--color-brand-light);
+            box-shadow: var(--shadow-md);
         }
         
         .nested-card-title {
@@ -585,7 +590,7 @@
 <div class="content-wrapper" style="padding-bottom: 4rem;">
     <div class="app-container">
         
-        <!-- Filter Tema (Tanpa tombol Tambah/Edit untuk Siswa) -->
+        <!-- Filter Tema -->
         <div class="admin-controls-card fade-in-up delay-1">
             <div class="row align-items-center">
                 <div class="col-12 col-md-6 mb-3 mb-md-0">
@@ -642,7 +647,6 @@
                             <h4 class="dynamic-content-title">
                                 <i class="bi bi-journal-text"></i> {{ $item->judul }}
                             </h4>
-                            <!-- Tombol Edit/Hapus Dihilangkan -->
                         </div>
 
                         @if($item->deskripsi)
@@ -655,9 +659,9 @@
                             {!! $item->konten !!}
                         </div>
                         
-                        {{-- Logika Penampil Media --}}
+                        {{-- Logika Penampil Media (Siswa) --}}
                         @if($item->mediaPendukung && $item->mediaPendukung->count() > 0)
-                            <h6 class="fw-bold mb-3 mt-4 text-primary font-inter"><i class="bi bi-paperclip me-2"></i>Materi Tambahan (File)</h6>
+                            <h6 class="fw-bold mb-3 mt-4 text-primary font-inter"><i class="bi bi-paperclip me-2"></i>Materi Pendukung</h6>
                             @foreach($item->mediaPendukung as $media)
                                 <div class="attachment-box p-3 mt-2">
                                     <div class="d-flex w-100 justify-content-between align-items-center flex-wrap gap-2">
@@ -666,21 +670,36 @@
                                                 @if($media->jenis == 'pdf') <i class="bi bi-file-earmark-pdf-fill fs-4 text-danger"></i>
                                                 @elseif($media->jenis == 'word') <i class="bi bi-file-earmark-word-fill fs-4 text-primary"></i>
                                                 @elseif($media->jenis == 'ppt') <i class="bi bi-file-earmark-slides-fill fs-4 text-warning"></i>
-                                                @elseif(in_array($media->jenis, ['video_upload', 'video_youtube'])) <i class="bi bi-play-circle-fill fs-4 text-success"></i>
+                                                @elseif($media->jenis == 'video_upload') <i class="bi bi-play-circle-fill fs-4 text-success"></i>
+                                                @elseif($media->jenis == 'video_youtube') <i class="bi bi-youtube fs-4 text-danger"></i>
+                                                @elseif($media->jenis == 'link') <i class="bi bi-link-45deg fs-4 text-info"></i>
                                                 @else <i class="bi bi-file-earmark-fill fs-4 text-secondary"></i> @endif
                                             </div>
                                             <div>
                                                 <h6 class="mb-0 fw-bold font-inter" style="font-size: 0.9rem;">{{ $media->judul }}</h6>
-                                                <span class="badge bg-light text-secondary border mt-1 font-inter" style="font-size: 0.65rem;">{{ str_replace('_', ' ', $media->jenis) }}</span>
+                                                <span class="badge bg-light text-secondary border mt-1 font-inter" style="font-size: 0.65rem;">
+                                                    {{ $media->jenis == 'video_youtube' ? 'YouTube' : ($media->jenis == 'link' ? 'Link Eksternal' : str_replace('_', ' ', $media->jenis)) }}
+                                                </span>
                                             </div>
                                         </div>
                                         <div class="d-flex gap-2">
-                                            <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
-                                                <i class="bi bi-eye me-1"></i> Buka File
-                                            </button>
+                                            @if($media->jenis == 'link')
+                                                <a href="{{ $media->external_link }}" target="_blank" class="btn btn-info btn-sm rounded-pill px-3 fw-bold font-inter" style="font-size: 0.8rem;">
+                                                    <i class="bi bi-box-arrow-up-right me-1"></i> Buka Link
+                                                </a>
+                                            @elseif($media->jenis == 'video_youtube')
+                                                <button class="btn btn-danger btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
+                                                    <i class="bi bi-play-circle me-1"></i> Tonton Video
+                                                </button>
+                                            @else
+                                                <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
+                                                    <i class="bi bi-eye me-1"></i> Lihat File
+                                                </button>
+                                            @endif
                                         </div>
                                     </div>
 
+                                    @if($media->jenis != 'link')
                                     <div id="preview{{ $media->id }}" class="collapse mt-3 w-100">
                                         @if($media->jenis == 'pdf')
                                             <div class="document-iframe-container shadow-sm" style="height: 400px;">
@@ -705,14 +724,28 @@
                                                 <video controls class="w-100 h-100 rounded-3"><source src="{{ asset('storage/'.$media->file) }}"></video>
                                             </div>
                                         @elseif($media->jenis == 'video_youtube')
-                                            @php preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match); @endphp
-                                            @if(isset($match[1]))
+                                            @php 
+                                                $youtubeId = null;
+                                                if ($media->video_url) {
+                                                    preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match);
+                                                    $youtubeId = $match[1] ?? null;
+                                                }
+                                            @endphp
+                                            @if($youtubeId)
                                                 <div class="document-iframe-container ratio ratio-16x9 shadow-sm">
-                                                    <iframe src="https://www.youtube.com/embed/{{ $match[1] }}" allowfullscreen style="border: none;"></iframe>
+                                                    <iframe src="https://www.youtube.com/embed/{{ $youtubeId }}" allowfullscreen style="border: none;"></iframe>
+                                                </div>
+                                            @else
+                                                <div class="alert alert-warning font-inter">
+                                                    <i class="bi bi-exclamation-triangle me-2"></i> Link YouTube tidak valid.
+                                                    @if($media->external_link)
+                                                        <br><a href="{{ $media->external_link }}" target="_blank" class="text-decoration-none">Klik di sini untuk membuka link</a>
+                                                    @endif
                                                 </div>
                                             @endif
                                         @endif
                                     </div>
+                                    @endif
                                 </div>
                             @endforeach
                         @endif
@@ -768,7 +801,7 @@
                             <div id="mini-result-topic1" class="mt-3 p-3 rounded-3 bg-light border border-light" style="display: none; font-size: 0.9rem;"></div>
                         </div>
 
-                        <!-- RUANG TAMBAHAN MATERI GURU (Hanya Tampil Jika Ada Isinya) -->
+                        <!-- RUANG TAMBAHAN MATERI GURU -->
                         @if($materiLokasi->count() > 0)
                         <div class="mt-4 pt-3 border-top border-light">
                             <div class="d-flex align-items-center mb-3">
@@ -781,9 +814,8 @@
                                 <h5 class="nested-card-title"><i class="bi bi-bookmark-star"></i> {{ $item->judul }}</h5>
                                 <div class="content-text text-dark prose fs-6">{!! $item->konten !!}</div>
 
-                                {{-- Logika Penampil Media --}}
                                 @if($item->mediaPendukung && $item->mediaPendukung->count() > 0)
-                                    <h6 class="fw-bold mb-3 mt-4 text-primary font-inter" style="font-size: 0.95rem;"><i class="bi bi-paperclip me-2"></i>File & Media</h6>
+                                    <h6 class="fw-bold mb-3 mt-4 text-primary font-inter" style="font-size: 0.95rem;"><i class="bi bi-paperclip me-2"></i>Media Pendukung</h6>
                                     @foreach($item->mediaPendukung as $media)
                                         <div class="attachment-box p-3 mt-2">
                                             <div class="d-flex w-100 justify-content-between align-items-center flex-wrap gap-2">
@@ -792,20 +824,36 @@
                                                         @if($media->jenis == 'pdf') <i class="bi bi-file-earmark-pdf-fill fs-4 text-danger"></i>
                                                         @elseif($media->jenis == 'word') <i class="bi bi-file-earmark-word-fill fs-4 text-primary"></i>
                                                         @elseif($media->jenis == 'ppt') <i class="bi bi-file-earmark-slides-fill fs-4 text-warning"></i>
-                                                        @elseif(in_array($media->jenis, ['video_upload', 'video_youtube'])) <i class="bi bi-play-circle-fill fs-4 text-success"></i>
+                                                        @elseif($media->jenis == 'video_upload') <i class="bi bi-play-circle-fill fs-4 text-success"></i>
+                                                        @elseif($media->jenis == 'video_youtube') <i class="bi bi-youtube fs-4 text-danger"></i>
+                                                        @elseif($media->jenis == 'link') <i class="bi bi-link-45deg fs-4 text-info"></i>
                                                         @else <i class="bi bi-file-earmark-fill fs-4 text-secondary"></i> @endif
                                                     </div>
                                                     <div>
                                                         <h6 class="mb-0 fw-bold font-inter" style="font-size: 0.9rem;">{{ $media->judul }}</h6>
+                                                        <span class="badge bg-light text-secondary border mt-1 font-inter" style="font-size: 0.65rem;">
+                                                            {{ $media->jenis == 'video_youtube' ? 'YouTube' : ($media->jenis == 'link' ? 'Link Eksternal' : str_replace('_', ' ', $media->jenis)) }}
+                                                        </span>
                                                     </div>
                                                 </div>
                                                 <div class="d-flex gap-2">
-                                                    <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
-                                                        <i class="bi bi-eye me-1"></i> Buka File
-                                                    </button>
+                                                    @if($media->jenis == 'link')
+                                                        <a href="{{ $media->external_link }}" target="_blank" class="btn btn-info btn-sm rounded-pill px-3 fw-bold font-inter" style="font-size: 0.8rem;">
+                                                            <i class="bi bi-box-arrow-up-right me-1"></i> Buka Link
+                                                        </a>
+                                                    @elseif($media->jenis == 'video_youtube')
+                                                        <button class="btn btn-danger btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
+                                                            <i class="bi bi-play-circle me-1"></i> Tonton Video
+                                                        </button>
+                                                    @else
+                                                        <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
+                                                            <i class="bi bi-eye me-1"></i> Lihat File
+                                                        </button>
+                                                    @endif
                                                 </div>
                                             </div>
 
+                                            @if($media->jenis != 'link')
                                             <div id="preview{{ $media->id }}" class="collapse mt-3 w-100">
                                                 @if($media->jenis == 'pdf')
                                                     <div class="document-iframe-container shadow-sm" style="height: 400px;">
@@ -830,14 +878,28 @@
                                                         <video controls class="w-100 h-100 rounded-3"><source src="{{ asset('storage/'.$media->file) }}"></video>
                                                     </div>
                                                 @elseif($media->jenis == 'video_youtube')
-                                                    @php preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match); @endphp
-                                                    @if(isset($match[1]))
+                                                    @php 
+                                                        $youtubeId = null;
+                                                        if ($media->video_url) {
+                                                            preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match);
+                                                            $youtubeId = $match[1] ?? null;
+                                                        }
+                                                    @endphp
+                                                    @if($youtubeId)
                                                         <div class="document-iframe-container ratio ratio-16x9 shadow-sm">
-                                                            <iframe src="https://www.youtube.com/embed/{{ $match[1] }}" allowfullscreen style="border: none;"></iframe>
+                                                            <iframe src="https://www.youtube.com/embed/{{ $youtubeId }}" allowfullscreen style="border: none;"></iframe>
+                                                        </div>
+                                                    @else
+                                                        <div class="alert alert-warning font-inter">
+                                                            <i class="bi bi-exclamation-triangle me-2"></i> Link YouTube tidak valid.
+                                                            @if($media->external_link)
+                                                                <br><a href="{{ $media->external_link }}" target="_blank" class="text-decoration-none">Klik di sini untuk membuka link</a>
+                                                            @endif
                                                         </div>
                                                     @endif
                                                 @endif
                                             </div>
+                                            @endif
                                         </div>
                                     @endforeach
                                 @endif
@@ -884,7 +946,6 @@
                             <div id="mini-result-topic2" class="mt-3 p-3 rounded-3 bg-light border border-light" style="display: none; font-size: 0.9rem;"></div>
                         </div>
 
-                        <!-- RUANG TAMBAHAN MATERI GURU -->
                         @if($materiKoneksi->count() > 0)
                         <div class="mt-4 pt-3 border-top border-light">
                             <div class="d-flex align-items-center mb-3">
@@ -898,7 +959,7 @@
                                 <div class="content-text text-dark prose fs-6">{!! $item->konten !!}</div>
                                 
                                 @if($item->mediaPendukung && $item->mediaPendukung->count() > 0)
-                                    <h6 class="fw-bold mb-3 mt-4 text-primary font-inter" style="font-size: 0.95rem;"><i class="bi bi-paperclip me-2"></i>File & Media</h6>
+                                    <h6 class="fw-bold mb-3 mt-4 text-primary font-inter" style="font-size: 0.95rem;"><i class="bi bi-paperclip me-2"></i>Media Pendukung</h6>
                                     @foreach($item->mediaPendukung as $media)
                                         <div class="attachment-box p-3 mt-2">
                                             <div class="d-flex w-100 justify-content-between align-items-center flex-wrap gap-2">
@@ -907,13 +968,27 @@
                                                         @if($media->jenis == 'pdf') <i class="bi bi-file-earmark-pdf-fill fs-4 text-danger"></i>
                                                         @elseif($media->jenis == 'word') <i class="bi bi-file-earmark-word-fill fs-4 text-primary"></i>
                                                         @elseif($media->jenis == 'ppt') <i class="bi bi-file-earmark-slides-fill fs-4 text-warning"></i>
-                                                        @elseif(in_array($media->jenis, ['video_upload', 'video_youtube'])) <i class="bi bi-play-circle-fill fs-4 text-success"></i>
+                                                        @elseif($media->jenis == 'video_upload') <i class="bi bi-play-circle-fill fs-4 text-success"></i>
+                                                        @elseif($media->jenis == 'video_youtube') <i class="bi bi-youtube fs-4 text-danger"></i>
+                                                        @elseif($media->jenis == 'link') <i class="bi bi-link-45deg fs-4 text-info"></i>
                                                         @else <i class="bi bi-file-earmark-fill fs-4 text-secondary"></i> @endif
                                                     </div>
                                                     <div><h6 class="mb-0 fw-bold font-inter" style="font-size: 0.9rem;">{{ $media->judul }}</h6></div>
                                                 </div>
                                                 <div class="d-flex gap-2">
-                                                    <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;"><i class="bi bi-eye me-1"></i> Buka File</button>
+                                                    @if($media->jenis == 'link')
+                                                        <a href="{{ $media->external_link }}" target="_blank" class="btn btn-info btn-sm rounded-pill px-3 fw-bold font-inter" style="font-size: 0.8rem;">
+                                                            <i class="bi bi-box-arrow-up-right me-1"></i> Buka Link
+                                                        </a>
+                                                    @elseif($media->jenis == 'video_youtube')
+                                                        <button class="btn btn-danger btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
+                                                            <i class="bi bi-play-circle me-1"></i> Tonton Video
+                                                        </button>
+                                                    @else
+                                                        <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
+                                                            <i class="bi bi-eye me-1"></i> Lihat File
+                                                        </button>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div id="preview{{ $media->id }}" class="collapse mt-3 w-100">
@@ -924,8 +999,22 @@
                                                     <div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau dokumen menggunakan Microsoft Office Viewer.</div>
                                                 @elseif($media->jenis == 'video_upload') <div class="document-iframe-container ratio ratio-16x9 bg-black shadow-sm"><video controls class="w-100 h-100 rounded-3"><source src="{{ asset('storage/'.$media->file) }}"></video></div>
                                                 @elseif($media->jenis == 'video_youtube')
-                                                    @php preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match); @endphp
-                                                    @if(isset($match[1])) <div class="document-iframe-container ratio ratio-16x9 shadow-sm"><iframe src="https://www.youtube.com/embed/{{ $match[1] }}" allowfullscreen style="border: none;"></iframe></div> @endif
+                                                    @php 
+                                                        $youtubeId = null;
+                                                        if ($media->video_url) {
+                                                            preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match);
+                                                            $youtubeId = $match[1] ?? null;
+                                                        }
+                                                    @endphp
+                                                    @if($youtubeId) <div class="document-iframe-container ratio ratio-16x9 shadow-sm"><iframe src="https://www.youtube.com/embed/{{ $youtubeId }}" allowfullscreen style="border: none;"></iframe></div>
+                                                    @else
+                                                        <div class="alert alert-warning font-inter">
+                                                            <i class="bi bi-exclamation-triangle me-2"></i> Link YouTube tidak valid.
+                                                            @if($media->external_link)
+                                                                <br><a href="{{ $media->external_link }}" target="_blank" class="text-decoration-none">Klik di sini untuk membuka link</a>
+                                                            @endif
+                                                        </div>
+                                                    @endif
                                                 @endif
                                             </div>
                                         </div>
@@ -977,7 +1066,6 @@
                             <div id="mini-result-topic3" class="mt-3 p-3 rounded-3 bg-light border border-light" style="display: none; font-size: 0.9rem;"></div>
                         </div>
 
-                        <!-- RUANG TAMBAHAN MATERI GURU -->
                         @if($materiIklim->count() > 0)
                         <div class="mt-4 pt-3 border-top border-light">
                             <div class="d-flex align-items-center mb-3">
@@ -991,7 +1079,7 @@
                                 <div class="content-text text-dark prose fs-6">{!! $item->konten !!}</div>
                                 
                                 @if($item->mediaPendukung && $item->mediaPendukung->count() > 0)
-                                    <h6 class="fw-bold mb-3 mt-4 text-primary font-inter" style="font-size: 0.95rem;"><i class="bi bi-paperclip me-2"></i>File & Media</h6>
+                                    <h6 class="fw-bold mb-3 mt-4 text-primary font-inter" style="font-size: 0.95rem;"><i class="bi bi-paperclip me-2"></i>Media Pendukung</h6>
                                     @foreach($item->mediaPendukung as $media)
                                         <div class="attachment-box p-3 mt-2">
                                             <div class="d-flex w-100 justify-content-between align-items-center flex-wrap gap-2">
@@ -1000,13 +1088,27 @@
                                                         @if($media->jenis == 'pdf') <i class="bi bi-file-earmark-pdf-fill fs-4 text-danger"></i>
                                                         @elseif($media->jenis == 'word') <i class="bi bi-file-earmark-word-fill fs-4 text-primary"></i>
                                                         @elseif($media->jenis == 'ppt') <i class="bi bi-file-earmark-slides-fill fs-4 text-warning"></i>
-                                                        @elseif(in_array($media->jenis, ['video_upload', 'video_youtube'])) <i class="bi bi-play-circle-fill fs-4 text-success"></i>
+                                                        @elseif($media->jenis == 'video_upload') <i class="bi bi-play-circle-fill fs-4 text-success"></i>
+                                                        @elseif($media->jenis == 'video_youtube') <i class="bi bi-youtube fs-4 text-danger"></i>
+                                                        @elseif($media->jenis == 'link') <i class="bi bi-link-45deg fs-4 text-info"></i>
                                                         @else <i class="bi bi-file-earmark-fill fs-4 text-secondary"></i> @endif
                                                     </div>
                                                     <div><h6 class="mb-0 fw-bold font-inter" style="font-size: 0.9rem;">{{ $media->judul }}</h6></div>
                                                 </div>
                                                 <div class="d-flex gap-2">
-                                                    <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;"><i class="bi bi-eye me-1"></i> Buka File</button>
+                                                    @if($media->jenis == 'link')
+                                                        <a href="{{ $media->external_link }}" target="_blank" class="btn btn-info btn-sm rounded-pill px-3 fw-bold font-inter" style="font-size: 0.8rem;">
+                                                            <i class="bi bi-box-arrow-up-right me-1"></i> Buka Link
+                                                        </a>
+                                                    @elseif($media->jenis == 'video_youtube')
+                                                        <button class="btn btn-danger btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
+                                                            <i class="bi bi-play-circle me-1"></i> Tonton Video
+                                                        </button>
+                                                    @else
+                                                        <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
+                                                            <i class="bi bi-eye me-1"></i> Lihat File
+                                                        </button>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div id="preview{{ $media->id }}" class="collapse mt-3 w-100">
@@ -1017,8 +1119,22 @@
                                                     <div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau dokumen menggunakan Microsoft Office Viewer.</div>
                                                 @elseif($media->jenis == 'video_upload') <div class="document-iframe-container ratio ratio-16x9 bg-black shadow-sm"><video controls class="w-100 h-100 rounded-3"><source src="{{ asset('storage/'.$media->file) }}"></video></div>
                                                 @elseif($media->jenis == 'video_youtube')
-                                                    @php preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match); @endphp
-                                                    @if(isset($match[1])) <div class="document-iframe-container ratio ratio-16x9 shadow-sm"><iframe src="https://www.youtube.com/embed/{{ $match[1] }}" allowfullscreen style="border: none;"></iframe></div> @endif
+                                                    @php 
+                                                        $youtubeId = null;
+                                                        if ($media->video_url) {
+                                                            preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match);
+                                                            $youtubeId = $match[1] ?? null;
+                                                        }
+                                                    @endphp
+                                                    @if($youtubeId) <div class="document-iframe-container ratio ratio-16x9 shadow-sm"><iframe src="https://www.youtube.com/embed/{{ $youtubeId }}" allowfullscreen style="border: none;"></iframe></div>
+                                                    @else
+                                                        <div class="alert alert-warning font-inter">
+                                                            <i class="bi bi-exclamation-triangle me-2"></i> Link YouTube tidak valid.
+                                                            @if($media->external_link)
+                                                                <br><a href="{{ $media->external_link }}" target="_blank" class="text-decoration-none">Klik di sini untuk membuka link</a>
+                                                            @endif
+                                                        </div>
+                                                    @endif
                                                 @endif
                                             </div>
                                         </div>
@@ -1072,7 +1188,6 @@
                             <div id="mini-result-topic4" class="mt-3 p-3 rounded-3 bg-light border border-light" style="display: none; font-size: 0.9rem;"></div>
                         </div>
 
-                        <!-- RUANG TAMBAHAN MATERI GURU -->
                         @if($materiBencana->count() > 0)
                         <div class="mt-4 pt-3 border-top border-light">
                             <div class="d-flex align-items-center mb-3">
@@ -1086,7 +1201,7 @@
                                 <div class="content-text text-dark prose fs-6">{!! $item->konten !!}</div>
                                 
                                 @if($item->mediaPendukung && $item->mediaPendukung->count() > 0)
-                                    <h6 class="fw-bold mb-3 mt-4 text-primary font-inter" style="font-size: 0.95rem;"><i class="bi bi-paperclip me-2"></i>File & Media</h6>
+                                    <h6 class="fw-bold mb-3 mt-4 text-primary font-inter" style="font-size: 0.95rem;"><i class="bi bi-paperclip me-2"></i>Media Pendukung</h6>
                                     @foreach($item->mediaPendukung as $media)
                                         <div class="attachment-box p-3 mt-2">
                                             <div class="d-flex w-100 justify-content-between align-items-center flex-wrap gap-2">
@@ -1095,13 +1210,27 @@
                                                         @if($media->jenis == 'pdf') <i class="bi bi-file-earmark-pdf-fill fs-4 text-danger"></i>
                                                         @elseif($media->jenis == 'word') <i class="bi bi-file-earmark-word-fill fs-4 text-primary"></i>
                                                         @elseif($media->jenis == 'ppt') <i class="bi bi-file-earmark-slides-fill fs-4 text-warning"></i>
-                                                        @elseif(in_array($media->jenis, ['video_upload', 'video_youtube'])) <i class="bi bi-play-circle-fill fs-4 text-success"></i>
+                                                        @elseif($media->jenis == 'video_upload') <i class="bi bi-play-circle-fill fs-4 text-success"></i>
+                                                        @elseif($media->jenis == 'video_youtube') <i class="bi bi-youtube fs-4 text-danger"></i>
+                                                        @elseif($media->jenis == 'link') <i class="bi bi-link-45deg fs-4 text-info"></i>
                                                         @else <i class="bi bi-file-earmark-fill fs-4 text-secondary"></i> @endif
                                                     </div>
                                                     <div><h6 class="mb-0 fw-bold font-inter" style="font-size: 0.9rem;">{{ $media->judul }}</h6></div>
                                                 </div>
                                                 <div class="d-flex gap-2">
-                                                    <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;"><i class="bi bi-eye me-1"></i> Buka File</button>
+                                                    @if($media->jenis == 'link')
+                                                        <a href="{{ $media->external_link }}" target="_blank" class="btn btn-info btn-sm rounded-pill px-3 fw-bold font-inter" style="font-size: 0.8rem;">
+                                                            <i class="bi bi-box-arrow-up-right me-1"></i> Buka Link
+                                                        </a>
+                                                    @elseif($media->jenis == 'video_youtube')
+                                                        <button class="btn btn-danger btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
+                                                            <i class="bi bi-play-circle me-1"></i> Tonton Video
+                                                        </button>
+                                                    @else
+                                                        <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
+                                                            <i class="bi bi-eye me-1"></i> Lihat File
+                                                        </button>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div id="preview{{ $media->id }}" class="collapse mt-3 w-100">
@@ -1112,8 +1241,22 @@
                                                     <div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau dokumen menggunakan Microsoft Office Viewer.</div>
                                                 @elseif($media->jenis == 'video_upload') <div class="document-iframe-container ratio ratio-16x9 bg-black shadow-sm"><video controls class="w-100 h-100 rounded-3"><source src="{{ asset('storage/'.$media->file) }}"></video></div>
                                                 @elseif($media->jenis == 'video_youtube')
-                                                    @php preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match); @endphp
-                                                    @if(isset($match[1])) <div class="document-iframe-container ratio ratio-16x9 shadow-sm"><iframe src="https://www.youtube.com/embed/{{ $match[1] }}" allowfullscreen style="border: none;"></iframe></div> @endif
+                                                    @php 
+                                                        $youtubeId = null;
+                                                        if ($media->video_url) {
+                                                            preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match);
+                                                            $youtubeId = $match[1] ?? null;
+                                                        }
+                                                    @endphp
+                                                    @if($youtubeId) <div class="document-iframe-container ratio ratio-16x9 shadow-sm"><iframe src="https://www.youtube.com/embed/{{ $youtubeId }}" allowfullscreen style="border: none;"></iframe></div>
+                                                    @else
+                                                        <div class="alert alert-warning font-inter">
+                                                            <i class="bi bi-exclamation-triangle me-2"></i> Link YouTube tidak valid.
+                                                            @if($media->external_link)
+                                                                <br><a href="{{ $media->external_link }}" target="_blank" class="text-decoration-none">Klik di sini untuk membuka link</a>
+                                                            @endif
+                                                        </div>
+                                                    @endif
                                                 @endif
                                             </div>
                                         </div>
@@ -1161,7 +1304,6 @@
                             <div id="mini-result-topic5" class="mt-3 p-3 rounded-3 bg-light border border-light" style="display: none; font-size: 0.9rem;"></div>
                         </div>
 
-                        <!-- RUANG TAMBAHAN MATERI GURU -->
                         @if($materiEkonomi->count() > 0)
                         <div class="mt-4 pt-3 border-top border-light">
                             <div class="d-flex align-items-center mb-3">
@@ -1175,7 +1317,7 @@
                                 <div class="content-text text-dark prose fs-6">{!! $item->konten !!}</div>
                                 
                                 @if($item->mediaPendukung && $item->mediaPendukung->count() > 0)
-                                    <h6 class="fw-bold mb-3 mt-4 text-primary font-inter" style="font-size: 0.95rem;"><i class="bi bi-paperclip me-2"></i>File & Media</h6>
+                                    <h6 class="fw-bold mb-3 mt-4 text-primary font-inter" style="font-size: 0.95rem;"><i class="bi bi-paperclip me-2"></i>Media Pendukung</h6>
                                     @foreach($item->mediaPendukung as $media)
                                         <div class="attachment-box p-3 mt-2">
                                             <div class="d-flex w-100 justify-content-between align-items-center flex-wrap gap-2">
@@ -1184,13 +1326,27 @@
                                                         @if($media->jenis == 'pdf') <i class="bi bi-file-earmark-pdf-fill fs-4 text-danger"></i>
                                                         @elseif($media->jenis == 'word') <i class="bi bi-file-earmark-word-fill fs-4 text-primary"></i>
                                                         @elseif($media->jenis == 'ppt') <i class="bi bi-file-earmark-slides-fill fs-4 text-warning"></i>
-                                                        @elseif(in_array($media->jenis, ['video_upload', 'video_youtube'])) <i class="bi bi-play-circle-fill fs-4 text-success"></i>
+                                                        @elseif($media->jenis == 'video_upload') <i class="bi bi-play-circle-fill fs-4 text-success"></i>
+                                                        @elseif($media->jenis == 'video_youtube') <i class="bi bi-youtube fs-4 text-danger"></i>
+                                                        @elseif($media->jenis == 'link') <i class="bi bi-link-45deg fs-4 text-info"></i>
                                                         @else <i class="bi bi-file-earmark-fill fs-4 text-secondary"></i> @endif
                                                     </div>
                                                     <div><h6 class="mb-0 fw-bold font-inter" style="font-size: 0.9rem;">{{ $media->judul }}</h6></div>
                                                 </div>
                                                 <div class="d-flex gap-2">
-                                                    <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;"><i class="bi bi-eye me-1"></i> Buka File</button>
+                                                    @if($media->jenis == 'link')
+                                                        <a href="{{ $media->external_link }}" target="_blank" class="btn btn-info btn-sm rounded-pill px-3 fw-bold font-inter" style="font-size: 0.8rem;">
+                                                            <i class="bi bi-box-arrow-up-right me-1"></i> Buka Link
+                                                        </a>
+                                                    @elseif($media->jenis == 'video_youtube')
+                                                        <button class="btn btn-danger btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
+                                                            <i class="bi bi-play-circle me-1"></i> Tonton Video
+                                                        </button>
+                                                    @else
+                                                        <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
+                                                            <i class="bi bi-eye me-1"></i> Lihat File
+                                                        </button>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div id="preview{{ $media->id }}" class="collapse mt-3 w-100">
@@ -1201,8 +1357,22 @@
                                                     <div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau dokumen menggunakan Microsoft Office Viewer.</div>
                                                 @elseif($media->jenis == 'video_upload') <div class="document-iframe-container ratio ratio-16x9 bg-black shadow-sm"><video controls class="w-100 h-100 rounded-3"><source src="{{ asset('storage/'.$media->file) }}"></video></div>
                                                 @elseif($media->jenis == 'video_youtube')
-                                                    @php preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match); @endphp
-                                                    @if(isset($match[1])) <div class="document-iframe-container ratio ratio-16x9 shadow-sm"><iframe src="https://www.youtube.com/embed/{{ $match[1] }}" allowfullscreen style="border: none;"></iframe></div> @endif
+                                                    @php 
+                                                        $youtubeId = null;
+                                                        if ($media->video_url) {
+                                                            preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match);
+                                                            $youtubeId = $match[1] ?? null;
+                                                        }
+                                                    @endphp
+                                                    @if($youtubeId) <div class="document-iframe-container ratio ratio-16x9 shadow-sm"><iframe src="https://www.youtube.com/embed/{{ $youtubeId }}" allowfullscreen style="border: none;"></iframe></div>
+                                                    @else
+                                                        <div class="alert alert-warning font-inter">
+                                                            <i class="bi bi-exclamation-triangle me-2"></i> Link YouTube tidak valid.
+                                                            @if($media->external_link)
+                                                                <br><a href="{{ $media->external_link }}" target="_blank" class="text-decoration-none">Klik di sini untuk membuka link</a>
+                                                            @endif
+                                                        </div>
+                                                    @endif
                                                 @endif
                                             </div>
                                         </div>
@@ -1235,7 +1405,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="p-4 bg-white rounded-4 border border-light shadow-sm h-100">
-                                    <h6 class="fw-bold font-inter" style="color: var(--color-purple);"><i class="bi bi-people-fill me-2"></i>Musyawarah Mufakat</h6>
+                                    <h6 class="fw-bold font-inter" style="color: #7C3AED;"><i class="bi bi-people-fill me-2"></i>Musyawarah Mufakat</h6>
                                     <p class="text-muted mb-0 mt-2" style="font-size: 0.95rem;">Orang Minang memegang prinsip kesetaraan, tidak ada raja yang mendikte semena-mena. Semua masalah diselesaikan dengan duduk bersama mencari solusi terbaik (<em>Bulek kato dek mufakat</em>).</p>
                                 </div>
                             </div>
@@ -1255,7 +1425,6 @@
                             <div id="mini-result-topic6" class="mt-3 p-3 rounded-3 bg-light border border-light" style="display: none; font-size: 0.9rem;"></div>
                         </div>
 
-                        <!-- RUANG TAMBAHAN MATERI GURU -->
                         @if($materiSosial->count() > 0)
                         <div class="mt-4 pt-3 border-top border-light">
                             <div class="d-flex align-items-center mb-3">
@@ -1269,7 +1438,7 @@
                                 <div class="content-text text-dark prose fs-6">{!! $item->konten !!}</div>
                                 
                                 @if($item->mediaPendukung && $item->mediaPendukung->count() > 0)
-                                    <h6 class="fw-bold mb-3 mt-4 text-primary font-inter" style="font-size: 0.95rem;"><i class="bi bi-paperclip me-2"></i>File & Media</h6>
+                                    <h6 class="fw-bold mb-3 mt-4 text-primary font-inter" style="font-size: 0.95rem;"><i class="bi bi-paperclip me-2"></i>Media Pendukung</h6>
                                     @foreach($item->mediaPendukung as $media)
                                         <div class="attachment-box p-3 mt-2">
                                             <div class="d-flex w-100 justify-content-between align-items-center flex-wrap gap-2">
@@ -1278,13 +1447,27 @@
                                                         @if($media->jenis == 'pdf') <i class="bi bi-file-earmark-pdf-fill fs-4 text-danger"></i>
                                                         @elseif($media->jenis == 'word') <i class="bi bi-file-earmark-word-fill fs-4 text-primary"></i>
                                                         @elseif($media->jenis == 'ppt') <i class="bi bi-file-earmark-slides-fill fs-4 text-warning"></i>
-                                                        @elseif(in_array($media->jenis, ['video_upload', 'video_youtube'])) <i class="bi bi-play-circle-fill fs-4 text-success"></i>
+                                                        @elseif($media->jenis == 'video_upload') <i class="bi bi-play-circle-fill fs-4 text-success"></i>
+                                                        @elseif($media->jenis == 'video_youtube') <i class="bi bi-youtube fs-4 text-danger"></i>
+                                                        @elseif($media->jenis == 'link') <i class="bi bi-link-45deg fs-4 text-info"></i>
                                                         @else <i class="bi bi-file-earmark-fill fs-4 text-secondary"></i> @endif
                                                     </div>
                                                     <div><h6 class="mb-0 fw-bold font-inter" style="font-size: 0.9rem;">{{ $media->judul }}</h6></div>
                                                 </div>
                                                 <div class="d-flex gap-2">
-                                                    <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;"><i class="bi bi-eye me-1"></i> Buka File</button>
+                                                    @if($media->jenis == 'link')
+                                                        <a href="{{ $media->external_link }}" target="_blank" class="btn btn-info btn-sm rounded-pill px-3 fw-bold font-inter" style="font-size: 0.8rem;">
+                                                            <i class="bi bi-box-arrow-up-right me-1"></i> Buka Link
+                                                        </a>
+                                                    @elseif($media->jenis == 'video_youtube')
+                                                        <button class="btn btn-danger btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
+                                                            <i class="bi bi-play-circle me-1"></i> Tonton Video
+                                                        </button>
+                                                    @else
+                                                        <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
+                                                            <i class="bi bi-eye me-1"></i> Lihat File
+                                                        </button>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div id="preview{{ $media->id }}" class="collapse mt-3 w-100">
@@ -1295,8 +1478,22 @@
                                                     <div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau dokumen menggunakan Microsoft Office Viewer.</div>
                                                 @elseif($media->jenis == 'video_upload') <div class="document-iframe-container ratio ratio-16x9 bg-black shadow-sm"><video controls class="w-100 h-100 rounded-3"><source src="{{ asset('storage/'.$media->file) }}"></video></div>
                                                 @elseif($media->jenis == 'video_youtube')
-                                                    @php preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match); @endphp
-                                                    @if(isset($match[1])) <div class="document-iframe-container ratio ratio-16x9 shadow-sm"><iframe src="https://www.youtube.com/embed/{{ $match[1] }}" allowfullscreen style="border: none;"></iframe></div> @endif
+                                                    @php 
+                                                        $youtubeId = null;
+                                                        if ($media->video_url) {
+                                                            preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match);
+                                                            $youtubeId = $match[1] ?? null;
+                                                        }
+                                                    @endphp
+                                                    @if($youtubeId) <div class="document-iframe-container ratio ratio-16x9 shadow-sm"><iframe src="https://www.youtube.com/embed/{{ $youtubeId }}" allowfullscreen style="border: none;"></iframe></div>
+                                                    @else
+                                                        <div class="alert alert-warning font-inter">
+                                                            <i class="bi bi-exclamation-triangle me-2"></i> Link YouTube tidak valid.
+                                                            @if($media->external_link)
+                                                                <br><a href="{{ $media->external_link }}" target="_blank" class="text-decoration-none">Klik di sini untuk membuka link</a>
+                                                            @endif
+                                                        </div>
+                                                    @endif
                                                 @endif
                                             </div>
                                         </div>

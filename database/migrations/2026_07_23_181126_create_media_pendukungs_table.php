@@ -23,12 +23,15 @@ return new class extends Migration
                 'word',
                 'ppt',
                 'video_upload',
-                'video_youtube'
+                'video_youtube',
+                'link'
             ]);
 
             $table->string('file')->nullable();
 
             $table->string('video_url')->nullable();
+
+            $table->string('external_link')->nullable();
 
             $table->integer('urutan')->default(1);
 

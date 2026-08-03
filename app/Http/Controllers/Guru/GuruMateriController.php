@@ -39,10 +39,12 @@ class GuruMateriController extends Controller
             'deskripsi' => 'nullable',
             'konten' => 'nullable',
 
-            'media_judul' => 'nullable|max:255',
+            'media_judul' => 'required_if:jenis,pdf,word,ppt,video_upload,video_youtube,link|max:255',            
             'jenis' => 'nullable',
             'file' => 'nullable|file|max:51200',
-            'video_url' => 'nullable'
+            'video_url' => 'nullable',
+            'external_link' => 'nullable|url'
+            
         ]);
 
         $materi = Materi::create([
@@ -61,7 +63,7 @@ class GuruMateriController extends Controller
             $media = new MediaPendukung();
 
             $media->materi_id = $materi->id;
-            $media->judul = $request->media_judul;
+            $media->judul = $request->media_judul ?: 'Media Pendukung';            
             $media->jenis = $request->jenis;
             $media->urutan = 1;
 
@@ -88,6 +90,10 @@ class GuruMateriController extends Controller
 
             if ($request->jenis == 'video_youtube') {
                 $media->video_url = $request->video_url;
+            }
+
+            if ($request->jenis == 'link') {
+                $media->external_link = $request->external_link;
             }
 
             $media->save();
@@ -149,11 +155,15 @@ class GuruMateriController extends Controller
                 $file->move($destination, $filename);
 
                 $media->file = 'media_pendukung/' . $filename;
-                $media->judul = $request->media_judul;
+                $media->judul = $request->media_judul ?: 'Media Pendukung';
                 $media->jenis = $request->jenis;
 
                 if ($request->jenis == 'video_youtube') {
                     $media->video_url = $request->video_url;
+                }
+
+                if ($request->jenis == 'link') {
+                    $media->external_link = $request->external_link;
                 }
 
                 $media->save();
