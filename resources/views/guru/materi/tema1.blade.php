@@ -665,9 +665,9 @@
                             </h4>
                             <div class="d-flex gap-2 flex-shrink-0">
                                 <!-- Tombol Kelola Lampiran -->
-                                {{-- <a href="{{ route('guru.materi.edit', $item->id) }}#lampiran" class="btn btn-primary btn-sm rounded-pill px-3 fw-bold d-flex align-items-center gap-1">
+                                <a href="{{ route('guru.materi.edit', $item->id) }}#lampiran" class="btn btn-primary btn-sm rounded-pill px-3 fw-bold d-flex align-items-center gap-1">
                                     <i class="bi bi-paperclip"></i> Kelola Lampiran
-                                </a> --}}
+                                </a>
                                 <a href="{{ route('guru.materi.edit', $item->id) }}" class="btn btn-outline-warning btn-sm rounded-pill px-3 fw-bold d-flex align-items-center gap-1">
                                     <i class="fas fa-edit"></i> Edit
                                 </a>
