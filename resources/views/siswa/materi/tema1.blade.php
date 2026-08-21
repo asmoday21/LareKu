@@ -1,3 +1,4 @@
+<!-- STREAMING_CHUNK:Styling page layout and custom theme variables... -->
 <!doctype html>
 <html lang="id">
 <head>
@@ -19,7 +20,7 @@
     
     <style>
         :root {
-            /* PALET WARNA BARU - Lebih berani & segar */
+            /* PALET WARNA TEMA 1 - Indigo/Violet */
             --bg-primary: #F0F4FF;
             --bg-secondary: #FFFFFF;
             --bg-gradient-start: #4F46E5;
@@ -55,12 +56,7 @@
             --radius-xl: 32px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
 
         body {
@@ -87,11 +83,7 @@
             line-height: 1.8;
         }
 
-        .app-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
+        .app-container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
 
         /* ====== TOPBAR ====== */
         .topbar {
@@ -153,27 +145,15 @@
         }
 
         .page-header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
+            content: ''; position: absolute; top: -50%; right: -10%; width: 600px; height: 600px;
             background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: float 20s ease-in-out infinite;
+            border-radius: 50%; animation: float 20s ease-in-out infinite;
         }
 
         .page-header::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -5%;
-            width: 400px;
-            height: 400px;
+            content: ''; position: absolute; bottom: -30%; left: -5%; width: 400px; height: 400px;
             background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: float 25s ease-in-out infinite reverse;
+            border-radius: 50%; animation: float 25s ease-in-out infinite reverse;
         }
 
         @keyframes float {
@@ -181,276 +161,116 @@
             50% { transform: translate(30px, -30px) scale(1.1); }
         }
 
-        .header-content {
-            position: relative;
-            z-index: 2;
-            color: white;
-        }
-
-        .header-content h1 {
-            color: white;
-            font-size: 3.5rem;
-            font-weight: 900;
-            line-height: 1.15;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.1);
-        }
-
-        .header-content .lead {
-            font-family: 'Merriweather', serif;
-            color: rgba(255,255,255,0.85);
-            font-size: 1.2rem;
-            max-width: 700px;
-            line-height: 1.8;
-        }
+        .header-content { position: relative; z-index: 2; color: white; }
+        .header-content h1 { color: white; font-size: 3.5rem; font-weight: 900; line-height: 1.15; margin-bottom: 1rem; text-shadow: 0 2px 20px rgba(0,0,0,0.1); }
+        .header-content .lead { font-family: 'Merriweather', serif; color: rgba(255,255,255,0.85); font-size: 1.2rem; max-width: 700px; line-height: 1.8; }
 
         .header-badge {
-            display: inline-block;
-            padding: 0.4rem 1.25rem;
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: white;
-            margin-bottom: 1.5rem;
+            display: inline-block; padding: 0.4rem 1.25rem; background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;
+            font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: white; margin-bottom: 1.5rem;
         }
 
         .badge-tag-white {
-            background: rgba(255,255,255,0.12);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.15);
-            color: rgba(255,255,255,0.9);
-            padding: 0.3rem 1rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            display: inline-block;
+            background: rgba(255,255,255,0.12); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.9); padding: 0.3rem 1rem; border-radius: 50px; font-size: 0.8rem; font-weight: 500; display: inline-block;
         }
 
         /* ====== CONTROL CARD (SISWA) ====== */
         .admin-controls-card {
-            background: var(--surface-white);
-            border-radius: var(--radius-lg);
-            padding: 1.5rem 2rem;
-            box-shadow: var(--shadow-md);
-            margin-bottom: 2.5rem;
-            border: 1px solid rgba(79, 70, 229, 0.06);
-            transition: all 0.3s ease;
+            background: var(--surface-white); border-radius: var(--radius-lg); padding: 1.5rem 2rem;
+            box-shadow: var(--shadow-md); margin-bottom: 2.5rem; border: 1px solid rgba(79, 70, 229, 0.06); transition: all 0.3s ease;
         }
+        .admin-controls-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
 
-        .admin-controls-card:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-2px);
-        }
-
-        .admin-title {
-            font-weight: 800;
-            font-size: 1.25rem;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
+        .admin-title { font-weight: 800; font-size: 1.25rem; color: var(--text-primary); display: flex; align-items: center; gap: 0.75rem; }
         .admin-title .badge-admin {
             background: linear-gradient(135deg, var(--color-teal), var(--color-green));
-            color: white;
-            font-size: 0.65rem;
-            padding: 0.25rem 0.75rem;
-            border-radius: 50px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            color: white; font-size: 0.65rem; padding: 0.25rem 0.75rem; border-radius: 50px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
         }
 
         .filter-select {
-            border: 2px solid var(--border-color);
-            border-radius: 50px;
-            padding: 0.4rem 2rem 0.4rem 1.25rem;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
+            border: 2px solid var(--border-color); border-radius: 50px; padding: 0.4rem 2rem 0.4rem 1.25rem;
+            background-color: var(--bg-primary); color: var(--text-primary); font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease; cursor: pointer;
         }
-
-        .filter-select:focus {
-            border-color: var(--color-brand);
-            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
-            outline: none;
-        }
+        .filter-select:focus { border-color: var(--color-brand); box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1); outline: none; }
 
         /* ====== CONTENT CARD & BLOCKS ====== */
         .content-card {
-            background: var(--surface-white);
-            border-radius: var(--radius-lg);
-            padding: 2.5rem;
-            box-shadow: var(--shadow-md);
-            margin-bottom: 2rem;
-            border: 1px solid rgba(79, 70, 229, 0.04);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            word-wrap: break-word;
+            background: var(--surface-white); border-radius: var(--radius-lg); padding: 2.5rem;
+            box-shadow: var(--shadow-md); margin-bottom: 2rem; border: 1px solid rgba(79, 70, 229, 0.04);
+            transition: all 0.3s ease; position: relative; overflow: hidden; word-wrap: break-word;
         }
 
         .content-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--color-brand), var(--color-accent), var(--color-pink));
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, var(--color-brand), var(--color-accent), var(--color-pink)); opacity: 0; transition: opacity 0.3s ease;
         }
-
         .content-card:hover::before { opacity: 1; }
         .content-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
         
-        /* CSS KHUSUS NESTED CARD (Siswa) */
         .nested-card {
-            background: #FFFFFF;
-            border: 1px solid rgba(0,0,0,0.08);
-            border-radius: var(--radius-md);
-            padding: 1.5rem;
-            margin-top: 1.25rem;
-            position: relative;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            background: #FFFFFF; border: 1px solid rgba(0,0,0,0.08); border-radius: var(--radius-md);
+            padding: 1.5rem; margin-top: 1.25rem; position: relative; box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
-        
-        .nested-card:hover {
-            border-color: var(--color-brand-light);
-            box-shadow: var(--shadow-md);
-        }
-        
+        .nested-card:hover { border-color: var(--color-brand-light); box-shadow: var(--shadow-md); }
         .nested-card-title {
-            font-size: 1.15rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            border-bottom: 1px dashed var(--border-color);
-            padding-bottom: 0.75rem;
+            font-size: 1.15rem; font-weight: 800; color: var(--text-primary);
+            display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 0.75rem;
         }
-        
         .nested-card-title i { color: var(--color-brand); font-size: 1.25rem; }
 
-        .dynamic-content-title {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin: 0;
-        }
-
+        .dynamic-content-title { font-size: 1.5rem; font-weight: 800; color: var(--text-primary); display: flex; align-items: center; gap: 0.75rem; margin: 0; }
         .dynamic-content-title i { color: var(--color-brand); font-size: 1.75rem; }
 
         .section-title {
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 3px solid var(--bg-primary);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: var(--text-primary);
+            font-size: 1.5rem; font-weight: 800; margin-bottom: 1.5rem; padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--bg-primary); display: flex; align-items: center; gap: 0.75rem; color: var(--text-primary);
         }
-
         .section-title i { color: var(--color-brand); font-size: 1.75rem; }
 
-        .topic-block {
-            margin-bottom: 3rem;
-            padding: 1.5rem;
-            background: var(--bg-primary);
-            border-radius: var(--radius-md);
-            border-left: 4px solid var(--color-brand);
-        }
-
+        .topic-block { margin-bottom: 3rem; padding: 1.5rem; background: var(--bg-primary); border-radius: var(--radius-md); border-left: 4px solid var(--color-brand); }
         .topic-block:last-child { margin-bottom: 0; }
-
         .topic-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
 
         .topic-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: var(--radius-md);
+            width: 56px; height: 56px; border-radius: var(--radius-md);
             background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(236, 72, 153, 0.1));
-            color: var(--color-brand);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.75rem; flex-shrink: 0;
+            color: var(--color-brand); display: flex; align-items: center; justify-content: center; font-size: 1.75rem; flex-shrink: 0;
         }
 
         .topic-title { font-size: 1.35rem; font-weight: 800; margin: 0; color: var(--text-primary); }
 
         .highlight-box {
-            background: linear-gradient(135deg, #FEF3C7, #FDE68A);
-            border-radius: var(--radius-md);
-            padding: 1.5rem 2rem;
-            margin: 1.5rem 0;
-            border-left: 5px solid var(--color-accent);
-            position: relative;
+            background: linear-gradient(135deg, #FEF3C7, #FDE68A); border-radius: var(--radius-md);
+            padding: 1.5rem 2rem; margin: 1.5rem 0; border-left: 5px solid var(--color-accent); position: relative;
         }
-
         .highlight-box p { color: #78350F; font-family: 'Inter', sans-serif; font-weight: 600; margin: 0; }
         .highlight-box i { color: var(--color-accent); }
 
         /* ====== ACCORDION ====== */
         .custom-accordion { margin-top: 1.5rem; }
-        
         .custom-accordion .accordion-item {
-            border: none; border-radius: var(--radius-md) !important;
-            margin-bottom: 0.75rem; overflow: hidden;
+            border: none; border-radius: var(--radius-md) !important; margin-bottom: 0.75rem; overflow: hidden;
             box-shadow: var(--shadow-sm); background: white;
         }
-
         .custom-accordion .accordion-button {
-            background: white; color: var(--text-primary);
-            font-weight: 700; padding: 1.25rem 1.5rem;
+            background: white; color: var(--text-primary); font-weight: 700; padding: 1.25rem 1.5rem;
             font-family: 'Inter', sans-serif; border: none; transition: all 0.3s ease;
         }
-
         .custom-accordion .accordion-button:not(.collapsed) {
             background: linear-gradient(135deg, rgba(79, 70, 229, 0.05), rgba(236, 72, 153, 0.05));
             color: var(--color-brand); box-shadow: none;
         }
-
         .custom-accordion .accordion-button:focus { box-shadow: none; border-color: transparent; }
         .custom-accordion .accordion-button:hover { background: var(--bg-primary); }
-        .custom-accordion .accordion-body {
-            background: white; padding: 1.5rem; border-top: 1px solid var(--border-color);
-        }
+        .custom-accordion .accordion-body { background: white; padding: 1.5rem; border-top: 1px solid var(--border-color); }
 
-        /* ====== MEDIA & ATTACHMENTS ====== */
-        .media-wrapper {
-            border-radius: var(--radius-md); overflow: hidden;
-            box-shadow: var(--shadow-md); margin: 1.5rem 0;
-            background: #000; position: relative;
-        }
-
-        .ratio-16x9 { position: relative; width: 100%; padding-top: 56.25%; }
-        .ratio-16x9 iframe, .ratio-16x9 video, .ratio-16x9 img {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; object-fit: cover;
-        }
-
+        /* ====== MEDIA & ATTACHMENTS (VIEW ONLY - TANPA DOWNLOAD) ====== */
         .attachment-box {
             background: var(--bg-primary); border: 1px solid rgba(0,0,0,0.05);
-            border-radius: var(--radius-md); padding: 1rem;
-            transition: all 0.3s ease; margin-bottom: 1rem; margin-top: 1rem;
-            display: flex; flex-direction: column;
+            border-radius: var(--radius-md); padding: 1rem; transition: all 0.3s ease; display: flex; flex-direction: column;
         }
-        
         .attachment-box:hover { border-color: var(--color-brand); box-shadow: var(--shadow-md); }
 
         .document-iframe-container {
@@ -458,76 +278,59 @@
             border: 1px solid var(--border-color); background: #f8fafc; width: 100%;
         }
 
+        .transition-icon { display: inline-block; transition: transform 0.3s ease; }
+        button[aria-expanded="true"] .transition-icon { transform: rotate(180deg); }
+
         /* ====== SIDEBAR & WIDGET ====== */
         .sidebar-widget {
-            background: var(--surface-white); border-radius: var(--radius-lg);
-            padding: 2rem; box-shadow: var(--shadow-md);
-            margin-bottom: 2rem; border: 1px solid rgba(79, 70, 229, 0.04);
-            transition: all 0.3s ease;
+            background: var(--surface-white); border-radius: var(--radius-lg); padding: 2rem;
+            box-shadow: var(--shadow-md); margin-bottom: 2rem; border: 1px solid rgba(79, 70, 229, 0.04); transition: all 0.3s ease;
         }
-
         .sidebar-widget:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
 
         .sidebar-widget.widget-quiz {
-            background: linear-gradient(135deg, #FFFBEB, #FEF3C7);
-            border: 2px solid rgba(245, 158, 11, 0.2);
+            background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border: 2px solid rgba(245, 158, 11, 0.2);
         }
 
         .widget-title {
             font-size: 1.25rem; font-weight: 800; margin-bottom: 1.5rem;
             display: flex; align-items: center; gap: 0.75rem; color: var(--text-primary);
         }
-
         .widget-title i { color: var(--color-brand); }
         .widget-quiz .widget-title i { color: var(--color-accent); }
 
         .quiz-option {
-            display: block; width: 100%; text-align: left;
-            padding: 1rem 1.25rem; background: white;
-            border: 2px solid var(--border-color); border-radius: var(--radius-md);
-            margin-bottom: 0.75rem; font-family: 'Inter', sans-serif;
-            font-size: 0.95rem; font-weight: 600; color: var(--text-primary);
+            display: block; width: 100%; text-align: left; padding: 1rem 1.25rem; background: white;
+            border: 2px solid var(--border-color); border-radius: var(--radius-md); margin-bottom: 0.75rem;
+            font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--text-primary);
             transition: all 0.3s ease; cursor: pointer;
         }
-
-        .quiz-option:hover {
-            border-color: var(--color-brand); background: var(--bg-primary);
-            transform: translateX(6px); box-shadow: var(--shadow-sm);
-        }
-
+        .quiz-option:hover { border-color: var(--color-brand); background: var(--bg-primary); transform: translateX(6px); box-shadow: var(--shadow-sm); }
         .quiz-option.correct { background: #D1FAE5; border-color: var(--color-green); color: #065F46; }
         .quiz-option.wrong { background: #FEE2E2; border-color: var(--color-red); color: #991B1B; }
 
-        .quiz-result-box {
-            padding: 1.5rem; border-radius: var(--radius-md); margin-top: 1.5rem; font-family: 'Inter', sans-serif;
-        }
+        .quiz-result-box { padding: 1.5rem; border-radius: var(--radius-md); margin-top: 1.5rem; font-family: 'Inter', sans-serif; }
 
         .btn-action {
             background: linear-gradient(135deg, var(--color-brand), var(--color-brand-dark));
-            color: white; border: none; padding: 0.75rem 1.5rem;
-            border-radius: 50px; font-weight: 700; transition: all 0.3s ease;
-            font-family: 'Inter', sans-serif;
+            color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 50px; font-weight: 700;
+            transition: all 0.3s ease; font-family: 'Inter', sans-serif;
         }
-
         .btn-action:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); color: white; }
 
         /* Progress Bar */
         .reading-progress { position: fixed; top: 0; left: 0; width: 100%; height: 4px; background: transparent; z-index: 1040; }
         .reading-progress-bar { height: 100%; background: linear-gradient(90deg, var(--color-brand), var(--color-accent), var(--color-pink)); width: 0%; border-radius: 0 2px 2px 0; transition: width 0.1s ease; }
 
-        /* Animations & Utilities */
         .font-inter { font-family: 'Inter', sans-serif !important; }
         .fade-in-up { opacity: 0; transform: translateY(30px); animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
+        .delay-1 { animation-delay: 0.1s; } .delay-2 { animation-delay: 0.2s; } .delay-3 { animation-delay: 0.3s; }
 
         .wisdom-box {
-            background: var(--bg-primary); padding: 1rem 1.25rem;
-            border-radius: var(--radius-md); border-left: 4px solid var(--color-teal);
-            margin: 1rem 0;
+            background: var(--bg-primary); padding: 1rem 1.25rem; border-radius: var(--radius-md);
+            border-left: 4px solid var(--color-teal); margin: 1rem 0;
         }
 
         /* Responsive */
@@ -545,7 +348,6 @@
             .admin-title { font-size: 1.1rem; }
         }
 
-        /* Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--bg-primary); }
         ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, var(--color-brand), var(--color-pink)); border-radius: 50px; }
@@ -558,6 +360,7 @@
     <div class="reading-progress-bar" id="progressBar"></div>
 </div>
 
+<!-- STREAMING_CHUNK:Rendering navigation and header... -->
 <nav class="topbar">
     <div class="app-container">
         <div class="d-flex justify-content-between align-items-center">
@@ -594,7 +397,7 @@
         <div class="admin-controls-card fade-in-up delay-1">
             <div class="row align-items-center">
                 <div class="col-12 col-md-6 mb-3 mb-md-0">
-                    <div class="admin-title">
+                    <div class="admin-title font-inter">
                         Materi Tema 1
                         <span class="badge-admin">Mode Belajar</span>
                     </div>
@@ -602,9 +405,9 @@
                 <div class="col-12 col-md-6">
                     <div class="d-flex flex-column flex-md-row justify-content-md-end gap-3 align-items-md-center">
                         <div class="d-flex align-items-center gap-2">
-                            <label class="fw-semibold text-secondary mb-0" style="font-size:0.9rem; white-space: nowrap;">Pindah Tema:</label>
+                            <label class="fw-semibold text-secondary mb-0 font-inter" style="font-size:0.9rem; white-space: nowrap;">Pindah Tema:</label>
                             <form action="{{ route('siswa.materi.index') }}" method="GET" id="temaForm" class="m-0">
-                                <select class="filter-select" name="tema" onchange="this.form.submit()">
+                                <select class="filter-select font-inter" name="tema" onchange="this.form.submit()">
                                     <option value="tema1" {{ request('tema')=='tema1' ? 'selected' : '' }}>Tema 1</option>
                                     <option value="tema2" {{ request('tema')=='tema2' ? 'selected' : '' }}>Tema 2</option>
                                     <option value="tema3" {{ request('tema')=='tema3' ? 'selected' : '' }}>Tema 3</option>
@@ -617,6 +420,7 @@
             </div>
         </div>
 
+        <!-- STREAMING_CHUNK:Rendering main materi content and multi-attachment collapse UI... -->
         <div class="row g-4 g-lg-5">
             <!-- Kolom Kiri: Materi Utama -->
             <div class="col-lg-8">
@@ -637,7 +441,7 @@
 
                 @if($materiUmum->count() > 0)
                 <div class="mb-5 fade-in-up delay-2">
-                    <h4 class="section-title text-muted mb-4" style="font-size: 1.25rem; border-bottom: 2px dashed var(--border-color);">
+                    <h4 class="section-title text-muted mb-4 font-inter" style="font-size: 1.25rem; border-bottom: 2px dashed var(--border-color);">
                         <i class="bi bi-collection-play me-2"></i> Materi Pengantar Tambahan
                     </h4>
                     
@@ -659,168 +463,38 @@
                             {!! $item->konten !!}
                         </div>
                         
-                        {{-- Logika Penampil Media (Siswa) --}}
+                        {{-- Logika Penampil Media (Banyak Lampiran - Siswa VIEW ONLY) --}}
                         @if($item->mediaPendukung && $item->mediaPendukung->count() > 0)
-                            <h6 class="fw-bold mb-3 mt-4 text-primary font-inter"><i class="bi bi-paperclip me-2"></i>Materi Pendukung</h6>
-                            @foreach($item->mediaPendukung as $media)
-                                <div class="attachment-box p-3 mt-2">
-                                    <div class="d-flex w-100 justify-content-between align-items-center flex-wrap gap-2">
-                                        <div class="d-flex align-items-center gap-3">
-                                            <div class="bg-white p-2 rounded-3 shadow-sm d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-                                                @if($media->jenis == 'pdf') <i class="bi bi-file-earmark-pdf-fill fs-4 text-danger"></i>
-                                                @elseif($media->jenis == 'word') <i class="bi bi-file-earmark-word-fill fs-4 text-primary"></i>
-                                                @elseif($media->jenis == 'ppt') <i class="bi bi-file-earmark-slides-fill fs-4 text-warning"></i>
-                                                @elseif($media->jenis == 'video_upload') <i class="bi bi-play-circle-fill fs-4 text-success"></i>
-                                                @elseif($media->jenis == 'video_youtube') <i class="bi bi-youtube fs-4 text-danger"></i>
-                                                @elseif($media->jenis == 'link') <i class="bi bi-link-45deg fs-4 text-info"></i>
-                                                @else <i class="bi bi-file-earmark-fill fs-4 text-secondary"></i> @endif
-                                            </div>
-                                            <div>
-                                                <h6 class="mb-0 fw-bold font-inter" style="font-size: 0.9rem;">{{ $media->judul }}</h6>
-                                                <span class="badge bg-light text-secondary border mt-1 font-inter" style="font-size: 0.65rem;">
-                                                    {{ $media->jenis == 'video_youtube' ? 'YouTube' : ($media->jenis == 'link' ? 'Link Eksternal' : str_replace('_', ' ', $media->jenis)) }}
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex gap-2">
-                                            @if($media->jenis == 'link')
-                                                <a href="{{ $media->external_link }}" target="_blank" class="btn btn-info btn-sm rounded-pill px-3 fw-bold font-inter" style="font-size: 0.8rem;">
-                                                    <i class="bi bi-box-arrow-up-right me-1"></i> Buka Link
-                                                </a>
-                                            @elseif($media->jenis == 'video_youtube')
-                                                <button class="btn btn-danger btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
-                                                    <i class="bi bi-play-circle me-1"></i> Tonton Video
-                                                </button>
-                                            @else
-                                                <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
-                                                    <i class="bi bi-eye me-1"></i> Lihat File
-                                                </button>
-                                            @endif
-                                        </div>
-                                    </div>
+                            @php
+                                $pdfCount = $item->mediaPendukung->where('jenis', 'pdf')->count();
+                                $wordCount = $item->mediaPendukung->where('jenis', 'word')->count();
+                                $pptCount = $item->mediaPendukung->where('jenis', 'ppt')->count();
+                                $videoCount = $item->mediaPendukung->whereIn('jenis', ['video_upload', 'video_youtube'])->count();
+                                $linkCount = $item->mediaPendukung->where('jenis', 'link')->count();
+                            @endphp
 
-                                    @if($media->jenis != 'link')
-                                    <div id="preview{{ $media->id }}" class="collapse mt-3 w-100">
-                                        @if($media->jenis == 'pdf')
-                                            <div class="document-iframe-container shadow-sm" style="height: 400px;">
-                                                <iframe src="{{ asset('storage/'.$media->file) }}" width="100%" height="100%" style="border: none;" allowfullscreen></iframe>
-                                            </div>
-                                        @elseif($media->jenis == 'word')
-                                            <div class="document-iframe-container ratio ratio-16x9 shadow-sm mb-2">
-                                                <iframe src="https://docs.google.com/gview?url={{ urlencode(asset('storage/'.$media->file)) }}&embedded=true" allowfullscreen style="border: none;"></iframe>
-                                            </div>
-                                            <div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;">
-                                                <i class="bi bi-info-circle text-primary"></i> Pratinjau dokumen menggunakan Google Docs Viewer.
-                                            </div>
-                                        @elseif($media->jenis == 'ppt')
-                                            <div class="document-iframe-container ratio ratio-16x9 shadow-sm mb-2">
-                                                <iframe src="https://view.officeapps.live.com/op/embed.aspx?src={{ urlencode(asset('storage/'.$media->file)) }}" allowfullscreen style="border: none;"></iframe>
-                                            </div>
-                                            <div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;">
-                                                <i class="bi bi-info-circle text-primary"></i> Pratinjau dokumen menggunakan Microsoft Office Viewer.
-                                            </div>
-                                        @elseif($media->jenis == 'video_upload')
-                                            <div class="document-iframe-container ratio ratio-16x9 bg-black shadow-sm">
-                                                <video controls class="w-100 h-100 rounded-3"><source src="{{ asset('storage/'.$media->file) }}"></video>
-                                            </div>
-                                        @elseif($media->jenis == 'video_youtube')
-                                            @php 
-                                                $youtubeId = null;
-                                                if ($media->video_url) {
-                                                    preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match);
-                                                    $youtubeId = $match[1] ?? null;
-                                                }
-                                            @endphp
-                                            @if($youtubeId)
-                                                <div class="document-iframe-container ratio ratio-16x9 shadow-sm">
-                                                    <iframe src="https://www.youtube.com/embed/{{ $youtubeId }}" allowfullscreen style="border: none;"></iframe>
-                                                </div>
-                                            @else
-                                                <div class="alert alert-warning font-inter">
-                                                    <i class="bi bi-exclamation-triangle me-2"></i> Link YouTube tidak valid.
-                                                    @if($media->external_link)
-                                                        <br><a href="{{ $media->external_link }}" target="_blank" class="text-decoration-none">Klik di sini untuk membuka link</a>
-                                                    @endif
-                                                </div>
-                                            @endif
-                                        @endif
-                                    </div>
-                                    @endif
+                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 p-3 mt-4 rounded-3 border shadow-sm" style="background: linear-gradient(to right, #F8FAFC, #FFFFFF);">
+                                <div class="d-flex flex-wrap gap-2 align-items-center">
+                                    <span class="badge bg-primary rounded-pill font-inter px-3 py-2"><i class="bi bi-paperclip me-1"></i> {{ $item->mediaPendukung->count() }} Lampiran</span>
+                                    @if($pdfCount > 0) <span class="badge bg-white text-danger border border-danger-subtle rounded-pill font-inter"><i class="bi bi-filetype-pdf"></i> PDF ({{ $pdfCount }})</span> @endif
+                                    @if($wordCount > 0) <span class="badge bg-white text-primary border border-primary-subtle rounded-pill font-inter"><i class="bi bi-filetype-doc"></i> Word ({{ $wordCount }})</span> @endif
+                                    @if($pptCount > 0) <span class="badge bg-white text-warning border border-warning-subtle rounded-pill font-inter"><i class="bi bi-filetype-ppt"></i> PPT ({{ $pptCount }})</span> @endif
+                                    @if($videoCount > 0) <span class="badge bg-white text-success border border-success-subtle rounded-pill font-inter"><i class="bi bi-play-btn"></i> Video ({{ $videoCount }})</span> @endif
+                                    @if($linkCount > 0) <span class="badge bg-white text-info border border-info-subtle rounded-pill font-inter"><i class="bi bi-link-45deg"></i> Link ({{ $linkCount }})</span> @endif
                                 </div>
-                            @endforeach
-                        @endif
-                    </div>
-                    @endforeach
-                </div>
-                @endif
-                
-                <div class="content-card fade-in-up delay-3 pb-2">
-                    <h4 class="section-title">
-                        <i class="bi bi-stars"></i> Pembelajaran Interaktif
-                    </h4>
-
-                    <!-- ============================================== -->
-                    <!-- TOPIK 1: Mengenal Lokasi Tinggal               -->
-                    <!-- ============================================== -->
-                    <div class="topic-block">
-                        <div class="topic-header mb-3">
-                            <div class="topic-icon"><i class="bi bi-house-door-fill"></i></div>
-                            <h3 class="topic-title">Mengenal Lokasi Tinggal</h3>
-                        </div>
-
-                        <p>Pernahkah kamu mengirim titik <em>"Share Loc"</em> melalui WhatsApp kepada temanmu? Titik kordinat yang ada di dalam peta tersebut adalah bagian dari konsep lokasi. Dalam konteks budaya kita (Sumatera Barat), letak tempat tinggal kita sangat memengaruhi bagaimana cara kita hidup dan bertahan.</p>
-                        
-                        <p class="mb-4">Mari kita bedah letak wilayah Sumatera Barat ini dari dua kacamata yang berbeda: Letak Absolut (pasti) dan Letak Relatif (tergantung sekitarnya).</p>
-                        
-                        <div class="row g-4 mt-2 mb-4">
-                            <div class="col-md-6">
-                                <div class="bg-white p-4 rounded-4 shadow-sm border border-light h-100">
-                                    <h6 class="fw-bold text-brand mb-3 font-inter"><i class="bi bi-pin-map-fill me-2"></i>Lokasi Absolut</h6>
-                                    <p class="text-secondary mb-0" style="font-size: 0.95rem;">Ini adalah alamat tetap bumi berdasarkan garis lintang dan bujur. Coba bayangkan wilayah Bonjol di Pasaman yang dilewati titik 0° (Garis Khatulistiwa). Karena tepat berada di sabuk ini, kampung kita selalu hangat, beriklim tropis, dan curah hujannya sangat bagus untuk bercocok tanam padi.</p>
-                                </div>
+                                <button class="btn btn-outline-primary btn-sm rounded-pill fw-bold font-inter px-4 flex-shrink-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMedia{{ $item->id }}" aria-expanded="false">
+                                    Lihat Lampiran <i class="bi bi-chevron-down ms-1 transition-icon"></i>
+                                </button>
                             </div>
-                            <div class="col-md-6">
-                                <div class="bg-white p-4 rounded-4 shadow-sm border border-light h-100">
-                                    <h6 class="fw-bold text-accent mb-3 font-inter"><i class="bi bi-signpost-split-fill me-2"></i>Lokasi Relatif</h6>
-                                    <p class="text-secondary mb-0" style="font-size: 0.95rem;">Ini adalah lokasi berdasarkan apa yang ada di sekelilingnya. Jika kita lihat peta, pesisir barat Sumatera langsung berhadapan dengan Samudera Hindia yang luas. Posisi "menghadap laut lepas" inilah yang membuat kota-kota seperti Padang dan Pariaman sangat ramai menjadi pelabuhan kapal dagang sejak zaman dahulu.</p>
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- Mini Quiz Topik 1 -->
-                        <div class="mt-4 p-4 bg-white rounded-4 border border-light shadow-sm" id="mini-quiz-topic1">
-                            <h6 class="fw-bold text-brand mb-3 d-flex align-items-center gap-2 font-inter">
-                                <i class="bi bi-patch-question-fill fs-5"></i> Cek Pemahaman Singkat
-                            </h6>
-                            <p class="text-dark fw-semibold mb-3 font-inter">Karena letaknya yang dilewati oleh garis khatulistiwa (0°), wilayah Sumatera Barat memiliki keuntungan secara Lokasi Absolut yaitu...</p>
-                            <div class="d-flex flex-column gap-2">
-                                <button class="quiz-option shadow-sm mini-option py-2 font-inter" onclick="checkMiniQuiz('topic1', 0, 0, this)">Memiliki iklim tropis yang subur untuk bertani</button>
-                                <button class="quiz-option shadow-sm mini-option py-2 font-inter" onclick="checkMiniQuiz('topic1', 1, 0, this)">Berhadapan langsung dengan Samudera Hindia</button>
-                                <button class="quiz-option shadow-sm mini-option py-2 font-inter" onclick="checkMiniQuiz('topic1', 2, 0, this)">Banyaknya jalur patahan tektonik</button>
-                            </div>
-                            <div id="mini-result-topic1" class="mt-3 p-3 rounded-3 bg-light border border-light" style="display: none; font-size: 0.9rem;"></div>
-                        </div>
-
-                        <!-- RUANG TAMBAHAN MATERI GURU -->
-                        @if($materiLokasi->count() > 0)
-                        <div class="mt-4 pt-3 border-top border-light">
-                            <div class="d-flex align-items-center mb-3">
-                                <h6 class="fw-bold text-secondary mb-0 font-inter" style="font-size:0.85rem; letter-spacing:0.5px; text-transform:uppercase;">
-                                    <i class="bi bi-journal-bookmark-fill me-1"></i> Catatan Tambahan dari Guru
-                                </h6>
-                            </div>
-                            @foreach($materiLokasi as $item)
-                            <div class="nested-card">
-                                <h5 class="nested-card-title"><i class="bi bi-bookmark-star"></i> {{ $item->judul }}</h5>
-                                <div class="content-text text-dark prose fs-6">{!! $item->konten !!}</div>
-
-                                @if($item->mediaPendukung && $item->mediaPendukung->count() > 0)
-                                    <h6 class="fw-bold mb-3 mt-4 text-primary font-inter" style="font-size: 0.95rem;"><i class="bi bi-paperclip me-2"></i>Media Pendukung</h6>
-                                    @foreach($item->mediaPendukung as $media)
-                                        <div class="attachment-box p-3 mt-2">
-                                            <div class="d-flex w-100 justify-content-between align-items-center flex-wrap gap-2">
+                            <div class="collapse mt-3" id="collapseMedia{{ $item->id }}">
+                                <div class="d-flex flex-column gap-3 p-3 border rounded-3 bg-white shadow-sm">
+                                    @foreach($item->mediaPendukung as $index => $media)
+                                        <div class="attachment-box m-0 border-0 bg-light rounded-3 shadow-sm p-3">
+                                            <div class="d-flex w-100 justify-content-between align-items-center flex-wrap gap-3">
                                                 <div class="d-flex align-items-center gap-3">
-                                                    <div class="bg-white p-2 rounded-3 shadow-sm d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                                    <span class="fw-bold fs-5 text-brand opacity-50">{{ $loop->parent->iteration ?? 1 }}.{{ strtolower(chr(96 + $loop->iteration)) }}</span>
+                                                    <div class="bg-white p-2 rounded-3 shadow-sm d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;">
                                                         @if($media->jenis == 'pdf') <i class="bi bi-file-earmark-pdf-fill fs-4 text-danger"></i>
                                                         @elseif($media->jenis == 'word') <i class="bi bi-file-earmark-word-fill fs-4 text-primary"></i>
                                                         @elseif($media->jenis == 'ppt') <i class="bi bi-file-earmark-slides-fill fs-4 text-warning"></i>
@@ -830,15 +504,16 @@
                                                         @else <i class="bi bi-file-earmark-fill fs-4 text-secondary"></i> @endif
                                                     </div>
                                                     <div>
-                                                        <h6 class="mb-0 fw-bold font-inter" style="font-size: 0.9rem;">{{ $media->judul }}</h6>
-                                                        <span class="badge bg-light text-secondary border mt-1 font-inter" style="font-size: 0.65rem;">
-                                                            {{ $media->jenis == 'video_youtube' ? 'YouTube' : ($media->jenis == 'link' ? 'Link Eksternal' : str_replace('_', ' ', $media->jenis)) }}
+                                                        <h6 class="mb-0 fw-bold font-inter text-dark" style="font-size: 0.95rem;">{{ $media->judul }}</h6>
+                                                        <span class="badge bg-white text-secondary border mt-1 font-inter" style="font-size: 0.65rem;">
+                                                            {{ $media->jenis == 'video_youtube' ? 'YouTube' : ($media->jenis == 'link' ? 'Link Eksternal' : strtoupper(str_replace('_', ' ', $media->jenis))) }}
                                                         </span>
                                                     </div>
                                                 </div>
+                                                <!-- HANYA TOMBOL BUKA/LIHAT (TIDAK ADA TOMBOL DOWNLOAD) -->
                                                 <div class="d-flex gap-2">
                                                     @if($media->jenis == 'link')
-                                                        <a href="{{ $media->external_link }}" target="_blank" class="btn btn-info btn-sm rounded-pill px-3 fw-bold font-inter" style="font-size: 0.8rem;">
+                                                        <a href="{{ $media->external_link }}" target="_blank" class="btn btn-info btn-sm rounded-pill px-3 fw-bold font-inter text-white" style="font-size: 0.8rem;">
                                                             <i class="bi bi-box-arrow-up-right me-1"></i> Buka Link
                                                         </a>
                                                     @elseif($media->jenis == 'video_youtube')
@@ -847,14 +522,14 @@
                                                         </button>
                                                     @else
                                                         <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
-                                                            <i class="bi bi-eye me-1"></i> Lihat File
+                                                            <i class="bi bi-eye me-1"></i> Buka File
                                                         </button>
                                                     @endif
                                                 </div>
                                             </div>
 
                                             @if($media->jenis != 'link')
-                                            <div id="preview{{ $media->id }}" class="collapse mt-3 w-100">
+                                            <div id="preview{{ $media->id }}" class="collapse mt-3 w-100 border-top pt-3">
                                                 @if($media->jenis == 'pdf')
                                                     <div class="document-iframe-container shadow-sm" style="height: 400px;">
                                                         <iframe src="{{ asset('storage/'.$media->file) }}" width="100%" height="100%" style="border: none;" allowfullscreen></iframe>
@@ -902,6 +577,156 @@
                                             @endif
                                         </div>
                                     @endforeach
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+                    @endforeach
+                </div>
+                @endif
+                
+                <!-- STREAMING_CHUNK:Building interactive topics and quizzes... -->
+                <div class="content-card fade-in-up delay-3 pb-2">
+                    <h4 class="section-title font-inter">
+                        <i class="bi bi-stars"></i> Pembelajaran Interaktif
+                    </h4>
+
+                    <!-- ============================================== -->
+                    <!-- TOPIK 1: Mengenal Lokasi Tinggal               -->
+                    <!-- ============================================== -->
+                    <div class="topic-block">
+                        <div class="topic-header mb-3">
+                            <div class="topic-icon"><i class="bi bi-house-door-fill"></i></div>
+                            <h3 class="topic-title font-inter">Mengenal Lokasi Tinggal</h3>
+                        </div>
+
+                        <p>Pernahkah kamu mengirim titik <em>"Share Loc"</em> melalui WhatsApp kepada temanmu? Titik kordinat yang ada di dalam peta tersebut adalah bagian dari konsep lokasi. Dalam konteks budaya kita (Sumatera Barat), letak tempat tinggal kita sangat memengaruhi bagaimana cara kita hidup dan bertahan.</p>
+                        
+                        <p class="mb-4">Mari kita bedah letak wilayah Sumatera Barat ini dari dua kacamata yang berbeda: Letak Absolut (pasti) dan Letak Relatif (tergantung sekitarnya).</p>
+                        
+                        <div class="row g-4 mt-2 mb-4">
+                            <div class="col-md-6">
+                                <div class="bg-white p-4 rounded-4 shadow-sm border border-light h-100">
+                                    <h6 class="fw-bold text-brand mb-3 font-inter"><i class="bi bi-pin-map-fill me-2"></i>Lokasi Absolut</h6>
+                                    <p class="text-secondary mb-0" style="font-size: 0.95rem;">Ini adalah alamat tetap bumi berdasarkan garis lintang dan bujur. Coba bayangkan wilayah Bonjol di Pasaman yang dilewati titik 0° (Garis Khatulistiwa). Karena tepat berada di sabuk ini, kampung kita selalu hangat, beriklim tropis, dan curah hujannya sangat bagus untuk bercocok tanam padi.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="bg-white p-4 rounded-4 shadow-sm border border-light h-100">
+                                    <h6 class="fw-bold text-accent mb-3 font-inter"><i class="bi bi-signpost-split-fill me-2"></i>Lokasi Relatif</h6>
+                                    <p class="text-secondary mb-0" style="font-size: 0.95rem;">Ini adalah lokasi berdasarkan apa yang ada di sekelilingnya. Jika kita lihat peta, pesisir barat Sumatera langsung berhadapan dengan Samudera Hindia yang luas. Posisi "menghadap laut lepas" inilah yang membuat kota-kota seperti Padang dan Pariaman sangat ramai menjadi pelabuhan kapal dagang sejak zaman dahulu.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mini Quiz Topik 1 -->
+                        <div class="mt-4 p-4 bg-white rounded-4 border border-light shadow-sm" id="mini-quiz-topic1">
+                            <h6 class="fw-bold text-brand mb-3 d-flex align-items-center gap-2 font-inter">
+                                <i class="bi bi-patch-question-fill fs-5"></i> Cek Pemahaman Singkat
+                            </h6>
+                            <p class="text-dark fw-semibold mb-3 font-inter">Karena letaknya yang dilewati oleh garis khatulistiwa (0°), wilayah Sumatera Barat memiliki keuntungan secara Lokasi Absolut yaitu...</p>
+                            <div class="d-flex flex-column gap-2">
+                                <button class="quiz-option shadow-sm mini-option py-2 font-inter" onclick="checkMiniQuiz('topic1', 0, 0, this)">Memiliki iklim tropis yang subur untuk bertani</button>
+                                <button class="quiz-option shadow-sm mini-option py-2 font-inter" onclick="checkMiniQuiz('topic1', 1, 0, this)">Berhadapan langsung dengan Samudera Hindia</button>
+                                <button class="quiz-option shadow-sm mini-option py-2 font-inter" onclick="checkMiniQuiz('topic1', 2, 0, this)">Banyaknya jalur patahan tektonik</button>
+                            </div>
+                            <div id="mini-result-topic1" class="mt-3 p-3 rounded-3 bg-light border border-light font-inter" style="display: none; font-size: 0.9rem;"></div>
+                        </div>
+
+                        <!-- RUANG TAMBAHAN MATERI GURU (SISWA VIEW) -->
+                        @if($materiLokasi->count() > 0)
+                        <div class="mt-4 pt-3 border-top border-light">
+                            <div class="d-flex align-items-center mb-3">
+                                <h6 class="fw-bold text-secondary mb-0 font-inter" style="font-size:0.85rem; letter-spacing:0.5px; text-transform:uppercase;">
+                                    <i class="bi bi-journal-bookmark-fill me-1"></i> Catatan Tambahan dari Guru
+                                </h6>
+                            </div>
+                            @foreach($materiLokasi as $item)
+                            <div class="nested-card">
+                                <h5 class="nested-card-title"><i class="bi bi-bookmark-star"></i> {{ $item->judul }}</h5>
+                                <div class="content-text text-dark prose fs-6">{!! $item->konten !!}</div>
+
+                                {{-- Logika Penampil Media Multi-Lampiran Tanpa Download --}}
+                                @if($item->mediaPendukung && $item->mediaPendukung->count() > 0)
+                                    @php
+                                        $pdfCount = $item->mediaPendukung->where('jenis', 'pdf')->count();
+                                        $wordCount = $item->mediaPendukung->where('jenis', 'word')->count();
+                                        $pptCount = $item->mediaPendukung->where('jenis', 'ppt')->count();
+                                        $videoCount = $item->mediaPendukung->whereIn('jenis', ['video_upload', 'video_youtube'])->count();
+                                        $linkCount = $item->mediaPendukung->where('jenis', 'link')->count();
+                                    @endphp
+
+                                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 p-3 mt-4 rounded-3 border shadow-sm" style="background: linear-gradient(to right, #F8FAFC, #FFFFFF);">
+                                        <div class="d-flex flex-wrap gap-2 align-items-center">
+                                            <span class="badge bg-primary rounded-pill font-inter px-3 py-2"><i class="bi bi-paperclip me-1"></i> {{ $item->mediaPendukung->count() }} Lampiran</span>
+                                            @if($pdfCount > 0) <span class="badge bg-white text-danger border border-danger-subtle rounded-pill font-inter"><i class="bi bi-filetype-pdf"></i> PDF ({{ $pdfCount }})</span> @endif
+                                            @if($wordCount > 0) <span class="badge bg-white text-primary border border-primary-subtle rounded-pill font-inter"><i class="bi bi-filetype-doc"></i> Word ({{ $wordCount }})</span> @endif
+                                            @if($pptCount > 0) <span class="badge bg-white text-warning border border-warning-subtle rounded-pill font-inter"><i class="bi bi-filetype-ppt"></i> PPT ({{ $pptCount }})</span> @endif
+                                            @if($videoCount > 0) <span class="badge bg-white text-success border border-success-subtle rounded-pill font-inter"><i class="bi bi-play-btn"></i> Video ({{ $videoCount }})</span> @endif
+                                            @if($linkCount > 0) <span class="badge bg-white text-info border border-info-subtle rounded-pill font-inter"><i class="bi bi-link-45deg"></i> Link ({{ $linkCount }})</span> @endif
+                                        </div>
+                                        <button class="btn btn-outline-primary btn-sm rounded-pill fw-bold font-inter px-4 flex-shrink-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMedia{{ $item->id }}" aria-expanded="false">
+                                            Lihat Lampiran <i class="bi bi-chevron-down ms-1 transition-icon"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="collapse mt-3" id="collapseMedia{{ $item->id }}">
+                                        <div class="d-flex flex-column gap-3 p-3 border rounded-3 bg-white shadow-sm">
+                                            @foreach($item->mediaPendukung as $index => $media)
+                                                <div class="attachment-box m-0 border-0 bg-light rounded-3 shadow-sm p-3">
+                                                    <div class="d-flex w-100 justify-content-between align-items-center flex-wrap gap-3">
+                                                        <div class="d-flex align-items-center gap-3">
+                                                            <span class="fw-bold fs-5 text-brand opacity-50">{{ $loop->parent->iteration ?? 1 }}.{{ strtolower(chr(96 + $loop->iteration)) }}</span>
+                                                            <div class="bg-white p-2 rounded-3 shadow-sm d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;">
+                                                                @if($media->jenis == 'pdf') <i class="bi bi-file-earmark-pdf-fill fs-4 text-danger"></i>
+                                                                @elseif($media->jenis == 'word') <i class="bi bi-file-earmark-word-fill fs-4 text-primary"></i>
+                                                                @elseif($media->jenis == 'ppt') <i class="bi bi-file-earmark-slides-fill fs-4 text-warning"></i>
+                                                                @elseif($media->jenis == 'video_upload') <i class="bi bi-play-circle-fill fs-4 text-success"></i>
+                                                                @elseif($media->jenis == 'video_youtube') <i class="bi bi-youtube fs-4 text-danger"></i>
+                                                                @elseif($media->jenis == 'link') <i class="bi bi-link-45deg fs-4 text-info"></i>
+                                                                @else <i class="bi bi-file-earmark-fill fs-4 text-secondary"></i> @endif
+                                                            </div>
+                                                            <div>
+                                                                <h6 class="mb-0 fw-bold font-inter text-dark" style="font-size: 0.95rem;">{{ $media->judul }}</h6>
+                                                                <span class="badge bg-white text-secondary border mt-1 font-inter" style="font-size: 0.65rem;">
+                                                                    {{ $media->jenis == 'video_youtube' ? 'YouTube' : ($media->jenis == 'link' ? 'Link Eksternal' : strtoupper(str_replace('_', ' ', $media->jenis))) }}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex gap-2">
+                                                            @if($media->jenis == 'link')
+                                                                <a href="{{ $media->external_link }}" target="_blank" class="btn btn-info btn-sm rounded-pill px-3 fw-bold font-inter text-white" style="font-size: 0.8rem;"><i class="bi bi-box-arrow-up-right me-1"></i> Buka Link</a>
+                                                            @elseif($media->jenis == 'video_youtube')
+                                                                <button class="btn btn-danger btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;"><i class="bi bi-play-circle me-1"></i> Tonton Video</button>
+                                                            @else
+                                                                <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;"><i class="bi bi-eye me-1"></i> Buka File</button>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+
+                                                    @if($media->jenis != 'link')
+                                                    <div id="preview{{ $media->id }}" class="collapse mt-3 w-100 border-top pt-3">
+                                                        @if($media->jenis == 'pdf') <div class="document-iframe-container shadow-sm" style="height: 400px;"><iframe src="{{ asset('storage/'.$media->file) }}" width="100%" height="100%" style="border: none;" allowfullscreen></iframe></div>
+                                                        @elseif($media->jenis == 'word') <div class="document-iframe-container ratio ratio-16x9 shadow-sm mb-2"><iframe src="https://docs.google.com/gview?url={{ urlencode(asset('storage/'.$media->file)) }}&embedded=true" allowfullscreen style="border: none;"></iframe></div><div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau Google Docs Viewer.</div>
+                                                        @elseif($media->jenis == 'ppt') <div class="document-iframe-container ratio ratio-16x9 shadow-sm mb-2"><iframe src="https://view.officeapps.live.com/op/embed.aspx?src={{ urlencode(asset('storage/'.$media->file)) }}" allowfullscreen style="border: none;"></iframe></div><div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau Microsoft Office Viewer.</div>
+                                                        @elseif($media->jenis == 'video_upload') <div class="document-iframe-container ratio ratio-16x9 bg-black shadow-sm"><video controls class="w-100 h-100 rounded-3"><source src="{{ asset('storage/'.$media->file) }}"></video></div>
+                                                        @elseif($media->jenis == 'video_youtube')
+                                                            @php 
+                                                                $youtubeId = null;
+                                                                if ($media->video_url) {
+                                                                    preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match);
+                                                                    $youtubeId = $match[1] ?? null;
+                                                                }
+                                                            @endphp
+                                                            @if($youtubeId) <div class="document-iframe-container ratio ratio-16x9 shadow-sm"><iframe src="https://www.youtube.com/embed/{{ $youtubeId }}" allowfullscreen style="border: none;"></iframe></div>
+                                                            @else <div class="alert alert-warning font-inter"><i class="bi bi-exclamation-triangle me-2"></i> Link YouTube tidak valid.</div> @endif
+                                                        @endif
+                                                    </div>
+                                                    @endif
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
                                 @endif
                             </div>
                             @endforeach
@@ -915,7 +740,7 @@
                     <div class="topic-block">
                         <div class="topic-header">
                             <div class="topic-icon" style="background: rgba(20, 184, 166, 0.15); color: var(--color-teal);"><i class="bi bi-share-fill"></i></div>
-                            <h3 class="topic-title">Konektivitas Antarruang</h3>
+                            <h3 class="topic-title font-inter">Konektivitas Antarruang</h3>
                         </div>
                         <p>Bayangkan kamu sedang bermain <em>game</em> atau <em>puzzle</em>, kamu butuh kerja sama orang lain untuk menyelesaikannya. Begitu juga dengan sebuah daerah. Tidak ada satu pun desa atau wilayah di dunia ini yang bisa menghasilkan semua kebutuhannya sendiri.</p>
                         
@@ -943,7 +768,7 @@
                                 <button class="quiz-option shadow-sm mini-option py-2 font-inter" onclick="checkMiniQuiz('topic2', 1, 1, this)">Complementarity (Saling Melengkapi)</button>
                                 <button class="quiz-option shadow-sm mini-option py-2 font-inter" onclick="checkMiniQuiz('topic2', 2, 1, this)">Transferability (Kemudahan Pemindahan)</button>
                             </div>
-                            <div id="mini-result-topic2" class="mt-3 p-3 rounded-3 bg-light border border-light" style="display: none; font-size: 0.9rem;"></div>
+                            <div id="mini-result-topic2" class="mt-3 p-3 rounded-3 bg-light border border-light font-inter" style="display: none; font-size: 0.9rem;"></div>
                         </div>
 
                         @if($materiKoneksi->count() > 0)
@@ -959,66 +784,79 @@
                                 <div class="content-text text-dark prose fs-6">{!! $item->konten !!}</div>
                                 
                                 @if($item->mediaPendukung && $item->mediaPendukung->count() > 0)
-                                    <h6 class="fw-bold mb-3 mt-4 text-primary font-inter" style="font-size: 0.95rem;"><i class="bi bi-paperclip me-2"></i>Media Pendukung</h6>
-                                    @foreach($item->mediaPendukung as $media)
-                                        <div class="attachment-box p-3 mt-2">
-                                            <div class="d-flex w-100 justify-content-between align-items-center flex-wrap gap-2">
-                                                <div class="d-flex align-items-center gap-3">
-                                                    <div class="bg-white p-2 rounded-3 shadow-sm d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-                                                        @if($media->jenis == 'pdf') <i class="bi bi-file-earmark-pdf-fill fs-4 text-danger"></i>
-                                                        @elseif($media->jenis == 'word') <i class="bi bi-file-earmark-word-fill fs-4 text-primary"></i>
-                                                        @elseif($media->jenis == 'ppt') <i class="bi bi-file-earmark-slides-fill fs-4 text-warning"></i>
-                                                        @elseif($media->jenis == 'video_upload') <i class="bi bi-play-circle-fill fs-4 text-success"></i>
-                                                        @elseif($media->jenis == 'video_youtube') <i class="bi bi-youtube fs-4 text-danger"></i>
-                                                        @elseif($media->jenis == 'link') <i class="bi bi-link-45deg fs-4 text-info"></i>
-                                                        @else <i class="bi bi-file-earmark-fill fs-4 text-secondary"></i> @endif
-                                                    </div>
-                                                    <div><h6 class="mb-0 fw-bold font-inter" style="font-size: 0.9rem;">{{ $media->judul }}</h6></div>
-                                                </div>
-                                                <div class="d-flex gap-2">
-                                                    @if($media->jenis == 'link')
-                                                        <a href="{{ $media->external_link }}" target="_blank" class="btn btn-info btn-sm rounded-pill px-3 fw-bold font-inter" style="font-size: 0.8rem;">
-                                                            <i class="bi bi-box-arrow-up-right me-1"></i> Buka Link
-                                                        </a>
-                                                    @elseif($media->jenis == 'video_youtube')
-                                                        <button class="btn btn-danger btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
-                                                            <i class="bi bi-play-circle me-1"></i> Tonton Video
-                                                        </button>
-                                                    @else
-                                                        <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
-                                                            <i class="bi bi-eye me-1"></i> Lihat File
-                                                        </button>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <div id="preview{{ $media->id }}" class="collapse mt-3 w-100">
-                                                @if($media->jenis == 'pdf') <div class="document-iframe-container shadow-sm" style="height: 400px;"><iframe src="{{ asset('storage/'.$media->file) }}" width="100%" height="100%" style="border: none;" allowfullscreen></iframe></div>
-                                                @elseif($media->jenis == 'word') <div class="document-iframe-container ratio ratio-16x9 shadow-sm mb-2"><iframe src="https://docs.google.com/gview?url={{ urlencode(asset('storage/'.$media->file)) }}&embedded=true" allowfullscreen style="border: none;"></iframe></div>
-                                                    <div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau dokumen menggunakan Google Docs Viewer.</div>
-                                                @elseif($media->jenis == 'ppt') <div class="document-iframe-container ratio ratio-16x9 shadow-sm mb-2"><iframe src="https://view.officeapps.live.com/op/embed.aspx?src={{ urlencode(asset('storage/'.$media->file)) }}" allowfullscreen style="border: none;"></iframe></div>
-                                                    <div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau dokumen menggunakan Microsoft Office Viewer.</div>
-                                                @elseif($media->jenis == 'video_upload') <div class="document-iframe-container ratio ratio-16x9 bg-black shadow-sm"><video controls class="w-100 h-100 rounded-3"><source src="{{ asset('storage/'.$media->file) }}"></video></div>
-                                                @elseif($media->jenis == 'video_youtube')
-                                                    @php 
-                                                        $youtubeId = null;
-                                                        if ($media->video_url) {
-                                                            preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match);
-                                                            $youtubeId = $match[1] ?? null;
-                                                        }
-                                                    @endphp
-                                                    @if($youtubeId) <div class="document-iframe-container ratio ratio-16x9 shadow-sm"><iframe src="https://www.youtube.com/embed/{{ $youtubeId }}" allowfullscreen style="border: none;"></iframe></div>
-                                                    @else
-                                                        <div class="alert alert-warning font-inter">
-                                                            <i class="bi bi-exclamation-triangle me-2"></i> Link YouTube tidak valid.
-                                                            @if($media->external_link)
-                                                                <br><a href="{{ $media->external_link }}" target="_blank" class="text-decoration-none">Klik di sini untuk membuka link</a>
+                                    @php
+                                        $pdfCount = $item->mediaPendukung->where('jenis', 'pdf')->count();
+                                        $wordCount = $item->mediaPendukung->where('jenis', 'word')->count();
+                                        $pptCount = $item->mediaPendukung->where('jenis', 'ppt')->count();
+                                        $videoCount = $item->mediaPendukung->whereIn('jenis', ['video_upload', 'video_youtube'])->count();
+                                        $linkCount = $item->mediaPendukung->where('jenis', 'link')->count();
+                                    @endphp
+                                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 p-3 mt-4 rounded-3 border shadow-sm" style="background: linear-gradient(to right, #F8FAFC, #FFFFFF);">
+                                        <div class="d-flex flex-wrap gap-2 align-items-center">
+                                            <span class="badge bg-primary rounded-pill font-inter px-3 py-2"><i class="bi bi-paperclip me-1"></i> {{ $item->mediaPendukung->count() }} Lampiran</span>
+                                            @if($pdfCount > 0) <span class="badge bg-white text-danger border border-danger-subtle rounded-pill font-inter"><i class="bi bi-filetype-pdf"></i> PDF ({{ $pdfCount }})</span> @endif
+                                            @if($wordCount > 0) <span class="badge bg-white text-primary border border-primary-subtle rounded-pill font-inter"><i class="bi bi-filetype-doc"></i> Word ({{ $wordCount }})</span> @endif
+                                            @if($pptCount > 0) <span class="badge bg-white text-warning border border-warning-subtle rounded-pill font-inter"><i class="bi bi-filetype-ppt"></i> PPT ({{ $pptCount }})</span> @endif
+                                            @if($videoCount > 0) <span class="badge bg-white text-success border border-success-subtle rounded-pill font-inter"><i class="bi bi-play-btn"></i> Video ({{ $videoCount }})</span> @endif
+                                            @if($linkCount > 0) <span class="badge bg-white text-info border border-info-subtle rounded-pill font-inter"><i class="bi bi-link-45deg"></i> Link ({{ $linkCount }})</span> @endif
+                                        </div>
+                                        <button class="btn btn-outline-primary btn-sm rounded-pill fw-bold font-inter px-4 flex-shrink-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMedia{{ $item->id }}" aria-expanded="false">
+                                            Lihat Lampiran <i class="bi bi-chevron-down ms-1 transition-icon"></i>
+                                        </button>
+                                    </div>
+                                    <div class="collapse mt-3" id="collapseMedia{{ $item->id }}">
+                                        <div class="d-flex flex-column gap-3 p-3 border rounded-3 bg-white shadow-sm">
+                                            @foreach($item->mediaPendukung as $index => $media)
+                                                <div class="attachment-box m-0 border-0 bg-light rounded-3 shadow-sm p-3">
+                                                    <div class="d-flex w-100 justify-content-between align-items-center flex-wrap gap-3">
+                                                        <div class="d-flex align-items-center gap-3">
+                                                            <span class="fw-bold fs-5 text-brand opacity-50">{{ $loop->parent->iteration ?? 1 }}.{{ strtolower(chr(96 + $loop->iteration)) }}</span>
+                                                            <div class="bg-white p-2 rounded-3 shadow-sm d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;">
+                                                                @if($media->jenis == 'pdf') <i class="bi bi-file-earmark-pdf-fill fs-4 text-danger"></i>
+                                                                @elseif($media->jenis == 'word') <i class="bi bi-file-earmark-word-fill fs-4 text-primary"></i>
+                                                                @elseif($media->jenis == 'ppt') <i class="bi bi-file-earmark-slides-fill fs-4 text-warning"></i>
+                                                                @elseif($media->jenis == 'video_upload') <i class="bi bi-play-circle-fill fs-4 text-success"></i>
+                                                                @elseif($media->jenis == 'video_youtube') <i class="bi bi-youtube fs-4 text-danger"></i>
+                                                                @elseif($media->jenis == 'link') <i class="bi bi-link-45deg fs-4 text-info"></i>
+                                                                @else <i class="bi bi-file-earmark-fill fs-4 text-secondary"></i> @endif
+                                                            </div>
+                                                            <div>
+                                                                <h6 class="mb-0 fw-bold font-inter text-dark" style="font-size: 0.95rem;">{{ $media->judul }}</h6>
+                                                                <span class="badge bg-white text-secondary border mt-1 font-inter" style="font-size: 0.65rem;">
+                                                                    {{ $media->jenis == 'video_youtube' ? 'YouTube' : ($media->jenis == 'link' ? 'Link Eksternal' : strtoupper(str_replace('_', ' ', $media->jenis))) }}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex gap-2">
+                                                            @if($media->jenis == 'link') <a href="{{ $media->external_link }}" target="_blank" class="btn btn-info btn-sm rounded-pill px-3 fw-bold font-inter text-white" style="font-size: 0.8rem;"><i class="bi bi-box-arrow-up-right me-1"></i> Buka Link</a>
+                                                            @elseif($media->jenis == 'video_youtube') <button class="btn btn-danger btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;"><i class="bi bi-play-circle me-1"></i> Tonton Video</button>
+                                                            @else <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;"><i class="bi bi-eye me-1"></i> Buka File</button>
                                                             @endif
                                                         </div>
+                                                    </div>
+                                                    @if($media->jenis != 'link')
+                                                    <div id="preview{{ $media->id }}" class="collapse mt-3 w-100 border-top pt-3">
+                                                        @if($media->jenis == 'pdf') <div class="document-iframe-container shadow-sm" style="height: 400px;"><iframe src="{{ asset('storage/'.$media->file) }}" width="100%" height="100%" style="border: none;" allowfullscreen></iframe></div>
+                                                        @elseif($media->jenis == 'word') <div class="document-iframe-container ratio ratio-16x9 shadow-sm mb-2"><iframe src="https://docs.google.com/gview?url={{ urlencode(asset('storage/'.$media->file)) }}&embedded=true" allowfullscreen style="border: none;"></iframe></div><div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau Google Docs Viewer.</div>
+                                                        @elseif($media->jenis == 'ppt') <div class="document-iframe-container ratio ratio-16x9 shadow-sm mb-2"><iframe src="https://view.officeapps.live.com/op/embed.aspx?src={{ urlencode(asset('storage/'.$media->file)) }}" allowfullscreen style="border: none;"></iframe></div><div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau Microsoft Office Viewer.</div>
+                                                        @elseif($media->jenis == 'video_upload') <div class="document-iframe-container ratio ratio-16x9 bg-black shadow-sm"><video controls class="w-100 h-100 rounded-3"><source src="{{ asset('storage/'.$media->file) }}"></video></div>
+                                                        @elseif($media->jenis == 'video_youtube')
+                                                            @php 
+                                                                $youtubeId = null;
+                                                                if ($media->video_url) {
+                                                                    preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match);
+                                                                    $youtubeId = $match[1] ?? null;
+                                                                }
+                                                            @endphp
+                                                            @if($youtubeId) <div class="document-iframe-container ratio ratio-16x9 shadow-sm"><iframe src="https://www.youtube.com/embed/{{ $youtubeId }}" allowfullscreen style="border: none;"></iframe></div>
+                                                            @else <div class="alert alert-warning font-inter"><i class="bi bi-exclamation-triangle me-2"></i> Link YouTube tidak valid.</div> @endif
+                                                        @endif
+                                                    </div>
                                                     @endif
-                                                @endif
-                                            </div>
+                                                </div>
+                                            @endforeach
                                         </div>
-                                    @endforeach
+                                    </div>
                                 @endif
                             </div>
                             @endforeach
@@ -1032,14 +870,14 @@
                     <div class="topic-block">
                         <div class="topic-header">
                             <div class="topic-icon" style="background: rgba(239, 68, 68, 0.15); color: var(--color-red);"><i class="bi bi-cloud-lightning-rain-fill"></i></div>
-                            <h3 class="topic-title">Perubahan Iklim</h3>
+                            <h3 class="topic-title font-inter">Perubahan Iklim</h3>
                         </div>
                         <p>Akhir-akhir ini, apakah kamu merasa cuaca semakin sulit ditebak? Kadang panas terik luar biasa, lalu tiba-tiba turun hujan badai. Inilah yang disebut anomali cuaca akibat perubahan iklim global. Di wilayah yang memiliki banyak bukit dan lereng gunung aktif (seperti Gunung Marapi kita), cuaca esktrem ini menyimpan potensi bahaya besar.</p>
                         
                         <div class="accordion custom-accordion mb-4" id="accordionIklim">
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseIklim">
+                                    <button class="accordion-button collapsed font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#collapseIklim">
                                         <i class="bi bi-thermometer-sun me-2"></i> Dampak Hidrometeorologi (Iklim)
                                     </button>
                                 </h2>
@@ -1063,7 +901,7 @@
                                 <button class="quiz-option shadow-sm mini-option py-2 font-inter" onclick="checkMiniQuiz('topic3', 1, 1, this)">Galodo (Banjir Bandang)</button>
                                 <button class="quiz-option shadow-sm mini-option py-2 font-inter" onclick="checkMiniQuiz('topic3', 2, 1, this)">Likuifaksi</button>
                             </div>
-                            <div id="mini-result-topic3" class="mt-3 p-3 rounded-3 bg-light border border-light" style="display: none; font-size: 0.9rem;"></div>
+                            <div id="mini-result-topic3" class="mt-3 p-3 rounded-3 bg-light border border-light font-inter" style="display: none; font-size: 0.9rem;"></div>
                         </div>
 
                         @if($materiIklim->count() > 0)
@@ -1079,66 +917,79 @@
                                 <div class="content-text text-dark prose fs-6">{!! $item->konten !!}</div>
                                 
                                 @if($item->mediaPendukung && $item->mediaPendukung->count() > 0)
-                                    <h6 class="fw-bold mb-3 mt-4 text-primary font-inter" style="font-size: 0.95rem;"><i class="bi bi-paperclip me-2"></i>Media Pendukung</h6>
-                                    @foreach($item->mediaPendukung as $media)
-                                        <div class="attachment-box p-3 mt-2">
-                                            <div class="d-flex w-100 justify-content-between align-items-center flex-wrap gap-2">
-                                                <div class="d-flex align-items-center gap-3">
-                                                    <div class="bg-white p-2 rounded-3 shadow-sm d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-                                                        @if($media->jenis == 'pdf') <i class="bi bi-file-earmark-pdf-fill fs-4 text-danger"></i>
-                                                        @elseif($media->jenis == 'word') <i class="bi bi-file-earmark-word-fill fs-4 text-primary"></i>
-                                                        @elseif($media->jenis == 'ppt') <i class="bi bi-file-earmark-slides-fill fs-4 text-warning"></i>
-                                                        @elseif($media->jenis == 'video_upload') <i class="bi bi-play-circle-fill fs-4 text-success"></i>
-                                                        @elseif($media->jenis == 'video_youtube') <i class="bi bi-youtube fs-4 text-danger"></i>
-                                                        @elseif($media->jenis == 'link') <i class="bi bi-link-45deg fs-4 text-info"></i>
-                                                        @else <i class="bi bi-file-earmark-fill fs-4 text-secondary"></i> @endif
-                                                    </div>
-                                                    <div><h6 class="mb-0 fw-bold font-inter" style="font-size: 0.9rem;">{{ $media->judul }}</h6></div>
-                                                </div>
-                                                <div class="d-flex gap-2">
-                                                    @if($media->jenis == 'link')
-                                                        <a href="{{ $media->external_link }}" target="_blank" class="btn btn-info btn-sm rounded-pill px-3 fw-bold font-inter" style="font-size: 0.8rem;">
-                                                            <i class="bi bi-box-arrow-up-right me-1"></i> Buka Link
-                                                        </a>
-                                                    @elseif($media->jenis == 'video_youtube')
-                                                        <button class="btn btn-danger btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
-                                                            <i class="bi bi-play-circle me-1"></i> Tonton Video
-                                                        </button>
-                                                    @else
-                                                        <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
-                                                            <i class="bi bi-eye me-1"></i> Lihat File
-                                                        </button>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <div id="preview{{ $media->id }}" class="collapse mt-3 w-100">
-                                                @if($media->jenis == 'pdf') <div class="document-iframe-container shadow-sm" style="height: 400px;"><iframe src="{{ asset('storage/'.$media->file) }}" width="100%" height="100%" style="border: none;" allowfullscreen></iframe></div>
-                                                @elseif($media->jenis == 'word') <div class="document-iframe-container ratio ratio-16x9 shadow-sm mb-2"><iframe src="https://docs.google.com/gview?url={{ urlencode(asset('storage/'.$media->file)) }}&embedded=true" allowfullscreen style="border: none;"></iframe></div>
-                                                    <div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau dokumen menggunakan Google Docs Viewer.</div>
-                                                @elseif($media->jenis == 'ppt') <div class="document-iframe-container ratio ratio-16x9 shadow-sm mb-2"><iframe src="https://view.officeapps.live.com/op/embed.aspx?src={{ urlencode(asset('storage/'.$media->file)) }}" allowfullscreen style="border: none;"></iframe></div>
-                                                    <div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau dokumen menggunakan Microsoft Office Viewer.</div>
-                                                @elseif($media->jenis == 'video_upload') <div class="document-iframe-container ratio ratio-16x9 bg-black shadow-sm"><video controls class="w-100 h-100 rounded-3"><source src="{{ asset('storage/'.$media->file) }}"></video></div>
-                                                @elseif($media->jenis == 'video_youtube')
-                                                    @php 
-                                                        $youtubeId = null;
-                                                        if ($media->video_url) {
-                                                            preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match);
-                                                            $youtubeId = $match[1] ?? null;
-                                                        }
-                                                    @endphp
-                                                    @if($youtubeId) <div class="document-iframe-container ratio ratio-16x9 shadow-sm"><iframe src="https://www.youtube.com/embed/{{ $youtubeId }}" allowfullscreen style="border: none;"></iframe></div>
-                                                    @else
-                                                        <div class="alert alert-warning font-inter">
-                                                            <i class="bi bi-exclamation-triangle me-2"></i> Link YouTube tidak valid.
-                                                            @if($media->external_link)
-                                                                <br><a href="{{ $media->external_link }}" target="_blank" class="text-decoration-none">Klik di sini untuk membuka link</a>
+                                    @php
+                                        $pdfCount = $item->mediaPendukung->where('jenis', 'pdf')->count();
+                                        $wordCount = $item->mediaPendukung->where('jenis', 'word')->count();
+                                        $pptCount = $item->mediaPendukung->where('jenis', 'ppt')->count();
+                                        $videoCount = $item->mediaPendukung->whereIn('jenis', ['video_upload', 'video_youtube'])->count();
+                                        $linkCount = $item->mediaPendukung->where('jenis', 'link')->count();
+                                    @endphp
+                                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 p-3 mt-4 rounded-3 border shadow-sm" style="background: linear-gradient(to right, #F8FAFC, #FFFFFF);">
+                                        <div class="d-flex flex-wrap gap-2 align-items-center">
+                                            <span class="badge bg-primary rounded-pill font-inter px-3 py-2"><i class="bi bi-paperclip me-1"></i> {{ $item->mediaPendukung->count() }} Lampiran</span>
+                                            @if($pdfCount > 0) <span class="badge bg-white text-danger border border-danger-subtle rounded-pill font-inter"><i class="bi bi-filetype-pdf"></i> PDF ({{ $pdfCount }})</span> @endif
+                                            @if($wordCount > 0) <span class="badge bg-white text-primary border border-primary-subtle rounded-pill font-inter"><i class="bi bi-filetype-doc"></i> Word ({{ $wordCount }})</span> @endif
+                                            @if($pptCount > 0) <span class="badge bg-white text-warning border border-warning-subtle rounded-pill font-inter"><i class="bi bi-filetype-ppt"></i> PPT ({{ $pptCount }})</span> @endif
+                                            @if($videoCount > 0) <span class="badge bg-white text-success border border-success-subtle rounded-pill font-inter"><i class="bi bi-play-btn"></i> Video ({{ $videoCount }})</span> @endif
+                                            @if($linkCount > 0) <span class="badge bg-white text-info border border-info-subtle rounded-pill font-inter"><i class="bi bi-link-45deg"></i> Link ({{ $linkCount }})</span> @endif
+                                        </div>
+                                        <button class="btn btn-outline-primary btn-sm rounded-pill fw-bold font-inter px-4 flex-shrink-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMedia{{ $item->id }}" aria-expanded="false">
+                                            Lihat Lampiran <i class="bi bi-chevron-down ms-1 transition-icon"></i>
+                                        </button>
+                                    </div>
+                                    <div class="collapse mt-3" id="collapseMedia{{ $item->id }}">
+                                        <div class="d-flex flex-column gap-3 p-3 border rounded-3 bg-white shadow-sm">
+                                            @foreach($item->mediaPendukung as $index => $media)
+                                                <div class="attachment-box m-0 border-0 bg-light rounded-3 shadow-sm p-3">
+                                                    <div class="d-flex w-100 justify-content-between align-items-center flex-wrap gap-3">
+                                                        <div class="d-flex align-items-center gap-3">
+                                                            <span class="fw-bold fs-5 text-brand opacity-50">{{ $loop->parent->iteration ?? 1 }}.{{ strtolower(chr(96 + $loop->iteration)) }}</span>
+                                                            <div class="bg-white p-2 rounded-3 shadow-sm d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;">
+                                                                @if($media->jenis == 'pdf') <i class="bi bi-file-earmark-pdf-fill fs-4 text-danger"></i>
+                                                                @elseif($media->jenis == 'word') <i class="bi bi-file-earmark-word-fill fs-4 text-primary"></i>
+                                                                @elseif($media->jenis == 'ppt') <i class="bi bi-file-earmark-slides-fill fs-4 text-warning"></i>
+                                                                @elseif($media->jenis == 'video_upload') <i class="bi bi-play-circle-fill fs-4 text-success"></i>
+                                                                @elseif($media->jenis == 'video_youtube') <i class="bi bi-youtube fs-4 text-danger"></i>
+                                                                @elseif($media->jenis == 'link') <i class="bi bi-link-45deg fs-4 text-info"></i>
+                                                                @else <i class="bi bi-file-earmark-fill fs-4 text-secondary"></i> @endif
+                                                            </div>
+                                                            <div>
+                                                                <h6 class="mb-0 fw-bold font-inter text-dark" style="font-size: 0.95rem;">{{ $media->judul }}</h6>
+                                                                <span class="badge bg-white text-secondary border mt-1 font-inter" style="font-size: 0.65rem;">
+                                                                    {{ $media->jenis == 'video_youtube' ? 'YouTube' : ($media->jenis == 'link' ? 'Link Eksternal' : strtoupper(str_replace('_', ' ', $media->jenis))) }}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex gap-2">
+                                                            @if($media->jenis == 'link') <a href="{{ $media->external_link }}" target="_blank" class="btn btn-info btn-sm rounded-pill px-3 fw-bold font-inter text-white" style="font-size: 0.8rem;"><i class="bi bi-box-arrow-up-right me-1"></i> Buka Link</a>
+                                                            @elseif($media->jenis == 'video_youtube') <button class="btn btn-danger btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;"><i class="bi bi-play-circle me-1"></i> Tonton Video</button>
+                                                            @else <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;"><i class="bi bi-eye me-1"></i> Buka File</button>
                                                             @endif
                                                         </div>
+                                                    </div>
+                                                    @if($media->jenis != 'link')
+                                                    <div id="preview{{ $media->id }}" class="collapse mt-3 w-100 border-top pt-3">
+                                                        @if($media->jenis == 'pdf') <div class="document-iframe-container shadow-sm" style="height: 400px;"><iframe src="{{ asset('storage/'.$media->file) }}" width="100%" height="100%" style="border: none;" allowfullscreen></iframe></div>
+                                                        @elseif($media->jenis == 'word') <div class="document-iframe-container ratio ratio-16x9 shadow-sm mb-2"><iframe src="https://docs.google.com/gview?url={{ urlencode(asset('storage/'.$media->file)) }}&embedded=true" allowfullscreen style="border: none;"></iframe></div><div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau Google Docs Viewer.</div>
+                                                        @elseif($media->jenis == 'ppt') <div class="document-iframe-container ratio ratio-16x9 shadow-sm mb-2"><iframe src="https://view.officeapps.live.com/op/embed.aspx?src={{ urlencode(asset('storage/'.$media->file)) }}" allowfullscreen style="border: none;"></iframe></div><div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau Microsoft Office Viewer.</div>
+                                                        @elseif($media->jenis == 'video_upload') <div class="document-iframe-container ratio ratio-16x9 bg-black shadow-sm"><video controls class="w-100 h-100 rounded-3"><source src="{{ asset('storage/'.$media->file) }}"></video></div>
+                                                        @elseif($media->jenis == 'video_youtube')
+                                                            @php 
+                                                                $youtubeId = null;
+                                                                if ($media->video_url) {
+                                                                    preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match);
+                                                                    $youtubeId = $match[1] ?? null;
+                                                                }
+                                                            @endphp
+                                                            @if($youtubeId) <div class="document-iframe-container ratio ratio-16x9 shadow-sm"><iframe src="https://www.youtube.com/embed/{{ $youtubeId }}" allowfullscreen style="border: none;"></iframe></div>
+                                                            @else <div class="alert alert-warning font-inter"><i class="bi bi-exclamation-triangle me-2"></i> Link YouTube tidak valid.</div> @endif
+                                                        @endif
+                                                    </div>
                                                     @endif
-                                                @endif
-                                            </div>
+                                                </div>
+                                            @endforeach
                                         </div>
-                                    @endforeach
+                                    </div>
                                 @endif
                             </div>
                             @endforeach
@@ -1152,7 +1003,7 @@
                     <div class="topic-block">
                         <div class="topic-header">
                             <div class="topic-icon" style="background: rgba(16, 185, 129, 0.15); color: var(--color-green);"><i class="bi bi-tsunami"></i></div>
-                            <h3 class="topic-title">Bencana Alam (Geologis)</h3>
+                            <h3 class="topic-title font-inter">Bencana Alam (Geologis)</h3>
                         </div>
                         <p>Selain ancaman cuaca, tanah tempat kita berpijak juga menyimpan kejutan. Berdasarkan geologi (ilmu tentang bebatuan bumi), daratan pulau Sumatera ini berdiri tepat di atas zona patahan layaknya retakan pada kaca.</p>
                         
@@ -1161,7 +1012,7 @@
                         <div class="accordion custom-accordion mb-4" id="accordionBencanaAlam">
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGeologi">
+                                    <button class="accordion-button collapsed font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGeologi">
                                         <i class="bi bi-activity me-2"></i> Mengenal Sesar Semangko & Megathrust
                                     </button>
                                 </h2>
@@ -1185,7 +1036,7 @@
                                 <button class="quiz-option shadow-sm mini-option py-2 font-inter" onclick="checkMiniQuiz('topic4', 1, 1, this)">Geologis (Tektonik)</button>
                                 <button class="quiz-option shadow-sm mini-option py-2 font-inter" onclick="checkMiniQuiz('topic4', 2, 1, this)">Klimatologis</button>
                             </div>
-                            <div id="mini-result-topic4" class="mt-3 p-3 rounded-3 bg-light border border-light" style="display: none; font-size: 0.9rem;"></div>
+                            <div id="mini-result-topic4" class="mt-3 p-3 rounded-3 bg-light border border-light font-inter" style="display: none; font-size: 0.9rem;"></div>
                         </div>
 
                         @if($materiBencana->count() > 0)
@@ -1201,66 +1052,79 @@
                                 <div class="content-text text-dark prose fs-6">{!! $item->konten !!}</div>
                                 
                                 @if($item->mediaPendukung && $item->mediaPendukung->count() > 0)
-                                    <h6 class="fw-bold mb-3 mt-4 text-primary font-inter" style="font-size: 0.95rem;"><i class="bi bi-paperclip me-2"></i>Media Pendukung</h6>
-                                    @foreach($item->mediaPendukung as $media)
-                                        <div class="attachment-box p-3 mt-2">
-                                            <div class="d-flex w-100 justify-content-between align-items-center flex-wrap gap-2">
-                                                <div class="d-flex align-items-center gap-3">
-                                                    <div class="bg-white p-2 rounded-3 shadow-sm d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-                                                        @if($media->jenis == 'pdf') <i class="bi bi-file-earmark-pdf-fill fs-4 text-danger"></i>
-                                                        @elseif($media->jenis == 'word') <i class="bi bi-file-earmark-word-fill fs-4 text-primary"></i>
-                                                        @elseif($media->jenis == 'ppt') <i class="bi bi-file-earmark-slides-fill fs-4 text-warning"></i>
-                                                        @elseif($media->jenis == 'video_upload') <i class="bi bi-play-circle-fill fs-4 text-success"></i>
-                                                        @elseif($media->jenis == 'video_youtube') <i class="bi bi-youtube fs-4 text-danger"></i>
-                                                        @elseif($media->jenis == 'link') <i class="bi bi-link-45deg fs-4 text-info"></i>
-                                                        @else <i class="bi bi-file-earmark-fill fs-4 text-secondary"></i> @endif
-                                                    </div>
-                                                    <div><h6 class="mb-0 fw-bold font-inter" style="font-size: 0.9rem;">{{ $media->judul }}</h6></div>
-                                                </div>
-                                                <div class="d-flex gap-2">
-                                                    @if($media->jenis == 'link')
-                                                        <a href="{{ $media->external_link }}" target="_blank" class="btn btn-info btn-sm rounded-pill px-3 fw-bold font-inter" style="font-size: 0.8rem;">
-                                                            <i class="bi bi-box-arrow-up-right me-1"></i> Buka Link
-                                                        </a>
-                                                    @elseif($media->jenis == 'video_youtube')
-                                                        <button class="btn btn-danger btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
-                                                            <i class="bi bi-play-circle me-1"></i> Tonton Video
-                                                        </button>
-                                                    @else
-                                                        <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
-                                                            <i class="bi bi-eye me-1"></i> Lihat File
-                                                        </button>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <div id="preview{{ $media->id }}" class="collapse mt-3 w-100">
-                                                @if($media->jenis == 'pdf') <div class="document-iframe-container shadow-sm" style="height: 400px;"><iframe src="{{ asset('storage/'.$media->file) }}" width="100%" height="100%" style="border: none;" allowfullscreen></iframe></div>
-                                                @elseif($media->jenis == 'word') <div class="document-iframe-container ratio ratio-16x9 shadow-sm mb-2"><iframe src="https://docs.google.com/gview?url={{ urlencode(asset('storage/'.$media->file)) }}&embedded=true" allowfullscreen style="border: none;"></iframe></div>
-                                                    <div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau dokumen menggunakan Google Docs Viewer.</div>
-                                                @elseif($media->jenis == 'ppt') <div class="document-iframe-container ratio ratio-16x9 shadow-sm mb-2"><iframe src="https://view.officeapps.live.com/op/embed.aspx?src={{ urlencode(asset('storage/'.$media->file)) }}" allowfullscreen style="border: none;"></iframe></div>
-                                                    <div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau dokumen menggunakan Microsoft Office Viewer.</div>
-                                                @elseif($media->jenis == 'video_upload') <div class="document-iframe-container ratio ratio-16x9 bg-black shadow-sm"><video controls class="w-100 h-100 rounded-3"><source src="{{ asset('storage/'.$media->file) }}"></video></div>
-                                                @elseif($media->jenis == 'video_youtube')
-                                                    @php 
-                                                        $youtubeId = null;
-                                                        if ($media->video_url) {
-                                                            preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match);
-                                                            $youtubeId = $match[1] ?? null;
-                                                        }
-                                                    @endphp
-                                                    @if($youtubeId) <div class="document-iframe-container ratio ratio-16x9 shadow-sm"><iframe src="https://www.youtube.com/embed/{{ $youtubeId }}" allowfullscreen style="border: none;"></iframe></div>
-                                                    @else
-                                                        <div class="alert alert-warning font-inter">
-                                                            <i class="bi bi-exclamation-triangle me-2"></i> Link YouTube tidak valid.
-                                                            @if($media->external_link)
-                                                                <br><a href="{{ $media->external_link }}" target="_blank" class="text-decoration-none">Klik di sini untuk membuka link</a>
+                                    @php
+                                        $pdfCount = $item->mediaPendukung->where('jenis', 'pdf')->count();
+                                        $wordCount = $item->mediaPendukung->where('jenis', 'word')->count();
+                                        $pptCount = $item->mediaPendukung->where('jenis', 'ppt')->count();
+                                        $videoCount = $item->mediaPendukung->whereIn('jenis', ['video_upload', 'video_youtube'])->count();
+                                        $linkCount = $item->mediaPendukung->where('jenis', 'link')->count();
+                                    @endphp
+                                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 p-3 mt-4 rounded-3 border shadow-sm" style="background: linear-gradient(to right, #F8FAFC, #FFFFFF);">
+                                        <div class="d-flex flex-wrap gap-2 align-items-center">
+                                            <span class="badge bg-primary rounded-pill font-inter px-3 py-2"><i class="bi bi-paperclip me-1"></i> {{ $item->mediaPendukung->count() }} Lampiran</span>
+                                            @if($pdfCount > 0) <span class="badge bg-white text-danger border border-danger-subtle rounded-pill font-inter"><i class="bi bi-filetype-pdf"></i> PDF ({{ $pdfCount }})</span> @endif
+                                            @if($wordCount > 0) <span class="badge bg-white text-primary border border-primary-subtle rounded-pill font-inter"><i class="bi bi-filetype-doc"></i> Word ({{ $wordCount }})</span> @endif
+                                            @if($pptCount > 0) <span class="badge bg-white text-warning border border-warning-subtle rounded-pill font-inter"><i class="bi bi-filetype-ppt"></i> PPT ({{ $pptCount }})</span> @endif
+                                            @if($videoCount > 0) <span class="badge bg-white text-success border border-success-subtle rounded-pill font-inter"><i class="bi bi-play-btn"></i> Video ({{ $videoCount }})</span> @endif
+                                            @if($linkCount > 0) <span class="badge bg-white text-info border border-info-subtle rounded-pill font-inter"><i class="bi bi-link-45deg"></i> Link ({{ $linkCount }})</span> @endif
+                                        </div>
+                                        <button class="btn btn-outline-primary btn-sm rounded-pill fw-bold font-inter px-4 flex-shrink-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMedia{{ $item->id }}" aria-expanded="false">
+                                            Lihat Lampiran <i class="bi bi-chevron-down ms-1 transition-icon"></i>
+                                        </button>
+                                    </div>
+                                    <div class="collapse mt-3" id="collapseMedia{{ $item->id }}">
+                                        <div class="d-flex flex-column gap-3 p-3 border rounded-3 bg-white shadow-sm">
+                                            @foreach($item->mediaPendukung as $index => $media)
+                                                <div class="attachment-box m-0 border-0 bg-light rounded-3 shadow-sm p-3">
+                                                    <div class="d-flex w-100 justify-content-between align-items-center flex-wrap gap-3">
+                                                        <div class="d-flex align-items-center gap-3">
+                                                            <span class="fw-bold fs-5 text-brand opacity-50">{{ $loop->parent->iteration ?? 1 }}.{{ strtolower(chr(96 + $loop->iteration)) }}</span>
+                                                            <div class="bg-white p-2 rounded-3 shadow-sm d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;">
+                                                                @if($media->jenis == 'pdf') <i class="bi bi-file-earmark-pdf-fill fs-4 text-danger"></i>
+                                                                @elseif($media->jenis == 'word') <i class="bi bi-file-earmark-word-fill fs-4 text-primary"></i>
+                                                                @elseif($media->jenis == 'ppt') <i class="bi bi-file-earmark-slides-fill fs-4 text-warning"></i>
+                                                                @elseif($media->jenis == 'video_upload') <i class="bi bi-play-circle-fill fs-4 text-success"></i>
+                                                                @elseif($media->jenis == 'video_youtube') <i class="bi bi-youtube fs-4 text-danger"></i>
+                                                                @elseif($media->jenis == 'link') <i class="bi bi-link-45deg fs-4 text-info"></i>
+                                                                @else <i class="bi bi-file-earmark-fill fs-4 text-secondary"></i> @endif
+                                                            </div>
+                                                            <div>
+                                                                <h6 class="mb-0 fw-bold font-inter text-dark" style="font-size: 0.95rem;">{{ $media->judul }}</h6>
+                                                                <span class="badge bg-white text-secondary border mt-1 font-inter" style="font-size: 0.65rem;">
+                                                                    {{ $media->jenis == 'video_youtube' ? 'YouTube' : ($media->jenis == 'link' ? 'Link Eksternal' : strtoupper(str_replace('_', ' ', $media->jenis))) }}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex gap-2">
+                                                            @if($media->jenis == 'link') <a href="{{ $media->external_link }}" target="_blank" class="btn btn-info btn-sm rounded-pill px-3 fw-bold font-inter text-white" style="font-size: 0.8rem;"><i class="bi bi-box-arrow-up-right me-1"></i> Buka Link</a>
+                                                            @elseif($media->jenis == 'video_youtube') <button class="btn btn-danger btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;"><i class="bi bi-play-circle me-1"></i> Tonton Video</button>
+                                                            @else <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;"><i class="bi bi-eye me-1"></i> Buka File</button>
                                                             @endif
                                                         </div>
+                                                    </div>
+                                                    @if($media->jenis != 'link')
+                                                    <div id="preview{{ $media->id }}" class="collapse mt-3 w-100 border-top pt-3">
+                                                        @if($media->jenis == 'pdf') <div class="document-iframe-container shadow-sm" style="height: 400px;"><iframe src="{{ asset('storage/'.$media->file) }}" width="100%" height="100%" style="border: none;" allowfullscreen></iframe></div>
+                                                        @elseif($media->jenis == 'word') <div class="document-iframe-container ratio ratio-16x9 shadow-sm mb-2"><iframe src="https://docs.google.com/gview?url={{ urlencode(asset('storage/'.$media->file)) }}&embedded=true" allowfullscreen style="border: none;"></iframe></div><div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau Google Docs Viewer.</div>
+                                                        @elseif($media->jenis == 'ppt') <div class="document-iframe-container ratio ratio-16x9 shadow-sm mb-2"><iframe src="https://view.officeapps.live.com/op/embed.aspx?src={{ urlencode(asset('storage/'.$media->file)) }}" allowfullscreen style="border: none;"></iframe></div><div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau Microsoft Office Viewer.</div>
+                                                        @elseif($media->jenis == 'video_upload') <div class="document-iframe-container ratio ratio-16x9 bg-black shadow-sm"><video controls class="w-100 h-100 rounded-3"><source src="{{ asset('storage/'.$media->file) }}"></video></div>
+                                                        @elseif($media->jenis == 'video_youtube')
+                                                            @php 
+                                                                $youtubeId = null;
+                                                                if ($media->video_url) {
+                                                                    preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match);
+                                                                    $youtubeId = $match[1] ?? null;
+                                                                }
+                                                            @endphp
+                                                            @if($youtubeId) <div class="document-iframe-container ratio ratio-16x9 shadow-sm"><iframe src="https://www.youtube.com/embed/{{ $youtubeId }}" allowfullscreen style="border: none;"></iframe></div>
+                                                            @else <div class="alert alert-warning font-inter"><i class="bi bi-exclamation-triangle me-2"></i> Link YouTube tidak valid.</div> @endif
+                                                        @endif
+                                                    </div>
                                                     @endif
-                                                @endif
-                                            </div>
+                                                </div>
+                                            @endforeach
                                         </div>
-                                    @endforeach
+                                    </div>
                                 @endif
                             </div>
                             @endforeach
@@ -1274,7 +1138,7 @@
                     <div class="topic-block">
                         <div class="topic-header">
                             <div class="topic-icon" style="background: rgba(245, 158, 11, 0.15); color: var(--color-accent);"><i class="bi bi-cash-coin"></i></div>
-                            <h3 class="topic-title">Kegiatan Ekonomi: Tradisi Marantau</h3>
+                            <h3 class="topic-title font-inter">Kegiatan Ekonomi: Tradisi Marantau</h3>
                         </div>
                         <p>Setiap daerah punya cara unik untuk mencari uang. Di daerah kita, ada adat yang mengatur bahwa laki-laki (pemuda) tidak diutamakan untuk mewarisi harta pusaka kaumnya seperti tanah, sawah, atau Rumah Gadang. Warisan tersebut diberikan kepada kaum perempuan.</p>
                         
@@ -1301,7 +1165,7 @@
                                 <button class="quiz-option shadow-sm mini-option py-2 font-inter" onclick="checkMiniQuiz('topic5', 1, 1, this)">Marantau</button>
                                 <button class="quiz-option shadow-sm mini-option py-2 font-inter" onclick="checkMiniQuiz('topic5', 2, 1, this)">Batagak Pangulu</button>
                             </div>
-                            <div id="mini-result-topic5" class="mt-3 p-3 rounded-3 bg-light border border-light" style="display: none; font-size: 0.9rem;"></div>
+                            <div id="mini-result-topic5" class="mt-3 p-3 rounded-3 bg-light border border-light font-inter" style="display: none; font-size: 0.9rem;"></div>
                         </div>
 
                         @if($materiEkonomi->count() > 0)
@@ -1317,66 +1181,79 @@
                                 <div class="content-text text-dark prose fs-6">{!! $item->konten !!}</div>
                                 
                                 @if($item->mediaPendukung && $item->mediaPendukung->count() > 0)
-                                    <h6 class="fw-bold mb-3 mt-4 text-primary font-inter" style="font-size: 0.95rem;"><i class="bi bi-paperclip me-2"></i>Media Pendukung</h6>
-                                    @foreach($item->mediaPendukung as $media)
-                                        <div class="attachment-box p-3 mt-2">
-                                            <div class="d-flex w-100 justify-content-between align-items-center flex-wrap gap-2">
-                                                <div class="d-flex align-items-center gap-3">
-                                                    <div class="bg-white p-2 rounded-3 shadow-sm d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-                                                        @if($media->jenis == 'pdf') <i class="bi bi-file-earmark-pdf-fill fs-4 text-danger"></i>
-                                                        @elseif($media->jenis == 'word') <i class="bi bi-file-earmark-word-fill fs-4 text-primary"></i>
-                                                        @elseif($media->jenis == 'ppt') <i class="bi bi-file-earmark-slides-fill fs-4 text-warning"></i>
-                                                        @elseif($media->jenis == 'video_upload') <i class="bi bi-play-circle-fill fs-4 text-success"></i>
-                                                        @elseif($media->jenis == 'video_youtube') <i class="bi bi-youtube fs-4 text-danger"></i>
-                                                        @elseif($media->jenis == 'link') <i class="bi bi-link-45deg fs-4 text-info"></i>
-                                                        @else <i class="bi bi-file-earmark-fill fs-4 text-secondary"></i> @endif
-                                                    </div>
-                                                    <div><h6 class="mb-0 fw-bold font-inter" style="font-size: 0.9rem;">{{ $media->judul }}</h6></div>
-                                                </div>
-                                                <div class="d-flex gap-2">
-                                                    @if($media->jenis == 'link')
-                                                        <a href="{{ $media->external_link }}" target="_blank" class="btn btn-info btn-sm rounded-pill px-3 fw-bold font-inter" style="font-size: 0.8rem;">
-                                                            <i class="bi bi-box-arrow-up-right me-1"></i> Buka Link
-                                                        </a>
-                                                    @elseif($media->jenis == 'video_youtube')
-                                                        <button class="btn btn-danger btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
-                                                            <i class="bi bi-play-circle me-1"></i> Tonton Video
-                                                        </button>
-                                                    @else
-                                                        <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
-                                                            <i class="bi bi-eye me-1"></i> Lihat File
-                                                        </button>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <div id="preview{{ $media->id }}" class="collapse mt-3 w-100">
-                                                @if($media->jenis == 'pdf') <div class="document-iframe-container shadow-sm" style="height: 400px;"><iframe src="{{ asset('storage/'.$media->file) }}" width="100%" height="100%" style="border: none;" allowfullscreen></iframe></div>
-                                                @elseif($media->jenis == 'word') <div class="document-iframe-container ratio ratio-16x9 shadow-sm mb-2"><iframe src="https://docs.google.com/gview?url={{ urlencode(asset('storage/'.$media->file)) }}&embedded=true" allowfullscreen style="border: none;"></iframe></div>
-                                                    <div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau dokumen menggunakan Google Docs Viewer.</div>
-                                                @elseif($media->jenis == 'ppt') <div class="document-iframe-container ratio ratio-16x9 shadow-sm mb-2"><iframe src="https://view.officeapps.live.com/op/embed.aspx?src={{ urlencode(asset('storage/'.$media->file)) }}" allowfullscreen style="border: none;"></iframe></div>
-                                                    <div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau dokumen menggunakan Microsoft Office Viewer.</div>
-                                                @elseif($media->jenis == 'video_upload') <div class="document-iframe-container ratio ratio-16x9 bg-black shadow-sm"><video controls class="w-100 h-100 rounded-3"><source src="{{ asset('storage/'.$media->file) }}"></video></div>
-                                                @elseif($media->jenis == 'video_youtube')
-                                                    @php 
-                                                        $youtubeId = null;
-                                                        if ($media->video_url) {
-                                                            preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match);
-                                                            $youtubeId = $match[1] ?? null;
-                                                        }
-                                                    @endphp
-                                                    @if($youtubeId) <div class="document-iframe-container ratio ratio-16x9 shadow-sm"><iframe src="https://www.youtube.com/embed/{{ $youtubeId }}" allowfullscreen style="border: none;"></iframe></div>
-                                                    @else
-                                                        <div class="alert alert-warning font-inter">
-                                                            <i class="bi bi-exclamation-triangle me-2"></i> Link YouTube tidak valid.
-                                                            @if($media->external_link)
-                                                                <br><a href="{{ $media->external_link }}" target="_blank" class="text-decoration-none">Klik di sini untuk membuka link</a>
+                                    @php
+                                        $pdfCount = $item->mediaPendukung->where('jenis', 'pdf')->count();
+                                        $wordCount = $item->mediaPendukung->where('jenis', 'word')->count();
+                                        $pptCount = $item->mediaPendukung->where('jenis', 'ppt')->count();
+                                        $videoCount = $item->mediaPendukung->whereIn('jenis', ['video_upload', 'video_youtube'])->count();
+                                        $linkCount = $item->mediaPendukung->where('jenis', 'link')->count();
+                                    @endphp
+                                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 p-3 mt-4 rounded-3 border shadow-sm" style="background: linear-gradient(to right, #F8FAFC, #FFFFFF);">
+                                        <div class="d-flex flex-wrap gap-2 align-items-center">
+                                            <span class="badge bg-primary rounded-pill font-inter px-3 py-2"><i class="bi bi-paperclip me-1"></i> {{ $item->mediaPendukung->count() }} Lampiran</span>
+                                            @if($pdfCount > 0) <span class="badge bg-white text-danger border border-danger-subtle rounded-pill font-inter"><i class="bi bi-filetype-pdf"></i> PDF ({{ $pdfCount }})</span> @endif
+                                            @if($wordCount > 0) <span class="badge bg-white text-primary border border-primary-subtle rounded-pill font-inter"><i class="bi bi-filetype-doc"></i> Word ({{ $wordCount }})</span> @endif
+                                            @if($pptCount > 0) <span class="badge bg-white text-warning border border-warning-subtle rounded-pill font-inter"><i class="bi bi-filetype-ppt"></i> PPT ({{ $pptCount }})</span> @endif
+                                            @if($videoCount > 0) <span class="badge bg-white text-success border border-success-subtle rounded-pill font-inter"><i class="bi bi-play-btn"></i> Video ({{ $videoCount }})</span> @endif
+                                            @if($linkCount > 0) <span class="badge bg-white text-info border border-info-subtle rounded-pill font-inter"><i class="bi bi-link-45deg"></i> Link ({{ $linkCount }})</span> @endif
+                                        </div>
+                                        <button class="btn btn-outline-primary btn-sm rounded-pill fw-bold font-inter px-4 flex-shrink-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMedia{{ $item->id }}" aria-expanded="false">
+                                            Lihat Lampiran <i class="bi bi-chevron-down ms-1 transition-icon"></i>
+                                        </button>
+                                    </div>
+                                    <div class="collapse mt-3" id="collapseMedia{{ $item->id }}">
+                                        <div class="d-flex flex-column gap-3 p-3 border rounded-3 bg-white shadow-sm">
+                                            @foreach($item->mediaPendukung as $index => $media)
+                                                <div class="attachment-box m-0 border-0 bg-light rounded-3 shadow-sm p-3">
+                                                    <div class="d-flex w-100 justify-content-between align-items-center flex-wrap gap-3">
+                                                        <div class="d-flex align-items-center gap-3">
+                                                            <span class="fw-bold fs-5 text-brand opacity-50">{{ $loop->parent->iteration ?? 1 }}.{{ strtolower(chr(96 + $loop->iteration)) }}</span>
+                                                            <div class="bg-white p-2 rounded-3 shadow-sm d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;">
+                                                                @if($media->jenis == 'pdf') <i class="bi bi-file-earmark-pdf-fill fs-4 text-danger"></i>
+                                                                @elseif($media->jenis == 'word') <i class="bi bi-file-earmark-word-fill fs-4 text-primary"></i>
+                                                                @elseif($media->jenis == 'ppt') <i class="bi bi-file-earmark-slides-fill fs-4 text-warning"></i>
+                                                                @elseif($media->jenis == 'video_upload') <i class="bi bi-play-circle-fill fs-4 text-success"></i>
+                                                                @elseif($media->jenis == 'video_youtube') <i class="bi bi-youtube fs-4 text-danger"></i>
+                                                                @elseif($media->jenis == 'link') <i class="bi bi-link-45deg fs-4 text-info"></i>
+                                                                @else <i class="bi bi-file-earmark-fill fs-4 text-secondary"></i> @endif
+                                                            </div>
+                                                            <div>
+                                                                <h6 class="mb-0 fw-bold font-inter text-dark" style="font-size: 0.95rem;">{{ $media->judul }}</h6>
+                                                                <span class="badge bg-white text-secondary border mt-1 font-inter" style="font-size: 0.65rem;">
+                                                                    {{ $media->jenis == 'video_youtube' ? 'YouTube' : ($media->jenis == 'link' ? 'Link Eksternal' : strtoupper(str_replace('_', ' ', $media->jenis))) }}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex gap-2">
+                                                            @if($media->jenis == 'link') <a href="{{ $media->external_link }}" target="_blank" class="btn btn-info btn-sm rounded-pill px-3 fw-bold font-inter text-white" style="font-size: 0.8rem;"><i class="bi bi-box-arrow-up-right me-1"></i> Buka Link</a>
+                                                            @elseif($media->jenis == 'video_youtube') <button class="btn btn-danger btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;"><i class="bi bi-play-circle me-1"></i> Tonton Video</button>
+                                                            @else <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;"><i class="bi bi-eye me-1"></i> Buka File</button>
                                                             @endif
                                                         </div>
+                                                    </div>
+                                                    @if($media->jenis != 'link')
+                                                    <div id="preview{{ $media->id }}" class="collapse mt-3 w-100 border-top pt-3">
+                                                        @if($media->jenis == 'pdf') <div class="document-iframe-container shadow-sm" style="height: 400px;"><iframe src="{{ asset('storage/'.$media->file) }}" width="100%" height="100%" style="border: none;" allowfullscreen></iframe></div>
+                                                        @elseif($media->jenis == 'word') <div class="document-iframe-container ratio ratio-16x9 shadow-sm mb-2"><iframe src="https://docs.google.com/gview?url={{ urlencode(asset('storage/'.$media->file)) }}&embedded=true" allowfullscreen style="border: none;"></iframe></div><div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau Google Docs Viewer.</div>
+                                                        @elseif($media->jenis == 'ppt') <div class="document-iframe-container ratio ratio-16x9 shadow-sm mb-2"><iframe src="https://view.officeapps.live.com/op/embed.aspx?src={{ urlencode(asset('storage/'.$media->file)) }}" allowfullscreen style="border: none;"></iframe></div><div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau Microsoft Office Viewer.</div>
+                                                        @elseif($media->jenis == 'video_upload') <div class="document-iframe-container ratio ratio-16x9 bg-black shadow-sm"><video controls class="w-100 h-100 rounded-3"><source src="{{ asset('storage/'.$media->file) }}"></video></div>
+                                                        @elseif($media->jenis == 'video_youtube')
+                                                            @php 
+                                                                $youtubeId = null;
+                                                                if ($media->video_url) {
+                                                                    preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match);
+                                                                    $youtubeId = $match[1] ?? null;
+                                                                }
+                                                            @endphp
+                                                            @if($youtubeId) <div class="document-iframe-container ratio ratio-16x9 shadow-sm"><iframe src="https://www.youtube.com/embed/{{ $youtubeId }}" allowfullscreen style="border: none;"></iframe></div>
+                                                            @else <div class="alert alert-warning font-inter"><i class="bi bi-exclamation-triangle me-2"></i> Link YouTube tidak valid.</div> @endif
+                                                        @endif
+                                                    </div>
                                                     @endif
-                                                @endif
-                                            </div>
+                                                </div>
+                                            @endforeach
                                         </div>
-                                    @endforeach
+                                    </div>
                                 @endif
                             </div>
                             @endforeach
@@ -1390,7 +1267,7 @@
                     <div class="topic-block">
                         <div class="topic-header">
                             <div class="topic-icon" style="background: rgba(236, 72, 153, 0.15); color: var(--color-pink);"><i class="bi bi-people-fill"></i></div>
-                            <h3 class="topic-title">Interaksi Sosial & Musyawarah</h3>
+                            <h3 class="topic-title font-inter">Interaksi Sosial & Musyawarah</h3>
                         </div>
                         <p>Setiap hari di sekolah, kamu berinteraksi dengan guru dan teman-teman sekelas, baik itu saling menolong (asosiatif) maupun terkadang berselisih paham saat bermain bola (disosiatif).</p>
                         
@@ -1422,7 +1299,7 @@
                                 <button class="quiz-option shadow-sm mini-option py-2 font-inter" onclick="checkMiniQuiz('topic6', 1, 0, this)">Patrilineal</button>
                                 <button class="quiz-option shadow-sm mini-option py-2 font-inter" onclick="checkMiniQuiz('topic6', 2, 0, this)">Bilateral</button>
                             </div>
-                            <div id="mini-result-topic6" class="mt-3 p-3 rounded-3 bg-light border border-light" style="display: none; font-size: 0.9rem;"></div>
+                            <div id="mini-result-topic6" class="mt-3 p-3 rounded-3 bg-light border border-light font-inter" style="display: none; font-size: 0.9rem;"></div>
                         </div>
 
                         @if($materiSosial->count() > 0)
@@ -1438,66 +1315,79 @@
                                 <div class="content-text text-dark prose fs-6">{!! $item->konten !!}</div>
                                 
                                 @if($item->mediaPendukung && $item->mediaPendukung->count() > 0)
-                                    <h6 class="fw-bold mb-3 mt-4 text-primary font-inter" style="font-size: 0.95rem;"><i class="bi bi-paperclip me-2"></i>Media Pendukung</h6>
-                                    @foreach($item->mediaPendukung as $media)
-                                        <div class="attachment-box p-3 mt-2">
-                                            <div class="d-flex w-100 justify-content-between align-items-center flex-wrap gap-2">
-                                                <div class="d-flex align-items-center gap-3">
-                                                    <div class="bg-white p-2 rounded-3 shadow-sm d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-                                                        @if($media->jenis == 'pdf') <i class="bi bi-file-earmark-pdf-fill fs-4 text-danger"></i>
-                                                        @elseif($media->jenis == 'word') <i class="bi bi-file-earmark-word-fill fs-4 text-primary"></i>
-                                                        @elseif($media->jenis == 'ppt') <i class="bi bi-file-earmark-slides-fill fs-4 text-warning"></i>
-                                                        @elseif($media->jenis == 'video_upload') <i class="bi bi-play-circle-fill fs-4 text-success"></i>
-                                                        @elseif($media->jenis == 'video_youtube') <i class="bi bi-youtube fs-4 text-danger"></i>
-                                                        @elseif($media->jenis == 'link') <i class="bi bi-link-45deg fs-4 text-info"></i>
-                                                        @else <i class="bi bi-file-earmark-fill fs-4 text-secondary"></i> @endif
-                                                    </div>
-                                                    <div><h6 class="mb-0 fw-bold font-inter" style="font-size: 0.9rem;">{{ $media->judul }}</h6></div>
-                                                </div>
-                                                <div class="d-flex gap-2">
-                                                    @if($media->jenis == 'link')
-                                                        <a href="{{ $media->external_link }}" target="_blank" class="btn btn-info btn-sm rounded-pill px-3 fw-bold font-inter" style="font-size: 0.8rem;">
-                                                            <i class="bi bi-box-arrow-up-right me-1"></i> Buka Link
-                                                        </a>
-                                                    @elseif($media->jenis == 'video_youtube')
-                                                        <button class="btn btn-danger btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
-                                                            <i class="bi bi-play-circle me-1"></i> Tonton Video
-                                                        </button>
-                                                    @else
-                                                        <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;">
-                                                            <i class="bi bi-eye me-1"></i> Lihat File
-                                                        </button>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <div id="preview{{ $media->id }}" class="collapse mt-3 w-100">
-                                                @if($media->jenis == 'pdf') <div class="document-iframe-container shadow-sm" style="height: 400px;"><iframe src="{{ asset('storage/'.$media->file) }}" width="100%" height="100%" style="border: none;" allowfullscreen></iframe></div>
-                                                @elseif($media->jenis == 'word') <div class="document-iframe-container ratio ratio-16x9 shadow-sm mb-2"><iframe src="https://docs.google.com/gview?url={{ urlencode(asset('storage/'.$media->file)) }}&embedded=true" allowfullscreen style="border: none;"></iframe></div>
-                                                    <div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau dokumen menggunakan Google Docs Viewer.</div>
-                                                @elseif($media->jenis == 'ppt') <div class="document-iframe-container ratio ratio-16x9 shadow-sm mb-2"><iframe src="https://view.officeapps.live.com/op/embed.aspx?src={{ urlencode(asset('storage/'.$media->file)) }}" allowfullscreen style="border: none;"></iframe></div>
-                                                    <div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau dokumen menggunakan Microsoft Office Viewer.</div>
-                                                @elseif($media->jenis == 'video_upload') <div class="document-iframe-container ratio ratio-16x9 bg-black shadow-sm"><video controls class="w-100 h-100 rounded-3"><source src="{{ asset('storage/'.$media->file) }}"></video></div>
-                                                @elseif($media->jenis == 'video_youtube')
-                                                    @php 
-                                                        $youtubeId = null;
-                                                        if ($media->video_url) {
-                                                            preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match);
-                                                            $youtubeId = $match[1] ?? null;
-                                                        }
-                                                    @endphp
-                                                    @if($youtubeId) <div class="document-iframe-container ratio ratio-16x9 shadow-sm"><iframe src="https://www.youtube.com/embed/{{ $youtubeId }}" allowfullscreen style="border: none;"></iframe></div>
-                                                    @else
-                                                        <div class="alert alert-warning font-inter">
-                                                            <i class="bi bi-exclamation-triangle me-2"></i> Link YouTube tidak valid.
-                                                            @if($media->external_link)
-                                                                <br><a href="{{ $media->external_link }}" target="_blank" class="text-decoration-none">Klik di sini untuk membuka link</a>
+                                    @php
+                                        $pdfCount = $item->mediaPendukung->where('jenis', 'pdf')->count();
+                                        $wordCount = $item->mediaPendukung->where('jenis', 'word')->count();
+                                        $pptCount = $item->mediaPendukung->where('jenis', 'ppt')->count();
+                                        $videoCount = $item->mediaPendukung->whereIn('jenis', ['video_upload', 'video_youtube'])->count();
+                                        $linkCount = $item->mediaPendukung->where('jenis', 'link')->count();
+                                    @endphp
+                                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 p-3 mt-4 rounded-3 border shadow-sm" style="background: linear-gradient(to right, #F8FAFC, #FFFFFF);">
+                                        <div class="d-flex flex-wrap gap-2 align-items-center">
+                                            <span class="badge bg-primary rounded-pill font-inter px-3 py-2"><i class="bi bi-paperclip me-1"></i> {{ $item->mediaPendukung->count() }} Lampiran</span>
+                                            @if($pdfCount > 0) <span class="badge bg-white text-danger border border-danger-subtle rounded-pill font-inter"><i class="bi bi-filetype-pdf"></i> PDF ({{ $pdfCount }})</span> @endif
+                                            @if($wordCount > 0) <span class="badge bg-white text-primary border border-primary-subtle rounded-pill font-inter"><i class="bi bi-filetype-doc"></i> Word ({{ $wordCount }})</span> @endif
+                                            @if($pptCount > 0) <span class="badge bg-white text-warning border border-warning-subtle rounded-pill font-inter"><i class="bi bi-filetype-ppt"></i> PPT ({{ $pptCount }})</span> @endif
+                                            @if($videoCount > 0) <span class="badge bg-white text-success border border-success-subtle rounded-pill font-inter"><i class="bi bi-play-btn"></i> Video ({{ $videoCount }})</span> @endif
+                                            @if($linkCount > 0) <span class="badge bg-white text-info border border-info-subtle rounded-pill font-inter"><i class="bi bi-link-45deg"></i> Link ({{ $linkCount }})</span> @endif
+                                        </div>
+                                        <button class="btn btn-outline-primary btn-sm rounded-pill fw-bold font-inter px-4 flex-shrink-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMedia{{ $item->id }}" aria-expanded="false">
+                                            Lihat Lampiran <i class="bi bi-chevron-down ms-1 transition-icon"></i>
+                                        </button>
+                                    </div>
+                                    <div class="collapse mt-3" id="collapseMedia{{ $item->id }}">
+                                        <div class="d-flex flex-column gap-3 p-3 border rounded-3 bg-white shadow-sm">
+                                            @foreach($item->mediaPendukung as $index => $media)
+                                                <div class="attachment-box m-0 border-0 bg-light rounded-3 shadow-sm p-3">
+                                                    <div class="d-flex w-100 justify-content-between align-items-center flex-wrap gap-3">
+                                                        <div class="d-flex align-items-center gap-3">
+                                                            <span class="fw-bold fs-5 text-brand opacity-50">{{ $loop->parent->iteration ?? 1 }}.{{ strtolower(chr(96 + $loop->iteration)) }}</span>
+                                                            <div class="bg-white p-2 rounded-3 shadow-sm d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;">
+                                                                @if($media->jenis == 'pdf') <i class="bi bi-file-earmark-pdf-fill fs-4 text-danger"></i>
+                                                                @elseif($media->jenis == 'word') <i class="bi bi-file-earmark-word-fill fs-4 text-primary"></i>
+                                                                @elseif($media->jenis == 'ppt') <i class="bi bi-file-earmark-slides-fill fs-4 text-warning"></i>
+                                                                @elseif($media->jenis == 'video_upload') <i class="bi bi-play-circle-fill fs-4 text-success"></i>
+                                                                @elseif($media->jenis == 'video_youtube') <i class="bi bi-youtube fs-4 text-danger"></i>
+                                                                @elseif($media->jenis == 'link') <i class="bi bi-link-45deg fs-4 text-info"></i>
+                                                                @else <i class="bi bi-file-earmark-fill fs-4 text-secondary"></i> @endif
+                                                            </div>
+                                                            <div>
+                                                                <h6 class="mb-0 fw-bold font-inter text-dark" style="font-size: 0.95rem;">{{ $media->judul }}</h6>
+                                                                <span class="badge bg-white text-secondary border mt-1 font-inter" style="font-size: 0.65rem;">
+                                                                    {{ $media->jenis == 'video_youtube' ? 'YouTube' : ($media->jenis == 'link' ? 'Link Eksternal' : strtoupper(str_replace('_', ' ', $media->jenis))) }}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex gap-2">
+                                                            @if($media->jenis == 'link') <a href="{{ $media->external_link }}" target="_blank" class="btn btn-info btn-sm rounded-pill px-3 fw-bold font-inter text-white" style="font-size: 0.8rem;"><i class="bi bi-box-arrow-up-right me-1"></i> Buka Link</a>
+                                                            @elseif($media->jenis == 'video_youtube') <button class="btn btn-danger btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;"><i class="bi bi-play-circle me-1"></i> Tonton Video</button>
+                                                            @else <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold font-inter" type="button" data-bs-toggle="collapse" data-bs-target="#preview{{ $media->id }}" style="font-size: 0.8rem;"><i class="bi bi-eye me-1"></i> Buka File</button>
                                                             @endif
                                                         </div>
+                                                    </div>
+                                                    @if($media->jenis != 'link')
+                                                    <div id="preview{{ $media->id }}" class="collapse mt-3 w-100 border-top pt-3">
+                                                        @if($media->jenis == 'pdf') <div class="document-iframe-container shadow-sm" style="height: 400px;"><iframe src="{{ asset('storage/'.$media->file) }}" width="100%" height="100%" style="border: none;" allowfullscreen></iframe></div>
+                                                        @elseif($media->jenis == 'word') <div class="document-iframe-container ratio ratio-16x9 shadow-sm mb-2"><iframe src="https://docs.google.com/gview?url={{ urlencode(asset('storage/'.$media->file)) }}&embedded=true" allowfullscreen style="border: none;"></iframe></div><div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau Google Docs Viewer.</div>
+                                                        @elseif($media->jenis == 'ppt') <div class="document-iframe-container ratio ratio-16x9 shadow-sm mb-2"><iframe src="https://view.officeapps.live.com/op/embed.aspx?src={{ urlencode(asset('storage/'.$media->file)) }}" allowfullscreen style="border: none;"></iframe></div><div class="text-center font-inter text-muted mt-2" style="font-size: 0.85rem;"><i class="bi bi-info-circle text-primary"></i> Pratinjau Microsoft Office Viewer.</div>
+                                                        @elseif($media->jenis == 'video_upload') <div class="document-iframe-container ratio ratio-16x9 bg-black shadow-sm"><video controls class="w-100 h-100 rounded-3"><source src="{{ asset('storage/'.$media->file) }}"></video></div>
+                                                        @elseif($media->jenis == 'video_youtube')
+                                                            @php 
+                                                                $youtubeId = null;
+                                                                if ($media->video_url) {
+                                                                    preg_match('/(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/', $media->video_url, $match);
+                                                                    $youtubeId = $match[1] ?? null;
+                                                                }
+                                                            @endphp
+                                                            @if($youtubeId) <div class="document-iframe-container ratio ratio-16x9 shadow-sm"><iframe src="https://www.youtube.com/embed/{{ $youtubeId }}" allowfullscreen style="border: none;"></iframe></div>
+                                                            @else <div class="alert alert-warning font-inter"><i class="bi bi-exclamation-triangle me-2"></i> Link YouTube tidak valid.</div> @endif
+                                                        @endif
+                                                    </div>
                                                     @endif
-                                                @endif
-                                            </div>
+                                                </div>
+                                            @endforeach
                                         </div>
-                                    @endforeach
+                                    </div>
                                 @endif
                             </div>
                             @endforeach
@@ -1507,18 +1397,19 @@
                 </div>
             </div>
 
+            <!-- STREAMING_CHUNK:Configuring sidebar widgets and scripts... -->
             <!-- Kolom Kanan: Sidebar -->
             <div class="col-lg-4">
                 
                 <!-- Widget Kearifan Lokal -->
                 <div class="sidebar-widget fade-in-up delay-2">
-                    <h5 class="widget-title">
+                    <h5 class="widget-title font-inter">
                         <i class="bi bi-flower1" style="color: var(--color-teal);"></i> Kearifan Lokal
                     </h5>
-                    <p class="text-secondary mb-3" style="font-size: 0.95rem;">Adaptasi masyarakat tradisional terhadap kondisi alam dan potensi bencana di lingkungannya.</p>
+                    <p class="text-secondary mb-3 font-inter" style="font-size: 0.95rem;">Adaptasi masyarakat tradisional terhadap kondisi alam dan potensi bencana di lingkungannya.</p>
                     
                     <h6 class="fw-bold fs-6 font-inter mt-4">Arsitektur Rumah Gadang</h6>
-                    <p class="text-secondary" style="font-size: 0.95rem;">Masyarakat Minangkabau membangun Rumah Gadang dengan struktur adaptif terhadap gempa bumi. Tiang utama tidak ditanam ke tanah, melainkan dialaskan pada batu datar agar tahan guncangan.</p>
+                    <p class="text-secondary font-inter" style="font-size: 0.95rem;">Masyarakat Minangkabau membangun Rumah Gadang dengan struktur adaptif terhadap gempa bumi. Tiang utama tidak ditanam ke tanah, melainkan dialaskan pada batu datar agar tahan guncangan.</p>
                     
                     <div class="wisdom-box">
                         <p class="mb-0 fw-semibold font-inter" style="color: #0F766E; font-size: 0.95rem;">
